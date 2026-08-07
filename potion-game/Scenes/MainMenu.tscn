@@ -1,3 +1,43 @@
 [gd_scene format=3 uid="uid://c5ahwustmer4r"]
 
-[node name="Node2D" type="Node2D" unique_id=992807574]
+[ext_resource type="Script" uid="uid://b6vmmxpkfgl5i" path="res://Assets/Scripts/MainMenu.gd" id="1_tt5f1"]
+
+[node name="MainMenu" type="Node2D" unique_id=992807574]
+script = ExtResource("1_tt5f1")
+
+[node name="GameTitleLabel" type="Label" parent="." unique_id=165227560]
+offset_right = 1152.0
+offset_bottom = 176.0
+theme_override_colors/font_color = Color(0.4850948, 0.47679895, 1, 1)
+theme_override_font_sizes/font_size = 60
+text = "Potion Game "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayButton" type="Button" parent="." unique_id=1531628275]
+offset_left = 369.0
+offset_top = 181.0
+offset_right = 771.0
+offset_bottom = 236.0
+theme_override_font_sizes/font_size = 30
+text = "Play"
+
+[node name="OptionButton" type="Button" parent="." unique_id=881915766]
+offset_left = 433.0
+offset_top = 267.0
+offset_right = 707.0
+offset_bottom = 322.0
+theme_override_font_sizes/font_size = 30
+text = "Options"
+
+[node name="QuitButton" type="Button" parent="." unique_id=199838649]
+offset_left = 433.0
+offset_top = 551.0
+offset_right = 707.0
+offset_bottom = 606.0
+theme_override_font_sizes/font_size = 30
+text = "Quit"
+
+[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="OptionButton" to="." method="_on_option_button_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
