@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://bhjik1rqf8tvw"]
+
+[ext_resource type="Texture2D" uid="uid://i8ohcjfi2ya1" path="res://icon.svg" id="1_3qkaa"]
+
+[sub_resource type="GDScript" id="GDScript_as58f"]
+script/source = "extends CharacterBody2D
+
+var is_grabbed : bool = false
+var starting_pos = position
+
+func _process(delta):
+	if is_grabbed:
+		# Checks if the left mouse button has been released
+		if not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+			is_grabbed = false
+			position = starting_pos
+			return
+		
+		# Moves the ingredient with the mouse if grabbed
+		var mouse_pos = get_global_mouse_position()
+		global_position = lerp(global_position, mouse_pos, 0.2)
+		return
+		
+func _input_event(viewport, event, shape_idx) -> void:
+	# Checks if the ingredient has been grabbed
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		if event.pressed:
+			is_grabbed = true
+		else:
+			is_grabbed = false
+			position = starting_pos
+			
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_57qmd"]
+size = Vector2(130, 130)
+
+[node name="Ingredient" type="Node2D" unique_id=1843572314]
+position = Vector2(1.1920929e-07, 2.2737368e-13)
+scale = Vector2(0.4, 0.4)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1576798590]
+input_pickable = true
+script = SubResource("GDScript_as58f")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=1642557782]
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("1_3qkaa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=346376804]
+position = Vector2(-8.642673e-06, 8.3446475e-06)
+scale = Vector2(0.9999998, 0.9999998)
+shape = SubResource("RectangleShape2D_57qmd")

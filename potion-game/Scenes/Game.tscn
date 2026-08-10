@@ -1,12 +1,50 @@
 [gd_scene format=3 uid="uid://cvlswtmdkf4hn"]
 
+[ext_resource type="Texture2D" uid="uid://dflh3br5got8u" path="res://Assets/Placeholders/WitchCauldronBase.png" id="1_gl6un"]
+[ext_resource type="Texture2D" uid="uid://b2gbqpyrj7aau" path="res://Assets/Placeholders/Shelf.png" id="1_kldst"]
+[ext_resource type="Texture2D" uid="uid://bj03l774esfw6" path="res://Assets/Placeholders/WitchCauldronTop.png" id="2_j5yw3"]
+[ext_resource type="PackedScene" uid="uid://bhjik1rqf8tvw" path="res://Scenes/Sprites/Ingredient.tscn" id="3_j5yw3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gl6un"]
+size = Vector2(137, 21)
+
 [node name="Game" type="Node2D" unique_id=1061024810]
 
 [node name="TheGAME" type="Label" parent="." unique_id=1284707519]
 offset_right = 1152.0
-offset_bottom = 646.0
+offset_bottom = 98.0
 theme_override_colors/font_color = Color(0.4850948, 0.47679895, 1, 1)
 theme_override_font_sizes/font_size = 60
 text = "The  G  A  M  E"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Shelf" type="Sprite2D" parent="." unique_id=871433493]
+position = Vector2(960, 517)
+scale = Vector2(0.5, 0.56333333)
+texture = ExtResource("1_kldst")
+
+[node name="WitchCauldron" type="CharacterBody2D" parent="." unique_id=1298498589]
+texture_filter = 1
+position = Vector2(245, 572)
+
+[node name="WitchCauldronTop" type="Sprite2D" parent="WitchCauldron" unique_id=1373151566]
+z_index = -10
+texture_filter = 1
+position = Vector2(1, -81)
+texture = ExtResource("2_j5yw3")
+
+[node name="WitchCauldronBase" type="Sprite2D" parent="WitchCauldron" unique_id=516506129]
+z_index = 10
+texture_filter = 1
+texture = ExtResource("1_gl6un")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WitchCauldron" unique_id=717828197]
+position = Vector2(0.5, -16.5)
+shape = SubResource("RectangleShape2D_gl6un")
+
+[node name="Ingredient1" parent="." unique_id=1843572314 instance=ExtResource("3_j5yw3")]
+position = Vector2(902.99994, 465)
+
+[node name="Ingredient2" parent="." unique_id=1544008500 instance=ExtResource("3_j5yw3")]
+position = Vector2(976.99994, 463.99997)
