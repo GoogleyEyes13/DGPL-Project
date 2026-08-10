@@ -29,10 +29,17 @@ func _input_event(viewport, event, shape_idx) -> void:
 		else:
 			is_grabbed = false
 			position = starting_pos
-			
+
+# Detecting if the ingredient is placed in the cauldron
+func _on_detection_area_body_entered(body: Node2D) -> void:
+	if is_grabbed:
+		print(\"Ingredient has been placed in the pot\")
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_57qmd"]
+size = Vector2(130, 130)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
 size = Vector2(130, 130)
 
 [node name="Ingredient" type="Node2D" unique_id=1843572314]
@@ -51,3 +58,12 @@ texture = ExtResource("1_3qkaa")
 position = Vector2(-8.642673e-06, 8.3446475e-06)
 scale = Vector2(0.9999998, 0.9999998)
 shape = SubResource("RectangleShape2D_57qmd")
+
+[node name="DetectionArea" type="Area2D" parent="CharacterBody2D" unique_id=229111730]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/DetectionArea" unique_id=229861568]
+position = Vector2(6.854533e-06, 7.1525556e-06)
+scale = Vector2(0.9999998, 0.9999998)
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[connection signal="body_entered" from="CharacterBody2D/DetectionArea" to="CharacterBody2D" method="_on_detection_area_body_entered"]
