@@ -1,10 +1,15 @@
 [gd_scene format=3 uid="uid://cvlswtmdkf4hn"]
 
 [ext_resource type="Texture2D" uid="uid://dflh3br5got8u" path="res://Assets/Placeholders/WitchCauldronBase.png" id="1_gl6un"]
+[ext_resource type="Texture2D" uid="uid://i8ohcjfi2ya1" path="res://icon.svg" id="2_7lihs"]
 [ext_resource type="Script" uid="uid://clyi4gvjf38r2" path="res://Assets/Scripts/Cauldron.gd" id="2_b2bpf"]
+[ext_resource type="Script" uid="uid://c13ys1t4joar2" path="res://Assets/Scripts/MixingStick.gd" id="2_fgofq"]
 [ext_resource type="Texture2D" uid="uid://bj03l774esfw6" path="res://Assets/Placeholders/WitchCauldronTop.png" id="2_j5yw3"]
 [ext_resource type="Texture2D" uid="uid://cd2rjrm5q8i3" path="res://Assets/Placeholders/ShopConcept4.png" id="4_kldst"]
-[ext_resource type="PackedScene" uid="uid://bhjik1rqf8tvw" path="res://Scenes/Sprites/Ingredient.tscn" id="5_b2bpf"]
+[ext_resource type="PackedScene" uid="uid://nk2mr8ongv5d" path="res://Scenes/Sprites/Ingredient.tscn" id="5_b2bpf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7lihs"]
+size = Vector2(24.007128, 97.73834)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gl6un"]
 size = Vector2(137, 77.769226)
@@ -16,6 +21,23 @@ z_index = -20
 texture_filter = 1
 position = Vector2(576, 324)
 texture = ExtResource("4_kldst")
+
+[node name="MixingStick" type="CharacterBody2D" parent="." unique_id=1507127433]
+position = Vector2(9, 0)
+input_pickable = true
+script = ExtResource("2_fgofq")
+
+[node name="Sprite2D" type="Sprite2D" parent="MixingStick" unique_id=1925342764]
+position = Vector2(629.3638, 458.2631)
+rotation = 0.34906584
+scale = Vector2(0.171875, 0.7549579)
+texture = ExtResource("2_7lihs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MixingStick" unique_id=1572271056]
+position = Vector2(629.4563, 457.6201)
+rotation = 0.34906584
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_7lihs")
 
 [node name="WitchCauldron" type="CharacterBody2D" parent="." unique_id=1298498589]
 texture_filter = 1
