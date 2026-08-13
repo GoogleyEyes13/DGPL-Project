@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bj03l774esfw6" path="res://Assets/Placeholders/WitchCauldronTop.png" id="2_j5yw3"]
 [ext_resource type="Texture2D" uid="uid://cd2rjrm5q8i3" path="res://Assets/Placeholders/ShopConcept4.png" id="4_kldst"]
 [ext_resource type="PackedScene" uid="uid://nk2mr8ongv5d" path="res://Scenes/Sprites/Ingredient.tscn" id="5_b2bpf"]
+[ext_resource type="Script" uid="uid://bcvd5mfa361of" path="res://Scenes/customer.gd" id="6_7lihs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gl6un"]
 size = Vector2(137, 77.769226)
@@ -55,3 +56,10 @@ position = Vector2(156.99998, 427.00003)
 
 [node name="Stardust" parent="." unique_id=860062454 instance=ExtResource("5_b2bpf")]
 position = Vector2(994, 425.99997)
+
+[node name="Customer" type="Area2D" parent="." unique_id=1923331258]
+script = ExtResource("6_7lihs")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Customer" unique_id=1459895078]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Customer" unique_id=1863243416]
