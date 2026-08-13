@@ -1,69 +1,28 @@
-[gd_scene format=3 uid="uid://bhjik1rqf8tvw"]
+[gd_scene format=3 uid="uid://nk2mr8ongv5d"]
 
-[ext_resource type="Texture2D" uid="uid://i8ohcjfi2ya1" path="res://icon.svg" id="1_3qkaa"]
-
-[sub_resource type="GDScript" id="GDScript_as58f"]
-script/source = "extends CharacterBody2D
-
-var is_grabbed : bool = false
-var starting_pos = position
-
-func _process(delta):
-	if is_grabbed:
-		# Checks if the left mouse button has been released
-		if not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-			is_grabbed = false
-			position = starting_pos
-			return
-		
-		# Moves the ingredient with the mouse if grabbed
-		var mouse_pos = get_global_mouse_position()
-		global_position = lerp(global_position, mouse_pos, 0.2)
-		return
-		
-func _input_event(viewport, event, shape_idx) -> void:
-	# Checks if the ingredient has been grabbed
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
-		if event.pressed:
-			is_grabbed = true
-		else:
-			is_grabbed = false
-			position = starting_pos
-
-# Detecting if the ingredient is placed in the cauldron
-func _on_detection_area_body_entered(body: Node2D) -> void:
-	if is_grabbed:
-		print(\"Ingredient has been placed in the pot\")
-"
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_57qmd"]
-size = Vector2(130, 130)
+[ext_resource type="Script" uid="uid://mg1gd6huuxje" path="res://Assets/Scripts/Ingredient.gd" id="1_i6ux4"]
+[ext_resource type="Texture2D" uid="uid://i8ohcjfi2ya1" path="res://icon.svg" id="1_p67ce"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
 size = Vector2(130, 130)
 
-[node name="Ingredient" type="Node2D" unique_id=1843572314]
-position = Vector2(1.1920929e-07, 2.2737368e-13)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
+size = Vector2(130, 130)
+
+[node name="Ingredient" type="CharacterBody2D" unique_id=2023870098]
 scale = Vector2(0.4, 0.4)
-
-[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1576798590]
 input_pickable = true
-script = SubResource("GDScript_as58f")
+script = ExtResource("1_i6ux4")
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=1642557782]
-scale = Vector2(0.99999994, 0.99999994)
-texture = ExtResource("1_3qkaa")
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=547837860]
+texture = ExtResource("1_p67ce")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=346376804]
-position = Vector2(-8.642673e-06, 8.3446475e-06)
-scale = Vector2(0.9999998, 0.9999998)
-shape = SubResource("RectangleShape2D_57qmd")
-
-[node name="DetectionArea" type="Area2D" parent="CharacterBody2D" unique_id=229111730]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/DetectionArea" unique_id=229861568]
-position = Vector2(6.854533e-06, 7.1525556e-06)
-scale = Vector2(0.9999998, 0.9999998)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1508716182]
 shape = SubResource("RectangleShape2D_g4v7s")
 
-[connection signal="body_entered" from="CharacterBody2D/DetectionArea" to="CharacterBody2D" method="_on_detection_area_body_entered"]
+[node name="DetectionArea" type="Area2D" parent="." unique_id=743801677]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=1996293202]
+shape = SubResource("RectangleShape2D_yf5fn")
+
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]

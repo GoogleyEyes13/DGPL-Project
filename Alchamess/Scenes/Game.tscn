@@ -2,11 +2,11 @@
 
 [ext_resource type="Texture2D" uid="uid://dflh3br5got8u" path="res://Assets/Placeholders/WitchCauldronBase.png" id="1_gl6un"]
 [ext_resource type="Texture2D" uid="uid://bj03l774esfw6" path="res://Assets/Placeholders/WitchCauldronTop.png" id="2_j5yw3"]
-[ext_resource type="PackedScene" uid="uid://bhjik1rqf8tvw" path="res://Scenes/Sprites/Ingredient.tscn" id="3_j5yw3"]
 [ext_resource type="Texture2D" uid="uid://cd2rjrm5q8i3" path="res://Assets/Placeholders/ShopConcept4.png" id="4_kldst"]
+[ext_resource type="PackedScene" uid="uid://nk2mr8ongv5d" path="res://Scenes/Sprites/Ingredient.tscn" id="5_b2bpf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gl6un"]
-size = Vector2(137, 21)
+size = Vector2(137, 77.769226)
 
 [node name="Game" type="Node2D" unique_id=1061024810]
 
@@ -33,23 +33,23 @@ texture_filter = 1
 texture = ExtResource("1_gl6un")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WitchCauldron" unique_id=717828197]
-position = Vector2(0.5, -16.5)
+position = Vector2(0.5, 11.8845825)
 shape = SubResource("RectangleShape2D_gl6un")
 
-[node name="Ingredient1" parent="." unique_id=1843572314 instance=ExtResource("3_j5yw3")]
-position = Vector2(157.00002, 166.00002)
+[node name="EyeOfNewt" parent="." unique_id=2023870098 instance=ExtResource("5_b2bpf")]
+position = Vector2(156.99998, 170.99998)
 
-[node name="Ingredient2" parent="." unique_id=1544008500 instance=ExtResource("3_j5yw3")]
-position = Vector2(994.99994, 167.00002)
+[node name="Wormwood" parent="." unique_id=1599874296 instance=ExtResource("5_b2bpf")]
+position = Vector2(993.99994, 169.99997)
 
-[node name="Ingredient3" parent="." unique_id=1397988536 instance=ExtResource("3_j5yw3")]
-position = Vector2(157, 295)
+[node name="MagicPebble" parent="." unique_id=655124839 instance=ExtResource("5_b2bpf")]
+position = Vector2(156.99998, 299)
 
-[node name="Ingredient4" parent="." unique_id=898026169 instance=ExtResource("3_j5yw3")]
-position = Vector2(994.99994, 295)
+[node name="PhoenixFeather" parent="." unique_id=1704942985 instance=ExtResource("5_b2bpf")]
+position = Vector2(993.99994, 297.99997)
 
-[node name="Ingredient5" parent="." unique_id=61079863 instance=ExtResource("3_j5yw3")]
-position = Vector2(157.00002, 425.00003)
+[node name="OilOfVitriol" parent="." unique_id=70480956 instance=ExtResource("5_b2bpf")]
+position = Vector2(156.99998, 427.00003)
 
-[node name="Ingredient6" parent="." unique_id=53958810 instance=ExtResource("3_j5yw3")]
-position = Vector2(994.99994, 424)
+[node name="Stardust" parent="." unique_id=860062454 instance=ExtResource("5_b2bpf")]
+position = Vector2(994, 425.99997)
