@@ -43,5 +43,4 @@ func _input_event(viewport, event, shape_idx) -> void:
 # Detecting if the ingredient is placed in the cauldron
 func _on_detection_area_body_entered(body: Node2D) -> void:
 	if is_grabbed:
-		print(name, " has been placed in the pot")
 		ingredient_added.emit(name)

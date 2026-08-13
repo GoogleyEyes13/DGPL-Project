@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://clyi4gvjf38r2" path="res://Assets/Scripts/Cauldron.gd" id="2_b2bpf"]
 [ext_resource type="Texture2D" uid="uid://bj03l774esfw6" path="res://Assets/Placeholders/WitchCauldronTop.png" id="2_j5yw3"]
 [ext_resource type="Texture2D" uid="uid://cd2rjrm5q8i3" path="res://Assets/Placeholders/ShopConcept4.png" id="4_kldst"]
-[ext_resource type="PackedScene" uid="uid://nk2mr8ongv5d" path="res://Scenes/Sprites/Ingredient.tscn" id="5_b2bpf"]
+[ext_resource type="PackedScene" uid="uid://bhjik1rqf8tvw" path="res://Scenes/Sprites/Ingredient.tscn" id="5_b2bpf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gl6un"]
 size = Vector2(137, 77.769226)
