@@ -2,6 +2,10 @@ extends CharacterBody2D
 
 var is_grabbed : bool = false
 
+# A signal to send to the cauldron when an ingredient touches the pot
+signal ingredient_added
+
+
 func _process(delta):
 	if is_grabbed:
 		# Checks if the left mouse button has been released
@@ -40,3 +44,4 @@ func _input_event(viewport, event, shape_idx) -> void:
 func _on_detection_area_body_entered(body: Node2D) -> void:
 	if is_grabbed:
 		print(name, " has been placed in the pot")
+		ingredient_added.emit(name)

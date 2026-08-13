@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cvlswtmdkf4hn"]
 
 [ext_resource type="Texture2D" uid="uid://dflh3br5got8u" path="res://Assets/Placeholders/WitchCauldronBase.png" id="1_gl6un"]
+[ext_resource type="Script" uid="uid://clyi4gvjf38r2" path="res://Assets/Scripts/Cauldron.gd" id="2_b2bpf"]
 [ext_resource type="Texture2D" uid="uid://bj03l774esfw6" path="res://Assets/Placeholders/WitchCauldronTop.png" id="2_j5yw3"]
 [ext_resource type="Texture2D" uid="uid://cd2rjrm5q8i3" path="res://Assets/Placeholders/ShopConcept4.png" id="4_kldst"]
 [ext_resource type="PackedScene" uid="uid://nk2mr8ongv5d" path="res://Scenes/Sprites/Ingredient.tscn" id="5_b2bpf"]
@@ -20,6 +21,7 @@ texture = ExtResource("4_kldst")
 texture_filter = 1
 position = Vector2(575, 577)
 scale = Vector2(1.3, 1.3)
+script = ExtResource("2_b2bpf")
 
 [node name="WitchCauldronTop" type="Sprite2D" parent="WitchCauldron" unique_id=1373151566]
 z_index = -10
