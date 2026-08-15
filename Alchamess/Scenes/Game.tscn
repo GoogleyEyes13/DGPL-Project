@@ -7,23 +7,20 @@
 [ext_resource type="Texture2D" uid="uid://bj03l774esfw6" path="res://Assets/Placeholders/WitchCauldronTop.png" id="2_j5yw3"]
 [ext_resource type="Texture2D" uid="uid://cd2rjrm5q8i3" path="res://Assets/Placeholders/ShopConcept4.png" id="4_kldst"]
 [ext_resource type="PackedScene" uid="uid://nk2mr8ongv5d" path="res://Scenes/Sprites/Ingredient.tscn" id="5_b2bpf"]
-[ext_resource type="Script" uid="uid://bcvd5mfa361of" path="res://Scenes/customer.gd" id="6_7lihs"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7lihs"]
-size = Vector2(24.007128, 97.73834)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gl6un"]
-size = Vector2(137, 77.769226)
+[ext_resource type="Script" uid="uid://bcvd5mfa361of" path="res://Assets/Scripts/Customer.gd" id="6_7lihs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7lihs"]
 size = Vector2(117, 110)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gl6un"]
+size = Vector2(137, 77.769226)
 
 [node name="Game" type="Node2D" unique_id=1061024810]
 
 [node name="ShopConcept4" type="Sprite2D" parent="." unique_id=298187425]
 z_index = -20
 texture_filter = 1
-position = Vector2(576, 324)
+position = Vector2(577, 324)
 texture = ExtResource("4_kldst")
 
 [node name="MixingStick" type="CharacterBody2D" parent="." unique_id=1507127433]
@@ -65,25 +62,26 @@ position = Vector2(0.5, 11.8845825)
 shape = SubResource("RectangleShape2D_gl6un")
 
 [node name="EyeOfNewt" parent="." unique_id=2023870098 instance=ExtResource("5_b2bpf")]
-position = Vector2(156.99998, 170.99998)
+position = Vector2(157, 170.99998)
 
 [node name="Wormwood" parent="." unique_id=1599874296 instance=ExtResource("5_b2bpf")]
 position = Vector2(993.99994, 169.99997)
 
 [node name="MagicPebble" parent="." unique_id=655124839 instance=ExtResource("5_b2bpf")]
-position = Vector2(156.99998, 299)
+position = Vector2(157, 299)
 
 [node name="PhoenixFeather" parent="." unique_id=1704942985 instance=ExtResource("5_b2bpf")]
 position = Vector2(993.99994, 297.99997)
 
 [node name="OilOfVitriol" parent="." unique_id=70480956 instance=ExtResource("5_b2bpf")]
-position = Vector2(156.99998, 427.00003)
+position = Vector2(157, 427.00003)
 
 [node name="Stardust" parent="." unique_id=860062454 instance=ExtResource("5_b2bpf")]
 position = Vector2(994, 425.99997)
 
 [node name="Customer" type="Area2D" parent="." unique_id=1923331258]
-position = Vector2(1262, 287)
+z_index = -25
+position = Vector2(1262, 286)
 script = ExtResource("6_7lihs")
 
 [node name="TestSprite (DELETE LATER)" type="Sprite2D" parent="Customer" unique_id=761795013]
