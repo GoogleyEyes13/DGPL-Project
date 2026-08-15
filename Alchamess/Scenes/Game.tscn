@@ -10,6 +10,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gl6un"]
 size = Vector2(137, 77.769226)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7lihs"]
+size = Vector2(117, 110)
+
 [node name="Game" type="Node2D" unique_id=1061024810]
 
 [node name="ShopConcept4" type="Sprite2D" parent="." unique_id=298187425]
@@ -58,8 +61,15 @@ position = Vector2(156.99998, 427.00003)
 position = Vector2(994, 425.99997)
 
 [node name="Customer" type="Area2D" parent="." unique_id=1923331258]
+position = Vector2(1262, 287)
 script = ExtResource("6_7lihs")
 
+[node name="TestSprite (DELETE LATER)" type="Sprite2D" parent="Customer" unique_id=761795013]
+texture = ExtResource("1_gl6un")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Customer" unique_id=1459895078]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Customer" unique_id=1863243416]
+position = Vector2(-3.5, 8)
+shape = SubResource("RectangleShape2D_7lihs")
