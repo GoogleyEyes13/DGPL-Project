@@ -3,6 +3,9 @@ extends CharacterBody2D
 # A dictionary to store all the recieved ingredients
 var CauldronIngredients: Dictionary = {}
 
+# Potion bottles
+@onready var Potion = $"../CraftedPotion"
+
 func _ready():
 	# Connecting ingredient added signal for each ingredient
 	$"../EyeOfNewt".ingredient_added.connect(_add_ingredient_to_cauldron)
@@ -17,6 +20,11 @@ func _add_ingredient_to_cauldron(name):
 	if CauldronIngredients.size() >= 3:
 		# If cauldron already has 3 ingredients, don't add another
 		print("Cauldron full")
+		
+		# Spawning potion, resetting ingredients
+		Potion.visible = true
+		CauldronIngredients = {}
+		
 		return
 	
 	if CauldronIngredients.has(name):

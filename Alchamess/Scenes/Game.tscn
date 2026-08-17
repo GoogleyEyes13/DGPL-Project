@@ -94,3 +94,9 @@ visible = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Customer" unique_id=1863243416]
 position = Vector2(-3.5, 8)
 shape = SubResource("RectangleShape2D_7lihs")
+
+[node name="CraftedPotion" type="Sprite2D" parent="." unique_id=125537923]
+visible = false
+position = Vector2(575, 280)
+scale = Vector2(0.328125, 0.5234375)
+texture = ExtResource("2_7lihs")
