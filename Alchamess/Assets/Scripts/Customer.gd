@@ -89,3 +89,6 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and event.keycode == KEY_SPACE:
 		print("Space pressed: Giving potion to customer!")
 		receive_potion("Green Head")
+
+func new_customer() -> void:
+	pass

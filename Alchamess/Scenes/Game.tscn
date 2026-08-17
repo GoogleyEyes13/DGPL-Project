@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cd2rjrm5q8i3" path="res://Assets/Placeholders/ShopConcept4.png" id="4_kldst"]
 [ext_resource type="PackedScene" uid="uid://nk2mr8ongv5d" path="res://Scenes/Sprites/Ingredient.tscn" id="5_b2bpf"]
 [ext_resource type="Script" uid="uid://bcvd5mfa361of" path="res://Assets/Scripts/Customer.gd" id="6_7lihs"]
+[ext_resource type="Texture2D" uid="uid://c38ccr8gbiiex" path="res://Scenes/Sprites/re4ozbx9w44b1.jpg" id="9_bf53h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7lihs"]
 size = Vector2(117, 110)
@@ -85,7 +86,7 @@ position = Vector2(1262, 286)
 script = ExtResource("6_7lihs")
 
 [node name="TestSprite (DELETE LATER)" type="Sprite2D" parent="Customer" unique_id=761795013]
-texture = ExtResource("1_gl6un")
+texture = ExtResource("9_bf53h")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Customer" unique_id=1459895078]
 visible = false
