@@ -18,7 +18,7 @@ func _process(delta):
 					global_position = Vector2(157, 171)
 				"Wormwood":
 					global_position = Vector2(994, 170)
-				"MagicPebble":
+				"ElbowGrease":
 					global_position = Vector2(157, 299)
 				"PhoenixFeather":
 					global_position = Vector2(994, 298)

@@ -7,7 +7,7 @@ func _ready():
 	# Connecting ingredient added signal for each ingredient
 	$"../EyeOfNewt".ingredient_added.connect(_add_ingredient_to_cauldron)
 	$"../Wormwood".ingredient_added.connect(_add_ingredient_to_cauldron)
-	$"../MagicPebble".ingredient_added.connect(_add_ingredient_to_cauldron)
+	$"../ElbowGrease".ingredient_added.connect(_add_ingredient_to_cauldron)
 	$"../PhoenixFeather".ingredient_added.connect(_add_ingredient_to_cauldron)
 	$"../OilOfVitriol".ingredient_added.connect(_add_ingredient_to_cauldron)
 	$"../Stardust".ingredient_added.connect(_add_ingredient_to_cauldron)
