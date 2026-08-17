@@ -1,40 +1,82 @@
 [gd_scene format=3 uid="uid://c5ahwustmer4r"]
 
 [ext_resource type="Script" uid="uid://b6vmmxpkfgl5i" path="res://Assets/Scripts/MainMenu.gd" id="1_tt5f1"]
+[ext_resource type="Texture2D" uid="uid://tgtjlwx4p0l0" path="res://Assets/Placeholders/Screenshot 2026-08-17 130315.png" id="2_853f1"]
 
 [node name="MainMenu" type="Node2D" unique_id=992807574]
 script = ExtResource("1_tt5f1")
 
-[node name="GameTitleLabel" type="Label" parent="." unique_id=165227560]
-offset_right = 1152.0
-offset_bottom = 176.0
-theme_override_colors/font_color = Color(0.4850948, 0.47679895, 1, 1)
-theme_override_font_sizes/font_size = 60
-text = "Alchamess"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="BGColour" type="ColorRect" parent="." unique_id=941492061]
+offset_top = -22.0
+offset_right = 1161.0
+offset_bottom = 656.0
+color = Color(0.81960785, 0.77254903, 0.7882353, 1)
+
+[node name="BackgroundPlaceholder" type="Sprite2D" parent="." unique_id=630985460]
+position = Vector2(587.00006, 194.00002)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_853f1")
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=198682024]
+offset_left = 267.0
+offset_top = -36.0
+offset_right = 547.0
+offset_bottom = 36.0
+color = Color(0.81960785, 0.77254903, 0.7882353, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="ColorRect2" unique_id=796711039]
+layout_mode = 0
+offset_left = 540.0
+offset_top = -4.0
+offset_right = 827.0
+offset_bottom = 245.0
+color = Color(0.81960785, 0.77254903, 0.7882353, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="ColorRect2" unique_id=1634700148]
+layout_mode = 0
+offset_left = 521.0
+offset_top = 385.0
+offset_right = 808.0
+offset_bottom = 634.0
+color = Color(0.81960785, 0.77254903, 0.7882353, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="ColorRect2" unique_id=647689774]
+layout_mode = 0
+offset_left = -206.0
+offset_top = 226.0
+offset_right = 90.0
+offset_bottom = 475.0
+color = Color(0.81960785, 0.77254903, 0.7882353, 1)
+
+[node name="ColorRect5" type="ColorRect" parent="ColorRect2" unique_id=1556410461]
+layout_mode = 0
+offset_left = -206.0
+offset_top = 293.0
+offset_right = 120.0
+offset_bottom = 386.0
+color = Color(0.81960785, 0.77254903, 0.7882353, 1)
 
 [node name="PlayButton" type="Button" parent="." unique_id=1531628275]
 offset_left = 369.0
-offset_top = 181.0
+offset_top = 405.0
 offset_right = 771.0
-offset_bottom = 236.0
+offset_bottom = 460.0
 theme_override_font_sizes/font_size = 30
 text = "Play"
 
 [node name="OptionButton" type="Button" parent="." unique_id=881915766]
 offset_left = 433.0
-offset_top = 267.0
+offset_top = 491.0
 offset_right = 707.0
-offset_bottom = 322.0
+offset_bottom = 546.0
 theme_override_font_sizes/font_size = 30
 text = "Options"
 
 [node name="QuitButton" type="Button" parent="." unique_id=199838649]
 offset_left = 433.0
-offset_top = 551.0
+offset_top = 574.0
 offset_right = 707.0
-offset_bottom = 606.0
+offset_bottom = 629.0
 theme_override_font_sizes/font_size = 30
 text = "Quit"
 
