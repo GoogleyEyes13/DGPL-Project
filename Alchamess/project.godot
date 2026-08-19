@@ -20,6 +20,14 @@ config/icon="res://icon.svg"
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
+[layer_names]
+
+2d_physics/layer_1="Ingredients"
+2d_physics/layer_2="Cauldron"
+2d_physics/layer_3="Customer"
+2d_physics/layer_4="Potion Bottle"
+2d_physics/layer_5="Filled Potion"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

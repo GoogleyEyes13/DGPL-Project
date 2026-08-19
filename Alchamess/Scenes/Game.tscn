@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://c13ys1t4joar2" path="res://Assets/Scripts/MixingStick.gd" id="2_fgofq"]
 [ext_resource type="Texture2D" uid="uid://bj03l774esfw6" path="res://Assets/Placeholders/WitchCauldronTop.png" id="2_j5yw3"]
 [ext_resource type="Texture2D" uid="uid://cd2rjrm5q8i3" path="res://Assets/Placeholders/ShopConcept4.png" id="4_kldst"]
-[ext_resource type="PackedScene" uid="uid://bhjik1rqf8tvw" path="res://Scenes/Sprites/Ingredient.tscn" id="5_b2bpf"]
+[ext_resource type="PackedScene" uid="uid://nk2mr8ongv5d" path="res://Scenes/Sprites/Ingredient.tscn" id="5_b2bpf"]
 [ext_resource type="Script" uid="uid://bcvd5mfa361of" path="res://Assets/Scripts/Customer.gd" id="6_7lihs"]
 [ext_resource type="Texture2D" uid="uid://c38ccr8gbiiex" path="res://Scenes/Sprites/re4ozbx9w44b1.jpg" id="9_bf53h"]
 
@@ -59,7 +59,8 @@ texture_filter = 1
 texture = ExtResource("1_gl6un")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WitchCauldron" unique_id=717828197]
-position = Vector2(0.5, 11.8845825)
+z_index = 10
+position = Vector2(0.769212, 3.846158)
 shape = SubResource("RectangleShape2D_gl6un")
 
 [node name="EyeOfNewt" parent="." unique_id=2023870098 instance=ExtResource("5_b2bpf")]
@@ -81,7 +82,7 @@ position = Vector2(157, 427.00003)
 position = Vector2(994, 425.99997)
 
 [node name="Customer" type="Area2D" parent="." unique_id=1923331258]
-z_index = -25
+z_index = -1000
 position = Vector2(1262, 286)
 script = ExtResource("6_7lihs")
 
@@ -90,10 +91,6 @@ texture = ExtResource("9_bf53h")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Customer" unique_id=1459895078]
 visible = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Customer" unique_id=1863243416]
-position = Vector2(-3.5, 8)
-shape = SubResource("RectangleShape2D_7lihs")
 
 [node name="CraftedPotion" type="Sprite2D" parent="." unique_id=125537923]
 visible = false
