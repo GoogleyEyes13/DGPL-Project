@@ -1,11 +1,14 @@
 extends CharacterBody2D
 
 @export var ingredientType = "null"
+@export var ingredientSprite : Image
 var is_grabbed : bool = false
 
 # A signal to send to the cauldron when an ingredient touches the pot
 signal ingredient_added
 
+func _ready() -> void:
+	$Sprite2D.texture = ingredientSprite
 
 func _process(delta):
 	if is_grabbed:
@@ -34,7 +37,7 @@ func _process(delta):
 		var mouse_pos = get_global_mouse_position()
 		global_position = lerp(global_position, mouse_pos, 0.2)
 		return
-		
+
 func _input_event(viewport, event, shape_idx) -> void:
 	# Checks if the ingredient has been grabbed
 	if event is InputEventMouseButton:
