@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://c38ccr8gbiiex" path="res://Scenes/Sprites/re4ozbx9w44b1.jpg" id="9_bf53h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7lihs"]
-size = Vector2(117, 110)
+size = Vector2(51.603607, 112.070786)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gl6un"]
 size = Vector2(137, 77.769226)
@@ -40,7 +40,7 @@ scale = Vector2(0.171875, 0.7549579)
 texture = ExtResource("2_7lihs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MixingStick" unique_id=1572271056]
-position = Vector2(629.4563, 457.6201)
+position = Vector2(630.8947, 457.0418)
 rotation = 0.34906584
 scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("RectangleShape2D_7lihs")
@@ -49,6 +49,7 @@ shape = SubResource("RectangleShape2D_7lihs")
 texture_filter = 1
 position = Vector2(575, 577)
 scale = Vector2(1.3, 1.3)
+collision_layer = 2
 script = ExtResource("2_b2bpf")
 
 [node name="WitchCauldronTop" type="Sprite2D" parent="WitchCauldron" unique_id=1373151566]
