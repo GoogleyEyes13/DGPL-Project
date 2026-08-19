@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+@export var ingredientType = "null"
 var is_grabbed : bool = false
 
 # A signal to send to the cauldron when an ingredient touches the pot
@@ -13,7 +14,7 @@ func _process(delta):
 			is_grabbed = false
 			
 			# Returning the ingredients to their starting positions
-			match name:
+			match ingredientType:
 				"EyeOfNewt":
 					global_position = Vector2(157, 171)
 				"Wormwood":

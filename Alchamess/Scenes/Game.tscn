@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://c13ys1t4joar2" path="res://Assets/Scripts/MixingStick.gd" id="2_fgofq"]
 [ext_resource type="Texture2D" uid="uid://bj03l774esfw6" path="res://Assets/Placeholders/WitchCauldronTop.png" id="2_j5yw3"]
 [ext_resource type="Texture2D" uid="uid://cd2rjrm5q8i3" path="res://Assets/Placeholders/ShopConcept4.png" id="4_kldst"]
-[ext_resource type="PackedScene" uid="uid://nk2mr8ongv5d" path="res://Scenes/Sprites/Ingredient.tscn" id="5_b2bpf"]
+[ext_resource type="PackedScene" uid="uid://nk2mr8ongv5d" path="res://Objects/Ingredient.tscn" id="5_b2bpf"]
 [ext_resource type="Script" uid="uid://bcvd5mfa361of" path="res://Assets/Scripts/Customer.gd" id="6_7lihs"]
 [ext_resource type="Texture2D" uid="uid://c38ccr8gbiiex" path="res://Scenes/Sprites/re4ozbx9w44b1.jpg" id="9_bf53h"]
 
@@ -15,6 +15,10 @@ size = Vector2(117, 110)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gl6un"]
 size = Vector2(137, 77.769226)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hvpep"]
+radius = 78.0
+height = 226.0
 
 [node name="Game" type="Node2D" unique_id=1061024810]
 
@@ -65,21 +69,27 @@ shape = SubResource("RectangleShape2D_gl6un")
 
 [node name="EyeOfNewt" parent="." unique_id=2023870098 instance=ExtResource("5_b2bpf")]
 position = Vector2(157, 170.99998)
+ingredientType = "EyeOfNewt"
 
 [node name="Wormwood" parent="." unique_id=1599874296 instance=ExtResource("5_b2bpf")]
 position = Vector2(993.99994, 169.99997)
+ingredientType = "Wormwood"
 
 [node name="ElbowGrease" parent="." unique_id=655124839 instance=ExtResource("5_b2bpf")]
 position = Vector2(157, 299)
+ingredientType = "ElbowGrease"
 
 [node name="PhoenixFeather" parent="." unique_id=1704942985 instance=ExtResource("5_b2bpf")]
 position = Vector2(993.99994, 297.99997)
+ingredientType = "PhoenixFeather"
 
 [node name="OilOfVitriol" parent="." unique_id=70480956 instance=ExtResource("5_b2bpf")]
 position = Vector2(157, 427.00003)
+ingredientType = "OilOfVitriol"
 
 [node name="Stardust" parent="." unique_id=860062454 instance=ExtResource("5_b2bpf")]
 position = Vector2(994, 425.99997)
+ingredientType = "Stardust"
 
 [node name="Customer" type="Area2D" parent="." unique_id=1923331258]
 z_index = -1000
@@ -91,6 +101,9 @@ texture = ExtResource("9_bf53h")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Customer" unique_id=1459895078]
 visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Customer" unique_id=1023032236]
+shape = SubResource("CapsuleShape2D_hvpep")
 
 [node name="CraftedPotion" type="Sprite2D" parent="." unique_id=125537923]
 visible = false
