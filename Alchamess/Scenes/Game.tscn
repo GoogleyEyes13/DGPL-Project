@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cd2rjrm5q8i3" path="res://Assets/Placeholders/ShopConcept4.png" id="4_kldst"]
 [ext_resource type="PackedScene" uid="uid://nk2mr8ongv5d" path="res://Objects/Ingredient.tscn" id="5_b2bpf"]
 [ext_resource type="Script" uid="uid://bcvd5mfa361of" path="res://Assets/Scripts/Customer.gd" id="6_7lihs"]
-[ext_resource type="Texture2D" uid="uid://c38ccr8gbiiex" path="res://Scenes/Sprites/re4ozbx9w44b1.jpg" id="9_bf53h"]
+[ext_resource type="Texture2D" uid="uid://c38ccr8gbiiex" path="res://Assets/Sprites/re4ozbx9w44b1.jpg" id="9_bf53h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7lihs"]
 size = Vector2(51.603607, 112.070786)
