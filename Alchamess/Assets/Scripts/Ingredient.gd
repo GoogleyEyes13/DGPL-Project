@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var ingredientType = "null"
-@export var ingredientSprite : Image
+@export var ingredientSprite : Texture
 var is_grabbed : bool = false
 
 # A signal to send to the cauldron when an ingredient touches the pot
