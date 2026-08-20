@@ -16,7 +16,11 @@ var cust_is_ready: bool = false
 # Dictionary for potions and their effects
 var PotionEffects: Dictionary = {
 	"Normal": 0,
-	"PotionOfBaldness": 1
+	"PotionOfBaldness": 1,
+	"PotionOfBigHead": 2,
+	"PotionOfSmallHead": 3,
+	"PotionOfGreenSkin": 4,
+	"PotionOfEyeColourSwap": 5
 }
 
 @onready var PotionEffectSprite: AnimatedSprite2D = $"."
