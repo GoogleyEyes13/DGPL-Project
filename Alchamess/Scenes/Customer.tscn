@@ -39,6 +39,7 @@ radius = 1687.5
 height = 4375.0
 
 [node name="Customer" type="AnimatedSprite2D" unique_id=1519350129]
+texture_filter = 1
 scale = Vector2(0.08, 0.08)
 sprite_frames = SubResource("SpriteFrames_57qmd")
 animation = &"Caseoh"
