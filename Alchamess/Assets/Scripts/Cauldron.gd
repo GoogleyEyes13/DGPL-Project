@@ -11,6 +11,9 @@ var PotionRecipes: Dictionary = {
 # Potion bottles
 @onready var Potion = $"../CraftedPotion"
 
+# A signal to send to the customer when a potion is made
+signal potion_created
+
 func _ready():
 	# Connecting ingredient added signal for each ingredient
 	$"../EyeOfNewt".ingredient_added.connect(_add_ingredient_to_cauldron)
@@ -62,6 +65,7 @@ func create_potion():
 		if PotionRecipes.has(Ingredients):
 			var Potion = PotionRecipes[Ingredients]
 			print("Created: ", Potion)
+			potion_created.emit(Potion)
 		else:
 			print(Ingredients)
 			print("Invalid combination")

@@ -1,5 +1,8 @@
 extends AnimatedSprite2D
 
+# The current customer loaded
+var CustomerName = "Caseoh"
+
 var start_pos: Vector2
 var centre_pos: Vector2
 var end_pos: Vector2
@@ -10,8 +13,19 @@ var cust_is_ready: bool = false
 #Horizontal speed(time between each bounce)
 @export var step_speed: float = 6.0
 
+# Dictionary for potions and their effects
+var PotionEffects: Dictionary = {
+	"Normal": 0,
+	"PotionOfBaldness": 1
+}
+
+@onready var PotionEffectSprite: AnimatedSprite2D = $"."
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	# Connecting potion creation signal
+	$"../WitchCauldron".potion_created.connect(_apply_potion_effect)
+	
 	var window_size = get_viewport_rect().size
 	
 	start_pos = Vector2(window_size.x + 200, window_size.y / 2)
@@ -92,3 +106,11 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func new_customer() -> void:
 	pass
+
+# Applying potion effects to the customer
+func _apply_potion_effect(Potion):
+	PotionEffectSprite.animation = CustomerName
+	
+	if PotionEffects.has(Potion):
+		PotionEffectSprite.frame = PotionEffects[Potion]
+		print("Potion effect on customer: ", Potion)

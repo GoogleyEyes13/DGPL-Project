@@ -32,6 +32,16 @@ animations = [{
 "loop": 1,
 "name": &"Caseoh",
 "speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"Customer2",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"Customer3",
+"speed": 5.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g4v7s"]

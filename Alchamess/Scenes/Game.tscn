@@ -93,6 +93,6 @@ position = Vector2(1261.9999, 286)
 
 [node name="CraftedPotion" type="Sprite2D" parent="." unique_id=125537923]
 visible = false
-position = Vector2(575, 280)
+position = Vector2(363, 169.00003)
 scale = Vector2(0.328125, 0.5234375)
 texture = ExtResource("2_7lihs")
