@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c38ccr8gbiiex"
-path="res://.godot/imported/re4ozbx9w44b1.jpg-b9a29c1db7421f4dfbd4e9ec03a58dee.ctex"
+uid="uid://2tilkc734tbi"
+path="res://.godot/imported/CaseohNormal.png-91d9236f7228b4197fe58cc1e14e432e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/re4ozbx9w44b1.jpg"
-dest_files=["res://.godot/imported/re4ozbx9w44b1.jpg-b9a29c1db7421f4dfbd4e9ec03a58dee.ctex"]
+source_file="res://Assets/Sprites/Caseoh/CaseohNormal.png"
+dest_files=["res://.godot/imported/CaseohNormal.png-91d9236f7228b4197fe58cc1e14e432e.ctex"]
 
 [params]
 

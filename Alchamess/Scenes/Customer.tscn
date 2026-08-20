@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://dsymvu0mirgfh"]
+
+[ext_resource type="Texture2D" uid="uid://2tilkc734tbi" path="res://Assets/Sprites/Caseoh/CaseohNormal.png" id="1_r206j"]
+[ext_resource type="Texture2D" uid="uid://b3nnw6rw0ryb6" path="res://Assets/Sprites/Caseoh/CaseohBald.png" id="2_kkvav"]
+[ext_resource type="Texture2D" uid="uid://717p1wk6wrn4" path="res://Assets/Sprites/Caseoh/CaseohBigHead.png" id="3_kkvav"]
+[ext_resource type="Texture2D" uid="uid://bjmjp5n47pwxi" path="res://Assets/Sprites/Caseoh/CaseohSmallHead.png" id="4_0hs7r"]
+[ext_resource type="Texture2D" uid="uid://hptes087cyox" path="res://Assets/Sprites/Caseoh/CaseohGreen.png" id="5_cj036"]
+[ext_resource type="Texture2D" uid="uid://dm70h1r36ebhq" path="res://Assets/Sprites/Caseoh/CaseohBlueEyes.png" id="6_yd18k"]
+[ext_resource type="Script" uid="uid://bmpdj2jewm2v8" path="res://Assets/Scripts/Customer.gd" id="7_cj036"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_57qmd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_r206j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_kkvav")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_kkvav")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_0hs7r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_cj036")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_yd18k")
+}],
+"loop": 1,
+"name": &"Caseoh",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g4v7s"]
+radius = 1687.5
+height = 4375.0
+
+[node name="Customer" type="AnimatedSprite2D" unique_id=1519350129]
+scale = Vector2(0.08, 0.08)
+sprite_frames = SubResource("SpriteFrames_57qmd")
+animation = &"Caseoh"
+script = ExtResource("7_cj036")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=621125951]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1057902257]
+shape = SubResource("CapsuleShape2D_g4v7s")

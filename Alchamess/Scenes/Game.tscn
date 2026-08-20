@@ -7,18 +7,13 @@
 [ext_resource type="Texture2D" uid="uid://bj03l774esfw6" path="res://Assets/Placeholders/WitchCauldronTop.png" id="2_j5yw3"]
 [ext_resource type="Texture2D" uid="uid://cd2rjrm5q8i3" path="res://Assets/Placeholders/ShopConcept4.png" id="4_kldst"]
 [ext_resource type="PackedScene" uid="uid://nk2mr8ongv5d" path="res://Objects/Ingredient.tscn" id="5_b2bpf"]
-[ext_resource type="Script" uid="uid://bcvd5mfa361of" path="res://Assets/Scripts/Customer.gd" id="6_7lihs"]
-[ext_resource type="Texture2D" uid="uid://c38ccr8gbiiex" path="res://Assets/Sprites/re4ozbx9w44b1.jpg" id="9_bf53h"]
+[ext_resource type="PackedScene" uid="uid://dsymvu0mirgfh" path="res://Scenes/Customer.tscn" id="10_71axn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7lihs"]
 size = Vector2(51.603607, 112.070786)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gl6un"]
 size = Vector2(137, 77.769226)
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hvpep"]
-radius = 78.0
-height = 226.0
 
 [node name="Game" type="Node2D" unique_id=1061024810]
 
@@ -92,19 +87,9 @@ ingredientType = "OilOfVitriol"
 position = Vector2(994, 425.99997)
 ingredientType = "Stardust"
 
-[node name="Customer" type="Area2D" parent="." unique_id=1923331258]
-z_index = -1000
-position = Vector2(1262, 286)
-script = ExtResource("6_7lihs")
-
-[node name="TestSprite (DELETE LATER)" type="Sprite2D" parent="Customer" unique_id=761795013]
-texture = ExtResource("9_bf53h")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Customer" unique_id=1459895078]
-visible = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Customer" unique_id=1023032236]
-shape = SubResource("CapsuleShape2D_hvpep")
+[node name="Customer" parent="." unique_id=1519350129 instance=ExtResource("10_71axn")]
+z_index = -100
+position = Vector2(1261.9999, 286)
 
 [node name="CraftedPotion" type="Sprite2D" parent="." unique_id=125537923]
 visible = false

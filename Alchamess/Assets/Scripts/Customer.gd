@@ -1,4 +1,4 @@
-extends Area2D
+extends AnimatedSprite2D
 
 var start_pos: Vector2
 var centre_pos: Vector2
