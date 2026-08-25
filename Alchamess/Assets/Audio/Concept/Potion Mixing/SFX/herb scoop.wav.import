@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://8s6fdiwvmp6d"
+path="res://.godot/imported/herb scoop.wav-45533ee3c66d9b697624b17138a44974.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Concept/Potion Mixing/SFX/herb scoop.wav"
+dest_files=["res://.godot/imported/herb scoop.wav-45533ee3c66d9b697624b17138a44974.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

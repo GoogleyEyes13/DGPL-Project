@@ -20,22 +20,22 @@ size = Vector2(137, 77.769226)
 [node name="ShopConcept4" type="Sprite2D" parent="." unique_id=298187425]
 z_index = -20
 texture_filter = 1
-position = Vector2(577, 324)
+position = Vector2(576, 324)
 texture = ExtResource("4_kldst")
 
 [node name="MixingStick" type="CharacterBody2D" parent="." unique_id=1507127433]
-position = Vector2(9, 0)
+position = Vector2(640, 457)
 input_pickable = true
 script = ExtResource("2_fgofq")
 
 [node name="Sprite2D" type="Sprite2D" parent="MixingStick" unique_id=1925342764]
-position = Vector2(629.3638, 458.2631)
+position = Vector2(-1.6362305, 1.263092)
 rotation = 0.34906584
 scale = Vector2(0.171875, 0.7549579)
 texture = ExtResource("2_7lihs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MixingStick" unique_id=1572271056]
-position = Vector2(630.8947, 457.0418)
+position = Vector2(-0.105285645, 0.041809082)
 rotation = 0.34906584
 scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("RectangleShape2D_7lihs")
@@ -96,3 +96,59 @@ visible = false
 position = Vector2(363, 169.00003)
 scale = Vector2(0.328125, 0.5234375)
 texture = ExtResource("2_7lihs")
+
+[node name="IngredientLabels" type="CanvasLayer" parent="." unique_id=2123413072]
+
+[node name="EyeOfNewt" type="Label" parent="IngredientLabels" unique_id=783346106]
+offset_left = 30.0
+offset_top = 100.0
+offset_right = 285.0
+offset_bottom = 123.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Eye of Newt"
+horizontal_alignment = 1
+
+[node name="Wormwood" type="Label" parent="IngredientLabels" unique_id=2138386859]
+offset_left = 867.0
+offset_top = 100.0
+offset_right = 1121.0
+offset_bottom = 123.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Wormwood"
+horizontal_alignment = 1
+
+[node name="ElbowGrease" type="Label" parent="IngredientLabels" unique_id=1737143473]
+offset_left = 30.0
+offset_top = 213.0
+offset_right = 285.0
+offset_bottom = 236.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Elbow Grease"
+horizontal_alignment = 1
+
+[node name="PhoenixFeather" type="Label" parent="IngredientLabels" unique_id=1001754341]
+offset_left = 869.0
+offset_top = 213.0
+offset_right = 1120.0
+offset_bottom = 236.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Phoenix Feather"
+horizontal_alignment = 1
+
+[node name="OilOfVitriol" type="Label" parent="IngredientLabels" unique_id=778323696]
+offset_left = 30.0
+offset_top = 344.0
+offset_right = 285.0
+offset_bottom = 367.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Oil of Vitriol"
+horizontal_alignment = 1
+
+[node name="Stardust" type="Label" parent="IngredientLabels" unique_id=58475090]
+offset_left = 869.0
+offset_top = 344.0
+offset_right = 1121.0
+offset_bottom = 367.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Stardust"
+horizontal_alignment = 1

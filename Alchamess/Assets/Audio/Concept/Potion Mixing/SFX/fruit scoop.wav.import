@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cxk20wo55weqg"
+path="res://.godot/imported/fruit scoop.wav-166f221ff01df26eaafe04dc7f78bf95.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Concept/Potion Mixing/SFX/fruit scoop.wav"
+dest_files=["res://.godot/imported/fruit scoop.wav-166f221ff01df26eaafe04dc7f78bf95.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
