@@ -1,28 +1,19 @@
 # ==========================================
 # Godot Engine Core & Export Files
 # ==========================================
-# Godot 3.x / 4.x local configuration and cache
 .godot/
 .import/
-
-# Exported build output directories (adjust if you use a different folder name)
 export/
 export_presets.cfg
 build/
 bin/
-
-# Godot C# / Mono specific files
-.mono/
-*.csproj
-*.sln
-obj/
-
-# Translation / Localized binaries
 *.translation
-
-# Feature profile files
 *.profile
 
+# Godot C# / Mono Build Artifacts
+.mono/
+obj/
+*.csproj.user
 
 # ==========================================
 # macOS Temp & System Files
@@ -30,50 +21,32 @@ obj/
 .DS_Store
 .AppleDouble
 .LSOverride
-
-# Icon headers
 Icon?
-
-# Thumbnails & Metadata
 ._*
-
-# Spotlight & Network directories
 .Spotlight-V100
 .Trashes
 .fseventsd
 
-
 # ==========================================
 # Windows Temp & System Files
 # ==========================================
-# Thumbnail cache
 Thumbs.db
 Thumbs.db:encryptable
 ehthumbs.db
 ehthumbs_vista.db
-
-# Folder customizations
 Desktop.ini
-
-# Windows shortcuts & temporary files
 *.lnk
 ~$*
 *.tmp
 
-
 # ==========================================
 # IDE & Code Editor Files
 # ==========================================
-# VS Code
 .vscode/
 !.vscode/tasks.json
 !.vscode/launch.json
-
-# Rider / JetBrains
 .idea/
 *.sln.docstates
-
-# Visual Studio
 .vs/
 *.user
 *.userosv
