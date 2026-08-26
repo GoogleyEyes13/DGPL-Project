@@ -21,11 +21,13 @@ size = Vector2(137, 77.769226)
 [node name="ShopConcept4" type="Sprite2D" parent="." unique_id=298187425]
 z_index = -20
 texture_filter = 1
-position = Vector2(576, 324)
+position = Vector2(960, 540.00006)
+scale = Vector2(1.6666669, 1.6666666)
 texture = ExtResource("4_kldst")
 
 [node name="MixingStick" type="CharacterBody2D" parent="." unique_id=1507127433]
-position = Vector2(640, 457)
+position = Vector2(1063, 733)
+scale = Vector2(1.8, 1.8)
 input_pickable = true
 script = ExtResource("2_fgofq")
 
@@ -43,8 +45,8 @@ shape = SubResource("RectangleShape2D_7lihs")
 
 [node name="WitchCauldron" type="CharacterBody2D" parent="." unique_id=1298498589]
 texture_filter = 1
-position = Vector2(575, 577)
-scale = Vector2(1.3, 1.3)
+position = Vector2(965.00006, 928)
+scale = Vector2(2, 2)
 collision_layer = 2
 script = ExtResource("2_b2bpf")
 
@@ -65,32 +67,32 @@ position = Vector2(0.769212, 3.846158)
 shape = SubResource("RectangleShape2D_gl6un")
 
 [node name="EyeOfNewt" parent="." unique_id=2023870098 instance=ExtResource("5_b2bpf")]
-position = Vector2(157, 170.99998)
+position = Vector2(262, 280)
 ingredientType = "EyeOfNewt"
 
 [node name="Wormwood" parent="." unique_id=1599874296 instance=ExtResource("5_b2bpf")]
-position = Vector2(993.99994, 169.99997)
+position = Vector2(1658, 280)
 ingredientType = "Wormwood"
 
 [node name="ElbowGrease" parent="." unique_id=655124839 instance=ExtResource("5_b2bpf")]
-position = Vector2(157, 299)
+position = Vector2(262, 494)
 ingredientType = "ElbowGrease"
 
 [node name="PhoenixFeather" parent="." unique_id=1704942985 instance=ExtResource("5_b2bpf")]
-position = Vector2(993.99994, 297.99997)
+position = Vector2(1658, 492)
 ingredientType = "PhoenixFeather"
 
 [node name="OilOfVitriol" parent="." unique_id=70480956 instance=ExtResource("5_b2bpf")]
-position = Vector2(157, 427.00003)
+position = Vector2(262, 707)
 ingredientType = "OilOfVitriol"
 
 [node name="Stardust" parent="." unique_id=860062454 instance=ExtResource("5_b2bpf")]
-position = Vector2(994, 425.99997)
+position = Vector2(1658, 705)
 ingredientType = "Stardust"
 
 [node name="Customer" parent="." unique_id=1519350129 instance=ExtResource("10_71axn")]
 z_index = -100
-position = Vector2(1261.9999, 286)
+position = Vector2(1603.9999, 550)
 
 [node name="CraftedPotion" type="Sprite2D" parent="." unique_id=125537923]
 visible = false
@@ -101,55 +103,61 @@ texture = ExtResource("9_bf53h")
 [node name="IngredientLabels" type="CanvasLayer" parent="." unique_id=2123413072]
 
 [node name="EyeOfNewt" type="Label" parent="IngredientLabels" unique_id=783346106]
-offset_left = 30.0
-offset_top = 100.0
-offset_right = 285.0
-offset_bottom = 123.0
+offset_left = 54.0
+offset_top = 166.0
+offset_right = 471.0
+offset_bottom = 208.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
 text = "Eye of Newt"
 horizontal_alignment = 1
 
 [node name="Wormwood" type="Label" parent="IngredientLabels" unique_id=2138386859]
-offset_left = 867.0
-offset_top = 100.0
-offset_right = 1121.0
-offset_bottom = 123.0
+offset_left = 1447.0
+offset_top = 164.0
+offset_right = 1867.0
+offset_bottom = 206.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
 text = "Wormwood"
 horizontal_alignment = 1
 
 [node name="ElbowGrease" type="Label" parent="IngredientLabels" unique_id=1737143473]
-offset_left = 30.0
-offset_top = 213.0
-offset_right = 285.0
-offset_bottom = 236.0
+offset_left = 53.0
+offset_top = 354.0
+offset_right = 472.0
+offset_bottom = 396.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
 text = "Elbow Grease"
 horizontal_alignment = 1
 
 [node name="PhoenixFeather" type="Label" parent="IngredientLabels" unique_id=1001754341]
-offset_left = 869.0
-offset_top = 213.0
-offset_right = 1120.0
-offset_bottom = 236.0
+offset_left = 1446.0
+offset_top = 352.0
+offset_right = 1869.0
+offset_bottom = 394.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
 text = "Phoenix Feather"
 horizontal_alignment = 1
 
 [node name="OilOfVitriol" type="Label" parent="IngredientLabels" unique_id=778323696]
-offset_left = 30.0
-offset_top = 344.0
-offset_right = 285.0
-offset_bottom = 367.0
+offset_left = 52.0
+offset_top = 572.0
+offset_right = 472.0
+offset_bottom = 614.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
 text = "Oil of Vitriol"
 horizontal_alignment = 1
 
 [node name="Stardust" type="Label" parent="IngredientLabels" unique_id=58475090]
-offset_left = 869.0
-offset_top = 344.0
-offset_right = 1121.0
-offset_bottom = 367.0
+offset_left = 1448.0
+offset_top = 571.0
+offset_right = 1867.0
+offset_bottom = 613.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
 text = "Stardust"
 horizontal_alignment = 1

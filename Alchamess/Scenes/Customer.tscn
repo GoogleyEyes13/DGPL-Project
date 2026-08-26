@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://hptes087cyox" path="res://Assets/Sprites/Caseoh/CaseohGreen.png" id="5_cj036"]
 [ext_resource type="Texture2D" uid="uid://dm70h1r36ebhq" path="res://Assets/Sprites/Caseoh/CaseohBlueEyes.png" id="6_yd18k"]
 [ext_resource type="Script" uid="uid://bmpdj2jewm2v8" path="res://Assets/Scripts/Customer.gd" id="7_cj036"]
+[ext_resource type="Texture2D" uid="uid://ccgj3hgxw1hl" path="res://Assets/Placeholders/CreatureFeature.png" id="7_yd18k"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_57qmd"]
 animations = [{
@@ -28,14 +29,12 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("6_yd18k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_yd18k")
 }],
 "loop": 1,
 "name": &"Caseoh",
-"speed": 5.0
-}, {
-"frames": [],
-"loop": 1,
-"name": &"Customer2",
 "speed": 5.0
 }, {
 "frames": [],
@@ -50,7 +49,7 @@ height = 4375.0
 
 [node name="Customer" type="AnimatedSprite2D" unique_id=1519350129]
 texture_filter = 1
-scale = Vector2(0.08, 0.08)
+scale = Vector2(0.14, 0.14)
 sprite_frames = SubResource("SpriteFrames_57qmd")
 animation = &"Caseoh"
 script = ExtResource("7_cj036")

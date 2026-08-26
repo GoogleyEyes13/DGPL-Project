@@ -6,7 +6,7 @@ var starting_position: Vector2
 var grab_mouse_x := 0.0
 var grab_stick_x := 0.0
 
-@export var movement_range := 100.0
+@export var movement_range := 150.0
 
 func _ready():
 	starting_position = position

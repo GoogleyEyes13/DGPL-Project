@@ -21,6 +21,7 @@ var PotionEffects: Dictionary = {
 	"Potion of Head Size Decrease": 3,
 	"Potion of Green Skin": 4,
 	"Potion of Eye Colour Swap": 5,
+	"Potion of Creature Feature": 6,
 	"Potion of Mogging": 0,
 	"Potion of Beautification": 0,
 	"Potion of Rapid Shaking": 0,
