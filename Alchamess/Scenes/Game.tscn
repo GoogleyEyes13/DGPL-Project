@@ -61,7 +61,6 @@ texture = ExtResource("1_gl6un")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WitchCauldron" unique_id=717828197]
 z_index = 10
-position = Vector2(0.769212, 3.846158)
 shape = SubResource("RectangleShape2D_gl6un")
 
 [node name="EyeOfNewt" parent="." unique_id=2023870098 instance=ExtResource("5_b2bpf")]

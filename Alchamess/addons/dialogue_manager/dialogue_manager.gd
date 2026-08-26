@@ -598,6 +598,23 @@ func create_resource_from_text(text: String) -> Resource:
 #region Balloon helpers
 
 
+## Set the default balloon to use at runtime.
+func set_default_balloon(balloon_scene: Variant) -> Error:
+	var balloon_scene_path: String = ""
+
+	if balloon_scene is String:
+		balloon_scene_path = balloon_scene
+	elif balloon_scene is PackedScene:
+		balloon_scene_path = balloon_scene.resource_path
+
+	if not ["tscn", "scn"].has(balloon_scene_path.get_extension()):
+		return ERR_INVALID_DATA
+
+	ProjectSettings.set_setting(DMSettings.BALLOON_PATH, balloon_scene_path)
+
+	return OK
+
+
 ## Show the example balloon
 func show_example_dialogue_balloon(resource: DialogueResource, cue: String = "", extra_game_states: Array = []) -> CanvasLayer:
 	var balloon: Node = load(_get_example_balloon_path()).instantiate()
@@ -740,11 +757,10 @@ func translate(data: Dictionary) -> String:
 		return data.text
 
 	var static_id: String = data.get(&"static_id", data.text)
-
-	if static_id == "" or static_id == data.text:
+	if static_id.is_empty() or static_id == data.text:
 		return tr(data.text, "dialogue")
 	else:
-		return tr(static_id)
+		return tr(static_id, "dialogue")
 
 
 # Create a line of dialogue
