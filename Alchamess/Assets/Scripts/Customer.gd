@@ -16,6 +16,7 @@ var cust_is_ready: bool = false
 # Dictionary for potions and their effects
 var PotionEffects: Dictionary = {
 	"Normal": 0,
+	"Potion of Curing": 0,
 	"Potion Of Baldness": 1,
 	"Potion of Head Size Increase": 2,
 	"Potion of Head Size Decrease": 3,
