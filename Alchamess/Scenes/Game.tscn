@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bj03l774esfw6" path="res://Assets/Placeholders/WitchCauldronTop.png" id="2_j5yw3"]
 [ext_resource type="Texture2D" uid="uid://cd2rjrm5q8i3" path="res://Assets/Placeholders/ShopConcept4.png" id="4_kldst"]
 [ext_resource type="PackedScene" uid="uid://nk2mr8ongv5d" path="res://Objects/Ingredient.tscn" id="5_b2bpf"]
+[ext_resource type="Texture2D" uid="uid://j0mtkmny2w13" path="res://Assets/Potions/RedPotion3.png" id="9_bf53h"]
 [ext_resource type="PackedScene" uid="uid://dsymvu0mirgfh" path="res://Scenes/Customer.tscn" id="10_71axn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7lihs"]
@@ -93,9 +94,9 @@ position = Vector2(1261.9999, 286)
 
 [node name="CraftedPotion" type="Sprite2D" parent="." unique_id=125537923]
 visible = false
-position = Vector2(363, 169.00003)
-scale = Vector2(0.328125, 0.5234375)
-texture = ExtResource("2_7lihs")
+position = Vector2(357, 162)
+scale = Vector2(0.03710937, 0.04697265)
+texture = ExtResource("9_bf53h")
 
 [node name="IngredientLabels" type="CanvasLayer" parent="." unique_id=2123413072]
 

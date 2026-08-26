@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bbl1fn22u5vpn"
-path="res://.godot/imported/BrownPotion1.png-e56ceb7741b7c17635afb4ecf58815ac.ctex"
+uid="uid://d0wxly5qr13qj"
+path="res://.godot/imported/YellowPotion4.png-c76df40d2755853135cfc2dba14caac6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Potions/BrownPotion1.png"
-dest_files=["res://.godot/imported/BrownPotion1.png-e56ceb7741b7c17635afb4ecf58815ac.ctex"]
+source_file="res://Assets/Potions/YellowPotion4.png"
+dest_files=["res://.godot/imported/YellowPotion4.png-c76df40d2755853135cfc2dba14caac6.ctex"]
 
 [params]
 

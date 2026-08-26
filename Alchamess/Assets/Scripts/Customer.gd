@@ -17,10 +17,13 @@ var cust_is_ready: bool = false
 var PotionEffects: Dictionary = {
 	"Normal": 0,
 	"Potion Of Baldness": 1,
+	"Potion of Head Size Increase": 2,
+	"Potion of Head Size Decrease": 3,
+	"Potion of Green Skin": 4,
+	"Potion of Eye Colour Swap": 5,
 	"Potion of Mogging": 0,
 	"Potion of Beautification": 0,
 	"Potion of Rapid Shaking": 0,
-	"Potion of Eye Colour Swap": 5,
 	"Potion of Permanent Smile": 0
 }
 
