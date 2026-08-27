@@ -93,6 +93,7 @@ ingredientType = "Stardust"
 [node name="Customer" parent="." unique_id=1519350129 instance=ExtResource("10_71axn")]
 z_index = -100
 position = Vector2(1603.9999, 550)
+animation = &"Gardener"
 
 [node name="CraftedPotion" type="Sprite2D" parent="." unique_id=125537923]
 visible = false

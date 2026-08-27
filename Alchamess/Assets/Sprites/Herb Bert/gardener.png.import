@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bd6gjeo6ss1mo"
-path="res://.godot/imported/HerbBertBody.png-c0ed0a45f1260137ab838ccf36cbdfa2.ctex"
+uid="uid://0l01htm7kx1b"
+path="res://.godot/imported/gardener.png-ef55e3d1698bc9af7f56aa3a4e5a9052.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Herb Bert/HerbBertBody.png"
-dest_files=["res://.godot/imported/HerbBertBody.png-c0ed0a45f1260137ab838ccf36cbdfa2.ctex"]
+source_file="res://Assets/Sprites/Herb Bert/gardener.png"
+dest_files=["res://.godot/imported/gardener.png-ef55e3d1698bc9af7f56aa3a4e5a9052.ctex"]
 
 [params]
 

@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dm70h1r36ebhq" path="res://Assets/Sprites/Caseoh/CaseohBlueEyes.png" id="6_yd18k"]
 [ext_resource type="Script" uid="uid://bmpdj2jewm2v8" path="res://Assets/Scripts/Customer.gd" id="7_cj036"]
 [ext_resource type="Texture2D" uid="uid://ccgj3hgxw1hl" path="res://Assets/Placeholders/CreatureFeature.png" id="7_yd18k"]
+[ext_resource type="Texture2D" uid="uid://0l01htm7kx1b" path="res://Assets/Sprites/Herb Bert/gardener.png" id="8_c7i8l"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_57qmd"]
 animations = [{
@@ -37,9 +38,12 @@ animations = [{
 "name": &"Caseoh",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_c7i8l")
+}],
 "loop": 1,
-"name": &"Customer3",
+"name": &"Gardener",
 "speed": 5.0
 }]
 
@@ -51,7 +55,7 @@ height = 4375.0
 texture_filter = 1
 scale = Vector2(0.14, 0.14)
 sprite_frames = SubResource("SpriteFrames_57qmd")
-animation = &"Caseoh"
+animation = &"Gardener"
 script = ExtResource("7_cj036")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=621125951]
