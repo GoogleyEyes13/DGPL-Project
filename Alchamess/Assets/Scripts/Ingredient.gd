@@ -19,17 +19,17 @@ func _process(delta):
 			# Returning the ingredients to their starting positions
 			match ingredientType:
 				"EyeOfNewt":
-					global_position = Vector2(157, 171)
+					global_position = Vector2(262, 280)
 				"Wormwood":
-					global_position = Vector2(994, 170)
+					global_position = Vector2(1658, 280)
 				"ElbowGrease":
-					global_position = Vector2(157, 299)
+					global_position = Vector2(262, 494)
 				"PhoenixFeather":
-					global_position = Vector2(994, 298)
+					global_position = Vector2(1658, 492)
 				"OilOfVitriol":
-					global_position = Vector2(157, 427)
+					global_position = Vector2(262, 707)
 				"Stardust":
-					global_position = Vector2(994, 426)
+					global_position = Vector2(1658, 705)
 			
 			return
 		
@@ -48,3 +48,19 @@ func _input_event(viewport, event, shape_idx) -> void:
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if is_grabbed:
 		ingredient_added.emit(name)
+		is_grabbed = false
+		
+		# Returning the ingredients to their starting positions
+		match ingredientType:
+			"EyeOfNewt":
+				global_position = Vector2(262, 280)
+			"Wormwood":
+				global_position = Vector2(1658, 280)
+			"ElbowGrease":
+				global_position = Vector2(262, 494)
+			"PhoenixFeather":
+				global_position = Vector2(1658, 492)
+			"OilOfVitriol":
+				global_position = Vector2(262, 707)
+			"Stardust":
+				global_position = Vector2(1658, 705)

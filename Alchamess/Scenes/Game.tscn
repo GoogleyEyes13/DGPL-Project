@@ -11,10 +11,10 @@
 [ext_resource type="PackedScene" uid="uid://dsymvu0mirgfh" path="res://Scenes/Customer.tscn" id="10_71axn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7lihs"]
-size = Vector2(51.603607, 112.070786)
+size = Vector2(25.774406, 104.90531)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gl6un"]
-size = Vector2(137, 77.769226)
+size = Vector2(141, 115.5)
 
 [node name="Game" type="Node2D" unique_id=1061024810]
 
@@ -26,6 +26,7 @@ scale = Vector2(1.6666669, 1.6666666)
 texture = ExtResource("4_kldst")
 
 [node name="MixingStick" type="CharacterBody2D" parent="." unique_id=1507127433]
+visible = false
 position = Vector2(1063, 733)
 scale = Vector2(1.8, 1.8)
 input_pickable = true
@@ -38,7 +39,7 @@ scale = Vector2(0.171875, 0.7549579)
 texture = ExtResource("2_7lihs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MixingStick" unique_id=1572271056]
-position = Vector2(-0.105285645, 0.041809082)
+position = Vector2(-2.3433838, 3.0400696)
 rotation = 0.34906584
 scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("RectangleShape2D_7lihs")
@@ -63,7 +64,7 @@ texture = ExtResource("1_gl6un")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WitchCauldron" unique_id=717828197]
 z_index = 10
-position = Vector2(0.769212, 3.846158)
+position = Vector2(0.9999695, -11.25)
 shape = SubResource("RectangleShape2D_gl6un")
 
 [node name="EyeOfNewt" parent="." unique_id=2023870098 instance=ExtResource("5_b2bpf")]
@@ -88,12 +89,13 @@ ingredientType = "OilOfVitriol"
 
 [node name="Stardust" parent="." unique_id=860062454 instance=ExtResource("5_b2bpf")]
 position = Vector2(1658, 705)
+collision_layer = 32
+collision_mask = 32
 ingredientType = "Stardust"
 
 [node name="Customer" parent="." unique_id=1519350129 instance=ExtResource("10_71axn")]
 z_index = -100
 position = Vector2(1603.9999, 550)
-animation = &"Gardener"
 
 [node name="CraftedPotion" type="Sprite2D" parent="." unique_id=125537923]
 visible = false

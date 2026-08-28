@@ -66,6 +66,9 @@ func _add_ingredient_to_cauldron(name):
 		# Spawning potion sprite, resetting ingredients
 		Potion.visible = true
 		CauldronIngredients = {}
+		
+		# Short timeout to prevent instant ingredient add
+		get_tree().create_timer(1.0).timeout
 	
 	print("CURRENT CAULDRON INGREDIENTS: ", CauldronIngredients)
 	
