@@ -36,7 +36,7 @@ var PotionEffects: Dictionary = {
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# Connecting potion creation signal
-	$"../WitchCauldron".potion_created.connect(_apply_potion_effect)
+	$"../WitchCauldron".potion_created.connect(receive_potion)
 	
 	var window_size = get_viewport_rect().size
 	
@@ -95,7 +95,7 @@ func receive_potion(potion_type: String) -> void:
 		push_warning("Unknown potion type: " + potion_type)
 	
 	var delay = create_tween()
-	delay.tween_interval(1.0)
+	delay.tween_interval(3.0)
 	delay.tween_callback(bob_out)
 
 func bob_out() -> void:
@@ -147,7 +147,3 @@ func new_customer() -> void:
 	cust_is_ready = false
 
 	bob_in()
-
-# Applying potion effects to the customer
-func _apply_potion_effect(Potion):
-	receive_potion(Potion)
