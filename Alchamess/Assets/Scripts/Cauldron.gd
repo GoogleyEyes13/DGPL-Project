@@ -34,17 +34,11 @@ var PotionRecipes: Dictionary = {
 signal potion_created
 
 func _ready():
-	# Connecting ingredient added signal for each ingredient
-	$"../EyeOfNewt".ingredient_added.connect(_add_ingredient_to_cauldron)
-	$"../Wormwood".ingredient_added.connect(_add_ingredient_to_cauldron)
-	$"../ElbowGrease".ingredient_added.connect(_add_ingredient_to_cauldron)
-	$"../PhoenixFeather".ingredient_added.connect(_add_ingredient_to_cauldron)
-	$"../OilOfVitriol".ingredient_added.connect(_add_ingredient_to_cauldron)
-	$"../Stardust".ingredient_added.connect(_add_ingredient_to_cauldron)
+	pass
 
 
 func _add_ingredient_to_cauldron(name):
-	if CauldronIngredients.size() > 3:
+	if CauldronIngredients.size() >= 3:
 		# If cauldron already has 3 ingredients, don't add another
 		print("Cauldron full")
 		
@@ -91,3 +85,12 @@ func create_potion():
 		else:
 			print(Ingredients)
 			print("Invalid combination")
+
+
+# Function for detecting ingredients touching the cauldron
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body is CharacterBody2D:
+		_add_ingredient_to_cauldron(body.ingredientType)
+		body.is_grabbed = false
+		body.return_ingredient_to_start()
+		
