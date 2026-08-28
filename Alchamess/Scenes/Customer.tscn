@@ -55,7 +55,7 @@ height = 4375.0
 texture_filter = 1
 scale = Vector2(0.14, 0.14)
 sprite_frames = SubResource("SpriteFrames_57qmd")
-animation = &"Gardener"
+animation = &"Caseoh"
 script = ExtResource("7_cj036")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=621125951]
