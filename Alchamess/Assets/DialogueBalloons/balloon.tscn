@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d15w6xn0acilr"]
 
-[ext_resource type="Script" uid="uid://d3h5bmi75hfbs" path="res://Assets/DialogueBalloons/balloon.gd" id="1_36de5"]
+[ext_resource type="Script" uid="uid://bdrbm2nk3ysjd" path="res://Assets/DialogueBalloons/balloon.gd" id="1_36de5"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/nodes/dialogue_label/dialogue_label.tscn" id="2_a8ve6"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/nodes/responses_menu/dialogue_responses_menu.gd" id="3_72ixx"]
 
@@ -152,9 +152,10 @@ size_flags_horizontal = 3
 
 [node name="CharacterLabel" type="RichTextLabel" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1567782692]
 unique_name_in_owner = true
-modulate = Color(1, 1, 1, 0.501961)
+modulate = Color(0.5333865, 0.77509177, 1, 1)
 layout_mode = 2
 mouse_filter = 1
+theme_override_font_sizes/normal_font_size = 26
 bbcode_enabled = true
 text = "Character"
 fit_content = true

@@ -1,0 +1,49 @@
+~ start
+% Nathan: This is always a nice shop to pass by!
+% Nathan: Greetings, potion seller!
+% Nathan: Phew, had a rough day of work today.
+
+match Global.wantedPotionType: # this is a placeholder while we set up a global variable for the wanted potions
+	when "MogFace":
+		Nathan: I want to look like I outclass the room around me!
+	when "Beautification":
+		Nathan: I'm going on a date tonight, can you make me more attractive?
+	when "ShakeRapidly":
+		Nathan: I've got so much stress on me, I need to shake it out!
+	when "EyeColourSwap":
+		Nathan: I'm getting bored with my eye colour, can you do anything about that?
+	when "PermanentSmile":
+		Nathan: People always say I have a bad resting face, think you can deal with that?
+	when "GreenSkin":
+		Nathan: Could you possibly make me green? It's for a costume.
+	when "Cure":
+		Nathan: I may have had some poison the other day, got any cures?
+	when "Bald":
+		% Nathan: I need some help looking more like a monk.
+		% Nathan: I'm done with having hair. Get rid of it!
+	when "HeadSizeIncrease":
+		Nathan: If I had a bigger head, would that make me smarter?
+	when "HeadSizeDecrease":
+		Nathan: I'm feeling self-consious about my head, could you make it smaller?
+	when "CreatureFeature":
+		Nathan: I'm looking to scare some friends camping in the woods, could you make me some kind of creature?
+	when "Rabies": #look idk what to put here, why would someone want this?
+		Nathan: ...
+	when "ChangeLanguage":
+		Nathan: I'm looking to go overseas, could you help with the language barrier?
+	when "ChangeArtStyle":
+		Nathan: I want to see myself in an entirely new way!
+	when "SwapBodies": #not sure what this one is about
+		Nathan: ...
+	when "Love":
+		Nathan: I'm going on a date tonight, can you make me more loveable?
+	when "Explode":
+		Nathan: My main goal is to blow up, then act like I don't know nobody!
+	when "Skeleton":
+		Nathan: I'm trying to sneak into a dungeon, can you help me disguise with the monsters down there?
+	when "EnlargePerson":
+		Nathan: I want to look down at everyone around me!
+	when "ShrinkPerson":
+		Nathan: I'm trying to sneak into a dungeon, can you help me sneak by the monsters inside?
+
+=> END

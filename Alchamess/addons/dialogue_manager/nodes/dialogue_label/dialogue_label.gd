@@ -129,15 +129,15 @@ func skip_typing() -> void:
 # Type out the next character(s)
 func _type_next(delta: float, seconds_needed: float) -> void:
 	if _is_awaiting_mutation: return
-
+	
 	if visible_characters == get_total_character_count():
 		return
-
+	
 	if _last_mutation_index != visible_characters:
 		_last_mutation_index = visible_characters
 		_mutate_inline_mutations(visible_characters)
 		if _is_awaiting_mutation: return
-
+	
 	# Pause on characters like "."
 	var waiting_seconds: float = seconds_per_pause_step if _should_auto_pause() else 0.0
 	if _last_wait_index != visible_characters and waiting_seconds > 0:
