@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://i8ohcjfi2ya1" path="res://icon.svg" id="1_p67ce"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hvpep"]
-radius = 51.0392
+radius = 74.0
 
 [node name="Ingredient" type="CharacterBody2D" unique_id=68873852]
 collision_mask = 2
@@ -13,8 +13,9 @@ script = ExtResource("1_i6ux4")
 ingredientSprite = ExtResource("1_p67ce")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1517871503]
-scale = Vector2(0.8, 0.8)
+scale = Vector2(0.09, 0.09)
 texture = ExtResource("1_p67ce")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="." unique_id=1294795548]
+position = Vector2(0, -14)
 shape = SubResource("CircleShape2D_hvpep")

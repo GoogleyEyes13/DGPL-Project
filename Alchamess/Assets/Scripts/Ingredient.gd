@@ -1,12 +1,13 @@
 extends CharacterBody2D
 
 @export var ingredientType = "null"
-@export var ingredientSprite : Texture
+@export var ingredientSprite : Texture2D
 
 var is_grabbed : bool = false
 
 func _ready() -> void:
 	$Sprite2D.texture = ingredientSprite
+	$Sprite2D.visible = false
 
 
 func _process(delta):
@@ -20,8 +21,10 @@ func _input_event(viewport, event, shape_idx) -> void:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.pressed:
 				is_grabbed = true
+				$Sprite2D.visible = true
 			else:
 				is_grabbed = false
+				$Sprite2D.visible = false
 				return_ingredient_to_start()
 
 

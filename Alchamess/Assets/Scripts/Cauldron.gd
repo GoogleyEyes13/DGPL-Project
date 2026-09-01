@@ -92,5 +92,6 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is CharacterBody2D:
 		_add_ingredient_to_cauldron(body.ingredientType)
 		body.is_grabbed = false
+		body.get_node("Sprite2D").visible = false
 		body.return_ingredient_to_start()
 		
