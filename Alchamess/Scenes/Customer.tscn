@@ -6,8 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://bjmjp5n47pwxi" path="res://Assets/Sprites/Caseoh/CaseohSmallHead.png" id="4_0hs7r"]
 [ext_resource type="Texture2D" uid="uid://hptes087cyox" path="res://Assets/Sprites/Caseoh/CaseohGreen.png" id="5_cj036"]
 [ext_resource type="Texture2D" uid="uid://dm70h1r36ebhq" path="res://Assets/Sprites/Caseoh/CaseohBlueEyes.png" id="6_yd18k"]
+[ext_resource type="Texture2D" uid="uid://c0mta21pjhs8s" path="res://Assets/Sprites/Caseoh/CaseohSkeleton.png" id="7_c7i8l"]
 [ext_resource type="Script" uid="uid://bmpdj2jewm2v8" path="res://Assets/Scripts/Customer.gd" id="7_cj036"]
-[ext_resource type="Texture2D" uid="uid://ccgj3hgxw1hl" path="res://Assets/Placeholders/CreatureFeature.png" id="7_yd18k"]
 [ext_resource type="Texture2D" uid="uid://0l01htm7kx1b" path="res://Assets/Sprites/Herb Bert/gardener.png" id="8_c7i8l"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_57qmd"]
@@ -32,7 +32,7 @@ animations = [{
 "texture": ExtResource("6_yd18k")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_yd18k")
+"texture": ExtResource("7_c7i8l")
 }],
 "loop": 1,
 "name": &"Caseoh",

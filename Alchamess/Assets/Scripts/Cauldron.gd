@@ -22,7 +22,7 @@ var PotionRecipes: Dictionary = {
 	["ElbowGrease", "PhoenixFeather", "Stardust"]: "Potion of Body Swap",
 	["ElbowGrease", "EyeOfNewt", "Stardust"]: "Potion of Love",
 	["OilOfVitriol", "PhoenixFeather", "Stardust"]: "Potion of Explode",
-	["EyeOfNewt", "OilOfVitriol", "PhoenixFeather"]: "Potion of Skeleton/Ghost",
+	["EyeOfNewt", "OilOfVitriol", "PhoenixFeather"]: "Potion of Skeleton",
 	["OilOfVitriol", "Stardust", "Wormwood"]: "Potion of Enlarge Person",
 	["EyeOfNewt", "OilOfVitriol", "Stardust"]: "Potion of Shrink Person"
 }
