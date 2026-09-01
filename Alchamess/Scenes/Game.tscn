@@ -9,13 +9,16 @@
 [ext_resource type="PackedScene" uid="uid://nk2mr8ongv5d" path="res://Objects/Ingredient.tscn" id="5_b2bpf"]
 [ext_resource type="Texture2D" uid="uid://dxuugt8ooxyux" path="res://Assets/Placeholders/Wormwood.png" id="8_3cx6b"]
 [ext_resource type="Texture2D" uid="uid://j0mtkmny2w13" path="res://Assets/Potions/RedPotion3.png" id="9_bf53h"]
+[ext_resource type="Texture2D" uid="uid://c74lefigmxw8j" path="res://Assets/Placeholders/ShelfElbowGrease.png" id="10_3jf1l"]
 [ext_resource type="PackedScene" uid="uid://dsymvu0mirgfh" path="res://Scenes/Customer.tscn" id="10_71axn"]
 [ext_resource type="Texture2D" uid="uid://cv3crrh6hmykn" path="res://Assets/Placeholders/ShelfPhoenixFeather.png" id="10_dahhg"]
-[ext_resource type="Texture2D" uid="uid://ccgj3hgxw1hl" path="res://Assets/Placeholders/CreatureFeature.png" id="11_alh3a"]
 [ext_resource type="Texture2D" uid="uid://b8fyvumgba0p2" path="res://Assets/Placeholders/ShelfStardust.png" id="11_dahhg"]
+[ext_resource type="Texture2D" uid="uid://cdhhra3lqqrrp" path="res://Assets/Placeholders/EyeOfNewt.png" id="11_i0vto"]
 [ext_resource type="Texture2D" uid="uid://ckkx6eylav54q" path="res://Assets/Placeholders/ShelfWormwood.png" id="12_3so38"]
 [ext_resource type="Texture2D" uid="uid://cvw13e27ga33u" path="res://Assets/Placeholders/PhoenixFeather.png" id="12_acvyw"]
 [ext_resource type="Texture2D" uid="uid://ce5hr70gs82pl" path="res://Assets/Placeholders/Stardust.png" id="12_wxwew"]
+[ext_resource type="Texture2D" uid="uid://baboglbl7mwyk" path="res://Assets/Placeholders/ElbowGrease.png" id="13_3jf1l"]
+[ext_resource type="Texture2D" uid="uid://bulerv04fit6b" path="res://Assets/Placeholders/OilOfVitriol.png" id="15_356ba"]
 [ext_resource type="Texture2D" uid="uid://be1m5eyabfqmo" path="res://Assets/Sprites/Smoke/Smoke1.png" id="17_raj38"]
 [ext_resource type="Texture2D" uid="uid://dym2f23adccmi" path="res://Assets/Sprites/Smoke/Smoke2.png" id="18_8e0uq"]
 [ext_resource type="Texture2D" uid="uid://dfkqsg1iddkuo" path="res://Assets/Sprites/Smoke/Smoke3.png" id="19_i0vto"]
@@ -24,6 +27,8 @@
 [ext_resource type="Texture2D" uid="uid://c2bfvsvocigbs" path="res://Assets/Sprites/Smoke/Smoke6.png" id="22_i4lct"]
 [ext_resource type="Texture2D" uid="uid://sni61jgmfufd" path="res://Assets/Sprites/Smoke/Smoke7.png" id="23_iyesh"]
 [ext_resource type="Texture2D" uid="uid://dft8sqhl0d3ay" path="res://Assets/Sprites/Smoke/Smoke8.png" id="24_i1pr2"]
+[ext_resource type="Texture2D" uid="uid://51ng2qw0vqc7" path="res://Assets/Placeholders/ShelfEyeOfNewt.png" id="28_356ba"]
+[ext_resource type="Texture2D" uid="uid://dnrnnibhmxbwa" path="res://Assets/Placeholders/ShelfOilOfVitriol.png" id="29_i4lct"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7lihs"]
 size = Vector2(25.774406, 104.90531)
@@ -136,25 +141,28 @@ position = Vector2(1653.9999, 263.99994)
 scale = Vector2(0.09, 0.09)
 texture = ExtResource("12_3so38")
 
-[node name="Icon" type="Sprite2D" parent="ShelfIngredients" unique_id=1788324178]
-position = Vector2(262, 273)
-scale = Vector2(0.9, 0.9)
-texture = ExtResource("2_7lihs")
+[node name="ShelfElbowGrease" type="Sprite2D" parent="ShelfIngredients" unique_id=719505088]
+texture_filter = 1
+position = Vector2(266, 471)
+scale = Vector2(0.09, 0.09)
+texture = ExtResource("10_3jf1l")
 
-[node name="Icon2" type="Sprite2D" parent="ShelfIngredients" unique_id=125137661]
-position = Vector2(262, 487)
-scale = Vector2(0.9, 0.9)
-texture = ExtResource("2_7lihs")
+[node name="ShelfEyeOfNewt" type="Sprite2D" parent="ShelfIngredients" unique_id=1544213431]
+texture_filter = 1
+position = Vector2(257, 269)
+scale = Vector2(0.09, 0.09)
+texture = ExtResource("28_356ba")
 
-[node name="Icon3" type="Sprite2D" parent="ShelfIngredients" unique_id=1930442223]
-position = Vector2(262, 700)
-scale = Vector2(0.9, 0.9)
-texture = ExtResource("2_7lihs")
+[node name="ShelfOilOfVitriol" type="Sprite2D" parent="ShelfIngredients" unique_id=1922430470]
+texture_filter = 1
+position = Vector2(257, 693)
+scale = Vector2(0.09, 0.09)
+texture = ExtResource("29_i4lct")
 
 [node name="EyeOfNewt" parent="." unique_id=2023870098 instance=ExtResource("5_b2bpf")]
 position = Vector2(262, 280)
 ingredientType = "EyeOfNewt"
-ingredientSprite = ExtResource("11_alh3a")
+ingredientSprite = ExtResource("11_i0vto")
 
 [node name="Wormwood" parent="." unique_id=1599874296 instance=ExtResource("5_b2bpf")]
 position = Vector2(1658, 280)
@@ -164,7 +172,7 @@ ingredientSprite = ExtResource("8_3cx6b")
 [node name="ElbowGrease" parent="." unique_id=655124839 instance=ExtResource("5_b2bpf")]
 position = Vector2(262, 494)
 ingredientType = "ElbowGrease"
-ingredientSprite = ExtResource("11_alh3a")
+ingredientSprite = ExtResource("13_3jf1l")
 
 [node name="PhoenixFeather" parent="." unique_id=1704942985 instance=ExtResource("5_b2bpf")]
 position = Vector2(1658, 492)
@@ -174,7 +182,7 @@ ingredientSprite = ExtResource("12_acvyw")
 [node name="OilOfVitriol" parent="." unique_id=70480956 instance=ExtResource("5_b2bpf")]
 position = Vector2(262, 707)
 ingredientType = "OilOfVitriol"
-ingredientSprite = ExtResource("11_alh3a")
+ingredientSprite = ExtResource("15_356ba")
 
 [node name="Stardust" parent="." unique_id=860062454 instance=ExtResource("5_b2bpf")]
 position = Vector2(1658, 705)
