@@ -15,16 +15,24 @@ var cust_is_ready: bool = false
 #Customer name list (Animation names
 @export var customer_names: Array[String] = ["Caseoh", "Gardener",]
 
+#Rapid Shaking potion
+@export var jitter_intensity: float = 4.0
+@export var jitter_duration: float = 3.0 #total time spent shaking
+@export var jitter_step_time: float = 0.05 #time per shake
+
+
 # Dictionary for potions and their effects
 var PotionEffects: Dictionary = {
 	"Normal": 0,
 	"Potion of Curing": 0,
+	"Potion of Rapid Shaking": 0,
 	"Potion Of Baldness": 1,
 	"Potion of Head Size Increase": 2,
 	"Potion of Head Size Decrease": 3,
 	"Potion of Green Skin": 4,
 	"Potion of Eye Colour Swap": 5,
 	"Potion of Skeleton": 6
+	
 }
 
 @onready var PotionEffectSprite: AnimatedSprite2D = $"."
@@ -78,20 +86,40 @@ func on_arrival() -> void:
 	print("Customer is at the counter! Waiting for interaction...") #test
 	cust_is_ready = true
 
+func jitter_effect() -> void:
+	var original_pos = global_position
+	var jitter_tween = create_tween()
+	var steps: int = int(jitter_duration / jitter_step_time)
+	
+	for i in steps:
+		var offset = Vector2(
+			randf_range(-jitter_intensity, jitter_intensity),
+			randf_range(-jitter_intensity, jitter_intensity)
+		)
+		jitter_tween.tween_property(self, "global_position", original_pos + offset, jitter_step_time)
+	
+	jitter_tween.tween_property(self, "global_position", original_pos, jitter_step_time)
+
 func receive_potion(potion_type: String) -> void:
 	if not cust_is_ready:
 		return
 		
 	cust_is_ready = false
 	
+	var delay_time: float = 1.0
+	
 	if PotionEffects.has(potion_type):
 		frame = PotionEffects[potion_type]
 		print("Potion effect on customer: ", potion_type)
+		
+		if potion_type == "Potion of Rapid Shaking":
+			jitter_effect()
+			delay_time = jitter_duration
 	else:
 		push_warning("Unknown potion type: " + potion_type)
 	
 	var delay = create_tween()
-	delay.tween_interval(3.0)
+	delay.tween_interval(delay_time)
 	delay.tween_callback(bob_out)
 
 func bob_out() -> void:
@@ -117,7 +145,7 @@ func bob_out() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and event.keycode == KEY_SPACE:
 		print("Space pressed: Giving potion to customer!")
-		receive_potion("Green Head")
+		receive_potion("Potion of Rapid Shaking")
 
 func new_customer() -> void:
 	#edge case
