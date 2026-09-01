@@ -29,6 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://dft8sqhl0d3ay" path="res://Assets/Sprites/Smoke/Smoke8.png" id="24_i1pr2"]
 [ext_resource type="Texture2D" uid="uid://51ng2qw0vqc7" path="res://Assets/Placeholders/ShelfEyeOfNewt.png" id="28_356ba"]
 [ext_resource type="Texture2D" uid="uid://dnrnnibhmxbwa" path="res://Assets/Placeholders/ShelfOilOfVitriol.png" id="29_i4lct"]
+[ext_resource type="Script" uid="uid://hpmnbq15xtl1" path="res://Scenes/WhatDoesCauldronHave.gd" id="30_iyesh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7lihs"]
 size = Vector2(25.774406, 104.90531)
@@ -268,6 +269,15 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "Stardust"
 horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="." unique_id=267641766]
+z_index = 100
+offset_left = 614.0
+offset_top = 909.0
+offset_right = 1332.0
+offset_bottom = 997.0
+theme_override_font_sizes/font_size = 48
+script = ExtResource("30_iyesh")
 
 [connection signal="body_entered" from="WitchCauldron/Area2D" to="WitchCauldron" method="_on_area_2d_body_entered"]
 [connection signal="animation_finished" from="Smoke" to="WitchCauldron" method="_on_smoke_animation_finished"]

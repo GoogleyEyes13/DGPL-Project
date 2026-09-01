@@ -33,6 +33,9 @@ var PotionRecipes: Dictionary = {
 
 # A signal to send to the customer when a potion is made
 signal potion_created
+signal ingredients_updated(ingredients: Array, last_potion: String)
+
+var LastPotionCreated: String = "None"
 
 func _ready():
 	pass
@@ -53,6 +56,7 @@ func _add_ingredient_to_cauldron(name):
 	# Add ingredient to the pot
 	CauldronIngredients[name] = 1
 	print(name, " has been placed in the pot")
+	ingredients_updated.emit(CauldronIngredients.keys(), LastPotionCreated)
 	
 	if CauldronIngredients.size() == 3:
 		# Create the potion based on ingredient combination
@@ -61,6 +65,7 @@ func _add_ingredient_to_cauldron(name):
 		# Spawning potion sprite, resetting ingredients
 		Potion.visible = true
 		CauldronIngredients = {}
+		ingredients_updated.emit(CauldronIngredients.keys(), LastPotionCreated)
 		
 		# Short timeout to prevent instant ingredient add
 		get_tree().create_timer(1.0).timeout
@@ -81,6 +86,7 @@ func create_potion():
 		
 		if PotionRecipes.has(Ingredients):
 			var Potion = PotionRecipes[Ingredients]
+			LastPotionCreated = Potion
 			print("Created: ", Potion)
 			SmokeTransition.visible = true
 			SmokeTransition.play()
