@@ -13,7 +13,7 @@ var cust_is_ready: bool = false
 #Horizontal speed(time between each bounce)
 @export var step_speed: float = 6.0
 #Customer name list (Animation names
-@export var customer_names: Array[String] = ["Caseoh", "Gardener",]
+@export var customer_names: Array[String] = ["Caseoh", "Gardener", "Monicle"]
 
 #Rapid Shaking potion
 @export var jitter_intensity: float = 4.0

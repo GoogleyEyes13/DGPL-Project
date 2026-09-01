@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bd6gjeo6ss1mo"
-path="res://.godot/imported/HerbBertBody.png-c0ed0a45f1260137ab838ccf36cbdfa2.ctex"
+uid="uid://bqlnp3scy0e0k"
+path="res://.godot/imported/monocle.png-3e9488740b9ffc4c156a9399913410bd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Herb Bert/HerbBertBody.png"
-dest_files=["res://.godot/imported/HerbBertBody.png-c0ed0a45f1260137ab838ccf36cbdfa2.ctex"]
+source_file="res://Assets/Sprites/Monicle Man/monocle.png"
+dest_files=["res://.godot/imported/monocle.png-3e9488740b9ffc4c156a9399913410bd.ctex"]
 
 [params]
 
@@ -37,4 +37,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1
