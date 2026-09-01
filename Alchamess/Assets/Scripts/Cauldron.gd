@@ -27,8 +27,9 @@ var PotionRecipes: Dictionary = {
 	["EyeOfNewt", "OilOfVitriol", "Stardust"]: "Potion of Shrink Person"
 }
 
-# Potion bottles
+
 @onready var Potion = $"../CraftedPotion"
+@onready var SmokeTransition = $"../Smoke"
 
 # A signal to send to the customer when a potion is made
 signal potion_created
@@ -81,6 +82,9 @@ func create_potion():
 		if PotionRecipes.has(Ingredients):
 			var Potion = PotionRecipes[Ingredients]
 			print("Created: ", Potion)
+			SmokeTransition.visible = true
+			SmokeTransition.play()
+			await get_tree().create_timer(0.3).timeout
 			potion_created.emit(Potion)
 		else:
 			print(Ingredients)
@@ -95,3 +99,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		body.get_node("Sprite2D").visible = false
 		body.return_ingredient_to_start()
 		
+
+# Making the smoke animation invisible after its played once
+func _on_smoke_animation_finished() -> void:
+	SmokeTransition.visible = false
