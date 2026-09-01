@@ -17,8 +17,8 @@ var cust_is_ready: bool = false
 
 #Rapid Shaking potion
 @export var jitter_intensity: float = 4.0
-@export var jitter_duration: float = 3.0 #total time spent shaking
 @export var jitter_step_time: float = 0.05 #time per shake
+@export var walk_out_duration: float = 3.5 #total time spent shaking (should generally match bob_out's travel_duration
 
 
 # Dictionary for potions and their effects
@@ -86,20 +86,19 @@ func on_arrival() -> void:
 	print("Customer is at the counter! Waiting for interaction...") #test
 	cust_is_ready = true
 
-func jitter_effect() -> void:
-	var original_pos = global_position
+func jitter_effect(duration: float) -> void:
 	var jitter_tween = create_tween()
-	var steps: int = int(jitter_duration / jitter_step_time)
+	var steps: int = int(duration / jitter_step_time)
 	
 	for i in steps:
-		var offset = Vector2(
+		var jitter_offset = Vector2(
 			randf_range(-jitter_intensity, jitter_intensity),
 			randf_range(-jitter_intensity, jitter_intensity)
-		)
-		jitter_tween.tween_property(self, "global_position", original_pos + offset, jitter_step_time)
+		) / scale
+		jitter_tween.tween_property(self, "offset", jitter_offset, jitter_step_time)
 	
-	jitter_tween.tween_property(self, "global_position", original_pos, jitter_step_time)
-
+	jitter_tween.tween_property(self, "offset", Vector2.ZERO, jitter_step_time)
+	
 func receive_potion(potion_type: String) -> void:
 	if not cust_is_ready:
 		return
@@ -113,8 +112,8 @@ func receive_potion(potion_type: String) -> void:
 		print("Potion effect on customer: ", potion_type)
 		
 		if potion_type == "Potion of Rapid Shaking":
-			jitter_effect()
-			delay_time = jitter_duration
+			delay_time = 1.0
+			jitter_effect(delay_time + walk_out_duration)   # shake through the whole exit
 	else:
 		push_warning("Unknown potion type: " + potion_type)
 	
@@ -123,13 +122,11 @@ func receive_potion(potion_type: String) -> void:
 	delay.tween_callback(bob_out)
 
 func bob_out() -> void:
-	var travel_duration: float = 3.5
-
 	var move_tween = create_tween()
-	move_tween.tween_property(self, "global_position:x", end_pos.x, travel_duration)\
+	move_tween.tween_property(self, "global_position:x", end_pos.x, walk_out_duration)\
 		.set_trans(Tween.TRANS_QUAD)\
 		.set_ease(Tween.EASE_IN)
-	move_tween.tween_callback(new_customer)   # Changed from reset, to a new customer
+	move_tween.tween_callback(new_customer)
 
 	var march_tween = create_tween().set_loops()
 	march_tween.tween_property(self, "global_position:y", centre_pos.y - step_bounce_height, 1.0 / step_speed)\
