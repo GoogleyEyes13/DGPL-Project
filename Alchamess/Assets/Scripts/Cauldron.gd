@@ -87,6 +87,7 @@ func create_potion():
 		if PotionRecipes.has(Ingredients):
 			var Potion = PotionRecipes[Ingredients]
 			LastPotionCreated = Potion
+			PotionJournal.register_potion(Potion, Ingredients) 
 			print("Created: ", Potion)
 			SmokeTransition.visible = true
 			SmokeTransition.play()

@@ -1,0 +1,293 @@
+[gd_scene format=3 uid="uid://bs1r4s6qk1h7a"]
+
+[ext_resource type="Script" uid="uid://cd02yewpj52sp" path="res://Scenes/NotebookMenu.gd" id="1_htgb8"]
+[ext_resource type="Texture2D" uid="uid://c74lefigmxw8j" path="res://Assets/Placeholders/ShelfElbowGrease.png" id="2_fudlm"]
+[ext_resource type="Texture2D" uid="uid://dnrnnibhmxbwa" path="res://Assets/Placeholders/ShelfOilOfVitriol.png" id="3_lstkl"]
+[ext_resource type="Texture2D" uid="uid://cv3crrh6hmykn" path="res://Assets/Placeholders/ShelfPhoenixFeather.png" id="4_fei2f"]
+[ext_resource type="Texture2D" uid="uid://ckkx6eylav54q" path="res://Assets/Placeholders/ShelfWormwood.png" id="5_1xjk5"]
+[ext_resource type="Texture2D" uid="uid://51ng2qw0vqc7" path="res://Assets/Placeholders/ShelfEyeOfNewt.png" id="6_8ycv8"]
+[ext_resource type="Texture2D" uid="uid://b8fyvumgba0p2" path="res://Assets/Placeholders/ShelfStardust.png" id="7_4lqga"]
+
+[node name="NotebookMenu" type="Control" unique_id=856325922]
+z_index = 999
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_htgb8")
+ingredient_icons = Array[Texture2D]([ExtResource("2_fudlm"), ExtResource("3_lstkl"), ExtResource("4_fei2f"), ExtResource("5_1xjk5"), ExtResource("6_8ycv8"), ExtResource("7_4lqga")])
+
+[node name="NotebookTab" type="Button" parent="." unique_id=218187933]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_right = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "menu"
+
+[node name="NotebookPanel" type="Panel" parent="." unique_id=665566909]
+custom_minimum_size = Vector2(835, 1080)
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -836.0
+offset_right = -1.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="NotebookPanel" unique_id=1179088137]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_enabled = true
+mouse_filter = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 85
+theme_override_constants/margin_bottom = 20
+
+[node name="IngredientListView" type="VBoxContainer" parent="NotebookPanel/MarginContainer" unique_id=1363847492]
+visible = false
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="NotebookPanel/MarginContainer/IngredientListView" unique_id=41609391]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="IngredientListContainer" type="GridContainer" parent="NotebookPanel/MarginContainer/IngredientListView/ScrollContainer" unique_id=757087023]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 100
+theme_override_constants/v_separation = 50
+columns = 2
+
+[node name="Row_ElbowGrease" type="Button" parent="NotebookPanel/MarginContainer/IngredientListView/ScrollContainer/IngredientListContainer" unique_id=1507827203]
+custom_minimum_size = Vector2(310, 310)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NotebookPanel/MarginContainer/IngredientListView/ScrollContainer/IngredientListContainer/Row_ElbowGrease" unique_id=890963060]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Icon" type="TextureRect" parent="NotebookPanel/MarginContainer/IngredientListView/ScrollContainer/IngredientListContainer/Row_ElbowGrease/VBoxContainer" unique_id=424713802]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+texture = ExtResource("2_fudlm")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="NotebookPanel/MarginContainer/IngredientListView/ScrollContainer/IngredientListContainer/Row_ElbowGrease/VBoxContainer" unique_id=1704262424]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Row_OilOfVitriol" type="Button" parent="NotebookPanel/MarginContainer/IngredientListView/ScrollContainer/IngredientListContainer" unique_id=390444789]
+custom_minimum_size = Vector2(310, 310)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NotebookPanel/MarginContainer/IngredientListView/ScrollContainer/IngredientListContainer/Row_OilOfVitriol" unique_id=1558479483]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Icon" type="TextureRect" parent="NotebookPanel/MarginContainer/IngredientListView/ScrollContainer/IngredientListContainer/Row_OilOfVitriol/VBoxContainer" unique_id=215561325]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+texture = ExtResource("3_lstkl")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="NotebookPanel/MarginContainer/IngredientListView/ScrollContainer/IngredientListContainer/Row_OilOfVitriol/VBoxContainer" unique_id=1578897868]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Row_PhoenixFeather" type="Button" parent="NotebookPanel/MarginContainer/IngredientListView/ScrollContainer/IngredientListContainer" unique_id=1207530827]
+custom_minimum_size = Vector2(310, 310)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NotebookPanel/MarginContainer/IngredientListView/ScrollContainer/IngredientListContainer/Row_PhoenixFeather" unique_id=268895545]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Icon" type="TextureRect" parent="NotebookPanel/MarginContainer/IngredientListView/ScrollContainer/IngredientListContainer/Row_PhoenixFeather/VBoxContainer" unique_id=1191835477]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+texture = ExtResource("4_fei2f")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="NotebookPanel/MarginContainer/IngredientListView/ScrollContainer/IngredientListContainer/Row_PhoenixFeather/VBoxContainer" unique_id=1118198386]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Row_Wormwood" type="Button" parent="NotebookPanel/MarginContainer/IngredientListView/ScrollContainer/IngredientListContainer" unique_id=680317672]
+custom_minimum_size = Vector2(310, 310)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NotebookPanel/MarginContainer/IngredientListView/ScrollContainer/IngredientListContainer/Row_Wormwood" unique_id=582886845]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Icon" type="TextureRect" parent="NotebookPanel/MarginContainer/IngredientListView/ScrollContainer/IngredientListContainer/Row_Wormwood/VBoxContainer" unique_id=1443256911]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+texture = ExtResource("5_1xjk5")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="NotebookPanel/MarginContainer/IngredientListView/ScrollContainer/IngredientListContainer/Row_Wormwood/VBoxContainer" unique_id=1611898955]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Row_EyeOfNewt" type="Button" parent="NotebookPanel/MarginContainer/IngredientListView/ScrollContainer/IngredientListContainer" unique_id=1867905377]
+custom_minimum_size = Vector2(310, 310)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NotebookPanel/MarginContainer/IngredientListView/ScrollContainer/IngredientListContainer/Row_EyeOfNewt" unique_id=631995222]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Icon" type="TextureRect" parent="NotebookPanel/MarginContainer/IngredientListView/ScrollContainer/IngredientListContainer/Row_EyeOfNewt/VBoxContainer" unique_id=894197588]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+texture = ExtResource("6_8ycv8")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="NotebookPanel/MarginContainer/IngredientListView/ScrollContainer/IngredientListContainer/Row_EyeOfNewt/VBoxContainer" unique_id=948063791]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Row_Stardust" type="Button" parent="NotebookPanel/MarginContainer/IngredientListView/ScrollContainer/IngredientListContainer" unique_id=306682988]
+custom_minimum_size = Vector2(310, 310)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NotebookPanel/MarginContainer/IngredientListView/ScrollContainer/IngredientListContainer/Row_Stardust" unique_id=979412367]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Icon" type="TextureRect" parent="NotebookPanel/MarginContainer/IngredientListView/ScrollContainer/IngredientListContainer/Row_Stardust/VBoxContainer" unique_id=1905190222]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+texture = ExtResource("7_4lqga")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="NotebookPanel/MarginContainer/IngredientListView/ScrollContainer/IngredientListContainer/Row_Stardust/VBoxContainer" unique_id=611703957]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="PotionListView" type="VBoxContainer" parent="NotebookPanel/MarginContainer" unique_id=1073587730]
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="NotebookPanel/MarginContainer/PotionListView" unique_id=1997599539]
+custom_minimum_size = Vector2(80, 30)
+layout_mode = 2
+text = "Back"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="NotebookPanel/MarginContainer/PotionListView" unique_id=847867874]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PotionListContainer" type="VBoxContainer" parent="NotebookPanel/MarginContainer/PotionListView/ScrollContainer" unique_id=1522164929]
+layout_mode = 2
+
+[node name="PotionDetailView" type="VBoxContainer" parent="NotebookPanel/MarginContainer" unique_id=471800506]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="BackButton" type="Button" parent="NotebookPanel/MarginContainer/PotionDetailView" unique_id=804044408]
+custom_minimum_size = Vector2(80, 30)
+layout_mode = 2
+text = "Back"
+
+[node name="TitleLabel" type="Label" parent="NotebookPanel/MarginContainer/PotionDetailView" unique_id=68821828]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+horizontal_alignment = 1
+
+[node name="ImageRow" type="HBoxContainer" parent="NotebookPanel/MarginContainer/PotionDetailView" unique_id=1598780328]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="Image1" type="TextureRect" parent="NotebookPanel/MarginContainer/PotionDetailView/ImageRow" unique_id=1036176911]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+size_flags_horizontal = 3
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Image2" type="TextureRect" parent="NotebookPanel/MarginContainer/PotionDetailView/ImageRow" unique_id=227171579]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+size_flags_horizontal = 3
+expand_mode = 1
+stretch_mode = 5
+
+[node name="IngredientsLabel" type="Label" parent="NotebookPanel/MarginContainer/PotionDetailView" unique_id=319869711]
+custom_minimum_size = Vector2(0, 250)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NotesField" type="TextEdit" parent="NotebookPanel/MarginContainer/PotionDetailView" unique_id=1094301792]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+placeholder_text = "Insert notes here..."

@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 DialogueManager="*uid://c3rodes2l3gxb"
 Globals="*uid://coov8ubdpi33w"
+PotionJournal="*uid://cqvvr3h2ffhx"
 
 [dialogue_manager]
 
