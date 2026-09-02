@@ -115,7 +115,7 @@ func receive_potion(potion_type: String) -> void:
 		
 	cust_is_ready = false
 	
-	var delay_time: float = 1.0
+	var delay_time: float = 3.0
 	
 	if PotionEffects.has(potion_type):
 		frame = PotionEffects[potion_type]
