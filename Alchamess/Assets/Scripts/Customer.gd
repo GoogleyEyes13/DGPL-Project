@@ -88,6 +88,12 @@ func on_arrival() -> void:
 		"Caseoh":
 			var resource = load("res://dialogue/testDialogue.dialogue")
 			DialogueManager.show_dialogue_balloon(resource)
+		"HerbBert":
+			var resource = load("res://dialogue/Customer1.dialogue")
+			DialogueManager.show_dialogue_balloon(resource)
+		_:
+			var resource = load("res://dialogue/Customer1.dialogue")
+			DialogueManager.show_dialogue_balloon(resource)
 	cust_is_ready = true
 
 func jitter_effect(duration: float) -> void:

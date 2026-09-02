@@ -3,7 +3,7 @@
 % Nathan: Greetings, potion seller!
 % Nathan: Phew, had a rough day of work today.
 
-match Global.wantedPotionType: # this is a placeholder while we set up a global variable for the wanted potions
+match Globals.wantedPotionType: # this is a placeholder while we set up a global variable for the wanted potions
 	when "MogFace":
 		Nathan: I want to look like I outclass the room around me!
 	when "Beautification":
@@ -45,7 +45,9 @@ match Global.wantedPotionType: # this is a placeholder while we set up a global 
 		Nathan: I want to look down at everyone around me!
 	when "ShrinkPerson":
 		Nathan: I'm trying to sneak into a dungeon, can you help me sneak by the monsters inside?
-	when _:
+	else:
 		Nathan: I'm not quite sure what I want...
+
+- Confirm
 
 => END
