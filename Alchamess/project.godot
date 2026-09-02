@@ -24,7 +24,6 @@ Globals="*uid://coov8ubdpi33w"
 
 runtime/balloon_path="res://Assets/DialogueBalloons/balloon.tscn"
 
-
 [display]
 
 window/size/viewport_width=1920
