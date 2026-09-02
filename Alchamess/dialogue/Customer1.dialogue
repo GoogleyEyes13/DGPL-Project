@@ -45,5 +45,7 @@ match Global.wantedPotionType: # this is a placeholder while we set up a global 
 		Nathan: I want to look down at everyone around me!
 	when "ShrinkPerson":
 		Nathan: I'm trying to sneak into a dungeon, can you help me sneak by the monsters inside?
+	when _:
+		Nathan: I'm not quite sure what I want...
 
 => END

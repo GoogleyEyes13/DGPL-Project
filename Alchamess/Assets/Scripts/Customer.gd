@@ -71,8 +71,10 @@ func bob_in() -> void:
 func on_arrival() -> void:
 	global_position.y = centre_pos.y
 	print("Customer is at the counter! Waiting for interaction...") #test
-	var resource = load("res://dialogue/testDialogue.dialogue")
-	DialogueManager.show_dialogue_balloon(resource)
+	match CustomerName:
+		"Caseoh":
+			var resource = load("res://dialogue/testDialogue.dialogue")
+			DialogueManager.show_dialogue_balloon(resource)
 	cust_is_ready = true
 
 func receive_potion(potion_type: String) -> void:
