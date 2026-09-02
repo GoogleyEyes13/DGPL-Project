@@ -209,8 +209,8 @@ frame_progress = 1.0
 
 [node name="CraftedPotion" type="Sprite2D" parent="." unique_id=125537923]
 visible = false
-position = Vector2(590, 254)
-scale = Vector2(0.03710937, 0.04697265)
+position = Vector2(589, 275.00003)
+scale = Vector2(0.07, 0.089)
 texture = ExtResource("9_bf53h")
 
 [node name="EmptyPotions" type="CanvasLayer" parent="." unique_id=357365399]
