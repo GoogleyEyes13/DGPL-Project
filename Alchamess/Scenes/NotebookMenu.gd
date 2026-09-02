@@ -96,7 +96,7 @@ func _show_potion_list(ingredient: String) -> void:
 		icon.custom_minimum_size = Vector2(48, 48)
 		icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 		icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-		# icon.texture = load("res://path/to/%s_icon.png" % potion_name)  # plug in art later
+		# icon.texture = load("res://path/to/%s_icon.png" % potion_name) # Place for each potions art
 		entry.add_child(icon)
 		
 		var button := Button.new()
@@ -126,7 +126,7 @@ func _on_potion_selected(potion_name: String) -> void:
 	var ingredients: Array = PotionJournal.get_ingredients_for_potion(potion_name)
 	detail_ingredients_label.text = "Ingredients:\n" + "\n".join(ingredients)
 	
-	detail_image_1.texture = load("res://Assets/Sprites/Herb Bert/HerbBertBigHead.png")
+	detail_image_1.texture = load("res://Assets/Sprites/Herb Bert/HerbBertBigHead.png") #placeholder for testing photos in journal
 	detail_image_2.texture = load("res://Assets/Sprites/Herb Bert/HerbBertBald.png")  
 	
 	detail_notes_field.text = PotionJournal.get_note(potion_name)
