@@ -12,7 +12,7 @@ var cust_is_ready: bool = false
 @export var step_bounce_height: float = 8.0
 #Horizontal speed(time between each bounce)
 @export var step_speed: float = 6.0
-#Customer name list (Animation names
+#Customer name list (Animation names)
 @export var customer_names: Array[String] = ["Caseoh", "HerbBert", "Monicle"]
 
 #Rapid Shaking potion
@@ -87,7 +87,7 @@ func on_arrival() -> void:
 	match CustomerName:
 		"Caseoh":
 			var resource = load("res://dialogue/testDialogue.dialogue")
-			#DialogueManager.show_dialogue_balloon(resource)
+			DialogueManager.show_dialogue_balloon(resource)
 	cust_is_ready = true
 
 func jitter_effect(duration: float) -> void:
