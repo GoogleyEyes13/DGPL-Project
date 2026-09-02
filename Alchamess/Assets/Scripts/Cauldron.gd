@@ -16,7 +16,7 @@ var PotionRecipes: Dictionary = {
 	["ElbowGrease", "OilOfVitriol", "Wormwood"]: "Potion of Head Size Increase",
 	["ElbowGrease", "EyeOfNewt", "OilOfVitriol"]: "Potion of Head Size Decrease",
 	["EyeOfNewt", "PhoenixFeather", "Stardust"]: "Potion of Creature Feature",
-	["ElbowGrease", "Wormwood", "Stardust"]: "Potion of Rabies",
+	["ElbowGrease", "Stardust", "Wormwood"]: "Potion of Rabies",
 	["PhoenixFeather", "Stardust", "Wormwood"]: "Potion of Change Language",
 	["EyeOfNewt", "Stardust", "Wormwood"]: "Potion of Change Art Styles",
 	["ElbowGrease", "PhoenixFeather", "Stardust"]: "Potion of Body Swap",

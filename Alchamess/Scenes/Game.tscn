@@ -30,6 +30,11 @@
 [ext_resource type="Texture2D" uid="uid://51ng2qw0vqc7" path="res://Assets/Placeholders/ShelfEyeOfNewt.png" id="28_356ba"]
 [ext_resource type="Texture2D" uid="uid://dnrnnibhmxbwa" path="res://Assets/Placeholders/ShelfOilOfVitriol.png" id="29_i4lct"]
 [ext_resource type="Script" uid="uid://hpmnbq15xtl1" path="res://Scenes/WhatDoesCauldronHave.gd" id="30_iyesh"]
+[ext_resource type="Texture2D" uid="uid://byu4ukcgr8xle" path="res://Assets/Potions/EmptyPotion2.png" id="31_4f4ik"]
+[ext_resource type="Texture2D" uid="uid://bn44fqj2kaj31" path="res://Assets/Potions/EmptyPotion1.png" id="31_i1pr2"]
+[ext_resource type="Texture2D" uid="uid://da0crssdmo2sq" path="res://Assets/Potions/EmptyPotion5.png" id="32_khs3t"]
+[ext_resource type="Texture2D" uid="uid://c613pj11xj4wf" path="res://Assets/Potions/EmptyPotion3.png" id="34_0iyqm"]
+[ext_resource type="Texture2D" uid="uid://di5fwv6uaaou0" path="res://Assets/Potions/EmptyPotion4.png" id="34_jn8rg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7lihs"]
 size = Vector2(25.774406, 104.90531)
@@ -207,6 +212,53 @@ visible = false
 position = Vector2(590, 254)
 scale = Vector2(0.03710937, 0.04697265)
 texture = ExtResource("9_bf53h")
+
+[node name="EmptyPotions" type="CanvasLayer" parent="." unique_id=357365399]
+
+[node name="EmptyPotion1" type="Sprite2D" parent="EmptyPotions" unique_id=1851375163]
+texture_filter = 1
+position = Vector2(652.99994, 112)
+scale = Vector2(0.07, 0.07)
+texture = ExtResource("31_i1pr2")
+
+[node name="EmptyPotion2" type="Sprite2D" parent="EmptyPotions" unique_id=1205735382]
+texture_filter = 1
+position = Vector2(1271, 112)
+scale = Vector2(0.07, 0.07)
+texture = ExtResource("31_i1pr2")
+
+[node name="EmptyPotion3" type="Sprite2D" parent="EmptyPotions" unique_id=1532264737]
+texture_filter = 1
+position = Vector2(1198, 112.99999)
+scale = Vector2(0.07, 0.07)
+texture = ExtResource("31_4f4ik")
+
+[node name="EmptyPotion4" type="Sprite2D" parent="EmptyPotions" unique_id=722865792]
+texture_filter = 1
+position = Vector2(728.99994, 112.99999)
+scale = Vector2(0.07, 0.07)
+texture = ExtResource("31_4f4ik")
+
+[node name="EmptyPotion5" type="Sprite2D" parent="EmptyPotions" unique_id=1406306082]
+position = Vector2(817.99994, 106.99999)
+scale = Vector2(0.07, 0.07)
+texture = ExtResource("32_khs3t")
+
+[node name="EmptyPotion6" type="Sprite2D" parent="EmptyPotions" unique_id=1639269290]
+position = Vector2(1105, 106.99999)
+scale = Vector2(0.07, 0.07)
+texture = ExtResource("32_khs3t")
+flip_h = true
+
+[node name="EmptyPotion7" type="Sprite2D" parent="EmptyPotions" unique_id=369287600]
+position = Vector2(905.99994, 113.99999)
+scale = Vector2(0.07, 0.07)
+texture = ExtResource("34_0iyqm")
+
+[node name="EmptyPotion8" type="Sprite2D" parent="EmptyPotions" unique_id=1673853769]
+position = Vector2(1013.99994, 112)
+scale = Vector2(0.07, 0.07)
+texture = ExtResource("34_jn8rg")
 
 [node name="IngredientLabels" type="CanvasLayer" parent="." unique_id=2123413072]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://djm56u6mp05xs"
-path="res://.godot/imported/gardener.png-ef55e3d1698bc9af7f56aa3a4e5a9052.ctex"
+uid="uid://c613pj11xj4wf"
+path="res://.godot/imported/EmptyPotion3.png-b26a4e976f5eb474b03c16a1cc2d560a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Herb Bert/gardener.png"
-dest_files=["res://.godot/imported/gardener.png-ef55e3d1698bc9af7f56aa3a4e5a9052.ctex"]
+source_file="res://Assets/Potions/EmptyPotion3.png"
+dest_files=["res://.godot/imported/EmptyPotion3.png-b26a4e976f5eb474b03c16a1cc2d560a.ctex"]
 
 [params]
 
