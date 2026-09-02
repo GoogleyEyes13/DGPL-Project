@@ -12,7 +12,7 @@ var cust_is_ready: bool = false
 @export var step_bounce_height: float = 8.0
 #Horizontal speed(time between each bounce)
 @export var step_speed: float = 6.0
-#Customer name list (Animation names
+#Customer name list (Animation names)
 @export var customer_names: Array[String] = ["Caseoh", "HerbBert", "Monicle"]
 
 #Rapid Shaking potion
@@ -84,6 +84,16 @@ func bob_in() -> void:
 func on_arrival() -> void:
 	global_position.y = centre_pos.y
 	print("Customer is at the counter! Waiting for interaction...") #test
+	match CustomerName:
+		"Caseoh":
+			var resource = load("res://dialogue/testDialogue.dialogue")
+			DialogueManager.show_dialogue_balloon(resource)
+		"HerbBert":
+			var resource = load("res://dialogue/Customer1.dialogue")
+			DialogueManager.show_dialogue_balloon(resource)
+		_:
+			var resource = load("res://dialogue/Customer1.dialogue")
+			DialogueManager.show_dialogue_balloon(resource)
 	cust_is_ready = true
 
 func jitter_effect(duration: float) -> void:
@@ -105,7 +115,7 @@ func receive_potion(potion_type: String) -> void:
 		
 	cust_is_ready = false
 	
-	var delay_time: float = 1.0
+	var delay_time: float = 3.0
 	
 	if PotionEffects.has(potion_type):
 		frame = PotionEffects[potion_type]
