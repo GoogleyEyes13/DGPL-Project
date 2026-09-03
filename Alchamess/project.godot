@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Alchamess"
-run/main_scene="uid://c5ahwustmer4r"
+run/main_scene="uid://cvlswtmdkf4hn"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
+
+[audio]
+
+buses/default_bus_layout="uid://srgrt78o1d6n"
 
 [autoload]
 
