@@ -19,22 +19,25 @@ func _process(delta):
 	
 	if is_grabbed:
 		var mouse_pos = get_global_mouse_position()
-
+		
 		# How far the mouse has moved horizontally since clicking
 		var mouse_difference = mouse_pos.x - grab_mouse_x
-
+		
 		# Move the stick by the same amount
 		var new_x = grab_stick_x + mouse_difference
-
+		
 		# Clamp movement to 100 pixels left of starting position
 		position.x = clamp(
 			new_x,
 			starting_position.x - movement_range,
 			starting_position.x
 		)
-
+		
 		# Keep Y unchanged
 		position.y = starting_position.y
+		
+		# make the stick rotate when mixing
+		rotation_degrees = (position.x - 970) / 3
 
 
 func _input_event(viewport, event, shape_idx):
@@ -42,10 +45,10 @@ func _input_event(viewport, event, shape_idx):
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.pressed:
 				is_grabbed = true
-
+				
 				# Remember where the mouse and stick were when clicked
 				grab_mouse_x = get_global_mouse_position().x
 				grab_stick_x = position.x
-
+			
 			else:
 				is_grabbed = false
