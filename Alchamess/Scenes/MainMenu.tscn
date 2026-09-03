@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b6vmmxpkfgl5i" path="res://Assets/Scripts/MainMenu.gd" id="1_tt5f1"]
 [ext_resource type="Texture2D" uid="uid://dmrugnh5nj1ii" path="res://Assets/Placeholders/AlchamessLogo[Orange].png" id="2_853f1"]
+[ext_resource type="PackedScene" uid="uid://crwmco5g7t2np" path="res://Scenes/Settings.tscn" id="3_8saeu"]
 
 [node name="MainMenu" type="Node2D" unique_id=992807574]
 script = ExtResource("1_tt5f1")
@@ -10,6 +11,11 @@ script = ExtResource("1_tt5f1")
 offset_right = 1920.0
 offset_bottom = 1080.0
 color = Color(0.62644553, 0.55332667, 0.39108768, 0.6392157)
+
+[node name="AlchamessLogo[orange]" type="Sprite2D" parent="." unique_id=879874972]
+position = Vector2(959, 338)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_853f1")
 
 [node name="PlayButton" type="Button" parent="." unique_id=1531628275]
 anchors_preset = 8
@@ -26,7 +32,7 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 50
 text = "Play"
 
-[node name="OptionButton" type="Button" parent="." unique_id=881915766]
+[node name="SettingsButton" type="Button" parent="." unique_id=881915766]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -39,7 +45,7 @@ offset_bottom = 881.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 40
-text = "Options"
+text = "Settings"
 
 [node name="QuitButton" type="Button" parent="." unique_id=199838649]
 anchors_preset = 8
@@ -56,11 +62,8 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 40
 text = "Quit"
 
-[node name="AlchamessLogo[orange]" type="Sprite2D" parent="." unique_id=879874972]
-position = Vector2(959, 338)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_853f1")
+[node name="SettingsMenu" parent="." unique_id=1802880493 instance=ExtResource("3_8saeu")]
 
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="OptionButton" to="." method="_on_option_button_pressed"]
+[connection signal="pressed" from="SettingsButton" to="." method="_on_option_button_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
