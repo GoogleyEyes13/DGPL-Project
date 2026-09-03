@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://51ng2qw0vqc7" path="res://Assets/Placeholders/ShelfEyeOfNewt.png" id="6_8ycv8"]
 [ext_resource type="Texture2D" uid="uid://b8fyvumgba0p2" path="res://Assets/Placeholders/ShelfStardust.png" id="7_4lqga"]
 [ext_resource type="Theme" uid="uid://clxl8pps2dife" path="res://Assets/UI/bento_sketch.tres" id="8_lstkl"]
+[ext_resource type="Texture2D" uid="uid://2tilkc734tbi" path="res://Assets/Sprites/Caseoh/CaseohNormal.png" id="9_1xjk5"]
+[ext_resource type="Texture2D" uid="uid://hptes087cyox" path="res://Assets/Sprites/Caseoh/CaseohGreen.png" id="10_8ycv8"]
 
 [node name="NotebookMenu" type="Control" unique_id=856325922]
 z_index = 999
@@ -65,6 +67,7 @@ theme_override_constants/margin_right = 85
 theme_override_constants/margin_bottom = 20
 
 [node name="IngredientListView" type="VBoxContainer" parent="NotebookPanel/MarginContainer" unique_id=1363847492]
+visible = false
 layout_mode = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="NotebookPanel/MarginContainer/IngredientListView" unique_id=41609391]
@@ -78,6 +81,58 @@ size_flags_vertical = 3
 theme_override_constants/h_separation = 100
 theme_override_constants/v_separation = 50
 columns = 2
+
+[node name="Row_EyeOfNewt" type="Button" parent="NotebookPanel/MarginContainer/IngredientListView/ScrollContainer/IngredientListContainer" unique_id=1867905377]
+custom_minimum_size = Vector2(310, 310)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NotebookPanel/MarginContainer/IngredientListView/ScrollContainer/IngredientListContainer/Row_EyeOfNewt" unique_id=631995222]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Icon" type="TextureRect" parent="NotebookPanel/MarginContainer/IngredientListView/ScrollContainer/IngredientListContainer/Row_EyeOfNewt/VBoxContainer" unique_id=894197588]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+texture = ExtResource("6_8ycv8")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="NotebookPanel/MarginContainer/IngredientListView/ScrollContainer/IngredientListContainer/Row_EyeOfNewt/VBoxContainer" unique_id=948063791]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Row_Wormwood" type="Button" parent="NotebookPanel/MarginContainer/IngredientListView/ScrollContainer/IngredientListContainer" unique_id=680317672]
+custom_minimum_size = Vector2(310, 310)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NotebookPanel/MarginContainer/IngredientListView/ScrollContainer/IngredientListContainer/Row_Wormwood" unique_id=582886845]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Icon" type="TextureRect" parent="NotebookPanel/MarginContainer/IngredientListView/ScrollContainer/IngredientListContainer/Row_Wormwood/VBoxContainer" unique_id=1443256911]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+texture = ExtResource("5_1xjk5")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="NotebookPanel/MarginContainer/IngredientListView/ScrollContainer/IngredientListContainer/Row_Wormwood/VBoxContainer" unique_id=1611898955]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 2
 
 [node name="Row_ElbowGrease" type="Button" parent="NotebookPanel/MarginContainer/IngredientListView/ScrollContainer/IngredientListContainer" unique_id=1507827203]
 custom_minimum_size = Vector2(310, 310)
@@ -100,32 +155,6 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="Label" type="Label" parent="NotebookPanel/MarginContainer/IngredientListView/ScrollContainer/IngredientListContainer/Row_ElbowGrease/VBoxContainer" unique_id=1704262424]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-horizontal_alignment = 1
-vertical_alignment = 2
-
-[node name="Row_OilOfVitriol" type="Button" parent="NotebookPanel/MarginContainer/IngredientListView/ScrollContainer/IngredientListContainer" unique_id=390444789]
-custom_minimum_size = Vector2(310, 310)
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="NotebookPanel/MarginContainer/IngredientListView/ScrollContainer/IngredientListContainer/Row_OilOfVitriol" unique_id=1558479483]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="Icon" type="TextureRect" parent="NotebookPanel/MarginContainer/IngredientListView/ScrollContainer/IngredientListContainer/Row_OilOfVitriol/VBoxContainer" unique_id=215561325]
-custom_minimum_size = Vector2(200, 200)
-layout_mode = 2
-texture = ExtResource("3_lstkl")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="Label" type="Label" parent="NotebookPanel/MarginContainer/IngredientListView/ScrollContainer/IngredientListContainer/Row_OilOfVitriol/VBoxContainer" unique_id=1578897868]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 horizontal_alignment = 1
@@ -157,11 +186,11 @@ theme_override_font_sizes/font_size = 32
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="Row_Wormwood" type="Button" parent="NotebookPanel/MarginContainer/IngredientListView/ScrollContainer/IngredientListContainer" unique_id=680317672]
+[node name="Row_OilOfVitriol" type="Button" parent="NotebookPanel/MarginContainer/IngredientListView/ScrollContainer/IngredientListContainer" unique_id=390444789]
 custom_minimum_size = Vector2(310, 310)
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="NotebookPanel/MarginContainer/IngredientListView/ScrollContainer/IngredientListContainer/Row_Wormwood" unique_id=582886845]
+[node name="VBoxContainer" type="VBoxContainer" parent="NotebookPanel/MarginContainer/IngredientListView/ScrollContainer/IngredientListContainer/Row_OilOfVitriol" unique_id=1558479483]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -170,44 +199,18 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Icon" type="TextureRect" parent="NotebookPanel/MarginContainer/IngredientListView/ScrollContainer/IngredientListContainer/Row_Wormwood/VBoxContainer" unique_id=1443256911]
+[node name="Icon" type="TextureRect" parent="NotebookPanel/MarginContainer/IngredientListView/ScrollContainer/IngredientListContainer/Row_OilOfVitriol/VBoxContainer" unique_id=215561325]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
-texture = ExtResource("5_1xjk5")
+texture = ExtResource("3_lstkl")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="NotebookPanel/MarginContainer/IngredientListView/ScrollContainer/IngredientListContainer/Row_Wormwood/VBoxContainer" unique_id=1611898955]
+[node name="Label" type="Label" parent="NotebookPanel/MarginContainer/IngredientListView/ScrollContainer/IngredientListContainer/Row_OilOfVitriol/VBoxContainer" unique_id=1578897868]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 horizontal_alignment = 1
 vertical_alignment = 2
-
-[node name="Row_EyeOfNewt" type="Button" parent="NotebookPanel/MarginContainer/IngredientListView/ScrollContainer/IngredientListContainer" unique_id=1867905377]
-custom_minimum_size = Vector2(310, 310)
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="NotebookPanel/MarginContainer/IngredientListView/ScrollContainer/IngredientListContainer/Row_EyeOfNewt" unique_id=631995222]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="Icon" type="TextureRect" parent="NotebookPanel/MarginContainer/IngredientListView/ScrollContainer/IngredientListContainer/Row_EyeOfNewt/VBoxContainer" unique_id=894197588]
-custom_minimum_size = Vector2(200, 200)
-layout_mode = 2
-texture = ExtResource("6_8ycv8")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="Label" type="Label" parent="NotebookPanel/MarginContainer/IngredientListView/ScrollContainer/IngredientListContainer/Row_EyeOfNewt/VBoxContainer" unique_id=948063791]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="Row_Stardust" type="Button" parent="NotebookPanel/MarginContainer/IngredientListView/ScrollContainer/IngredientListContainer" unique_id=306682988]
 custom_minimum_size = Vector2(310, 310)
@@ -251,6 +254,7 @@ size_flags_vertical = 3
 layout_mode = 2
 
 [node name="PotionDetailView" type="VBoxContainer" parent="NotebookPanel/MarginContainer" unique_id=471800506]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 40
 
@@ -273,6 +277,7 @@ theme_override_constants/separation = 25
 custom_minimum_size = Vector2(300, 300)
 layout_mode = 2
 size_flags_horizontal = 3
+texture = ExtResource("9_1xjk5")
 expand_mode = 1
 stretch_mode = 5
 
@@ -280,6 +285,7 @@ stretch_mode = 5
 custom_minimum_size = Vector2(300, 300)
 layout_mode = 2
 size_flags_horizontal = 3
+texture = ExtResource("10_8ycv8")
 expand_mode = 1
 stretch_mode = 5
 
