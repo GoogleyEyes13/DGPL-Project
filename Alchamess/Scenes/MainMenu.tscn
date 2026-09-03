@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c5ahwustmer4r"]
 
 [ext_resource type="Script" uid="uid://b6vmmxpkfgl5i" path="res://Assets/Scripts/MainMenu.gd" id="1_tt5f1"]
+[ext_resource type="Theme" uid="uid://clxl8pps2dife" path="res://Assets/UI/bento_sketch.tres" id="2_8saeu"]
 [ext_resource type="Texture2D" uid="uid://dmrugnh5nj1ii" path="res://Assets/Placeholders/AlchamessLogo[Orange].png" id="2_853f1"]
 
 [node name="MainMenu" type="Node2D" unique_id=992807574]
@@ -23,6 +24,7 @@ offset_right = 1288.0
 offset_bottom = 764.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_8saeu")
 theme_override_font_sizes/font_size = 50
 text = "Play"
 
@@ -38,6 +40,7 @@ offset_right = 1133.0
 offset_bottom = 881.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_8saeu")
 theme_override_font_sizes/font_size = 40
 text = "Options"
 
@@ -53,6 +56,7 @@ offset_right = 1133.0
 offset_bottom = 993.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_8saeu")
 theme_override_font_sizes/font_size = 40
 text = "Quit"
 
