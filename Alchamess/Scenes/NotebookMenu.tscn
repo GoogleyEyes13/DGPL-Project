@@ -23,7 +23,7 @@ script = ExtResource("1_htgb8")
 ingredient_icons = Array[Texture2D]([ExtResource("2_fudlm"), ExtResource("3_lstkl"), ExtResource("4_fei2f"), ExtResource("5_1xjk5"), ExtResource("6_8ycv8"), ExtResource("7_4lqga")])
 
 [node name="NotebookTab" type="Button" parent="." unique_id=218187933]
-self_modulate = Color(0.6213914, 0.35212338, 0.18911299, 1)
+self_modulate = Color(0.61960787, 0.3529412, 0.1882353, 0.8627451)
 top_level = true
 layout_mode = 1
 anchors_preset = 11
@@ -36,7 +36,13 @@ grow_horizontal = 0
 grow_vertical = 2
 theme = ExtResource("8_lstkl")
 toggle_mode = true
-text = "menu"
+text = "J
+O
+U
+R
+N
+A
+L"
 
 [node name="NotebookPanel" type="Panel" parent="." unique_id=665566909]
 custom_minimum_size = Vector2(835, 1080)
