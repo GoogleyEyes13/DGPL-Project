@@ -1,61 +1,97 @@
-[gd_scene format=3 uid="uid://crwmco5g7t2np"]
+[gd_scene format=3 uid="uid://dmft8eqa80pop"]
 
 [ext_resource type="Script" uid="uid://cx5xi6pmhq8pf" path="res://Scenes/SettingsMenu.gd" id="1_4hxq3"]
+[ext_resource type="Theme" uid="uid://clxl8pps2dife" path="res://Assets/UI/bento_sketch.tres" id="1_flfri"]
 
 [node name="SettingsMenu" type="Control" unique_id=1802880493]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_flfri")
 script = ExtResource("1_4hxq3")
 
 [node name="Panel" type="Panel" parent="." unique_id=1079276652]
+top_level = true
+custom_minimum_size = Vector2(1420, 840)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1_flfri")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel" unique_id=311031329]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="Panel" unique_id=311031329]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer" unique_id=1484791609]
 layout_mode = 2
+theme_override_constants/separation = 20
 
 [node name="TitleLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer" unique_id=115861865]
 layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="MasterVolumeRow" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer" unique_id=851159503]
 layout_mode = 2
+theme_override_constants/separation = 50
 
 [node name="Master Volume" type="Label" parent="Panel/MarginContainer/VBoxContainer/MasterVolumeRow" unique_id=2070319084]
 layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Master"
 
 [node name="MasterSlider" type="HSlider" parent="Panel/MarginContainer/VBoxContainer/MasterVolumeRow" unique_id=145701129]
+custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
 
 [node name="MusicVolumeRow" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer" unique_id=879783653]
 layout_mode = 2
+theme_override_constants/separation = 50
 
 [node name="Music (NonFunctional)" type="Label" parent="Panel/MarginContainer/VBoxContainer/MusicVolumeRow" unique_id=1478809076]
 layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Music"
 
 [node name="MusicSlider" type="HSlider" parent="Panel/MarginContainer/VBoxContainer/MusicVolumeRow" unique_id=2111640277]
+custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
 
 [node name="SFXVolumeRow" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer" unique_id=1244118745]
 layout_mode = 2
+theme_override_constants/separation = 50
 
 [node name="SFX (NonFunctional)" type="Label" parent="Panel/MarginContainer/VBoxContainer/SFXVolumeRow" unique_id=268780952]
 layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Sound Effects"
 
 [node name="SFXSlider" type="HSlider" parent="Panel/MarginContainer/VBoxContainer/SFXVolumeRow" unique_id=1264236208]
+custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
 
 [node name="BackButton" type="Button" parent="Panel/MarginContainer/VBoxContainer" unique_id=2048779876]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Back"

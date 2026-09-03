@@ -3,12 +3,15 @@
 [ext_resource type="Script" uid="uid://b6vmmxpkfgl5i" path="res://Assets/Scripts/MainMenu.gd" id="1_tt5f1"]
 [ext_resource type="Theme" uid="uid://clxl8pps2dife" path="res://Assets/UI/bento_sketch.tres" id="2_8saeu"]
 [ext_resource type="Texture2D" uid="uid://dmrugnh5nj1ii" path="res://Assets/Placeholders/AlchamessLogo[Orange].png" id="2_853f1"]
-[ext_resource type="PackedScene" uid="uid://crwmco5g7t2np" path="res://Scenes/Settings.tscn" id="3_8saeu"]
+[ext_resource type="PackedScene" uid="uid://dmft8eqa80pop" path="res://Scenes/Settings.tscn" id="3_8saeu"]
 
-[node name="MainMenu" type="Node2D" unique_id=992807574]
+[node name="MainMenu" type="Control" unique_id=927422500]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_tt5f1")
 
 [node name="BackgroundColour" type="ColorRect" parent="." unique_id=1562538587]
+layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 color = Color(0.62644553, 0.55332667, 0.39108768, 0.6392157)
@@ -19,6 +22,7 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_853f1")
 
 [node name="PlayButton" type="Button" parent="." unique_id=1531628275]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -35,15 +39,16 @@ theme_override_font_sizes/font_size = 50
 text = "Play"
 
 [node name="SettingsButton" type="Button" parent="." unique_id=881915766]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = 781.0
-offset_top = 818.0
+offset_top = 812.0
 offset_right = 1133.0
-offset_bottom = 881.0
+offset_bottom = 888.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_8saeu")
@@ -51,6 +56,7 @@ theme_override_font_sizes/font_size = 40
 text = "Settings"
 
 [node name="QuitButton" type="Button" parent="." unique_id=199838649]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -67,6 +73,7 @@ theme_override_font_sizes/font_size = 40
 text = "Quit"
 
 [node name="SettingsMenu" parent="." unique_id=1802880493 instance=ExtResource("3_8saeu")]
+layout_mode = 1
 
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="SettingsButton" to="." method="_on_option_button_pressed"]
