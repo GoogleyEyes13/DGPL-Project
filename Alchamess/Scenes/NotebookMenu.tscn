@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://ckkx6eylav54q" path="res://Assets/Placeholders/ShelfWormwood.png" id="5_1xjk5"]
 [ext_resource type="Texture2D" uid="uid://51ng2qw0vqc7" path="res://Assets/Placeholders/ShelfEyeOfNewt.png" id="6_8ycv8"]
 [ext_resource type="Texture2D" uid="uid://b8fyvumgba0p2" path="res://Assets/Placeholders/ShelfStardust.png" id="7_4lqga"]
+[ext_resource type="Theme" uid="uid://clxl8pps2dife" path="res://Assets/UI/bento_sketch.tres" id="8_lstkl"]
 
 [node name="NotebookMenu" type="Control" unique_id=856325922]
 z_index = 999
@@ -20,6 +21,8 @@ script = ExtResource("1_htgb8")
 ingredient_icons = Array[Texture2D]([ExtResource("2_fudlm"), ExtResource("3_lstkl"), ExtResource("4_fei2f"), ExtResource("5_1xjk5"), ExtResource("6_8ycv8"), ExtResource("7_4lqga")])
 
 [node name="NotebookTab" type="Button" parent="." unique_id=218187933]
+self_modulate = Color(0.6213914, 0.35212338, 0.18911299, 1)
+top_level = true
 layout_mode = 1
 anchors_preset = 11
 anchor_left = 1.0
@@ -29,6 +32,8 @@ offset_left = -64.0
 offset_right = 1.0
 grow_horizontal = 0
 grow_vertical = 2
+theme = ExtResource("8_lstkl")
+toggle_mode = true
 text = "menu"
 
 [node name="NotebookPanel" type="Panel" parent="." unique_id=665566909]
@@ -43,6 +48,7 @@ offset_right = -1.0
 grow_horizontal = 0
 grow_vertical = 2
 mouse_filter = 2
+theme = ExtResource("8_lstkl")
 
 [node name="MarginContainer" type="MarginContainer" parent="NotebookPanel" unique_id=1179088137]
 layout_mode = 1
@@ -59,7 +65,6 @@ theme_override_constants/margin_right = 85
 theme_override_constants/margin_bottom = 20
 
 [node name="IngredientListView" type="VBoxContainer" parent="NotebookPanel/MarginContainer" unique_id=1363847492]
-visible = false
 layout_mode = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="NotebookPanel/MarginContainer/IngredientListView" unique_id=41609391]
@@ -246,7 +251,6 @@ size_flags_vertical = 3
 layout_mode = 2
 
 [node name="PotionDetailView" type="VBoxContainer" parent="NotebookPanel/MarginContainer" unique_id=471800506]
-visible = false
 layout_mode = 2
 theme_override_constants/separation = 40
 
@@ -287,7 +291,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="NotesField" type="TextEdit" parent="NotebookPanel/MarginContainer/PotionDetailView" unique_id=1094301792]
-custom_minimum_size = Vector2(0, 200)
+custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 placeholder_text = "Insert notes here..."
