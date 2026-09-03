@@ -49,6 +49,8 @@ func _ready() -> void:
 	panel.visible = false
 	_setup_ingredient_buttons()
 	_show_ingredient_list()
+	
+	potion_list_container.add_theme_constant_override("separation", 10)
 
 func _setup_ingredient_buttons() -> void:
 	for ingredient in ingredient_names:
@@ -86,23 +88,28 @@ func _show_potion_list(ingredient: String) -> void:
 	if potions.is_empty():
 		var label := Label.new()
 		label.text = "No potions discovered yet using " + ingredient
+		label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		potion_list_container.add_child(label)
 		return
 	
 	for potion_name in potions:
 		var entry := HBoxContainer.new()
+		entry.custom_minimum_size = Vector2(0, 56)
+		entry.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		entry.add_theme_constant_override("separation", 12)
 		
 		var icon := TextureRect.new()
 		icon.custom_minimum_size = Vector2(48, 48)
 		icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 		icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-		# icon.texture = load("res://path/to/%s_icon.png" % potion_name) # Place for each potions art
+		# icon.texture = load("res://path/to/%s_icon.png" % potion_name)  # plug in art later
 		entry.add_child(icon)
 		
 		var button := Button.new()
 		button.text = potion_name
-		button.custom_minimum_size = Vector2(220, 40)
-		button.add_theme_font_size_override("font_size", 20)
+		button.custom_minimum_size = Vector2(0, 44)
+		button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		button.add_theme_font_size_override("font_size", 18)
 		button.pressed.connect(_on_potion_selected.bind(potion_name))
 		entry.add_child(button)
 		
