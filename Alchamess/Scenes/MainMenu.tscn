@@ -10,6 +10,10 @@ layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_tt5f1")
 
+[node name="SettingsMenu" parent="." unique_id=1802880493 instance=ExtResource("3_8saeu")]
+visible = false
+layout_mode = 1
+
 [node name="BackgroundColour" type="ColorRect" parent="." unique_id=1562538587]
 layout_mode = 0
 offset_right = 1920.0
@@ -71,9 +75,6 @@ grow_vertical = 2
 theme = ExtResource("2_8saeu")
 theme_override_font_sizes/font_size = 40
 text = "Quit"
-
-[node name="SettingsMenu" parent="." unique_id=1802880493 instance=ExtResource("3_8saeu")]
-layout_mode = 1
 
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="SettingsButton" to="." method="_on_option_button_pressed"]
