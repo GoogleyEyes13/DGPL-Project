@@ -1,53 +1,79 @@
 # ==========================================
-# Godot Engine Core & Export Files
+# Godot Engine Ignored Files
 # ==========================================
+# Godot 4.x & 3.x import directory (contains cached/imported assets)
 .godot/
 .import/
-export/
-export_presets.cfg
-build/
-bin/
-*.translation
-*.profile
 
-# Godot C# / Mono Build Artifacts
+# Imported files where "keep import assets in SVN/Git" is disabled
+*.import
+
+# Exported build binaries & packages
+*.apk
+*.aab
+*.a
+*.ar
+*.x86_64
+*.x86
+*.exe
+*.dll
+*.so
+*.dylib
+*.app
+*.dmg
+*.ipa
+*.zip
+
+# Translation binary files
+*.translation
+
+# Mono/C# project specific files (if using Godot C#)
 .mono/
-obj/
-*.csproj.user
+.vs/
+.idea/
+*.csproj
+*.sln
+*.generated.cs
+
+# Visual Studio Code workspace configuration (optional - uncomment if preferred)
+# .vscode/
 
 # ==========================================
-# macOS Temp & System Files
+# macOS System & Temp Files
 # ==========================================
 .DS_Store
 .AppleDouble
 .LSOverride
+
+# Icon files on macOS
 Icon?
+
+# Thumbnails & Metadata directories
 ._*
 .Spotlight-V100
 .Trashes
+
+# Files created by macOS Finder
 .fseventsd
+.VolumeIcon.icns
 
 # ==========================================
-# Windows Temp & System Files
+# Windows System & Temp Files
 # ==========================================
+# Windows Explorer Metadata
 Thumbs.db
 Thumbs.db:encryptable
 ehthumbs.db
 ehthumbs_vista.db
-Desktop.ini
-*.lnk
-~$*
-*.tmp
 
-# ==========================================
-# IDE & Code Editor Files
-# ==========================================
-.vscode/
-!.vscode/tasks.json
-!.vscode/launch.json
-.idea/
-*.sln.docstates
-.vs/
-*.user
-*.userosv
-*.suo
+# Folder customizations
+Desktop.ini
+
+# Windows Recycle Bin
+$RECYCLE.BIN/
+
+# Shortcut files
+*.lnk
+
+# Windows temporary crash dumps
+*.stackdump
