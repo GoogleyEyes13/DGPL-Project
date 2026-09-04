@@ -3,10 +3,10 @@
 [ext_resource type="Script" uid="uid://cd02yewpj52sp" path="res://Scenes/NotebookMenu.gd" id="1_htgb8"]
 [ext_resource type="Texture2D" uid="uid://c74lefigmxw8j" path="res://Assets/Placeholders/ShelfElbowGrease.png" id="2_fudlm"]
 [ext_resource type="Texture2D" uid="uid://dnrnnibhmxbwa" path="res://Assets/Placeholders/ShelfOilOfVitriol.png" id="3_lstkl"]
-[ext_resource type="Texture2D" uid="uid://cv3crrh6hmykn" path="res://Assets/Placeholders/ShelfPhoenixFeather.png" id="4_fei2f"]
 [ext_resource type="Texture2D" uid="uid://ckkx6eylav54q" path="res://Assets/Placeholders/ShelfWormwood.png" id="5_1xjk5"]
+[ext_resource type="Texture2D" uid="uid://b6smgfgjh7ryp" path="res://Assets/Ingredients/ShelfPhoenixFeather.png" id="6_1xjk5"]
 [ext_resource type="Texture2D" uid="uid://51ng2qw0vqc7" path="res://Assets/Placeholders/ShelfEyeOfNewt.png" id="6_8ycv8"]
-[ext_resource type="Texture2D" uid="uid://b8fyvumgba0p2" path="res://Assets/Placeholders/ShelfStardust.png" id="7_4lqga"]
+[ext_resource type="Texture2D" uid="uid://xekkf41anj7g" path="res://Assets/Ingredients/ShelfStardust.png" id="8_1xjk5"]
 [ext_resource type="Theme" uid="uid://clxl8pps2dife" path="res://Assets/UI/bento_sketch.tres" id="8_lstkl"]
 [ext_resource type="Texture2D" uid="uid://2tilkc734tbi" path="res://Assets/Sprites/Caseoh/CaseohNormal.png" id="9_1xjk5"]
 [ext_resource type="Texture2D" uid="uid://hptes087cyox" path="res://Assets/Sprites/Caseoh/CaseohGreen.png" id="10_8ycv8"]
@@ -20,7 +20,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_htgb8")
-ingredient_icons = Array[Texture2D]([ExtResource("2_fudlm"), ExtResource("3_lstkl"), ExtResource("4_fei2f"), ExtResource("5_1xjk5"), ExtResource("6_8ycv8"), ExtResource("7_4lqga")])
 
 [node name="NotebookTab" type="Button" parent="." unique_id=218187933]
 self_modulate = Color(0.61960787, 0.3529412, 0.1882353, 0.8627451)
@@ -182,7 +181,7 @@ mouse_filter = 2
 [node name="Icon" type="TextureRect" parent="NotebookPanel/MarginContainer/IngredientListView/ScrollContainer/IngredientListContainer/Row_PhoenixFeather/VBoxContainer" unique_id=1191835477]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
-texture = ExtResource("4_fei2f")
+texture = ExtResource("6_1xjk5")
 expand_mode = 1
 stretch_mode = 5
 
@@ -234,7 +233,7 @@ mouse_filter = 2
 [node name="Icon" type="TextureRect" parent="NotebookPanel/MarginContainer/IngredientListView/ScrollContainer/IngredientListContainer/Row_Stardust/VBoxContainer" unique_id=1905190222]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
-texture = ExtResource("7_4lqga")
+texture = ExtResource("8_1xjk5")
 expand_mode = 1
 stretch_mode = 5
 

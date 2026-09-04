@@ -8,20 +8,20 @@
 [ext_resource type="Texture2D" uid="uid://cd2rjrm5q8i3" path="res://Assets/Placeholders/ShopConcept4.png" id="4_kldst"]
 [ext_resource type="PackedScene" uid="uid://nk2mr8ongv5d" path="res://Objects/Ingredient.tscn" id="5_b2bpf"]
 [ext_resource type="Texture2D" uid="uid://dxuugt8ooxyux" path="res://Assets/Placeholders/Wormwood.png" id="8_3cx6b"]
+[ext_resource type="Texture2D" uid="uid://b6smgfgjh7ryp" path="res://Assets/Ingredients/ShelfPhoenixFeather.png" id="8_4eqlp"]
 [ext_resource type="Texture2D" uid="uid://j0mtkmny2w13" path="res://Assets/Potions/RedPotion3.png" id="9_bf53h"]
 [ext_resource type="Texture2D" uid="uid://c74lefigmxw8j" path="res://Assets/Placeholders/ShelfElbowGrease.png" id="10_3jf1l"]
 [ext_resource type="PackedScene" uid="uid://dsymvu0mirgfh" path="res://Scenes/Customer.tscn" id="10_71axn"]
-[ext_resource type="Texture2D" uid="uid://cv3crrh6hmykn" path="res://Assets/Placeholders/ShelfPhoenixFeather.png" id="10_dahhg"]
-[ext_resource type="Texture2D" uid="uid://b8fyvumgba0p2" path="res://Assets/Placeholders/ShelfStardust.png" id="11_dahhg"]
 [ext_resource type="Texture2D" uid="uid://cdhhra3lqqrrp" path="res://Assets/Placeholders/EyeOfNewt.png" id="11_i0vto"]
 [ext_resource type="Texture2D" uid="uid://ckkx6eylav54q" path="res://Assets/Placeholders/ShelfWormwood.png" id="12_3so38"]
-[ext_resource type="Texture2D" uid="uid://cvw13e27ga33u" path="res://Assets/Placeholders/PhoenixFeather.png" id="12_acvyw"]
-[ext_resource type="Texture2D" uid="uid://ce5hr70gs82pl" path="res://Assets/Placeholders/Stardust.png" id="12_wxwew"]
 [ext_resource type="Texture2D" uid="uid://baboglbl7mwyk" path="res://Assets/Placeholders/ElbowGrease.png" id="13_3jf1l"]
+[ext_resource type="Texture2D" uid="uid://xekkf41anj7g" path="res://Assets/Ingredients/ShelfStardust.png" id="13_4eqlp"]
 [ext_resource type="Texture2D" uid="uid://bulerv04fit6b" path="res://Assets/Placeholders/OilOfVitriol.png" id="15_356ba"]
 [ext_resource type="Texture2D" uid="uid://be1m5eyabfqmo" path="res://Assets/Sprites/Smoke/Smoke1.png" id="17_raj38"]
+[ext_resource type="Texture2D" uid="uid://uksbqwcygb7n" path="res://Assets/Ingredients/PhoenixFeather.png" id="17_umnjm"]
 [ext_resource type="Texture2D" uid="uid://dym2f23adccmi" path="res://Assets/Sprites/Smoke/Smoke2.png" id="18_8e0uq"]
 [ext_resource type="Texture2D" uid="uid://dfkqsg1iddkuo" path="res://Assets/Sprites/Smoke/Smoke3.png" id="19_i0vto"]
+[ext_resource type="Texture2D" uid="uid://c5tdorimn7na6" path="res://Assets/Ingredients/Stardust.png" id="19_umnjm"]
 [ext_resource type="Texture2D" uid="uid://bpsxmwvufta03" path="res://Assets/Sprites/Smoke/Smoke4.png" id="20_3jf1l"]
 [ext_resource type="Texture2D" uid="uid://daa7pmr7ig2wp" path="res://Assets/Sprites/Smoke/Smoke5.png" id="21_356ba"]
 [ext_resource type="Texture2D" uid="uid://c2bfvsvocigbs" path="res://Assets/Sprites/Smoke/Smoke6.png" id="22_i4lct"]
@@ -36,6 +36,12 @@
 [ext_resource type="Texture2D" uid="uid://c613pj11xj4wf" path="res://Assets/Potions/EmptyPotion3.png" id="34_0iyqm"]
 [ext_resource type="Texture2D" uid="uid://di5fwv6uaaou0" path="res://Assets/Potions/EmptyPotion4.png" id="34_jn8rg"]
 [ext_resource type="Texture2D" uid="uid://w64h0sdd102a" path="res://Assets/Placeholders/FrogMaster.png" id="36_umnjm"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_umnjm"]
+load_path = "res://.godot/imported/ShelfPhoenixFeather.png-77706d3a4a5274c5e4253eff7420f226.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4eqlp"]
+load_path = "res://.godot/imported/ShelfStardust.png-d74efe66ed94fd1a28747d4f5ccebaa1.ctex"
 
 [sub_resource type="Gradient" id="Gradient_khy6b"]
 colors = PackedColorArray(0.3121955, 0.170391, 0.102683924, 1, 0.64137924, 0.3832803, 0.2610434, 1)
@@ -52,7 +58,7 @@ color_ramp = SubResource("Gradient_khy6b")
 size = Vector2(25.774406, 104.90531)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gl6un"]
-size = Vector2(141, 86)
+size = Vector2(141, 111)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
 animations = [{
@@ -94,6 +100,7 @@ layer = 99
 [node name="NotebookMenu" parent="UI" unique_id=856325922 instance=ExtResource("1_4eqlp")]
 z_index = 0
 mouse_filter = 2
+ingredient_icons = Array[Texture2D]([ExtResource("10_3jf1l"), ExtResource("29_i4lct"), SubResource("CompressedTexture2D_umnjm"), ExtResource("12_3so38"), ExtResource("28_356ba"), SubResource("CompressedTexture2D_4eqlp")])
 
 [node name="ShopConcept4" type="Sprite2D" parent="." unique_id=298187425]
 z_index = -20
@@ -141,21 +148,20 @@ texture = ExtResource("1_gl6un")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WitchCauldron/Area2D" unique_id=717828197]
 z_index = 10
+position = Vector2(0, -12.5)
 shape = SubResource("RectangleShape2D_gl6un")
 
 [node name="ShelfIngredients" type="CanvasLayer" parent="." unique_id=1726064442]
 
-[node name="ShelfPhoenixFeather" type="Sprite2D" parent="ShelfIngredients" unique_id=83507068]
-texture_filter = 1
-position = Vector2(1654, 462)
+[node name="ShelfPhoenixFeather" type="Sprite2D" parent="ShelfIngredients" unique_id=516046292]
+position = Vector2(1653, 462.00003)
 scale = Vector2(0.09, 0.09)
-texture = ExtResource("10_dahhg")
+texture = ExtResource("8_4eqlp")
 
-[node name="ShelfStardust" type="Sprite2D" parent="ShelfIngredients" unique_id=1663964025]
-texture_filter = 1
-position = Vector2(1655, 689.99994)
+[node name="ShelfStardust" type="Sprite2D" parent="ShelfIngredients" unique_id=615406763]
+position = Vector2(1656, 697)
 scale = Vector2(0.09, 0.09)
-texture = ExtResource("11_dahhg")
+texture = ExtResource("13_4eqlp")
 
 [node name="ShelfWormwood" type="Sprite2D" parent="ShelfIngredients" unique_id=791196322]
 position = Vector2(1653.9999, 263.99994)
@@ -198,7 +204,7 @@ ingredientSprite = ExtResource("13_3jf1l")
 [node name="PhoenixFeather" parent="." unique_id=1704942985 instance=ExtResource("5_b2bpf")]
 position = Vector2(1658, 492)
 ingredientType = "PhoenixFeather"
-ingredientSprite = ExtResource("12_acvyw")
+ingredientSprite = ExtResource("17_umnjm")
 
 [node name="OilOfVitriol" parent="." unique_id=70480956 instance=ExtResource("5_b2bpf")]
 position = Vector2(262, 707)
@@ -208,7 +214,7 @@ ingredientSprite = ExtResource("15_356ba")
 [node name="Stardust" parent="." unique_id=860062454 instance=ExtResource("5_b2bpf")]
 position = Vector2(1658, 705)
 ingredientType = "Stardust"
-ingredientSprite = ExtResource("12_wxwew")
+ingredientSprite = ExtResource("19_umnjm")
 
 [node name="Customer" parent="." unique_id=1519350129 instance=ExtResource("10_71axn")]
 z_index = -100

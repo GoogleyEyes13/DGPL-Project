@@ -39,7 +39,8 @@ var PotionEffects: Dictionary = {
 	"Potion of Green Skin": 4,
 	"Potion of Eye Colour Swap": 5,
 	"Potion of Skeleton": 6,
-	"Potion of Change Art Styles": 7
+	"Potion of Change Art Styles": 7,
+	"Potion of Creature Feature": 8
 }
 
 @onready var PotionEffectSprite: AnimatedSprite2D = $"."
@@ -128,17 +129,18 @@ func receive_potion(potion_type: String) -> void:
 	if PotionEffects.has(potion_type):
 		frame = PotionEffects[potion_type]
 		print("Potion effect on customer: ", potion_type)
+		var delay_time: float = 1.0
 		
 		if potion_type == "Potion of Explode":
 			explode_effect()
 			return
-		
-		var delay_time: float = 1.0
-		
-		if potion_type == "Potion of Rapid Shaking":
+		elif potion_type == "Potion of Rapid Shaking":
 			delay_time = 1.0
 			jitter_effect(delay_time + walk_out_duration)
-		
+		elif potion_type == "Potion of Creature Feature":
+			# Increasing size of creature a lil bit
+			scale = Vector2(0.16, 0.16)
+			
 		var delay = create_tween()
 		delay.tween_interval(delay_time)
 		delay.tween_callback(bob_out)
@@ -173,6 +175,9 @@ func new_customer() -> void:
 	if customer_names.is_empty():
 		push_warning("No customer names assigned!")
 		return
+	
+	# Setting customer size to default
+	scale = Vector2(0.12, 0.12)
 
 	#Gets the nexxt customer, 
 	var next_name: String = customer_names[randi() % customer_names.size()]

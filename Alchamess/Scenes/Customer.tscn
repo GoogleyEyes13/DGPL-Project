@@ -8,10 +8,11 @@
 [ext_resource type="Texture2D" uid="uid://dm70h1r36ebhq" path="res://Assets/Sprites/Caseoh/CaseohBlueEyes.png" id="6_yd18k"]
 [ext_resource type="Texture2D" uid="uid://c0mta21pjhs8s" path="res://Assets/Sprites/Caseoh/CaseohSkeleton.png" id="7_c7i8l"]
 [ext_resource type="Script" uid="uid://bmpdj2jewm2v8" path="res://Assets/Scripts/Customer.gd" id="7_cj036"]
+[ext_resource type="Texture2D" uid="uid://bvesg674o4sht" path="res://Assets/Placeholders/TheFeaturedCreature.png" id="8_8q8uq"]
 [ext_resource type="Texture2D" uid="uid://cuxbg1ndm6osm" path="res://Assets/Sprites/Herb Bert/HerbBertNormal.png" id="8_kosw0"]
 [ext_resource type="Texture2D" uid="uid://dqjgleeflraml" path="res://Assets/Sprites/Herb Bert/HerbBertArtStyleSwap.png" id="9_1r5ol"]
 [ext_resource type="Texture2D" uid="uid://m0bky37fmah1" path="res://Assets/Sprites/Herb Bert/HerbBertBald.png" id="9_08swe"]
-[ext_resource type="Texture2D" uid="uid://bqlnp3scy0e0k" path="res://Assets/Sprites/Monicle Man/monocle.png" id="9_kosw0"]
+[ext_resource type="Texture2D" uid="uid://bqlnp3scy0e0k" path="res://Assets/Sprites/Mr Monicle/MrMonicle.png" id="9_kosw0"]
 [ext_resource type="Texture2D" uid="uid://cmw2a472yk00q" path="res://Assets/Sprites/Herb Bert/HerbBertBigHead.png" id="10_8q8uq"]
 [ext_resource type="Texture2D" uid="uid://kjlv0sdj6die" path="res://Assets/Sprites/Herb Bert/HerbBertSmallHead.png" id="11_8tccj"]
 [ext_resource type="Texture2D" uid="uid://dgmleutps3smk" path="res://Assets/Sprites/Herb Bert/HerbBertGreen.png" id="12_a8pu0"]
@@ -40,6 +41,12 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("7_c7i8l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_r206j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_8q8uq")
 }],
 "loop": 1,
 "name": &"Caseoh",
@@ -69,6 +76,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("9_1r5ol")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_8q8uq")
 }],
 "loop": 1,
 "name": &"HerbBert",
@@ -77,6 +87,30 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("9_kosw0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_kosw0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_kosw0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_kosw0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_kosw0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_kosw0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_kosw0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_kosw0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_8q8uq")
 }],
 "loop": 1,
 "name": &"Monicle",
@@ -91,7 +125,7 @@ height = 4375.0
 texture_filter = 1
 scale = Vector2(0.12, 0.12)
 sprite_frames = SubResource("SpriteFrames_57qmd")
-animation = &"HerbBert"
+animation = &"Monicle"
 script = ExtResource("7_cj036")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=621125951]
