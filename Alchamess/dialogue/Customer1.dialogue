@@ -1,7 +1,7 @@
 ~ start
-% Nathan: This is always a nice shop to pass by!
-% Nathan: Greetings, potion seller!
-% Nathan: Phew, had a rough day of work today.
+% Herb Bert: This is always a nice shop to pass by!
+% Herb Bert: Greetings, potion seller!
+% Herb Bert: Phew, had a rough day of work today.
 
 match Globals.wantedPotionType: # this is a placeholder while we set up a global variable for the wanted potions
 	when "MogFace":
