@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dmft8eqa80pop"]
 
-[ext_resource type="Script" uid="uid://cx5xi6pmhq8pf" path="res://Scenes/SettingsMenu.gd" id="1_4hxq3"]
+[ext_resource type="Script" uid="uid://cx5xi6pmhq8pf" path="res://Assets/Scripts/SettingsMenu.gd" id="1_4hxq3"]
 [ext_resource type="Theme" uid="uid://clxl8pps2dife" path="res://Assets/UI/bento_sketch.tres" id="1_flfri"]
 
 [node name="SettingsMenu" type="Control" unique_id=1802880493]

@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bvcwpspjid22w"]
+
+[ext_resource type="Script" uid="uid://c2tjyl7elk8ox" path="res://Assets/Scripts/Potion.gd" id="1_n4dr6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lmarx"]
+radius = 485.7143
+height = 1457.1428
+
+[node name="Potion" type="CharacterBody2D" unique_id=357962942]
+texture_filter = 1
+scale = Vector2(0.07, 0.07)
+input_pickable = true
+script = ExtResource("1_n4dr6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1940639748]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_g4v7s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=533873402]
+shape = SubResource("CapsuleShape2D_lmarx")

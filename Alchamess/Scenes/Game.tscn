@@ -29,19 +29,37 @@
 [ext_resource type="Texture2D" uid="uid://dft8sqhl0d3ay" path="res://Assets/Sprites/Smoke/Smoke8.png" id="24_i1pr2"]
 [ext_resource type="Texture2D" uid="uid://51ng2qw0vqc7" path="res://Assets/Placeholders/ShelfEyeOfNewt.png" id="28_356ba"]
 [ext_resource type="Texture2D" uid="uid://dnrnnibhmxbwa" path="res://Assets/Placeholders/ShelfOilOfVitriol.png" id="29_i4lct"]
-[ext_resource type="Script" uid="uid://hpmnbq15xtl1" path="res://Scenes/WhatDoesCauldronHave.gd" id="30_iyesh"]
+[ext_resource type="Script" uid="uid://hpmnbq15xtl1" path="res://Assets/Scripts/WhatDoesCauldronHave.gd" id="30_iyesh"]
 [ext_resource type="Texture2D" uid="uid://byu4ukcgr8xle" path="res://Assets/Potions/EmptyPotion2.png" id="31_4f4ik"]
 [ext_resource type="Texture2D" uid="uid://bn44fqj2kaj31" path="res://Assets/Potions/EmptyPotion1.png" id="31_i1pr2"]
 [ext_resource type="Texture2D" uid="uid://da0crssdmo2sq" path="res://Assets/Potions/EmptyPotion5.png" id="32_khs3t"]
+[ext_resource type="Texture2D" uid="uid://ssgy7vscqmtq" path="res://Assets/Potions/GreenPotion2.png" id="32_lmarx"]
+[ext_resource type="Texture2D" uid="uid://dgoy7usl7dfwh" path="res://Assets/Potions/OrangePotion2.png" id="33_7av8l"]
 [ext_resource type="Texture2D" uid="uid://c613pj11xj4wf" path="res://Assets/Potions/EmptyPotion3.png" id="34_0iyqm"]
+[ext_resource type="Texture2D" uid="uid://cjubsytkamofu" path="res://Assets/Potions/RedPotion2.png" id="34_dctr5"]
 [ext_resource type="Texture2D" uid="uid://di5fwv6uaaou0" path="res://Assets/Potions/EmptyPotion4.png" id="34_jn8rg"]
+[ext_resource type="PackedScene" uid="uid://bvcwpspjid22w" path="res://Objects/Potion.tscn" id="35_4eqlp"]
+[ext_resource type="Texture2D" uid="uid://c86jkb5kro3ud" path="res://Assets/Potions/YellowPotion2.png" id="35_mi7vx"]
+[ext_resource type="Texture2D" uid="uid://bbl1fn22u5vpn" path="res://Assets/Potions/GreenPotion1.png" id="36_lmarx"]
 [ext_resource type="Texture2D" uid="uid://w64h0sdd102a" path="res://Assets/Placeholders/FrogMaster.png" id="36_umnjm"]
+[ext_resource type="Texture2D" uid="uid://cjthekjxalkos" path="res://Assets/Potions/OrangePotion1.png" id="37_7av8l"]
+[ext_resource type="Texture2D" uid="uid://d2k0fd0gjnxcd" path="res://Assets/Potions/RedPotion1.png" id="38_dctr5"]
+[ext_resource type="Texture2D" uid="uid://iwk2hgrjnnfk" path="res://Assets/Potions/YellowPotion1.png" id="39_mi7vx"]
+[ext_resource type="Texture2D" uid="uid://yb312s56anxv" path="res://Assets/Potions/GreenPotion5.png" id="42_e2w45"]
+[ext_resource type="Texture2D" uid="uid://b7uaq54r4kkua" path="res://Assets/Potions/GreenPotion4.png" id="42_lklsk"]
+[ext_resource type="Texture2D" uid="uid://c6tv40bul1sv3" path="res://Assets/Potions/GreenPotion3.png" id="42_m15vq"]
+[ext_resource type="Texture2D" uid="uid://b0ay36xoqhqj7" path="res://Assets/Potions/OrangePotion4.png" id="43_34hf4"]
+[ext_resource type="Texture2D" uid="uid://cbv60gk0fyone" path="res://Assets/Potions/OrangePotion3.png" id="43_a05uw"]
+[ext_resource type="Texture2D" uid="uid://doml8knrv54bm" path="res://Assets/Potions/OrangePotion5.png" id="43_oo65k"]
+[ext_resource type="Texture2D" uid="uid://bfodrgt73u8ni" path="res://Assets/Potions/RedPotion4.png" id="44_jamva"]
+[ext_resource type="Texture2D" uid="uid://dwvcln1kbj0m2" path="res://Assets/Potions/YellowPotion3.png" id="44_n2ugt"]
+[ext_resource type="Texture2D" uid="uid://bruuijfi25i6r" path="res://Assets/Potions/RedPotion5.png" id="44_smnwb"]
+[ext_resource type="Texture2D" uid="uid://f48eel4uv1q2" path="res://Assets/Potions/YellowPotion5.png" id="45_lkuj1"]
+[ext_resource type="Texture2D" uid="uid://d0wxly5qr13qj" path="res://Assets/Potions/YellowPotion4.png" id="45_m15vq"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_umnjm"]
-load_path = "res://.godot/imported/ShelfPhoenixFeather.png-77706d3a4a5274c5e4253eff7420f226.ctex"
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4eqlp"]
-load_path = "res://.godot/imported/ShelfStardust.png-d74efe66ed94fd1a28747d4f5ccebaa1.ctex"
 
 [sub_resource type="Gradient" id="Gradient_khy6b"]
 colors = PackedColorArray(0.3121955, 0.170391, 0.102683924, 1, 0.64137924, 0.3832803, 0.2610434, 1)
@@ -92,10 +110,114 @@ animations = [{
 "speed": 9.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_n4dr6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("31_i1pr2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_lmarx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_7av8l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_dctr5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_mi7vx")
+}],
+"loop": 1,
+"name": &"Potion1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("31_4f4ik")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_lmarx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_7av8l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_dctr5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_mi7vx")
+}],
+"loop": 1,
+"name": &"Potion2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("34_0iyqm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_m15vq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_a05uw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_bf53h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_n2ugt")
+}],
+"loop": 1,
+"name": &"Potion3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("34_jn8rg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_lklsk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_34hf4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_jamva")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_m15vq")
+}],
+"loop": 1,
+"name": &"Potion4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("32_khs3t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_e2w45")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_oo65k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_smnwb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_lkuj1")
+}],
+"loop": 1,
+"name": &"Potion5",
+"speed": 5.0
+}]
+
 [node name="Game" type="Node2D" unique_id=1061024810]
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=976726611]
 layer = 99
+visible = false
 
 [node name="NotebookMenu" parent="UI" unique_id=856325922 instance=ExtResource("1_4eqlp")]
 z_index = 0
@@ -236,50 +358,62 @@ texture = ExtResource("9_bf53h")
 
 [node name="EmptyPotions" type="CanvasLayer" parent="." unique_id=357365399]
 
-[node name="EmptyPotion1" type="Sprite2D" parent="EmptyPotions" unique_id=1851375163]
-texture_filter = 1
+[node name="Potion1" parent="EmptyPotions" unique_id=357962942 instance=ExtResource("35_4eqlp")]
+z_index = 50
 position = Vector2(652.99994, 112)
-scale = Vector2(0.07, 0.07)
-texture = ExtResource("31_i1pr2")
+potionType = "Potion1"
+potionName = "Potion1"
+potionSprite = SubResource("SpriteFrames_n4dr6")
 
-[node name="EmptyPotion2" type="Sprite2D" parent="EmptyPotions" unique_id=1205735382]
-texture_filter = 1
+[node name="Potion1-2" parent="EmptyPotions" unique_id=515047728 instance=ExtResource("35_4eqlp")]
+z_index = 50
 position = Vector2(1271, 112)
-scale = Vector2(0.07, 0.07)
-texture = ExtResource("31_i1pr2")
+potionType = "Potion1"
+potionName = "Potion1-2"
+potionSprite = SubResource("SpriteFrames_n4dr6")
 
-[node name="EmptyPotion3" type="Sprite2D" parent="EmptyPotions" unique_id=1532264737]
-texture_filter = 1
-position = Vector2(1198, 112.99999)
-scale = Vector2(0.07, 0.07)
-texture = ExtResource("31_4f4ik")
+[node name="Potion2" parent="EmptyPotions" unique_id=1561438821 instance=ExtResource("35_4eqlp")]
+z_index = 50
+position = Vector2(729, 113)
+potionType = "Potion2"
+potionName = "Potion2"
+potionSprite = SubResource("SpriteFrames_n4dr6")
 
-[node name="EmptyPotion4" type="Sprite2D" parent="EmptyPotions" unique_id=722865792]
-texture_filter = 1
-position = Vector2(728.99994, 112.99999)
-scale = Vector2(0.07, 0.07)
-texture = ExtResource("31_4f4ik")
+[node name="Potion2-2" parent="EmptyPotions" unique_id=513963464 instance=ExtResource("35_4eqlp")]
+z_index = 50
+position = Vector2(1198, 113)
+potionType = "Potion2"
+potionName = "Potion2-2"
+potionSprite = SubResource("SpriteFrames_n4dr6")
 
-[node name="EmptyPotion5" type="Sprite2D" parent="EmptyPotions" unique_id=1406306082]
-position = Vector2(817.99994, 106.99999)
-scale = Vector2(0.07, 0.07)
-texture = ExtResource("32_khs3t")
+[node name="Potion3" parent="EmptyPotions" unique_id=742947239 instance=ExtResource("35_4eqlp")]
+z_index = 50
+position = Vector2(906, 114)
+potionType = "Potion3"
+potionName = "Potion3"
+potionSprite = SubResource("SpriteFrames_n4dr6")
 
-[node name="EmptyPotion6" type="Sprite2D" parent="EmptyPotions" unique_id=1639269290]
-position = Vector2(1105, 106.99999)
-scale = Vector2(0.07, 0.07)
-texture = ExtResource("32_khs3t")
+[node name="Potion4" parent="EmptyPotions" unique_id=311102818 instance=ExtResource("35_4eqlp")]
+z_index = 50
+position = Vector2(1014, 112)
+potionType = "Potion4"
+potionName = "Potion4"
+potionSprite = SubResource("SpriteFrames_n4dr6")
+
+[node name="Potion5" parent="EmptyPotions" unique_id=1898042214 instance=ExtResource("35_4eqlp")]
+z_index = 50
+position = Vector2(818, 107)
+potionType = "Potion5"
+potionName = "Potion5"
+potionSprite = SubResource("SpriteFrames_n4dr6")
+
+[node name="Potion5-2" parent="EmptyPotions" unique_id=1949957388 instance=ExtResource("35_4eqlp")]
+z_index = 50
+position = Vector2(1105, 107)
+potionType = "Potion5"
+potionName = "Potion5-2"
+potionSprite = SubResource("SpriteFrames_n4dr6")
 flip_h = true
-
-[node name="EmptyPotion7" type="Sprite2D" parent="EmptyPotions" unique_id=369287600]
-position = Vector2(905.99994, 113.99999)
-scale = Vector2(0.07, 0.07)
-texture = ExtResource("34_0iyqm")
-
-[node name="EmptyPotion8" type="Sprite2D" parent="EmptyPotions" unique_id=1673853769]
-position = Vector2(1013.99994, 112)
-scale = Vector2(0.07, 0.07)
-texture = ExtResource("34_jn8rg")
 
 [node name="IngredientLabels" type="CanvasLayer" parent="." unique_id=2123413072]
 

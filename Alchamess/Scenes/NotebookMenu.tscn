@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bs1r4s6qk1h7a"]
 
-[ext_resource type="Script" uid="uid://cd02yewpj52sp" path="res://Scenes/NotebookMenu.gd" id="1_htgb8"]
+[ext_resource type="Script" uid="uid://cd02yewpj52sp" path="res://Assets/Scripts/NotebookMenu.gd" id="1_htgb8"]
 [ext_resource type="Texture2D" uid="uid://c74lefigmxw8j" path="res://Assets/Placeholders/ShelfElbowGrease.png" id="2_fudlm"]
 [ext_resource type="Texture2D" uid="uid://dnrnnibhmxbwa" path="res://Assets/Placeholders/ShelfOilOfVitriol.png" id="3_lstkl"]
 [ext_resource type="Texture2D" uid="uid://ckkx6eylav54q" path="res://Assets/Placeholders/ShelfWormwood.png" id="5_1xjk5"]

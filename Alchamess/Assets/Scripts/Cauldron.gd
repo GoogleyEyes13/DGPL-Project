@@ -101,10 +101,16 @@ func create_potion():
 # Function for detecting ingredients touching the cauldron
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is CharacterBody2D:
-		_add_ingredient_to_cauldron(body.ingredientType)
-		body.is_grabbed = false
-		body.get_node("Sprite2D").visible = false
-		body.return_ingredient_to_start()
+		# Check if object is an ingredient
+		if body.has_method("return_ingredient_to_start"):
+			_add_ingredient_to_cauldron(body.ingredientType)
+			body.is_grabbed = false
+			body.get_node("Sprite2D").visible = false
+			body.return_ingredient_to_start()
+		
+		# Otherwise, it's a potion bottle
+		print("Potion bottle detected")
+		return
 		
 
 # Making the smoke animation invisible after its played once
