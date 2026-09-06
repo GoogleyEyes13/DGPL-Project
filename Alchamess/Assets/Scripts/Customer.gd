@@ -40,7 +40,8 @@ var PotionEffects: Dictionary = {
 	"Potion of Eye Colour Swap": 5,
 	"Potion of Skeleton": 6,
 	"Potion of Change Art Styles": 7,
-	"Potion of Creature Feature": 8
+	"Potion of Creature Feature": 8,
+	"Potion of Beautification": 9
 }
 
 @onready var PotionEffectSprite: AnimatedSprite2D = $"."
@@ -179,7 +180,7 @@ func new_customer() -> void:
 	# Setting customer size to default
 	scale = Vector2(0.12, 0.12)
 
-	#Gets the nexxt customer, 
+	#Gets the next customer, 
 	var next_name: String = customer_names[randi() % customer_names.size()]
 	if customer_names.size() > 1:
 		while next_name == CustomerName: 
