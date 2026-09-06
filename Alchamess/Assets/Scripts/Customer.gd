@@ -3,7 +3,7 @@ extends AnimatedSprite2D
 
 #region Variables
 # The current customer loaded
-var CustomerName: String = "Caseoh"
+var CustomerName: String = "HerbBert"
 
 var start_pos: Vector2
 var centre_pos: Vector2
@@ -168,7 +168,7 @@ func bob_out() -> void:
 #For testing purposes
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and event.keycode == KEY_T:
-		print("Space pressed: Giving potion to customer!")
+		print("T pressed: Giving potion to customer!")
 		receive_potion("Potion of Explode")
 
 func new_customer() -> void:

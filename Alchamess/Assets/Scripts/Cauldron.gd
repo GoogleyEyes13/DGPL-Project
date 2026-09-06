@@ -6,7 +6,7 @@ var CauldronIngredients: Dictionary = {}
 # A dictionary to store all potion combinations
 var PotionRecipes: Dictionary = {
 	["ElbowGrease", "OilOfVitriol", "PhoenixFeather"]: "Potion of Mogging",
-	["OilOfVitriol", "PhoenixFeather", "Wormwood"]: "Potion of Beutification",
+	["OilOfVitriol", "PhoenixFeather", "Wormwood"]: "Potion of Beautification",
 	["ElbowGrease", "OilOfVitriol", "Stardust"]: "Potion of Rapid Shaking",
 	["ElbowGrease", "EyeOfNewt", "PhoenixFeather"]: "Potion of Eye Colour Swap",
 	["ElbowGrease", "EyeOfNewt", "Wormwood"]: "Potion of Permanent Smile",

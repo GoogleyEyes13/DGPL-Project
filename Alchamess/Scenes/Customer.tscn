@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://kjlv0sdj6die" path="res://Assets/Sprites/Herb Bert/HerbBertSmallHead.png" id="11_8tccj"]
 [ext_resource type="Texture2D" uid="uid://dgmleutps3smk" path="res://Assets/Sprites/Herb Bert/HerbBertGreen.png" id="12_a8pu0"]
 [ext_resource type="Texture2D" uid="uid://crnbt5igmh4ii" path="res://Assets/Sprites/Herb Bert/HerbBertGreenEyes.png" id="13_ybyuj"]
+[ext_resource type="Texture2D" uid="uid://ni3v6u1inad3" path="res://Assets/Sprites/Herb Bert/HerbBertBeautification.png" id="16_8tccj"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_57qmd"]
 animations = [{
@@ -47,6 +48,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("8_8q8uq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_r206j")
 }],
 "loop": 1,
 "name": &"Caseoh",
@@ -79,6 +83,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("8_8q8uq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_8tccj")
 }],
 "loop": 1,
 "name": &"HerbBert",
@@ -111,6 +118,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("8_8q8uq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_kosw0")
 }],
 "loop": 1,
 "name": &"Monicle",
@@ -125,7 +135,7 @@ height = 4375.0
 texture_filter = 1
 scale = Vector2(0.12, 0.12)
 sprite_frames = SubResource("SpriteFrames_57qmd")
-animation = &"Monicle"
+animation = &"HerbBert"
 script = ExtResource("7_cj036")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=621125951]
