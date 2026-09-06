@@ -11,9 +11,11 @@ config_version=5
 [application]
 
 config/name="Alchamess"
+config/description="Alchamess combines simulation and puzzle-comedy, utilising potion-mixing and deduction in a Mastermind-style logic.  It also utilises a management/customer-service loop, similar to games like Potion Craft/Schedule 1-style, where you also utilise experimentation
+"
 run/main_scene="uid://cvlswtmdkf4hn"
 config/features=PackedStringArray("4.7", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://dmrugnh5nj1ii"
 
 [audio]
 
