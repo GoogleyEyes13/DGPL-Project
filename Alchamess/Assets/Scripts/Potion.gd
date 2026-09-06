@@ -13,12 +13,12 @@ func _ready() -> void:
 	$AnimatedSprite2D.flip_h = flip_h
 
 
-func _process(delta):
+func _process(_delta):
 	if is_grabbed:
 		global_position = get_global_mouse_position()
 
 
-func _input_event(viewport, event, shape_idx) -> void:
+func _input_event(_viewport, event, _shape_idx) -> void:
 	# Checks if the potion has been grabbed
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:

@@ -98,13 +98,13 @@ func on_arrival() -> void:
 	print(CustomerName, " is at the counter! Waiting for interaction...") #test
 	match CustomerName:
 		"Caseoh":
-			var resource = load("res://dialogue/testDialogue.dialogue")
+			var resource = load("res://Dialogue/testDialogue.dialogue")
 			DialogueManager.show_dialogue_balloon(resource)
 		"HerbBert":
-			var resource = load("res://dialogue/Customer1.dialogue")
+			var resource = load("res://Dialogue/Customer1.dialogue")
 			DialogueManager.show_dialogue_balloon(resource)
 		_:
-			var resource = load("res://dialogue/Customer1.dialogue")
+			var resource = load("res://Dialogue/Customer1.dialogue")
 			DialogueManager.show_dialogue_balloon(resource)
 	cust_is_ready = true
 
@@ -234,6 +234,6 @@ func _on_exploded() -> void:
 		return
 	scale = original_scale 
 	
-	var pause = create_tween()
-	pause.tween_interval(0.75)
-	pause.tween_callback(new_customer)
+	var pause_tween = create_tween()
+	pause_tween.tween_interval(0.75)
+	pause_tween.tween_callback(new_customer)

@@ -12,7 +12,7 @@ func _ready():
 	starting_position = position
 
 
-func _process(delta):
+func _process(_delta):
 	# Checks if the left mouse button has been released
 	if not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		is_grabbed = false
@@ -40,7 +40,7 @@ func _process(delta):
 		rotation_degrees = (position.x - 970) / 3
 
 
-func _input_event(viewport, event, shape_idx):
+func _input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.pressed:

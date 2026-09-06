@@ -41,21 +41,21 @@ func _ready():
 	pass
 
 
-func _add_ingredient_to_cauldron(name):
+func _add_ingredient_to_cauldron(ingredient_ingredient_name):
 	if CauldronIngredients.size() >= 3:
 		# If cauldron already has 3 ingredients, don't add another
 		print("Cauldron full")
 		
-		return
+		return 
 	
-	if CauldronIngredients.has(name):
+	if CauldronIngredients.has(ingredient_ingredient_name):
 		# If ingredient is already in the pot, don't add another
-		print(name, " is already in the pot")
+		print(ingredient_ingredient_name, " is already in the pot")
 		return
 	
 	# Add ingredient to the pot
-	CauldronIngredients[name] = 1
-	print(name, " has been placed in the pot")
+	CauldronIngredients[ingredient_ingredient_name] = 1
+	print(ingredient_ingredient_name, " has been placed in the pot")
 	ingredients_updated.emit(CauldronIngredients.keys(), LastPotionCreated)
 	
 	if CauldronIngredients.size() == 3:
@@ -66,9 +66,6 @@ func _add_ingredient_to_cauldron(name):
 		Potion.visible = true
 		CauldronIngredients = {}
 		ingredients_updated.emit(CauldronIngredients.keys(), LastPotionCreated)
-		
-		# Short timeout to prevent instant ingredient add
-		get_tree().create_timer(1.0).timeout
 	
 	print("CURRENT CAULDRON INGREDIENTS: ", CauldronIngredients)
 	
@@ -77,7 +74,7 @@ func create_potion():
 		# Getting the current cauldron ingredients and sorting them
 		var Ingredients = CauldronIngredients.keys()
 		
-		# Converting the node StringNames to Strings
+		# Converting the node Stringingredient_names to Strings
 		for i in range(Ingredients.size()):
 			Ingredients[i] = str(Ingredients[i])
 		
@@ -85,14 +82,14 @@ func create_potion():
 		Ingredients.sort()
 		
 		if PotionRecipes.has(Ingredients):
-			var Potion = PotionRecipes[Ingredients]
-			LastPotionCreated = Potion
-			PotionJournal.register_potion(Potion, Ingredients) 
-			print("Created: ", Potion)
+			var potion_name = PotionRecipes[Ingredients]
+			LastPotionCreated = potion_name
+			PotionJournal.register_potion(potion_name, Ingredients) 
+			print("Created: ", potion_name)
 			SmokeTransition.visible = true
 			SmokeTransition.play()
 			await get_tree().create_timer(0.3).timeout
-			potion_created.emit(Potion)
+			potion_created.emit(potion_name)
 		else:
 			print(Ingredients)
 			print("Invalid combination")

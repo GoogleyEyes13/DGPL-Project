@@ -10,12 +10,12 @@ func _ready() -> void:
 	$Sprite2D.visible = false
 
 
-func _process(delta):
+func _process(_delta):
 	if is_grabbed:
 		global_position = get_global_mouse_position()
 
 
-func _input_event(viewport, event, shape_idx) -> void:
+func _input_event(_viewport, event, _shape_idx) -> void:
 	# Checks if the ingredient has been grabbed
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
