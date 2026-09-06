@@ -28,6 +28,7 @@ PotionJournal="*uid://cqvvr3h2ffhx"
 [dialogue_manager]
 
 runtime/balloon_path="res://Assets/DialogueBalloons/balloon.tscn"
+editor/advanced/custom_test_scene_path="res://addons/dialogue_manager/test_scene.tscn"
 
 [display]
 
@@ -38,10 +39,6 @@ window/stretch/mode="canvas_items"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
-
-[internationalization]
-
-locale/translations_pot_files=PackedStringArray("res://dialogue/testDialogue.dialogue", "res://dialogue/untitled.dialogue", "res://dialogue/Customer1.dialogue")
 
 [layer_names]
 
