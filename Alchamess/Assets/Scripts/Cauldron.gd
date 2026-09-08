@@ -63,12 +63,6 @@ func _add_ingredient_to_cauldron(ingredient_ingredient_name):
 		ingredients_updated.emit(CauldronIngredients.keys(), LastPotionCreated)
 	
 	print("CURRENT CAULDRON INGREDIENTS: ", CauldronIngredients)
-	
-	
-func create_potion(potion_name):
-		print("Created: ", potion_name)
-		await get_tree().create_timer(0.3).timeout
-		CauldronFull = true
 
 
 # Function for detecting ingredients touching the cauldron
