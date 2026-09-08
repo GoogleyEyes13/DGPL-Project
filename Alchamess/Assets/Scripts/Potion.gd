@@ -7,10 +7,14 @@ extends CharacterBody2D
 
 var is_grabbed : bool = false
 
+@onready var PotionBottleSprite: AnimatedSprite2D = $AnimatedSprite2D
+
 func _ready() -> void:
 	$AnimatedSprite2D.sprite_frames = potionSprite
 	$AnimatedSprite2D.animation = potionType
 	$AnimatedSprite2D.flip_h = flip_h
+	
+	$"../WitchCauldron".potion_bottle_filled.connect(potion_bottle_filled)
 
 
 func _process(_delta):
@@ -32,6 +36,12 @@ func _input(event) -> void:
 			if not event.pressed and is_grabbed:
 				is_grabbed = false
 				return_potion_to_start()
+
+
+func potion_bottle_filled(filled_potion_type) -> void:
+	# Changing sprite to "fill up" the potion bottle
+	if filled_potion_type == potionName:
+		PotionBottleSprite.frame = 1
 
 
 # Returning the relevant potion to their starting positions

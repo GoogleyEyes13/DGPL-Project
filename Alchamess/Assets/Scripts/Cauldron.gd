@@ -30,10 +30,11 @@ var PotionRecipes: Dictionary = {
 
 @onready var Potion = $"../CraftedPotion"
 @onready var SmokeTransition = $"../Smoke"
+@onready var CauldronFull = false
 
 # A signal to send to the customer when a potion is made
-signal potion_created
 signal ingredients_updated(ingredients: Array, last_potion: String)
+signal potion_bottle_filled
 
 var LastPotionCreated: String = "None"
 
@@ -62,9 +63,8 @@ func _add_ingredient_to_cauldron(ingredient_ingredient_name):
 		# Create the potion based on ingredient combination
 		create_potion()
 		
-		# Spawning potion sprite, resetting ingredients
-		Potion.visible = true
-		CauldronIngredients = {}
+		# Setting CauldronFull to true
+		CauldronFull = true
 		ingredients_updated.emit(CauldronIngredients.keys(), LastPotionCreated)
 	
 	print("CURRENT CAULDRON INGREDIENTS: ", CauldronIngredients)
@@ -89,7 +89,7 @@ func create_potion():
 			SmokeTransition.visible = true
 			SmokeTransition.play()
 			await get_tree().create_timer(0.3).timeout
-			potion_created.emit(potion_name)
+			CauldronFull = true
 		else:
 			print(Ingredients)
 			print("Invalid combination")
@@ -104,9 +104,17 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			body.is_grabbed = false
 			body.get_node("Sprite2D").visible = false
 			body.return_ingredient_to_start()
-		
+			return
+			
 		# Otherwise, it's a potion bottle
 		print("Potion bottle detected")
+		# Check if the cauldron is full, if so, then fill the potion bottle
+		if CauldronFull == true:
+			potion_bottle_filled.emit(body.potionName)
+			CauldronFull = false
+			CauldronIngredients = {}
+			# Updating label
+			ingredients_updated.emit(CauldronIngredients.keys(), LastPotionCreated)
 		return
 		
 

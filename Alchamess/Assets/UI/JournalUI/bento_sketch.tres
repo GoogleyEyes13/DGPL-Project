@@ -1,8 +1,8 @@
 [gd_resource type="Theme" format=3 uid="uid://clxl8pps2dife"]
 
-[ext_resource type="Texture2D" uid="uid://cgb8beh4uwbq1" path="res://Assets/UI/JournalUI/textures/irregular_paper_frame.svg" id="1_g1h3w"]
-[ext_resource type="Texture2D" uid="uid://co66fgbpngbf2" path="res://Assets/UI/JournalUI/textures/wood_header_frame.svg" id="2_lento"]
-[ext_resource type="FontFile" uid="uid://bfsw20m3ckgxb" path="res://Assets/UI/JournalUI/fonts/PatrickHand-Regular.ttf" id="18_l6dcw"]
+[ext_resource type="Texture2D" uid="uid://qk15xrcw7jps" path="res://Assets/UI/JournalUI/textures/irregular_paper_frame.svg" id="1_g1h3w"]
+[ext_resource type="Texture2D" uid="uid://c4nkk6b7xfceq" path="res://Assets/UI/JournalUI/textures/wood_header_frame.svg" id="2_lento"]
+[ext_resource type="FontFile" uid="uid://c0n7ekavf4ye1" path="res://Assets/UI/JournalUI/fonts/PatrickHand-Regular.ttf" id="18_l6dcw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l547k"]
 content_margin_left = 24.0

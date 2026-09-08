@@ -50,7 +50,7 @@ var PotionEffects: Dictionary = {
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# Connecting potion creation signal
-	$"../WitchCauldron".potion_created.connect(receive_potion)
+	# ADD THIS BACK BUT FROM THE POTION THING CAUSE POTION FED TO CUSTOMER
 	
 	var window_size = get_viewport_rect().size
 	
