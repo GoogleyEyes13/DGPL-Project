@@ -483,4 +483,4 @@ scale = Vector2(0.07, 0.089)
 texture = ExtResource("9_bf53h")
 
 [connection signal="body_entered" from="WitchCauldron/Area2D" to="WitchCauldron" method="_on_area_2d_body_entered"]
-[connection signal="animation_finished" from="Smoke" to="WitchCauldron" method="_on_smoke_animation_finished"]
+[connection signal="animation_finished" from="Smoke" to="Customer" method="_on_smoke_animation_finished"]

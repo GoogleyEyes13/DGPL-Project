@@ -9,6 +9,9 @@ var is_grabbed : bool = false
 
 @onready var PotionBottleSprite: AnimatedSprite2D = $AnimatedSprite2D
 
+signal PotionToCustomer
+@onready var CurrentHeldPotion = "null"
+
 func _ready() -> void:
 	$AnimatedSprite2D.sprite_frames = potionSprite
 	$AnimatedSprite2D.animation = potionType
@@ -36,12 +39,23 @@ func _input(event) -> void:
 			if not event.pressed and is_grabbed:
 				is_grabbed = false
 				return_potion_to_start()
+	
+		elif event.button_index == MOUSE_BUTTON_RIGHT:
+			if event.pressed and is_grabbed:
+				PotionToCustomer.emit(CurrentHeldPotion)
+				print("Potion effect: ", CurrentHeldPotion, "has been applied to customer")
+				# Returning potion empty and back to start
+				is_grabbed = false
+				return_potion_to_start()
+				PotionBottleSprite.frame = 0
 
 
-func potion_bottle_filled(filled_potion_type) -> void:
+func potion_bottle_filled(filled_potion_bottle, potion_type) -> void:
 	# Changing sprite to "fill up" the potion bottle
-	if filled_potion_type == potionName:
+	if filled_potion_bottle == potionName:
 		PotionBottleSprite.frame = 1
+		CurrentHeldPotion = potion_type
+		print(CurrentHeldPotion)
 
 
 # Returning the relevant potion to their starting positions

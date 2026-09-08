@@ -45,12 +45,20 @@ var PotionEffects: Dictionary = {
 }
 
 @onready var PotionEffectSprite: AnimatedSprite2D = $"."
+@onready var SmokeTransition = $"../Smoke"
 #endregion
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	# Connecting potion creation signal
-	# ADD THIS BACK BUT FROM THE POTION THING CAUSE POTION FED TO CUSTOMER
+	# Connecting potion given signals
+	$"../Potion1".PotionToCustomer.connect(receive_potion)
+	$"../Potion1-2".PotionToCustomer.connect(receive_potion)
+	$"../Potion2".PotionToCustomer.connect(receive_potion)
+	$"../Potion2-2".PotionToCustomer.connect(receive_potion)
+	$"../Potion3".PotionToCustomer.connect(receive_potion)
+	$"../Potion4".PotionToCustomer.connect(receive_potion)
+	$"../Potion5".PotionToCustomer.connect(receive_potion)
+	$"../Potion5-2".PotionToCustomer.connect(receive_potion)
 	
 	var window_size = get_viewport_rect().size
 	
@@ -69,7 +77,8 @@ func _ready() -> void:
 	hide()
 	
 	bob_in()
-	
+
+
 func bob_in() -> void:
 	show()
 	#Time to reach the middle of the screen
@@ -93,6 +102,7 @@ func bob_in() -> void:
 	
 	move_tween.tween_callback(march_tween.kill)
 
+
 func on_arrival() -> void:
 	global_position.y = centre_pos.y
 	print(CustomerName, " is at the counter! Waiting for interaction...") #test
@@ -108,6 +118,7 @@ func on_arrival() -> void:
 			DialogueManager.show_dialogue_balloon(resource)
 	cust_is_ready = true
 
+
 func jitter_effect(duration: float) -> void:
 	var jitter_tween = create_tween()
 	var steps: int = int(duration / jitter_step_time)
@@ -120,14 +131,23 @@ func jitter_effect(duration: float) -> void:
 		jitter_tween.tween_property(self, "offset", jitter_offset, jitter_step_time)
 	
 	jitter_tween.tween_property(self, "offset", Vector2.ZERO, jitter_step_time)
-	
+
+
 func receive_potion(potion_type: String) -> void:
+	print("Potion Received")
+	
 	if not cust_is_ready:
 		return
 		
 	cust_is_ready = false
 	
 	if PotionEffects.has(potion_type):
+		# Smoke transition effect
+		SmokeTransition.visible = true
+		SmokeTransition.play()
+		
+		await get_tree().create_timer(0.3).timeout
+		
 		frame = PotionEffects[potion_type]
 		print("Potion effect on customer: ", potion_type)
 		var delay_time: float = 1.0
@@ -147,7 +167,8 @@ func receive_potion(potion_type: String) -> void:
 		delay.tween_callback(bob_out)
 	else:
 		push_warning("Unknown potion type: " + potion_type)
-		
+
+
 func bob_out() -> void:
 	var move_tween = create_tween()
 	move_tween.tween_property(self, "global_position:x", end_pos.x, walk_out_duration)\
@@ -170,6 +191,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and event.keycode == KEY_T:
 		print("T pressed: Giving potion to customer!")
 		receive_potion("Potion of Explode")
+
 
 func new_customer() -> void:
 	#edge case
@@ -198,7 +220,8 @@ func new_customer() -> void:
 	cust_is_ready = false
 
 	bob_in()
-	
+
+
 func explode_effect() -> void:
 	# Permanently remove this customer
 	customer_names.erase(CustomerName)
@@ -222,7 +245,8 @@ func explode_effect() -> void:
 	explode_tween.set_parallel(false)
 	
 	explode_tween.tween_callback(_on_exploded)
-	
+
+
 func _on_exploded() -> void:
 	offset = Vector2.ZERO
 	modulate.a = 1.0
@@ -237,3 +261,8 @@ func _on_exploded() -> void:
 	var pause_tween = create_tween()
 	pause_tween.tween_interval(0.75)
 	pause_tween.tween_callback(new_customer)
+
+
+func _on_smoke_animation_finished() -> void:
+	# Making the smoke animation invisible after its played once
+	SmokeTransition.visible = false

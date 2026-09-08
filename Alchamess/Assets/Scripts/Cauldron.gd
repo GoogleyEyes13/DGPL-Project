@@ -29,7 +29,6 @@ var PotionRecipes: Dictionary = {
 
 
 @onready var Potion = $"../CraftedPotion"
-@onready var SmokeTransition = $"../Smoke"
 @onready var CauldronFull = false
 
 # A signal to send to the customer when a potion is made
@@ -40,7 +39,6 @@ var LastPotionCreated: String = "None"
 
 func _ready():
 	pass
-
 
 func _add_ingredient_to_cauldron(ingredient_ingredient_name):
 	if CauldronIngredients.size() >= 3:
@@ -59,10 +57,7 @@ func _add_ingredient_to_cauldron(ingredient_ingredient_name):
 	print(ingredient_ingredient_name, " has been placed in the pot")
 	ingredients_updated.emit(CauldronIngredients.keys(), LastPotionCreated)
 	
-	if CauldronIngredients.size() == 3:
-		# Create the potion based on ingredient combination
-		create_potion()
-		
+	if CauldronIngredients.size() == 3:		
 		# Setting CauldronFull to true
 		CauldronFull = true
 		ingredients_updated.emit(CauldronIngredients.keys(), LastPotionCreated)
@@ -70,33 +65,24 @@ func _add_ingredient_to_cauldron(ingredient_ingredient_name):
 	print("CURRENT CAULDRON INGREDIENTS: ", CauldronIngredients)
 	
 	
-func create_potion():
-		# Getting the current cauldron ingredients and sorting them
-		var Ingredients = CauldronIngredients.keys()
-		
-		# Converting the node Stringingredient_names to Strings
-		for i in range(Ingredients.size()):
-			Ingredients[i] = str(Ingredients[i])
-		
-		# Sorting them alphabetically
-		Ingredients.sort()
-		
-		if PotionRecipes.has(Ingredients):
-			var potion_name = PotionRecipes[Ingredients]
-			LastPotionCreated = potion_name
-			PotionJournal.register_potion(potion_name, Ingredients) 
-			print("Created: ", potion_name)
-			SmokeTransition.visible = true
-			SmokeTransition.play()
-			await get_tree().create_timer(0.3).timeout
-			CauldronFull = true
-		else:
-			print(Ingredients)
-			print("Invalid combination")
+func create_potion(potion_name):
+		print("Created: ", potion_name)
+		await get_tree().create_timer(0.3).timeout
+		CauldronFull = true
 
 
 # Function for detecting ingredients touching the cauldron
 func _on_area_2d_body_entered(body: Node2D) -> void:
+	# Getting the current cauldron ingredients and sorting them
+	var Ingredients = CauldronIngredients.keys()
+		
+	# Converting the node Stringingredient_names to Strings
+	for i in range(Ingredients.size()):
+		Ingredients[i] = str(Ingredients[i])
+		
+	# Sorting them alphabetically
+	Ingredients.sort()	
+
 	if body is CharacterBody2D:
 		# Check if object is an ingredient
 		if body.has_method("return_ingredient_to_start"):
@@ -110,14 +96,13 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		print("Potion bottle detected")
 		# Check if the cauldron is full, if so, then fill the potion bottle
 		if CauldronFull == true:
-			potion_bottle_filled.emit(body.potionName)
+			var potion_name = PotionRecipes[Ingredients]
+			LastPotionCreated = potion_name
+			potion_bottle_filled.emit(body.potionName, LastPotionCreated)
 			CauldronFull = false
 			CauldronIngredients = {}
 			# Updating label
 			ingredients_updated.emit(CauldronIngredients.keys(), LastPotionCreated)
+			# Updating journal
+			PotionJournal.register_potion(potion_name, Ingredients) 
 		return
-		
-
-# Making the smoke animation invisible after its played once
-func _on_smoke_animation_finished() -> void:
-	SmokeTransition.visible = false
