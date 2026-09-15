@@ -29,6 +29,7 @@ var PotionRecipes: Dictionary = {
 
 
 @onready var Potion = $"../CraftedPotion"
+@onready var MixingStick = $"../MixingStick"
 @onready var CauldronFull = false
 
 # A signal to send to the customer when a potion is complete
@@ -64,6 +65,9 @@ func _add_ingredient_to_cauldron(ingredient_ingredient_name):
 		# Setting CauldronFull to true
 		CauldronFull = true
 		ingredients_updated.emit(CauldronIngredients.keys(), LastPotionCreated)
+		
+		# Allow mixing stick to mix
+		MixingStick.start_mixing()
 	
 	print("CURRENT CAULDRON INGREDIENTS: ", CauldronIngredients)
 
@@ -98,9 +102,12 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			potion_bottle_filled.emit(body.potionName, LastPotionCreated)
 			CauldronFull = false
 			CauldronIngredients = {}
-			# Updating label
+			
+			# Resetting potion liquid colour
+			MixingStick.reset_liquid_colour()
+			
+			# Updating label and journal
 			ingredients_updated.emit(CauldronIngredients.keys(), LastPotionCreated)
-			# Updating journal
 			PotionJournal.register_potion(potion_name, Ingredients) 
 		return
 

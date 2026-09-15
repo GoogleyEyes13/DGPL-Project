@@ -10,9 +10,9 @@ var grab_stick_x := 0.0
 
 # Tracks the number of completed side-to-side movements
 var mix_count := 0
-
-# Tracks which side was last
 var last_side := ""
+
+var allow_mixing = false
 
 # The liquid in the cauldron
 @onready var WitchCauldronLiquid = $"../WitchCauldron/WitchCauldronLiquid"
@@ -55,23 +55,24 @@ func _process(_delta):
 		var left_side = starting_position.x - movement_range
 		var right_side = starting_position.x
 		
-		if position.x <= left_side:
+		if position.x <= left_side and allow_mixing == true:
 			if last_side != "left":
 				last_side = "left"
 				mix_count += 1
+				print(mix_count)
+				change_liquid_colour()
 		
-		elif position.x >= right_side:
+		elif position.x >= right_side and allow_mixing == true:
 			if last_side != "right":
 				last_side = "right"
 				mix_count += 1
+				print(mix_count)
+				change_liquid_colour()
 		
 		# Once three side-to-side movements are made, the potion is mixed
-		if mix_count >= 6:
+		if mix_count >= 8:
 			potion_mixed.emit()
-			
-			# Reset the count
-			mix_count = 0
-			last_side = ""
+			allow_mixing = false
 
 
 func _input_event(_viewport, event, _shape_idx):
@@ -86,3 +87,23 @@ func _input_event(_viewport, event, _shape_idx):
 			
 			else:
 				is_grabbed = false
+
+
+func start_mixing() -> void:
+	allow_mixing = true
+
+
+func change_liquid_colour() -> void:
+	var target_colour = Color("#99855D")
+	var progress = float(mix_count) / 8.0
+	
+	WitchCauldronLiquid.self_modulate = Color.WHITE.lerp(
+		target_colour,
+		progress
+	)
+
+
+func reset_liquid_colour() -> void:
+	WitchCauldronLiquid.self_modulate = Color.WHITE
+	mix_count = 0
+	last_side = ""
