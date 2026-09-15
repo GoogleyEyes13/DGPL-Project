@@ -24,6 +24,7 @@ script = ExtResource("1_htgb8")
 [node name="NotebookTab" type="Button" parent="." unique_id=218187933]
 self_modulate = Color(0.61960787, 0.3529412, 0.1882353, 0.8627451)
 top_level = true
+z_index = 999
 layout_mode = 1
 anchors_preset = 11
 anchor_left = 1.0
