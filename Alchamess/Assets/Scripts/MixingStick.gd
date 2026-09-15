@@ -6,7 +6,13 @@ var starting_position: Vector2
 var grab_mouse_x := 0.0
 var grab_stick_x := 0.0
 
-@export var movement_range := 150.0
+@export var movement_range := 180.0
+
+# Tracks the number of completed side-to-side movements
+var mix_count := 0
+
+# Tracks which side was last
+var last_side := ""
 
 func _ready():
 	starting_position = position
@@ -38,6 +44,30 @@ func _process(_delta):
 		
 		# make the stick rotate when mixing
 		rotation_degrees = (position.x - 970) / 3
+		
+		# Check if the stick has reached either side
+		var left_side = starting_position.x - movement_range
+		var right_side = starting_position.x
+		
+		if position.x <= left_side:
+			if last_side != "left":
+				last_side = "left"
+				mix_count += 1
+				print("Mix count: ", mix_count)
+		
+		elif position.x >= right_side:
+			if last_side != "right":
+				last_side = "right"
+				mix_count += 1
+				print("Mix count: ", mix_count)
+		
+		# Once three side-to-side movements are made, the potion is mixed
+		if mix_count >= 6:
+			print("Potion mixed!")
+			
+			# Reset the count
+			mix_count = 0
+			last_side = ""
 
 
 func _input_event(_viewport, event, _shape_idx):
