@@ -100,11 +100,12 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			var potion_name = PotionRecipes[Ingredients]
 			LastPotionCreated = potion_name
 			potion_bottle_filled.emit(body.potionName, LastPotionCreated)
+			
+			# Resetting potion mixing and cauldron
+			MixingStick.reset_liquid_colour()
+			PotionMixed = false
 			CauldronFull = false
 			CauldronIngredients = {}
-			
-			# Resetting potion liquid colour
-			MixingStick.reset_liquid_colour()
 			
 			# Updating label and journal
 			ingredients_updated.emit(CauldronIngredients.keys(), LastPotionCreated)
