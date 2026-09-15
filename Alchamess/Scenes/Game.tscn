@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cd2rjrm5q8i3" path="res://Assets/Placeholders/ShopConcept4.png" id="4_kldst"]
 [ext_resource type="PackedScene" uid="uid://nk2mr8ongv5d" path="res://Objects/Ingredient.tscn" id="5_b2bpf"]
 [ext_resource type="Texture2D" uid="uid://b6smgfgjh7ryp" path="res://Assets/Ingredients/ShelfPhoenixFeather.png" id="8_4eqlp"]
+[ext_resource type="Texture2D" uid="uid://cepdog7xd0dxe" path="res://Assets/Placeholders/WitchCauldronLiquid.png" id="8_a05uw"]
 [ext_resource type="Texture2D" uid="uid://j0mtkmny2w13" path="res://Assets/Potions/RedPotion3.png" id="9_bf53h"]
 [ext_resource type="Texture2D" uid="uid://c74lefigmxw8j" path="res://Assets/Placeholders/ShelfElbowGrease.png" id="10_3jf1l"]
 [ext_resource type="PackedScene" uid="uid://dsymvu0mirgfh" path="res://Scenes/Customer.tscn" id="10_71axn"]
@@ -263,6 +264,12 @@ z_index = -10
 texture_filter = 1
 position = Vector2(1, -81)
 texture = ExtResource("2_j5yw3")
+
+[node name="WitchCauldronLiquid" type="Sprite2D" parent="WitchCauldron" unique_id=1659646435]
+z_index = 8
+texture_filter = 1
+position = Vector2(-3.0517578e-05, -2)
+texture = ExtResource("8_a05uw")
 
 [node name="WitchCauldronBase" type="Sprite2D" parent="WitchCauldron" unique_id=516506129]
 z_index = 10

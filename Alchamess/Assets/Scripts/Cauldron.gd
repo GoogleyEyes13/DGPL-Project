@@ -31,14 +31,17 @@ var PotionRecipes: Dictionary = {
 @onready var Potion = $"../CraftedPotion"
 @onready var CauldronFull = false
 
-# A signal to send to the customer when a potion is made
+# A signal to send to the customer when a potion is complete
 signal ingredients_updated(ingredients: Array, last_potion: String)
 signal potion_bottle_filled
 
 var LastPotionCreated: String = "None"
 
+# Potion mixed state
+var PotionMixed = false
+
 func _ready():
-	pass
+	$"../MixingStick".potion_mixed.connect(_on_potion_mixed)
 
 func _add_ingredient_to_cauldron(ingredient_ingredient_name):
 	if CauldronIngredients.size() >= 3:
@@ -89,7 +92,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		# Otherwise, it's a potion bottle
 		print("Potion bottle detected")
 		# Check if the cauldron is full, if so, then fill the potion bottle
-		if CauldronFull == true:
+		if CauldronFull == true and PotionMixed == true:
 			var potion_name = PotionRecipes[Ingredients]
 			LastPotionCreated = potion_name
 			potion_bottle_filled.emit(body.potionName, LastPotionCreated)
@@ -100,3 +103,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			# Updating journal
 			PotionJournal.register_potion(potion_name, Ingredients) 
 		return
+
+func _on_potion_mixed() -> void:
+	PotionMixed = true
+	print("Cauldron has finished mixing!")

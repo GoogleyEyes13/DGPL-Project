@@ -14,6 +14,12 @@ var mix_count := 0
 # Tracks which side was last
 var last_side := ""
 
+# The liquid in the cauldron
+@onready var WitchCauldronLiquid = $"../WitchCauldron/WitchCauldronLiquid"
+
+# Signal for when the potion is mixed
+signal potion_mixed
+
 func _ready():
 	starting_position = position
 
@@ -43,7 +49,7 @@ func _process(_delta):
 		position.y = starting_position.y
 		
 		# make the stick rotate when mixing
-		rotation_degrees = (position.x - 970) / 3
+		rotation_degrees = (position.x - 970) / 4
 		
 		# Check if the stick has reached either side
 		var left_side = starting_position.x - movement_range
@@ -53,17 +59,15 @@ func _process(_delta):
 			if last_side != "left":
 				last_side = "left"
 				mix_count += 1
-				print("Mix count: ", mix_count)
 		
 		elif position.x >= right_side:
 			if last_side != "right":
 				last_side = "right"
 				mix_count += 1
-				print("Mix count: ", mix_count)
 		
 		# Once three side-to-side movements are made, the potion is mixed
 		if mix_count >= 6:
-			print("Potion mixed!")
+			potion_mixed.emit()
 			
 			# Reset the count
 			mix_count = 0
