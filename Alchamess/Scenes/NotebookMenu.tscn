@@ -74,7 +74,6 @@ theme_override_constants/margin_right = 85
 theme_override_constants/margin_bottom = 20
 
 [node name="IngredientListView" type="VBoxContainer" parent="NotebookPanel/MarginContainer" unique_id=1363847492]
-visible = false
 layout_mode = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="NotebookPanel/MarginContainer/IngredientListView" unique_id=41609391]
@@ -101,6 +100,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+alignment = 1
 
 [node name="Icon" type="TextureRect" parent="NotebookPanel/MarginContainer/IngredientListView/ScrollContainer/IngredientListContainer/Row_EyeOfNewt/VBoxContainer" unique_id=894197588]
 custom_minimum_size = Vector2(200, 200)
@@ -113,7 +113,7 @@ stretch_mode = 5
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 horizontal_alignment = 1
-vertical_alignment = 1
+vertical_alignment = 3
 
 [node name="Row_Wormwood" type="Button" parent="NotebookPanel/MarginContainer/IngredientListView/ScrollContainer/IngredientListContainer" unique_id=680317672]
 custom_minimum_size = Vector2(310, 310)
@@ -127,6 +127,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+alignment = 1
 
 [node name="Icon" type="TextureRect" parent="NotebookPanel/MarginContainer/IngredientListView/ScrollContainer/IngredientListContainer/Row_Wormwood/VBoxContainer" unique_id=1443256911]
 custom_minimum_size = Vector2(200, 200)
@@ -139,7 +140,7 @@ stretch_mode = 5
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 horizontal_alignment = 1
-vertical_alignment = 2
+vertical_alignment = 3
 
 [node name="Row_ElbowGrease" type="Button" parent="NotebookPanel/MarginContainer/IngredientListView/ScrollContainer/IngredientListContainer" unique_id=1507827203]
 custom_minimum_size = Vector2(310, 310)
@@ -153,6 +154,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+alignment = 1
 
 [node name="Icon" type="TextureRect" parent="NotebookPanel/MarginContainer/IngredientListView/ScrollContainer/IngredientListContainer/Row_ElbowGrease/VBoxContainer" unique_id=424713802]
 custom_minimum_size = Vector2(200, 200)
@@ -165,7 +167,7 @@ stretch_mode = 5
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 horizontal_alignment = 1
-vertical_alignment = 2
+vertical_alignment = 3
 
 [node name="Row_PhoenixFeather" type="Button" parent="NotebookPanel/MarginContainer/IngredientListView/ScrollContainer/IngredientListContainer" unique_id=1207530827]
 custom_minimum_size = Vector2(310, 310)
@@ -179,6 +181,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+alignment = 1
 
 [node name="Icon" type="TextureRect" parent="NotebookPanel/MarginContainer/IngredientListView/ScrollContainer/IngredientListContainer/Row_PhoenixFeather/VBoxContainer" unique_id=1191835477]
 custom_minimum_size = Vector2(200, 200)
@@ -191,7 +194,7 @@ stretch_mode = 5
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 horizontal_alignment = 1
-vertical_alignment = 2
+vertical_alignment = 3
 
 [node name="Row_OilOfVitriol" type="Button" parent="NotebookPanel/MarginContainer/IngredientListView/ScrollContainer/IngredientListContainer" unique_id=390444789]
 custom_minimum_size = Vector2(310, 310)
@@ -205,6 +208,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+alignment = 1
 
 [node name="Icon" type="TextureRect" parent="NotebookPanel/MarginContainer/IngredientListView/ScrollContainer/IngredientListContainer/Row_OilOfVitriol/VBoxContainer" unique_id=215561325]
 custom_minimum_size = Vector2(200, 200)
@@ -217,7 +221,7 @@ stretch_mode = 5
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 horizontal_alignment = 1
-vertical_alignment = 2
+vertical_alignment = 3
 
 [node name="Row_Stardust" type="Button" parent="NotebookPanel/MarginContainer/IngredientListView/ScrollContainer/IngredientListContainer" unique_id=306682988]
 custom_minimum_size = Vector2(310, 310)
@@ -231,6 +235,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+alignment = 1
 
 [node name="Icon" type="TextureRect" parent="NotebookPanel/MarginContainer/IngredientListView/ScrollContainer/IngredientListContainer/Row_Stardust/VBoxContainer" unique_id=1905190222]
 custom_minimum_size = Vector2(200, 200)
@@ -243,9 +248,10 @@ stretch_mode = 5
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 horizontal_alignment = 1
-vertical_alignment = 2
+vertical_alignment = 3
 
 [node name="PotionListView" type="VBoxContainer" parent="NotebookPanel/MarginContainer" unique_id=1073587730]
+visible = false
 layout_mode = 2
 
 [node name="BackButton" type="Button" parent="NotebookPanel/MarginContainer/PotionListView" unique_id=1997599539]
