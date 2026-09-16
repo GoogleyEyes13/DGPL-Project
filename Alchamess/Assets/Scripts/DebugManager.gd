@@ -3,10 +3,14 @@ extends Node
 @export var debug_enabled: bool = false
 
 var current_customer: Node = null
+var current_cauldron: Node = null
+
+signal log_message(message: String)   # <-- new
 
 func debug_log(message: String) -> void:
 	if debug_enabled:
 		print("[DEBUG] ", message)
+		log_message.emit(message)   # <-- new
 
 func register_customer(customer_node: Node) -> void:
 	current_customer = customer_node

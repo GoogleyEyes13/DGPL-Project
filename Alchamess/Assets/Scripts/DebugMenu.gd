@@ -1,8 +1,13 @@
 extends Control
-
+#region Variables
 @onready var status_label: Label = $Panel/MarginContainer/VBoxContainer/StatusLabel
 @onready var cauldron_label: Label = $Panel/MarginContainer/VBoxContainer/CauldronLabel
 @onready var button_container: GridContainer = $Panel/MarginContainer/VBoxContainer/ScrollContainer/GridContainer
+@onready var log_scroll: ScrollContainer = $Panel/MarginContainer/VBoxContainer/LogScroll
+@onready var log_label: RichTextLabel = $Panel/MarginContainer/VBoxContainer/LogScroll/LogLabel
+
+const MAX_LOG_LINES := 100
+var log_lines: Array[String] = []
 
 var potion_types: Array[String] = [
 	"Potion of Curing", "Potion of Rapid Shaking", "Potion of Permanent Smile",
@@ -13,6 +18,8 @@ var potion_types: Array[String] = [
 	"Potion of Green Skin", "Potion of Eye Colour Swap", "Potion of Skeleton",
 	"Potion of Change Art Styles", "Potion of Creature Feature", "Potion of Beautification"
 ]
+#endregion
+
 
 func _ready() -> void:
 	hide()
@@ -24,6 +31,17 @@ func _ready() -> void:
 	$"/root/Game/WitchCauldron".ingredients_updated.connect(_on_ingredients_updated)
 	cauldron_label.text = ""
 
+	DebugManager.log_message.connect(_on_log_message)
+	
+func _on_log_message(message: String) -> void:
+	log_lines.append(message)
+	if log_lines.size() > MAX_LOG_LINES:
+		log_lines.pop_front()
+	log_label.text = "\n".join(log_lines)
+	
+	await get_tree().process_frame
+	log_scroll.scroll_vertical = int(log_scroll.get_v_scroll_bar().max_value)
+	
 func _on_ingredients_updated(ingredients: Array, last_potion: String) -> void:
 	var ingredients_text: String
 	if ingredients.is_empty():

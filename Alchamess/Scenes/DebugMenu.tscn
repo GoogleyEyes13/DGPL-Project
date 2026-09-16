@@ -41,6 +41,16 @@ layout_mode = 2
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 
+[node name="LogScroll" type="ScrollContainer" parent="Panel/MarginContainer/VBoxContainer" unique_id=157137485]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LogLabel" type="RichTextLabel" parent="Panel/MarginContainer/VBoxContainer/LogScroll" unique_id=1874719558]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+fit_content = true
+
 [node name="ScrollContainer" type="ScrollContainer" parent="Panel/MarginContainer/VBoxContainer" unique_id=1148262625]
 layout_mode = 2
 size_flags_vertical = 3
