@@ -19,6 +19,10 @@
 [ext_resource type="Texture2D" uid="uid://crnbt5igmh4ii" path="res://Assets/Sprites/Herb Bert/HerbBertGreenEyes.png" id="13_ybyuj"]
 [ext_resource type="Texture2D" uid="uid://b7dpjh3v0wk1r" path="res://Assets/Sprites/Herb Bert/HerbBertBeautification.png" id="16_8tccj"]
 [ext_resource type="Texture2D" uid="uid://oadqjpwqt1l3" path="res://Assets/Sprites/Mr Monicle/MrMonicleBrownEyes.png" id="18_a8pu0"]
+[ext_resource type="Texture2D" uid="uid://cg1voorgdt2n4" path="res://Assets/Sprites/Mr Monicle/MrMonicleBald.png" id="18_bx880"]
+[ext_resource type="Texture2D" uid="uid://dvudc0ypdgti6" path="res://Assets/Sprites/Mr Monicle/MrMonicleGreenSkin.png" id="18_ybyuj"]
+[ext_resource type="Texture2D" uid="uid://bbalq7wmlthu5" path="res://Assets/Sprites/Mr Monicle/MrMonicleBigHead.png" id="19_i14jh"]
+[ext_resource type="Texture2D" uid="uid://2ltqw6ajn2b2" path="res://Assets/Sprites/Mr Monicle/MrMonicleSmallHead.png" id="20_rhkq5"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_57qmd"]
 animations = [{
@@ -97,16 +101,16 @@ animations = [{
 "texture": ExtResource("9_kosw0")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_kosw0")
+"texture": ExtResource("18_bx880")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_kosw0")
+"texture": ExtResource("19_i14jh")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_kosw0")
+"texture": ExtResource("20_rhkq5")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_kosw0")
+"texture": ExtResource("18_ybyuj")
 }, {
 "duration": 1.0,
 "texture": ExtResource("18_a8pu0")

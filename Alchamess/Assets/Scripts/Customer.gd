@@ -3,7 +3,7 @@ extends AnimatedSprite2D
 
 #region Variables
 # The current customer loaded
-var CustomerName: String = "HerbBert"
+var CustomerName: String = "Monicle"
 
 var start_pos: Vector2
 var centre_pos: Vector2
