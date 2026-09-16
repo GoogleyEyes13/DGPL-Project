@@ -211,6 +211,7 @@ func new_customer() -> void:
 		return
 	
 	# Setting customer size to default
+	modulate.a = 1.0
 	scale = Vector2(0.12, 0.12)
 
 	#Gets the next customer, 
@@ -222,7 +223,6 @@ func new_customer() -> void:
 
 	CustomerName = next_name
 	animation = CustomerName
-	
 	
 	#frame = 0 #Reset to default character (CHANGE THIS IF WE WANT TO RETAIN THE CHANGE)
 	stop()
@@ -257,22 +257,19 @@ func explode_effect() -> void:
 	
 	explode_tween.tween_callback(_on_exploded)
 
-
 func _on_exploded() -> void:
 	offset = Vector2.ZERO
-	modulate.a = 1.0
-
 	
 	if customer_names.is_empty():
 		print("All customers have been exploded! No one left to serve.")
-		hide()   # Change when there is an ending for killing everyone
+		modulate.a = 1.0
+		scale = original_scale
+		hide() # Change when there is an ending for killing everyone
 		return
-	scale = original_scale 
-	
+
 	var pause_tween = create_tween()
 	pause_tween.tween_interval(0.75)
 	pause_tween.tween_callback(new_customer)
-
 
 func _on_smoke_animation_finished() -> void:
 	# Making the smoke animation invisible after its played once
