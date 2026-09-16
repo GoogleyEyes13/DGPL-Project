@@ -31,7 +31,6 @@
 [ext_resource type="Texture2D" uid="uid://c2bfvsvocigbs" path="res://Assets/Sprites/Smoke/Smoke6.png" id="22_i4lct"]
 [ext_resource type="Texture2D" uid="uid://sni61jgmfufd" path="res://Assets/Sprites/Smoke/Smoke7.png" id="23_iyesh"]
 [ext_resource type="Texture2D" uid="uid://dft8sqhl0d3ay" path="res://Assets/Sprites/Smoke/Smoke8.png" id="24_i1pr2"]
-[ext_resource type="Script" uid="uid://hpmnbq15xtl1" path="res://Assets/Scripts/WhatDoesCauldronHave.gd" id="30_iyesh"]
 [ext_resource type="Texture2D" uid="uid://byu4ukcgr8xle" path="res://Assets/Potions/EmptyPotion2.png" id="31_4f4ik"]
 [ext_resource type="Texture2D" uid="uid://bn44fqj2kaj31" path="res://Assets/Potions/EmptyPotion1.png" id="31_i1pr2"]
 [ext_resource type="Texture2D" uid="uid://da0crssdmo2sq" path="res://Assets/Potions/EmptyPotion5.png" id="32_khs3t"]
@@ -217,8 +216,10 @@ animations = [{
 layer = 99
 
 [node name="NotebookMenu" parent="UI" unique_id=856325922 instance=ExtResource("1_4eqlp")]
+visible = false
 
 [node name="DebugMenu" parent="UI" unique_id=1243030641 instance=ExtResource("1_n2ugt")]
+visible = false
 
 [node name="ShopBG" type="Sprite2D" parent="." unique_id=298187425]
 z_index = -20
@@ -410,8 +411,9 @@ texture = ExtResource("36_umnjm")
 
 [node name="Customer" parent="." unique_id=1519350129 instance=ExtResource("10_71axn")]
 z_index = -100
-position = Vector2(1603.9999, 550)
-animation = &"Monicle"
+position = Vector2(1603.9999, 549.86005)
+scale = Vector2(0.12, 0.120053194)
+animation = &"HerbBert"
 
 [node name="Smoke" type="AnimatedSprite2D" parent="." unique_id=454387287]
 z_index = -90
@@ -420,15 +422,6 @@ scale = Vector2(1.6, 1.6)
 sprite_frames = SubResource("SpriteFrames_g4v7s")
 frame = 7
 frame_progress = 1.0
-
-[node name="Label" type="Label" parent="." unique_id=267641766]
-z_index = 100
-offset_left = 614.0
-offset_top = 909.0
-offset_right = 1332.0
-offset_bottom = 997.0
-theme_override_font_sizes/font_size = 48
-script = ExtResource("30_iyesh")
 
 [node name="Potion1" parent="." unique_id=357962942 instance=ExtResource("35_4eqlp")]
 position = Vector2(652.99994, 112)
@@ -449,7 +442,7 @@ potionName = "Potion2"
 potionSprite = SubResource("SpriteFrames_n4dr6")
 
 [node name="Potion2-2" parent="." unique_id=513963464 instance=ExtResource("35_4eqlp")]
-position = Vector2(1198, 113)
+position = Vector2(1197, 111.99999)
 potionType = "Potion2"
 potionName = "Potion2-2"
 potionSprite = SubResource("SpriteFrames_n4dr6")
