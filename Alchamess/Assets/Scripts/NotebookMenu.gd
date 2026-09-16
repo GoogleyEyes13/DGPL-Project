@@ -41,11 +41,13 @@ var current_potion: String = ""
 #endregion
 
 func _ready() -> void:
+	visible = true
 	tab_button.pressed.connect(_on_tab_pressed)
 	back_to_ingredients_button.pressed.connect(_show_ingredient_list)
 	back_to_potions_button.pressed.connect(_on_back_to_potions)
 	detail_notes_field.text_changed.connect(_on_notes_changed)
 	
+	tab_button.visible = true
 	panel.visible = false
 	_setup_ingredient_buttons()
 	_show_ingredient_list()
