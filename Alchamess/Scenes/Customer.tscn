@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://dgmleutps3smk" path="res://Assets/Sprites/Herb Bert/HerbBertGreen.png" id="12_a8pu0"]
 [ext_resource type="Texture2D" uid="uid://crnbt5igmh4ii" path="res://Assets/Sprites/Herb Bert/HerbBertGreenEyes.png" id="13_ybyuj"]
 [ext_resource type="Texture2D" uid="uid://b7dpjh3v0wk1r" path="res://Assets/Sprites/Herb Bert/HerbBertBeautification.png" id="16_8tccj"]
+[ext_resource type="Texture2D" uid="uid://oadqjpwqt1l3" path="res://Assets/Sprites/Mr Monicle/MrMonicleBrownEyes.png" id="18_a8pu0"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_57qmd"]
 animations = [{
@@ -108,7 +109,7 @@ animations = [{
 "texture": ExtResource("9_kosw0")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_kosw0")
+"texture": ExtResource("18_a8pu0")
 }, {
 "duration": 1.0,
 "texture": ExtResource("9_kosw0")
