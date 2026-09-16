@@ -83,6 +83,6 @@ func _on_unlock_all_pressed() -> void:
 	DebugManager.debug_log("All potions unlocked in journal")
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventKey and event.pressed and event.keycode == KEY_T:
+	if event.is_action_pressed("toggle_debug_menu"):
 		visible = not visible
 		DebugManager.toggle_debug()

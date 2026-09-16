@@ -143,3 +143,9 @@ func _on_potion_selected(potion_name: String) -> void:
 func _on_notes_changed() -> void:
 	if current_potion != "":
 		PotionJournal.set_note(current_potion, detail_notes_field.text)
+		
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("toggle_journal"):
+		panel.visible = not panel.visible
+		if panel.visible:
+			_show_ingredient_list()

@@ -95,3 +95,6 @@ layout_mode = 2
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Back"
+
+[node name="KeybindContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer" unique_id=1697530254]
+layout_mode = 2
