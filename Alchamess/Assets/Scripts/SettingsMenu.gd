@@ -2,12 +2,13 @@ extends Control
 
 const SETTINGS_PATH = "user://settings.cfg"
 
-@onready var master_slider: HSlider = $Panel/MarginContainer/VBoxContainer/MasterVolumeRow/MasterSlider
-@onready var music_slider: HSlider = $Panel/MarginContainer/VBoxContainer/MusicVolumeRow/MusicSlider
-@onready var sfx_slider: HSlider = $Panel/MarginContainer/VBoxContainer/SFXVolumeRow/SFXSlider
-@onready var back_button: Button = $Panel/MarginContainer/VBoxContainer/BackButton
-
-@onready var keybind_container: VBoxContainer = $Panel/MarginContainer/VBoxContainer/KeybindContainer
+@onready var master_slider: HSlider = $Panel/MarginContainer/ScrollContainer/VBoxContainer/MasterVolumeRow/MasterSlider
+@onready var music_slider: HSlider = $Panel/MarginContainer/ScrollContainer/VBoxContainer/MusicVolumeRow/MusicSlider
+@onready var sfx_slider: HSlider = $Panel/MarginContainer/ScrollContainer/VBoxContainer/SFXVolumeRow/SFXSlider
+@onready var back_button: Button = $Panel/MarginContainer/ScrollContainer/VBoxContainer/BackButton
+@onready var keybind_container: VBoxContainer = $Panel/MarginContainer/ScrollContainer/VBoxContainer/KeybindContainer
+@onready var resolution_dropdown: OptionButton = $Panel/MarginContainer/ScrollContainer/VBoxContainer/ResolutionDropdown
+@onready var fullscreen_checkbox: CheckBox = $Panel/MarginContainer/ScrollContainer/VBoxContainer/FullscreenCheckBox
 
 var rebindable_actions: Array[String] = ["toggle_journal", "give_potion", "toggle_debug_menu"]
 var action_labels: Dictionary = {
@@ -17,7 +18,14 @@ var action_labels: Dictionary = {
 }
 
 var listening_for_action: String = ""
-var rebind_buttons: Dictionary = {}   # action_name -> Button
+var rebind_buttons: Dictionary = {}
+
+var resolutions: Array[Vector2i] = [
+	Vector2i(1280, 720),
+	Vector2i(1600, 900),
+	Vector2i(1920, 1080),
+	Vector2i(2560, 1440),
+]
 
 func _ready() -> void:
 	master_slider.min_value = 0.0
@@ -30,6 +38,7 @@ func _ready() -> void:
 	sfx_slider.max_value = 1.0
 	sfx_slider.step = 0.01
 	
+	_build_resolution_dropdown()
 	_load_settings()
 	_build_keybind_rows()
 	
@@ -37,8 +46,59 @@ func _ready() -> void:
 	music_slider.value_changed.connect(_on_music_changed)
 	sfx_slider.value_changed.connect(_on_sfx_changed)
 	back_button.pressed.connect(_on_back_pressed)
+	resolution_dropdown.item_selected.connect(_on_resolution_selected)
+	fullscreen_checkbox.toggled.connect(_on_fullscreen_toggled)
 	
 	hide()
+
+func _build_resolution_dropdown() -> void:
+	resolution_dropdown.clear()
+	for res in resolutions:
+		resolution_dropdown.add_item("%d x %d" % [res.x, res.y])
+
+func _on_resolution_selected(index: int) -> void:
+	var res = resolutions[index]
+	DisplayServer.window_set_size(res)
+	_center_window()
+	_save_display_settings()
+
+func _on_fullscreen_toggled(pressed: bool) -> void:
+	if pressed:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+	_save_display_settings()
+
+func _center_window() -> void:
+	var screen_size = DisplayServer.screen_get_size()
+	var window_size = DisplayServer.window_get_size()
+	DisplayServer.window_set_position((screen_size - window_size) / 2)
+
+func _save_display_settings() -> void:
+	var config := ConfigFile.new()
+	config.load(SETTINGS_PATH)
+	config.set_value("display", "resolution_index", resolution_dropdown.selected)
+	config.set_value("display", "fullscreen", fullscreen_checkbox.button_pressed)
+	config.save(SETTINGS_PATH)
+
+func _load_display_settings() -> void:
+	var config := ConfigFile.new()
+	var err := config.load(SETTINGS_PATH)
+	if err != OK:
+		return
+	
+	var res_index: int = config.get_value("display", "resolution_index", 2)   # default: 1920x1080
+	var fullscreen: bool = config.get_value("display", "fullscreen", false)
+	
+	resolution_dropdown.select(res_index)
+	fullscreen_checkbox.button_pressed = fullscreen
+	
+	if fullscreen:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		DisplayServer.window_set_size(resolutions[res_index])
+		_center_window()
 
 func _build_keybind_rows() -> void:
 	for action in rebindable_actions:
@@ -84,7 +144,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _save_keybind(action: String, event: InputEventKey) -> void:
 	var config := ConfigFile.new()
-	config.load(SETTINGS_PATH)   # load existing first so we don't wipe audio settings
+	config.load(SETTINGS_PATH)
 	config.set_value("keybinds", action, event.keycode)
 	config.save(SETTINGS_PATH)
 
@@ -124,6 +184,7 @@ func _load_settings() -> void:
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), linear_to_db(sfx_vol))
 	
 	_load_keybinds()
+	_load_display_settings()
 
 func _save_settings() -> void:
 	var config := ConfigFile.new()
