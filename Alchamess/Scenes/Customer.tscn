@@ -26,6 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://bbalq7wmlthu5" path="res://Assets/Sprites/Mr Monicle/MrMonicleBigHead.png" id="19_i14jh"]
 [ext_resource type="Texture2D" uid="uid://2ltqw6ajn2b2" path="res://Assets/Sprites/Mr Monicle/MrMonicleSmallHead.png" id="20_rhkq5"]
 [ext_resource type="Texture2D" uid="uid://dtixhieqpe15x" path="res://Assets/Sprites/Caseoh/CaseohRabies.png" id="24_v2fx3"]
+[ext_resource type="Texture2D" uid="uid://d11unljt1xx3l" path="res://Assets/Sprites/Caseoh/CaseohBeautification.png" id="25_c1vay"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_57qmd"]
 animations = [{
@@ -134,7 +135,7 @@ animations = [{
 "texture": ExtResource("8_8q8uq")
 }, {
 "duration": 1.0,
-"texture": ExtResource("1_r206j")
+"texture": ExtResource("25_c1vay")
 }, {
 "duration": 1.0,
 "texture": ExtResource("24_v2fx3")
@@ -152,7 +153,9 @@ height = 4375.0
 texture_filter = 1
 scale = Vector2(0.12, 0.12)
 sprite_frames = SubResource("SpriteFrames_57qmd")
-animation = &"MrMonicle"
+animation = &"Queso"
+frame = 9
+frame_progress = 0.35138607
 script = ExtResource("7_cj036")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=621125951]
