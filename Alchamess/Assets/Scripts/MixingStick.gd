@@ -59,14 +59,14 @@ func _process(_delta):
 			if last_side != "left":
 				last_side = "left"
 				mix_count += 1
-				print(mix_count)
+				DebugManager.debug_log("Mix count: " + str(mix_count))
 				change_liquid_colour()
 		
 		elif position.x >= right_side and allow_mixing == true:
 			if last_side != "right":
 				last_side = "right"
 				mix_count += 1
-				print(mix_count)
+				DebugManager.debug_log("Mix count: " + str(mix_count))
 				change_liquid_colour()
 		
 		# Once three side-to-side movements are made, the potion is mixed

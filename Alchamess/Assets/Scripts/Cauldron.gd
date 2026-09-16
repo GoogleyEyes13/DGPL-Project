@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+var has_logged_mix_finished: bool = false
+
 # A dictionary to store all the recieved ingredients
 var CauldronIngredients: Dictionary = {}
 
@@ -47,18 +49,18 @@ func _ready():
 func _add_ingredient_to_cauldron(ingredient_ingredient_name):
 	if CauldronIngredients.size() >= 3:
 		# If cauldron already has 3 ingredients, don't add another
-		print("Cauldron full")
+		DebugManager.debug_log("Cauldron full")
 		
 		return 
 	
 	if CauldronIngredients.has(ingredient_ingredient_name):
 		# If ingredient is already in the pot, don't add another
-		print(ingredient_ingredient_name, " is already in the pot")
+		DebugManager.debug_log(ingredient_ingredient_name + " is already in the pot")
 		return
 	
 	# Add ingredient to the pot
 	CauldronIngredients[ingredient_ingredient_name] = 1
-	print(ingredient_ingredient_name, " has been placed in the pot")
+	DebugManager.debug_log(ingredient_ingredient_name + " has been placed in the pot")
 	ingredients_updated.emit(CauldronIngredients.keys(), LastPotionCreated)
 	
 	if CauldronIngredients.size() == 3:		
@@ -68,8 +70,6 @@ func _add_ingredient_to_cauldron(ingredient_ingredient_name):
 		
 		# Allow mixing stick to mix
 		MixingStick.start_mixing()
-	
-	print("CURRENT CAULDRON INGREDIENTS: ", CauldronIngredients)
 
 
 # Function for detecting ingredients touching the cauldron
@@ -94,7 +94,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			return
 			
 		# Otherwise, it's a potion bottle
-		print("Potion bottle detected")
+		DebugManager.debug_log("Potion bottle detected")
 		# Check if the cauldron is full, if so, then fill the potion bottle
 		if CauldronFull == true and PotionMixed == true:
 			var potion_name = PotionRecipes[Ingredients]
@@ -114,4 +114,6 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 func _on_potion_mixed() -> void:
 	PotionMixed = true
-	print("Cauldron has finished mixing!")
+	if not has_logged_mix_finished:
+		DebugManager.debug_log("Cauldron has finished mixing!")
+		has_logged_mix_finished = true

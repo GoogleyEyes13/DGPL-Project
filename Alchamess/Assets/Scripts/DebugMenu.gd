@@ -5,6 +5,7 @@ extends Control
 @onready var button_container: GridContainer = $Panel/MarginContainer/VBoxContainer/ScrollContainer/GridContainer
 @onready var log_scroll: ScrollContainer = $Panel/MarginContainer/VBoxContainer/LogScroll
 @onready var log_label: RichTextLabel = $Panel/MarginContainer/VBoxContainer/LogScroll/LogLabel
+@onready var unlock_all_button: Button = $Panel/MarginContainer/VBoxContainer/HBoxContainer/UnlockAllButton
 
 const MAX_LOG_LINES := 100
 var log_lines: Array[String] = []
@@ -28,9 +29,11 @@ func _ready() -> void:
 	_build_buttons()
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	
+	
 	$"/root/Game/WitchCauldron".ingredients_updated.connect(_on_ingredients_updated)
 	cauldron_label.text = ""
 
+	unlock_all_button.pressed.connect(_on_unlock_all_pressed)
 	DebugManager.log_message.connect(_on_log_message)
 	
 func _on_log_message(message: String) -> void:
@@ -73,7 +76,11 @@ func _build_buttons() -> void:
 		button.add_theme_font_size_override("font_size", 16)
 		button.pressed.connect(func(): DebugManager.trigger_potion(potion))
 		button_container.add_child(button)
-	print("Debug buttons built: ", button_container.get_child_count())
+		
+func _on_unlock_all_pressed() -> void:
+	var cauldron = $"/root/Game/WitchCauldron"
+	PotionJournal.unlock_all_potions(cauldron.PotionRecipes)
+	DebugManager.debug_log("All potions unlocked in journal")
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and event.keycode == KEY_T:

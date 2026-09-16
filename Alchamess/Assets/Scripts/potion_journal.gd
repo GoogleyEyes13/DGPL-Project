@@ -36,3 +36,8 @@ func set_note(potion_name: String, note: String) -> void:
 
 func get_note(potion_name: String) -> String:
 	return potion_data.get(potion_name, {}).get("notes", "")
+	
+func unlock_all_potions(recipes: Dictionary) -> void:
+	for ingredients in recipes.keys():
+		var potion_name = recipes[ingredients]
+		register_potion(potion_name, ingredients)

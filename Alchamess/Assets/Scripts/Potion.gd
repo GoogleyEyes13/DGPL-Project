@@ -43,7 +43,7 @@ func _input(event) -> void:
 		elif event.button_index == MOUSE_BUTTON_RIGHT:
 			if event.pressed and is_grabbed:
 				PotionToCustomer.emit(CurrentHeldPotion)
-				print("Potion effect: ", CurrentHeldPotion, "has been applied to customer")
+				DebugManager.debug_log("Potion effect: " + CurrentHeldPotion + "has been applied to customer")
 				# Returning potion empty and back to start
 				is_grabbed = false
 				return_potion_to_start()
@@ -55,7 +55,7 @@ func potion_bottle_filled(filled_potion_bottle, potion_type) -> void:
 	if filled_potion_bottle == potionName:
 		PotionBottleSprite.frame = 1
 		CurrentHeldPotion = potion_type
-		print(CurrentHeldPotion)
+		DebugManager.debug_log("Potion Bottle Filled! Made: " + CurrentHeldPotion)
 
 
 # Returning the relevant potion to their starting positions

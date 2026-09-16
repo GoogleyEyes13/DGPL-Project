@@ -2,6 +2,9 @@
 
 [ext_resource type="Script" uid="uid://2ckftq74w5ph" path="res://Assets/Scripts/DebugMenu.gd" id="1_w86ti"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w86ti"]
+bg_color = Color(0.6, 0.6, 0.6, 0.18039216)
+
 [node name="DebugMenu" type="Control" unique_id=1243030641]
 layout_mode = 3
 anchors_preset = 15
@@ -21,6 +24,7 @@ anchors_preset = 9
 anchor_bottom = 1.0
 grow_vertical = 2
 mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_w86ti")
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel" unique_id=1670420566]
 layout_mode = 1
@@ -36,10 +40,11 @@ layout_mode = 2
 
 [node name="StatusLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer" unique_id=480918606]
 layout_mode = 2
+theme_override_font_sizes/font_size = 24
 
 [node name="CauldronLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer" unique_id=1528877688]
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 28
 
 [node name="LogScroll" type="ScrollContainer" parent="Panel/MarginContainer/VBoxContainer" unique_id=157137485]
 layout_mode = 2
@@ -59,3 +64,14 @@ size_flags_vertical = 3
 layout_mode = 2
 mouse_filter = 0
 columns = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer" unique_id=1953710177]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="UnlockAllButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer" unique_id=689953868]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 24
+text = "Unlock All Potions"

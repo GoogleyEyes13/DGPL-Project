@@ -74,6 +74,7 @@ theme_override_constants/margin_right = 85
 theme_override_constants/margin_bottom = 20
 
 [node name="IngredientListView" type="VBoxContainer" parent="NotebookPanel/MarginContainer" unique_id=1363847492]
+visible = false
 layout_mode = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="NotebookPanel/MarginContainer/IngredientListView" unique_id=41609391]
@@ -251,7 +252,6 @@ horizontal_alignment = 1
 vertical_alignment = 3
 
 [node name="PotionListView" type="VBoxContainer" parent="NotebookPanel/MarginContainer" unique_id=1073587730]
-visible = false
 layout_mode = 2
 
 [node name="BackButton" type="Button" parent="NotebookPanel/MarginContainer/PotionListView" unique_id=1997599539]
@@ -265,6 +265,8 @@ size_flags_vertical = 3
 
 [node name="PotionListContainer" type="VBoxContainer" parent="NotebookPanel/MarginContainer/PotionListView/ScrollContainer" unique_id=1522164929]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="PotionDetailView" type="VBoxContainer" parent="NotebookPanel/MarginContainer" unique_id=471800506]
 visible = false

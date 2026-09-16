@@ -68,7 +68,7 @@ func _setup_ingredient_buttons() -> void:
 			icon.texture = ingredient_icons[icon_index]
 			
 func _on_tab_pressed() -> void:
-	print("Tab clicked, panel visible: ", panel.visible)
+	DebugManager.debug_log("Tab clicked, panel visible: " + str(panel.visible))
 	panel.visible = not panel.visible
 	if panel.visible:
 		_show_ingredient_list()
