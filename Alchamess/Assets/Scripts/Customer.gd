@@ -10,6 +10,7 @@ var centre_pos: Vector2
 var end_pos: Vector2
 var cust_is_ready: bool = false
 var original_scale: Vector2
+var is_shrunk = false
 
 #Vetical movement
 @export var step_bounce_height: float = 8.0
@@ -176,6 +177,11 @@ func receive_potion(potion_type: String) -> void:
 		elif potion_type == "Potion of Enlarge Person":
 			# Increase size of sprite
 			scale = Vector2(0.16, 0.16)
+		elif potion_type == "Potion of Shrink Person":
+			# Decrease size of sprite
+			scale = Vector2(0.07, 0.07)
+			position.y += 45
+			is_shrunk = true
 			
 		var delay = create_tween()
 		delay.tween_interval(delay_time)
@@ -190,12 +196,17 @@ func bob_out() -> void:
 		.set_trans(Tween.TRANS_QUAD)\
 		.set_ease(Tween.EASE_IN)
 	move_tween.tween_callback(new_customer)
+	
+	# Making the customer sit lower if the shrink potion has been used
+	var bob_y = centre_pos.y
+	if is_shrunk:
+		bob_y += 45
 
 	var march_tween = create_tween().set_loops()
-	march_tween.tween_property(self, "global_position:y", centre_pos.y - step_bounce_height, 1.0 / step_speed)\
+	march_tween.tween_property(self, "global_position:y", bob_y - step_bounce_height, 1.0 / step_speed)\
 		.set_trans(Tween.TRANS_SINE)\
 		.set_ease(Tween.EASE_OUT)
-	march_tween.tween_property(self, "global_position:y", centre_pos.y, 1.0 / step_speed)\
+	march_tween.tween_property(self, "global_position:y", bob_y, 1.0 / step_speed)\
 		.set_trans(Tween.TRANS_SINE)\
 		.set_ease(Tween.EASE_IN)
 
