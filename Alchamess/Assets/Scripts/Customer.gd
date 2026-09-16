@@ -3,7 +3,7 @@ extends AnimatedSprite2D
 
 #region Variables
 # The current customer loaded
-var CustomerName: String = "Monicle"
+var CustomerName: String = "HerbBert"
 
 var start_pos: Vector2
 var centre_pos: Vector2
@@ -16,7 +16,7 @@ var original_scale: Vector2
 #Horizontal speed(time between each bounce)
 @export var step_speed: float = 6.0
 #Customer name list (Animation names)
-@export var customer_names: Array[String] = ["Caseoh", "HerbBert", "Monicle"]
+@export var customer_names: Array[String] = ["Queso", "HerbBert", "MrMonicle"]
 
 #Rapid Shaking potion
 @export var jitter_intensity: float = 4.0
@@ -115,14 +115,17 @@ func on_arrival() -> void:
 	global_position.y = centre_pos.y
 	print(CustomerName, " is at the counter! Waiting for interaction...") #test
 	match CustomerName:
-		"Caseoh":
-			var resource = load("res://Dialogue/testDialogue.dialogue")
+		"Queso":
+			var resource = load("res://Dialogue/Queso.dialogue")
 			DialogueManager.show_dialogue_balloon(resource)
 		"HerbBert":
-			var resource = load("res://Dialogue/Customer1.dialogue")
+			var resource = load("res://Dialogue/HerbBert.dialogue")
+			DialogueManager.show_dialogue_balloon(resource)
+		"MrMonicle":
+			var resource = load("res://Dialogue/MrMonicle.dialogue")
 			DialogueManager.show_dialogue_balloon(resource)
 		_:
-			var resource = load("res://Dialogue/Customer1.dialogue")
+			var resource = load("res://Dialogue/Queso.dialogue")
 			DialogueManager.show_dialogue_balloon(resource)
 	cust_is_ready = true
 

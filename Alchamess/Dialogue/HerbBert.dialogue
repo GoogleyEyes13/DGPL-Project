@@ -1,0 +1,53 @@
+~ start
+% Herb Bert: This is always a nice shop to pass by!
+% Herb Bert: Greetings, potion seller!
+% Herb Bert: Phew, had a rough day of work today.
+
+match Globals.wantedPotionType: # this is a placeholder while we set up a global variable for the wanted potions
+	when "MogFace":
+		Herb Bert: I want to look like I outclass the room around me!
+	when "Beautification":
+		Herb Bert: I'm going on a date tonight, can you make me more attractive?
+	when "ShakeRapidly":
+		Herb Bert: I've got so much stress on me, I need to shake it out!
+	when "EyeColourSwap":
+		Herb Bert: I'm getting bored with my eye colour, can you do anything about that?
+	when "PermanentSmile":
+		Herb Bert: People always say I have a bad resting face, think you can deal with that?
+	when "GreenSkin":
+		Herb Bert: Could you possibly make me green? It's for a costume.
+	when "Cure":
+		Herb Bert: I may have had some poison the other day, got any cures?
+	when "Bald":
+		% Herb Bert: I need some help looking more like a monk.
+		% Herb Bert: I'm done with having hair. Get rid of it!
+	when "HeadSizeIncrease":
+		Herb Bert: If I had a bigger head, would that make me smarter?
+	when "HeadSizeDecrease":
+		Herb Bert: I'm feeling self-consious about my head, could you make it smaller?
+	when "CreatureFeature":
+		Herb Bert: I'm looking to scare some friends camping in the woods, could you make me some kind of creature?
+	when "Rabies": #look idk what to put here, why would someone want this?
+		Herb Bert: ...
+	when "ChangeLanguage":
+		Herb Bert: I'm looking to go overseas, could you help with the language barrier?
+	when "ChangeArtStyle":
+		Herb Bert: I want to see myself in an entirely new way!
+	when "SwapBodies": #not sure what this one is about
+		Herb Bert: ...
+	when "Love":
+		Herb Bert: I'm going on a date tonight, can you make me more loveable?
+	when "Explode":
+		Herb Bert: My main goal is to blow up, then act like I don't know nobody!
+	when "Skeleton":
+		Herb Bert: I'm trying to sneak into a dungeon, can you help me disguise with the monsters down there?
+	when "EnlargePerson":
+		Herb Bert: I want to look down at everyone around me!
+	when "ShrinkPerson":
+		Herb Bert: I'm trying to sneak into a dungeon, can you help me sneak by the monsters inside?
+	else:
+		Herb Bert: I'm not quite sure what I want...
+
+- Confirm
+
+=> END
