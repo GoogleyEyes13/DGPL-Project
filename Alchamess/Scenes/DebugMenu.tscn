@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://tbu6n7m6no5v"]
+
+[ext_resource type="Script" uid="uid://2ckftq74w5ph" path="res://Assets/Scripts/DebugMenu.gd" id="1_w86ti"]
+
+[node name="DebugMenu" type="Control" unique_id=1243030641]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_right = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_w86ti")
+
+[node name="Panel" type="Panel" parent="." unique_id=1388507694]
+custom_minimum_size = Vector2(800, 200)
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel" unique_id=1670420566]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer" unique_id=590842433]
+layout_mode = 2
+
+[node name="StatusLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer" unique_id=480918606]
+layout_mode = 2
+
+[node name="CauldronLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer" unique_id=1528877688]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/MarginContainer/VBoxContainer" unique_id=1148262625]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer" unique_id=1495580353]
+layout_mode = 2
+mouse_filter = 0
+columns = 3

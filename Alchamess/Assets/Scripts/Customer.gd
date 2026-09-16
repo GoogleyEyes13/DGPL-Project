@@ -58,6 +58,7 @@ var PotionEffects: Dictionary = {
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	DebugManager.register_customer(self)
 	# Connecting potion given signals
 	$"../Potion1".PotionToCustomer.connect(receive_potion)
 	$"../Potion1-2".PotionToCustomer.connect(receive_potion)
@@ -113,7 +114,7 @@ func bob_in() -> void:
 
 func on_arrival() -> void:
 	global_position.y = centre_pos.y
-	print(CustomerName, " is at the counter! Waiting for interaction...") #test
+	DebugManager.debug_log(CustomerName + " is at the counter! Waiting for interaction...") #test
 	match CustomerName:
 		"Queso":
 			var resource = load("res://Dialogue/Queso.dialogue")
@@ -145,7 +146,7 @@ func jitter_effect(duration: float) -> void:
 
 
 func receive_potion(potion_type: String) -> void:
-	print("Potion Received")
+	DebugManager.debug_log("Potion Received")
 	
 	if not cust_is_ready:
 		return
@@ -160,7 +161,7 @@ func receive_potion(potion_type: String) -> void:
 		await get_tree().create_timer(0.3).timeout
 		
 		frame = PotionEffects[potion_type]
-		print("Potion effect on customer: ", potion_type)
+		DebugManager.debug_log("Potion effect on customer: " + potion_type)
 		var delay_time: float = 1.0
 		
 		if potion_type == "Potion of Explode":
@@ -197,13 +198,6 @@ func bob_out() -> void:
 
 	move_tween.tween_callback(march_tween.kill)
 
-#For testing purposes
-func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventKey and event.pressed and event.keycode == KEY_T:
-		print("T pressed: Giving potion to customer!")
-		receive_potion("Potion of Explode")
-
-
 func new_customer() -> void:
 	#edge case
 	if customer_names.is_empty():
@@ -236,7 +230,7 @@ func new_customer() -> void:
 func explode_effect() -> void:
 	# Permanently remove this customer
 	customer_names.erase(CustomerName)
-	print(CustomerName, " has been removed from the customer pool permanently")
+	DebugManager.debug_log(CustomerName + " has been removed from the customer pool permanently")
 	
 	var explode_tween = create_tween()
 	
@@ -261,7 +255,7 @@ func _on_exploded() -> void:
 	offset = Vector2.ZERO
 	
 	if customer_names.is_empty():
-		print("All customers have been exploded! No one left to serve.")
+		DebugManager.debug_log("All customers have been exploded! No one left to serve.")
 		modulate.a = 1.0
 		scale = original_scale
 		hide() # Change when there is an ending for killing everyone

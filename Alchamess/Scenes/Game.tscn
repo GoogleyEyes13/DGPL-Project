@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bs1r4s6qk1h7a" path="res://Scenes/NotebookMenu.tscn" id="1_4eqlp"]
 [ext_resource type="Texture2D" uid="uid://dflh3br5got8u" path="res://Assets/Placeholders/WitchCauldronBase.png" id="1_gl6un"]
+[ext_resource type="PackedScene" uid="uid://tbu6n7m6no5v" path="res://Scenes/DebugMenu.tscn" id="1_n2ugt"]
 [ext_resource type="Script" uid="uid://clyi4gvjf38r2" path="res://Assets/Scripts/Cauldron.gd" id="2_b2bpf"]
 [ext_resource type="Script" uid="uid://c13ys1t4joar2" path="res://Assets/Scripts/MixingStick.gd" id="2_fgofq"]
 [ext_resource type="Texture2D" uid="uid://bj03l774esfw6" path="res://Assets/Placeholders/WitchCauldronTop.png" id="2_j5yw3"]
@@ -217,6 +218,8 @@ layer = 99
 
 [node name="NotebookMenu" parent="UI" unique_id=856325922 instance=ExtResource("1_4eqlp")]
 
+[node name="DebugMenu" parent="UI" unique_id=1243030641 instance=ExtResource("1_n2ugt")]
+
 [node name="ShopBG" type="Sprite2D" parent="." unique_id=298187425]
 z_index = -20
 texture_filter = 1
@@ -408,6 +411,7 @@ texture = ExtResource("36_umnjm")
 [node name="Customer" parent="." unique_id=1519350129 instance=ExtResource("10_71axn")]
 z_index = -100
 position = Vector2(1603.9999, 550)
+animation = &"Monicle"
 
 [node name="Smoke" type="AnimatedSprite2D" parent="." unique_id=454387287]
 z_index = -90
