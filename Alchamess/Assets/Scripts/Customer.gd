@@ -173,6 +173,9 @@ func receive_potion(potion_type: String) -> void:
 		elif potion_type == "Potion of Creature Feature":
 			# Increasing size of creature a lil bit
 			scale = Vector2(0.16, 0.16)
+		elif potion_type == "Potion of Enlarge Person":
+			# Increase size of sprite
+			scale = Vector2(0.16, 0.16)
 			
 		var delay = create_tween()
 		delay.tween_interval(delay_time)
