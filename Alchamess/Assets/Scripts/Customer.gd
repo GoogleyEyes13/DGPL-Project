@@ -34,7 +34,6 @@ var PotionEffects: Dictionary = {
 	"Potion of Curing": 0,
 	"Potion of Rapid Shaking": 0,
 	"Potion of Permanent Smile": 0,
-	"Potion of Rabies": 0,
 	"Potion of Explode": 0,
 	"Potion of Change Language": 0,
 	"Potion of Mogging": 0,
@@ -50,7 +49,8 @@ var PotionEffects: Dictionary = {
 	"Potion of Skeleton": 6,
 	"Potion of Change Art Styles": 7,
 	"Potion of Creature Feature": 8,
-	"Potion of Beautification": 9
+	"Potion of Beautification": 9,
+	"Potion of Rabies": 10
 }
 
 @onready var PotionEffectSprite: AnimatedSprite2D = $"."
