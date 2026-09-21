@@ -6,6 +6,7 @@ extends CharacterBody2D
 @export var flip_h: bool = false
 
 var is_grabbed : bool = false
+var on_customer : bool = false
 
 @onready var PotionBottleSprite: AnimatedSprite2D = $AnimatedSprite2D
 
@@ -38,16 +39,15 @@ func _input(event) -> void:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if not event.pressed and is_grabbed:
 				is_grabbed = false
-				return_potion_to_start()
+				
+				if on_customer: 
+					hand_potion_to_customer()
+				else:
+					return_potion_to_start()
 	
 		elif event.button_index == MOUSE_BUTTON_RIGHT:
 			if event.pressed and is_grabbed:
-				PotionToCustomer.emit(CurrentHeldPotion)
-				DebugManager.debug_log("Potion effect: " + CurrentHeldPotion + "has been applied to customer")
-				# Returning potion empty and back to start
-				is_grabbed = false
-				return_potion_to_start()
-				PotionBottleSprite.frame = 0
+				hand_potion_to_customer()
 
 
 func potion_bottle_filled(filled_potion_bottle, potion_type) -> void:
@@ -77,3 +77,23 @@ func return_potion_to_start() -> void:
 			global_position = Vector2(818, 107)
 		"Potion5-2":
 			global_position = Vector2(1105, 107)
+
+
+func hand_potion_to_customer() -> void:
+	PotionToCustomer.emit(CurrentHeldPotion)
+	DebugManager.debug_log("Potion effect: " + CurrentHeldPotion + "has been applied to customer")
+	
+	# Returning potion empty and back to start
+	is_grabbed = false
+	return_potion_to_start()
+	PotionBottleSprite.frame = 0
+
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if area.get_parent().name == "Customer":
+		on_customer = true
+
+
+func _on_area_2d_area_exited(area: Area2D) -> void:
+	if area.get_parent().name == "Customer":
+		on_customer = false
