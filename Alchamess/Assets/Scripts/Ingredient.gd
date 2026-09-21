@@ -32,14 +32,14 @@ func _input_event(_viewport, event, _shape_idx) -> void:
 func return_ingredient_to_start() -> void:
 	match ingredientType:
 		"EyeOfNewt":
-			global_position = Vector2(262, 280)
+			global_position = Vector2(391, 254)
 		"Wormwood":
-			global_position = Vector2(1658, 280)
+			global_position = Vector2(1548, 254)
 		"ElbowGrease":
-			global_position = Vector2(262, 494)
+			global_position = Vector2(387, 481)
 		"PhoenixFeather":
-			global_position = Vector2(1658, 492)
+			global_position = Vector2(1538, 477)
 		"OilOfVitriol":
-			global_position = Vector2(262, 707)
+			global_position = Vector2(397, 672)
 		"Stardust":
-			global_position = Vector2(1658, 705)
+			global_position = Vector2(1540, 672)

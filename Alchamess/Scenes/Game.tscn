@@ -237,7 +237,7 @@ position = Vector2(960, 540)
 texture = ExtResource("58_n2ugt")
 
 [node name="MixingStick" type="CharacterBody2D" parent="." unique_id=1507127433]
-position = Vector2(1063, 733)
+position = Vector2(1058.9999, 733)
 rotation = 0.34906584
 scale = Vector2(1.8, 1.8)
 collision_layer = 32
@@ -255,7 +255,7 @@ shape = SubResource("RectangleShape2D_7lihs")
 
 [node name="WitchCauldron" type="CharacterBody2D" parent="." unique_id=1298498589]
 texture_filter = 1
-position = Vector2(965.00006, 928)
+position = Vector2(961.00006, 928)
 scale = Vector2(2, 2)
 collision_layer = 2
 script = ExtResource("2_b2bpf")
@@ -419,7 +419,6 @@ scale = Vector2(0.045, 0.045)
 texture = ExtResource("36_umnjm")
 
 [node name="Customer" parent="." unique_id=1519350129 instance=ExtResource("10_71axn")]
-visible = false
 z_index = -100
 position = Vector2(1603.9999, 549.86005)
 animation = &"HerbBert"
@@ -427,7 +426,6 @@ frame = 0
 frame_progress = 0.0
 
 [node name="Smoke" type="AnimatedSprite2D" parent="." unique_id=454387287]
-visible = false
 z_index = -90
 position = Vector2(1017.00006, 527)
 scale = Vector2(1.6, 1.6)
