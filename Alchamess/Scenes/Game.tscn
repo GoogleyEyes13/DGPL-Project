@@ -57,6 +57,7 @@
 [ext_resource type="Texture2D" uid="uid://bruuijfi25i6r" path="res://Assets/Potions/RedPotion5.png" id="44_smnwb"]
 [ext_resource type="Texture2D" uid="uid://f48eel4uv1q2" path="res://Assets/Potions/YellowPotion5.png" id="45_lkuj1"]
 [ext_resource type="Texture2D" uid="uid://d0wxly5qr13qj" path="res://Assets/Potions/YellowPotion4.png" id="45_m15vq"]
+[ext_resource type="Texture2D" uid="uid://b80y30jmw4vfe" path="res://Assets/Foreground.png" id="58_n2ugt"]
 
 [sub_resource type="Gradient" id="Gradient_khy6b"]
 colors = PackedColorArray(0.3121955, 0.170391, 0.102683924, 1, 0.64137924, 0.3832803, 0.2610434, 1)
@@ -222,11 +223,18 @@ visible = false
 visible = false
 
 [node name="ShopBG" type="Sprite2D" parent="." unique_id=298187425]
+visible = false
 z_index = -20
 texture_filter = 1
 position = Vector2(960, 540.00006)
 scale = Vector2(1.6666669, 1.6666666)
 texture = ExtResource("4_kldst")
+
+[node name="Foreground" type="Sprite2D" parent="." unique_id=300035624]
+z_index = -20
+texture_filter = 1
+position = Vector2(960, 540)
+texture = ExtResource("58_n2ugt")
 
 [node name="MixingStick" type="CharacterBody2D" parent="." unique_id=1507127433]
 position = Vector2(1063, 733)
@@ -279,69 +287,70 @@ shape = SubResource("RectangleShape2D_gl6un")
 [node name="ShelfIngredients" type="CanvasLayer" parent="." unique_id=1726064442]
 
 [node name="ShelfPhoenixFeather" type="Sprite2D" parent="ShelfIngredients" unique_id=516046292]
-position = Vector2(1653, 462.00003)
+position = Vector2(1534, 456)
 scale = Vector2(0.09, 0.09)
 texture = ExtResource("8_4eqlp")
 
 [node name="ShelfStardust" type="Sprite2D" parent="ShelfIngredients" unique_id=615406763]
-position = Vector2(1656, 697)
+position = Vector2(1541.9998, 664)
 scale = Vector2(0.09, 0.09)
 texture = ExtResource("13_4eqlp")
 
 [node name="ShelfWormwood" type="Sprite2D" parent="ShelfIngredients" unique_id=791196322]
-position = Vector2(1653.9999, 263.99994)
+position = Vector2(1543.9998, 246.99991)
 scale = Vector2(0.09, 0.09)
 texture = ExtResource("13_n2ugt")
 
 [node name="ShelfElbowGrease" type="Sprite2D" parent="ShelfIngredients" unique_id=719505088]
 texture_filter = 1
-position = Vector2(263.99997, 482)
+position = Vector2(389.00003, 472.99997)
 scale = Vector2(0.09, 0.09)
 texture = ExtResource("13_n24vg")
 
 [node name="ShelfEyeOfNewt" type="Sprite2D" parent="ShelfIngredients" unique_id=1544213431]
 texture_filter = 1
-position = Vector2(257, 269)
+position = Vector2(386, 246.99997)
 scale = Vector2(0.09, 0.09)
 texture = ExtResource("14_n24vg")
 
 [node name="ShelfOilOfVitriol" type="Sprite2D" parent="ShelfIngredients" unique_id=1922430470]
 texture_filter = 1
-position = Vector2(256.99997, 674.99994)
-scale = Vector2(0.09, 0.09)
+position = Vector2(396, 651)
+scale = Vector2(0.08, 0.08)
 texture = ExtResource("15_n24vg")
 
 [node name="EyeOfNewt" parent="." unique_id=2023870098 instance=ExtResource("5_b2bpf")]
-position = Vector2(262, 280)
+position = Vector2(391, 254)
 ingredientType = "EyeOfNewt"
 ingredientSprite = ExtResource("14_m15vq")
 
 [node name="Wormwood" parent="." unique_id=1599874296 instance=ExtResource("5_b2bpf")]
-position = Vector2(1658, 280)
+position = Vector2(1548, 254)
 ingredientType = "Wormwood"
 ingredientSprite = ExtResource("15_m15vq")
 
 [node name="ElbowGrease" parent="." unique_id=655124839 instance=ExtResource("5_b2bpf")]
-position = Vector2(262, 494)
+position = Vector2(387, 481)
 ingredientType = "ElbowGrease"
 ingredientSprite = ExtResource("19_n24vg")
 
 [node name="PhoenixFeather" parent="." unique_id=1704942985 instance=ExtResource("5_b2bpf")]
-position = Vector2(1658, 492)
+position = Vector2(1538, 477)
 ingredientType = "PhoenixFeather"
 ingredientSprite = ExtResource("17_umnjm")
 
 [node name="OilOfVitriol" parent="." unique_id=70480956 instance=ExtResource("5_b2bpf")]
-position = Vector2(262, 707)
+position = Vector2(397.00003, 672.00006)
 ingredientType = "OilOfVitriol"
 ingredientSprite = ExtResource("21_n24vg")
 
 [node name="Stardust" parent="." unique_id=860062454 instance=ExtResource("5_b2bpf")]
-position = Vector2(1658, 705)
+position = Vector2(1540, 672)
 ingredientType = "Stardust"
 ingredientSprite = ExtResource("19_umnjm")
 
 [node name="IngredientLabels" type="CanvasLayer" parent="." unique_id=2123413072]
+visible = false
 
 [node name="EyeOfNewt" type="Label" parent="IngredientLabels" unique_id=783346106]
 offset_left = 54.0
@@ -405,17 +414,20 @@ horizontal_alignment = 1
 
 [node name="FrogMaster" type="Sprite2D" parent="." unique_id=342284683]
 z_index = -20
-position = Vector2(747, 735.00006)
-scale = Vector2(0.06, 0.06)
+position = Vector2(1268, 489.99997)
+scale = Vector2(0.045, 0.045)
 texture = ExtResource("36_umnjm")
 
 [node name="Customer" parent="." unique_id=1519350129 instance=ExtResource("10_71axn")]
+visible = false
 z_index = -100
 position = Vector2(1603.9999, 549.86005)
-scale = Vector2(0.12, 0.120053194)
 animation = &"HerbBert"
+frame = 0
+frame_progress = 0.0
 
 [node name="Smoke" type="AnimatedSprite2D" parent="." unique_id=454387287]
+visible = false
 z_index = -90
 position = Vector2(1017.00006, 527)
 scale = Vector2(1.6, 1.6)

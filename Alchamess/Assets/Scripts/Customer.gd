@@ -173,13 +173,13 @@ func receive_potion(potion_type: String) -> void:
 			jitter_effect(delay_time + walk_out_duration)
 		elif potion_type == "Potion of Creature Feature":
 			# Increasing size of creature a lil bit
-			scale = Vector2(0.16, 0.16)
+			scale = Vector2(0.14, 0.14)
 		elif potion_type == "Potion of Enlarge Person":
 			# Increase size of sprite
-			scale = Vector2(0.16, 0.16)
+			scale = Vector2(0.14, 0.14)
 		elif potion_type == "Potion of Shrink Person":
 			# Decrease size of sprite
-			scale = Vector2(0.07, 0.07)
+			scale = Vector2(0.05, 0.05)
 			position.y += 45
 			is_shrunk = true
 			
@@ -220,7 +220,7 @@ func new_customer() -> void:
 	
 	# Setting customer size to default
 	modulate.a = 1.0
-	scale = Vector2(0.12, 0.12)
+	scale = Vector2(0.10, 0.10)
 
 	#Gets the next customer, 
 	var next_name: String = customer_names[randi() % customer_names.size()]
