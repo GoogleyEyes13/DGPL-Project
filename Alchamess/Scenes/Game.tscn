@@ -30,6 +30,7 @@
 [ext_resource type="Texture2D" uid="uid://bp6j6ah3qyx6l" path="res://Assets/Ingredients/OilOfVitriol.png" id="21_n24vg"]
 [ext_resource type="Texture2D" uid="uid://c2bfvsvocigbs" path="res://Assets/Sprites/Smoke/Smoke6.png" id="22_i4lct"]
 [ext_resource type="Texture2D" uid="uid://sni61jgmfufd" path="res://Assets/Sprites/Smoke/Smoke7.png" id="23_iyesh"]
+[ext_resource type="Texture2D" uid="uid://c0gvaspxm2oew" path="res://Assets/Placeholders/FrogMasterOpen.png" id="23_n2ugt"]
 [ext_resource type="Texture2D" uid="uid://dft8sqhl0d3ay" path="res://Assets/Sprites/Smoke/Smoke8.png" id="24_i1pr2"]
 [ext_resource type="Texture2D" uid="uid://byu4ukcgr8xle" path="res://Assets/Potions/EmptyPotion2.png" id="31_4f4ik"]
 [ext_resource type="Texture2D" uid="uid://bn44fqj2kaj31" path="res://Assets/Potions/EmptyPotion1.png" id="31_i1pr2"]
@@ -75,6 +76,20 @@ size = Vector2(25.774406, 104.90531)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gl6un"]
 size = Vector2(141, 111)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yf5fn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("36_umnjm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_n2ugt")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
 animations = [{
@@ -288,15 +303,11 @@ bus = &"SFX"
 
 [node name="ShelfIngredients" type="CanvasLayer" parent="." unique_id=1726064442]
 
-[node name="ShelfPhoenixFeather" type="Sprite2D" parent="ShelfIngredients" unique_id=516046292]
-position = Vector2(1653, 462.00003)
+[node name="ShelfOilOfVitriol" type="Sprite2D" parent="ShelfIngredients" unique_id=1922430470]
+texture_filter = 1
+position = Vector2(260, 247.99995)
 scale = Vector2(0.09, 0.09)
-texture = ExtResource("8_4eqlp")
-
-[node name="ShelfStardust" type="Sprite2D" parent="ShelfIngredients" unique_id=615406763]
-position = Vector2(1656, 697)
-scale = Vector2(0.09, 0.09)
-texture = ExtResource("13_4eqlp")
+texture = ExtResource("15_n24vg")
 
 [node name="ShelfWormwood" type="Sprite2D" parent="ShelfIngredients" unique_id=791196322]
 position = Vector2(1653.9999, 263.99994)
@@ -309,22 +320,29 @@ position = Vector2(263.99997, 482)
 scale = Vector2(0.09, 0.09)
 texture = ExtResource("13_n24vg")
 
+[node name="ShelfPhoenixFeather" type="Sprite2D" parent="ShelfIngredients" unique_id=516046292]
+visible = false
+position = Vector2(1653, 462.00003)
+scale = Vector2(0.09, 0.09)
+texture = ExtResource("8_4eqlp")
+
+[node name="ShelfStardust" type="Sprite2D" parent="ShelfIngredients" unique_id=615406763]
+visible = false
+position = Vector2(1656, 697)
+scale = Vector2(0.09, 0.09)
+texture = ExtResource("13_4eqlp")
+
 [node name="ShelfEyeOfNewt" type="Sprite2D" parent="ShelfIngredients" unique_id=1544213431]
+visible = false
 texture_filter = 1
-position = Vector2(257, 269)
+position = Vector2(257, 694.99994)
 scale = Vector2(0.09, 0.09)
 texture = ExtResource("14_n24vg")
 
-[node name="ShelfOilOfVitriol" type="Sprite2D" parent="ShelfIngredients" unique_id=1922430470]
-texture_filter = 1
-position = Vector2(256.99997, 674.99994)
-scale = Vector2(0.09, 0.09)
-texture = ExtResource("15_n24vg")
-
-[node name="EyeOfNewt" parent="." unique_id=2023870098 instance=ExtResource("5_b2bpf")]
+[node name="OilOfVitriol" parent="." unique_id=70480956 instance=ExtResource("5_b2bpf")]
 position = Vector2(262, 280)
-ingredientType = "EyeOfNewt"
-ingredientSprite = ExtResource("14_m15vq")
+ingredientType = "OilOfVitriol"
+ingredientSprite = ExtResource("21_n24vg")
 
 [node name="Wormwood" parent="." unique_id=1599874296 instance=ExtResource("5_b2bpf")]
 position = Vector2(1658, 280)
@@ -336,15 +354,15 @@ position = Vector2(262, 494)
 ingredientType = "ElbowGrease"
 ingredientSprite = ExtResource("19_n24vg")
 
+[node name="EyeOfNewt" parent="." unique_id=2023870098 instance=ExtResource("5_b2bpf")]
+position = Vector2(262, 707)
+ingredientType = "EyeOfNewt"
+ingredientSprite = ExtResource("14_m15vq")
+
 [node name="PhoenixFeather" parent="." unique_id=1704942985 instance=ExtResource("5_b2bpf")]
 position = Vector2(1658, 492)
 ingredientType = "PhoenixFeather"
 ingredientSprite = ExtResource("17_umnjm")
-
-[node name="OilOfVitriol" parent="." unique_id=70480956 instance=ExtResource("5_b2bpf")]
-position = Vector2(262, 707)
-ingredientType = "OilOfVitriol"
-ingredientSprite = ExtResource("21_n24vg")
 
 [node name="Stardust" parent="." unique_id=860062454 instance=ExtResource("5_b2bpf")]
 position = Vector2(1658, 705)
@@ -353,14 +371,14 @@ ingredientSprite = ExtResource("19_umnjm")
 
 [node name="IngredientLabels" type="CanvasLayer" parent="." unique_id=2123413072]
 
-[node name="EyeOfNewt" type="Label" parent="IngredientLabels" unique_id=783346106]
-offset_left = 54.0
+[node name="OilOfVitriol" type="Label" parent="IngredientLabels" unique_id=778323696]
+offset_left = 52.0
 offset_top = 166.0
-offset_right = 471.0
+offset_right = 472.0
 offset_bottom = 208.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
-text = "Eye of Newt"
+text = "Oil of Vitriol"
 horizontal_alignment = 1
 
 [node name="Wormwood" type="Label" parent="IngredientLabels" unique_id=2138386859]
@@ -383,6 +401,16 @@ theme_override_font_sizes/font_size = 30
 text = "Elbow Grease"
 horizontal_alignment = 1
 
+[node name="EyeOfNewt" type="Label" parent="IngredientLabels" unique_id=783346106]
+offset_left = 54.0
+offset_top = 571.0
+offset_right = 471.0
+offset_bottom = 613.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Eye of Newt"
+horizontal_alignment = 1
+
 [node name="PhoenixFeather" type="Label" parent="IngredientLabels" unique_id=1001754341]
 offset_left = 1446.0
 offset_top = 352.0
@@ -391,16 +419,6 @@ offset_bottom = 394.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "Phoenix Feather"
-horizontal_alignment = 1
-
-[node name="OilOfVitriol" type="Label" parent="IngredientLabels" unique_id=778323696]
-offset_left = 52.0
-offset_top = 572.0
-offset_right = 472.0
-offset_bottom = 614.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-text = "Oil of Vitriol"
 horizontal_alignment = 1
 
 [node name="Stardust" type="Label" parent="IngredientLabels" unique_id=58475090]
@@ -413,11 +431,12 @@ theme_override_font_sizes/font_size = 30
 text = "Stardust"
 horizontal_alignment = 1
 
-[node name="FrogMaster" type="Sprite2D" parent="." unique_id=342284683]
+[node name="FrogMaster" type="AnimatedSprite2D" parent="." unique_id=1965751636]
 z_index = -20
 position = Vector2(747, 735.00006)
 scale = Vector2(0.06, 0.06)
-texture = ExtResource("36_umnjm")
+sprite_frames = SubResource("SpriteFrames_yf5fn")
+frame_progress = 0.5292281
 
 [node name="Customer" parent="." unique_id=1519350129 instance=ExtResource("10_71axn")]
 z_index = -100
