@@ -2,9 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cd02yewpj52sp" path="res://Assets/Scripts/NotebookMenu.gd" id="1_htgb8"]
 [ext_resource type="Texture2D" uid="uid://buuegr8mli5rp" path="res://Assets/Ingredients/ShelfEyeOfNewt.png" id="3_1xjk5"]
-[ext_resource type="AudioStream" uid="uid://bu4vs6w5wcblc" path="res://Assets/Audio/SFX/Notebook/notebook open.wav" id="3_v5nkl"]
 [ext_resource type="Texture2D" uid="uid://u5krystq3q6w" path="res://Assets/Ingredients/ShelfWormwood.png" id="4_1xjk5"]
-[ext_resource type="AudioStream" uid="uid://re1uhv2rrewn" path="res://Assets/Audio/SFX/Notebook/notebookclose.wav" id="4_5c8o6"]
 [ext_resource type="Texture2D" uid="uid://b1b2xkudanhmy" path="res://Assets/Ingredients/ShelfElbowGrease.png" id="5_1xjk5"]
 [ext_resource type="Texture2D" uid="uid://b6smgfgjh7ryp" path="res://Assets/Ingredients/ShelfPhoenixFeather.png" id="6_1xjk5"]
 [ext_resource type="Texture2D" uid="uid://cgqxoqnxwyp0e" path="res://Assets/Ingredients/ShelfOilOfVitriol.png" id="7_1xjk5"]
@@ -47,14 +45,6 @@ R
 N
 A
 L"
-
-[node name="NotebookOpen" type="AudioStreamPlayer" parent="NotebookTab" unique_id=1435466024]
-stream = ExtResource("3_v5nkl")
-bus = &"SFX"
-
-[node name="NotebookClose" type="AudioStreamPlayer" parent="NotebookTab" unique_id=644226143]
-stream = ExtResource("4_5c8o6")
-bus = &"SFX"
 
 [node name="NotebookPanel" type="Panel" parent="." unique_id=665566909]
 custom_minimum_size = Vector2(835, 1080)
@@ -293,10 +283,6 @@ custom_minimum_size = Vector2(80, 30)
 layout_mode = 2
 text = "Back"
 
-[node name="BackSfx" type="AudioStreamPlayer" parent="NotebookPanel/MarginContainer/PotionDetailView/BackButton" unique_id=657858839]
-stream = ExtResource("11_t8gf5")
-bus = &"SFX"
-
 [node name="TitleLabel" type="Label" parent="NotebookPanel/MarginContainer/PotionDetailView" unique_id=68821828]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
@@ -335,3 +321,6 @@ custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 placeholder_text = "Insert notes here..."
+
+[node name="NotebookSFX" type="AudioStreamPlayer" parent="." unique_id=644226143]
+bus = &"SFX"
