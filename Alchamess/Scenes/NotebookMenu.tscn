@@ -10,6 +10,7 @@
 [ext_resource type="Theme" uid="uid://clxl8pps2dife" path="res://Assets/UI/JournalUI/bento_sketch.tres" id="8_lstkl"]
 [ext_resource type="Texture2D" uid="uid://cjmt5m3xn6gfw" path="res://Assets/Sprites/Caseoh/CaseohNormal.png" id="9_1xjk5"]
 [ext_resource type="Texture2D" uid="uid://dpv2ywmfixlf7" path="res://Assets/Sprites/Caseoh/CaseohGreen.png" id="10_8ycv8"]
+[ext_resource type="AudioStream" uid="uid://d3w45sg7jgt4e" path="res://Assets/Audio/SFX/Notebook/notebookbackward.wav" id="11_t8gf5"]
 
 [node name="NotebookMenu" type="Control" unique_id=856325922]
 z_index = 999
@@ -259,6 +260,10 @@ custom_minimum_size = Vector2(80, 30)
 layout_mode = 2
 text = "Back"
 
+[node name="BackSfx" type="AudioStreamPlayer" parent="NotebookPanel/MarginContainer/PotionListView/BackButton" unique_id=1525340114]
+stream = ExtResource("11_t8gf5")
+bus = &"SFX"
+
 [node name="ScrollContainer" type="ScrollContainer" parent="NotebookPanel/MarginContainer/PotionListView" unique_id=847867874]
 layout_mode = 2
 size_flags_vertical = 3
@@ -316,3 +321,6 @@ custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 placeholder_text = "Insert notes here..."
+
+[node name="NotebookSFX" type="AudioStreamPlayer" parent="." unique_id=644226143]
+bus = &"SFX"

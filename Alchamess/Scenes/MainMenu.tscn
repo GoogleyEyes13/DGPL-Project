@@ -14,6 +14,9 @@ script = ExtResource("1_tt5f1")
 visible = false
 layout_mode = 1
 
+[node name="ClickSFX" type="AudioStreamPlayer" parent="SettingsMenu" unique_id=530368301]
+bus = &"SFX"
+
 [node name="BackgroundColour" type="ColorRect" parent="." unique_id=1562538587]
 layout_mode = 0
 offset_right = 1920.0
@@ -75,6 +78,9 @@ grow_vertical = 2
 theme = ExtResource("2_8saeu")
 theme_override_font_sizes/font_size = 40
 text = "Quit"
+
+[node name="ClickSFX" type="AudioStreamPlayer" parent="." unique_id=1094349586]
+bus = &"SFX"
 
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="SettingsButton" to="." method="_on_option_button_pressed"]

@@ -5,6 +5,17 @@ extends CharacterBody2D
 
 var is_grabbed : bool = false
 
+var pickup_sounds: Dictionary = {
+	"ElbowGrease": preload("res://Assets/Audio/SFX/Ingredient pickup/elbow grease.wav"),
+	"EyeOfNewt": preload("res://Assets/Audio/SFX/Ingredient pickup/eye of newt.wav"),
+	"OilOfVitriol": preload("res://Assets/Audio/SFX/Ingredient pickup/oil of vitriol.wav"),
+	"PhoenixFeather": preload("res://Assets/Audio/SFX/Ingredient pickup/phoenix feather.wav"),
+	"Stardust": preload("res://Assets/Audio/SFX/Ingredient pickup/stardust.wav"),
+	"Wormwood": preload("res://Assets/Audio/SFX/Ingredient pickup/wormwood.wav"),
+}
+
+@onready var pickup_sfx: AudioStreamPlayer = $PickupSFX
+
 func _ready() -> void:
 	$Sprite2D.texture = ingredientSprite
 	$Sprite2D.visible = false
@@ -22,6 +33,9 @@ func _input_event(_viewport, event, _shape_idx) -> void:
 			if event.pressed:
 				is_grabbed = true
 				$Sprite2D.visible = true
+				if pickup_sounds.has(ingredientType):
+					pickup_sfx.stream = pickup_sounds[ingredientType]
+					pickup_sfx.play()
 			else:
 				is_grabbed = false
 				$Sprite2D.visible = false

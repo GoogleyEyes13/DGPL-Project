@@ -19,6 +19,10 @@ var action_labels: Dictionary = {
 var listening_for_action: String = ""
 var rebind_buttons: Dictionary = {}   # action_name -> Button
 
+# Audio
+@onready var click_sfx: AudioStreamPlayer = $ClickSFX
+var sfx_click = preload("res://Assets/Audio/SFX/Menu/buttonclick.wav")
+
 func _ready() -> void:
 	master_slider.min_value = 0.0
 	master_slider.max_value = 1.0
@@ -40,6 +44,10 @@ func _ready() -> void:
 	
 	hide()
 
+func _play_click() -> void:
+	click_sfx.stream = sfx_click
+	click_sfx.play()
+
 func _build_keybind_rows() -> void:
 	for action in rebindable_actions:
 		var row := HBoxContainer.new()
@@ -52,7 +60,10 @@ func _build_keybind_rows() -> void:
 		var button := Button.new()
 		button.text = _get_key_display(action)
 		button.custom_minimum_size = Vector2(140, 36)
-		button.pressed.connect(func(): _start_listening(action, button))
+		button.pressed.connect(func():
+			_play_click()
+			_start_listening(action, button)
+		)
 		row.add_child(button)
 		
 		rebind_buttons[action] = button
@@ -98,7 +109,7 @@ func _load_keybinds() -> void:
 		if config.has_section_key("keybinds", action):
 			var keycode: int = config.get_value("keybinds", action)
 			var new_event := InputEventKey.new()
-			new_event.keycode = keycode
+			new_event.keycode = keycode as Key
 			InputMap.action_erase_events(action)
 			InputMap.action_add_event(action, new_event)
 
@@ -146,4 +157,5 @@ func _on_sfx_changed(value: float) -> void:
 	_save_settings()
 
 func _on_back_pressed() -> void:
+	_play_click()
 	hide()

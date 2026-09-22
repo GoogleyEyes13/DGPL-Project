@@ -17,6 +17,14 @@ var allow_mixing = false
 # The liquid in the cauldron
 @onready var WitchCauldronLiquid = $"../WitchCauldron/WitchCauldronLiquid"
 
+# Stirring sounds
+var stir_sounds: Array[AudioStream] = [
+	preload("res://Assets/Audio/SFX/Stirring Sounds/stirring1.wav"),
+	preload("res://Assets/Audio/SFX/Stirring Sounds/stirring2.wav"),
+	preload("res://Assets/Audio/SFX/Stirring Sounds/stirring3.wav"),
+]
+@onready var stir_sfx: AudioStreamPlayer = $StirSFX
+
 # Signal for when the potion is mixed
 signal potion_mixed
 
@@ -60,6 +68,7 @@ func _process(_delta):
 				last_side = "left"
 				mix_count += 1
 				DebugManager.debug_log("Mix count: " + str(mix_count))
+				_play_stir_sound()
 				change_liquid_colour()
 		
 		elif position.x >= right_side and allow_mixing == true:
@@ -67,6 +76,7 @@ func _process(_delta):
 				last_side = "right"
 				mix_count += 1
 				DebugManager.debug_log("Mix count: " + str(mix_count))
+				_play_stir_sound()
 				change_liquid_colour()
 		
 		# Once three side-to-side movements are made, the potion is mixed
@@ -91,6 +101,11 @@ func _input_event(_viewport, event, _shape_idx):
 
 func start_mixing() -> void:
 	allow_mixing = true
+
+
+func _play_stir_sound() -> void:
+	stir_sfx.stream = stir_sounds[randi() % stir_sounds.size()]
+	stir_sfx.play()
 
 
 func change_liquid_colour() -> void:
