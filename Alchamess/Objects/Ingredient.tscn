@@ -20,3 +20,7 @@ texture = ExtResource("1_p67ce")
 [node name="CollisionShape" type="CollisionShape2D" parent="." unique_id=1294795548]
 position = Vector2(0, -14)
 shape = SubResource("CircleShape2D_hvpep")
+
+[node name="PickupSFX" type="AudioStreamPlayer" parent="." unique_id=1715404548]
+volume_db = -10.0
+bus = &"SFX"

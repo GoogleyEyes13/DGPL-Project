@@ -3,7 +3,7 @@ extends AnimatedSprite2D
 
 #region Variables
 # The current customer loaded
-var CustomerName: String = "HerbBert"
+var CustomerName: String = "Queso"
 
 var start_pos: Vector2
 var centre_pos: Vector2
@@ -55,6 +55,15 @@ var PotionEffects: Dictionary = {
 
 @onready var PotionEffectSprite: AnimatedSprite2D = $"."
 @onready var SmokeTransition = $"../Smoke"
+
+# Audio
+var walk_sounds: Dictionary = {
+	"Queso": preload("res://Assets/Audio/SFX/Walking/quesowalking.wav"),
+}
+var default_walk_sound: AudioStream = preload("res://Assets/Audio/SFX/Walking/regularwalking.wav")
+
+@onready var walk_sfx: AudioStreamPlayer = $WalkSFX
+@onready var smoke_sfx: AudioStreamPlayer = $SmokeSFX
 #endregion
 
 # Called when the node enters the scene tree for the first time.
@@ -91,6 +100,10 @@ func _ready() -> void:
 
 func bob_in() -> void:
 	show()
+	
+	walk_sfx.stream = walk_sounds.get(CustomerName, default_walk_sound)
+	walk_sfx.play()
+	
 	#Time to reach the middle of the screen
 	var travel_duration: float = 4.5 
 	
@@ -114,6 +127,7 @@ func bob_in() -> void:
 
 
 func on_arrival() -> void:
+	walk_sfx.stop()
 	global_position.y = centre_pos.y
 	DebugManager.debug_log(CustomerName + " is at the counter! Waiting for interaction...") #test
 	match CustomerName:
@@ -158,6 +172,8 @@ func receive_potion(potion_type: String) -> void:
 		# Smoke transition effect
 		SmokeTransition.visible = true
 		SmokeTransition.play()
+		smoke_sfx.stream = preload("res://Assets/Audio/SFX/Smoke Puff/smoke puff.mp3")
+		smoke_sfx.play()
 		
 		await get_tree().create_timer(0.3).timeout
 		
@@ -191,6 +207,9 @@ func receive_potion(potion_type: String) -> void:
 
 
 func bob_out() -> void:
+	walk_sfx.stream = walk_sounds.get(CustomerName, default_walk_sound)
+	walk_sfx.play()
+	
 	var move_tween = create_tween()
 	move_tween.tween_property(self, "global_position:x", end_pos.x, walk_out_duration)\
 		.set_trans(Tween.TRANS_QUAD)\
@@ -213,6 +232,8 @@ func bob_out() -> void:
 	move_tween.tween_callback(march_tween.kill)
 
 func new_customer() -> void:
+	walk_sfx.stop()
+	
 	#edge case
 	if customer_names.is_empty():
 		push_warning("No customer names assigned!")
@@ -242,6 +263,8 @@ func new_customer() -> void:
 
 
 func explode_effect() -> void:
+	walk_sfx.stop()
+	
 	# Permanently remove this customer
 	customer_names.erase(CustomerName)
 	DebugManager.debug_log(CustomerName + " has been removed from the customer pool permanently")

@@ -43,6 +43,17 @@ var LastPotionCreated: String = "None"
 # Potion mixed state
 var PotionMixed = false
 
+# Ingredient/potion sounds
+var in_pot_sounds: Dictionary = {
+	"ElbowGrease": preload("res://Assets/Audio/SFX/Ingredients in Pot/elbow grease.wav"),
+	"EyeOfNewt": preload("res://Assets/Audio/SFX/Ingredients in Pot/eye of newt.wav"),
+	"OilOfVitriol": preload("res://Assets/Audio/SFX/Ingredients in Pot/oil of vitriol.wav"),
+	"PhoenixFeather": preload("res://Assets/Audio/SFX/Ingredients in Pot/phoenix feather.wav"),
+	"Stardust": preload("res://Assets/Audio/SFX/Ingredients in Pot/stardust.wav"),
+	"Wormwood": preload("res://Assets/Audio/SFX/Ingredients in Pot/wormwood.wav"),
+}
+@onready var in_pot_sfx: AudioStreamPlayer = $InPotSFX
+
 func _ready():
 	$"../MixingStick".potion_mixed.connect(_on_potion_mixed)
 
@@ -61,6 +72,11 @@ func _add_ingredient_to_cauldron(ingredient_ingredient_name):
 	# Add ingredient to the pot
 	CauldronIngredients[ingredient_ingredient_name] = 1
 	DebugManager.debug_log(ingredient_ingredient_name + " has been placed in the pot")
+	
+	if in_pot_sounds.has(ingredient_ingredient_name):
+		in_pot_sfx.stream = in_pot_sounds[ingredient_ingredient_name]
+		in_pot_sfx.play()
+	
 	ingredients_updated.emit(CauldronIngredients.keys(), LastPotionCreated)
 	
 	if CauldronIngredients.size() == 3:		

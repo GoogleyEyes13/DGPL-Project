@@ -57,6 +57,7 @@
 [ext_resource type="Texture2D" uid="uid://bruuijfi25i6r" path="res://Assets/Potions/RedPotion5.png" id="44_smnwb"]
 [ext_resource type="Texture2D" uid="uid://f48eel4uv1q2" path="res://Assets/Potions/YellowPotion5.png" id="45_lkuj1"]
 [ext_resource type="Texture2D" uid="uid://d0wxly5qr13qj" path="res://Assets/Potions/YellowPotion4.png" id="45_m15vq"]
+[ext_resource type="AudioStream" uid="uid://bo3e5nhmsm6wc" path="res://Assets/Audio/SFX/Music/Medieval Vol. 2 5 (Loop).mp3" id="58_n2ugt"]
 
 [sub_resource type="Gradient" id="Gradient_khy6b"]
 colors = PackedColorArray(0.3121955, 0.170391, 0.102683924, 1, 0.64137924, 0.3832803, 0.2610434, 1)
@@ -245,6 +246,9 @@ texture = SubResource("NoiseTexture2D_4eqlp")
 scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("RectangleShape2D_7lihs")
 
+[node name="StirSFX" type="AudioStreamPlayer" parent="MixingStick" unique_id=1306141244]
+bus = &"SFX"
+
 [node name="WitchCauldron" type="CharacterBody2D" parent="." unique_id=1298498589]
 texture_filter = 1
 position = Vector2(965.00006, 928)
@@ -275,6 +279,12 @@ texture = ExtResource("1_gl6un")
 z_index = 10
 position = Vector2(0, -12.5)
 shape = SubResource("RectangleShape2D_gl6un")
+
+[node name="InPotSFX" type="AudioStreamPlayer" parent="WitchCauldron" unique_id=695190972]
+bus = &"SFX"
+
+[node name="SmokeSFX" type="AudioStreamPlayer" parent="WitchCauldron" unique_id=1347269618]
+bus = &"SFX"
 
 [node name="ShelfIngredients" type="CanvasLayer" parent="." unique_id=1726064442]
 
@@ -413,7 +423,8 @@ texture = ExtResource("36_umnjm")
 z_index = -100
 position = Vector2(1603.9999, 549.86005)
 scale = Vector2(0.12, 0.120053194)
-animation = &"HerbBert"
+frame = 0
+frame_progress = 0.0
 
 [node name="Smoke" type="AnimatedSprite2D" parent="." unique_id=454387287]
 z_index = -90
@@ -477,6 +488,11 @@ visible = false
 position = Vector2(589, 275.00003)
 scale = Vector2(0.07, 0.089)
 texture = ExtResource("9_bf53h")
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=1419371689]
+stream = ExtResource("58_n2ugt")
+volume_db = -10.0
+autoplay = true
 
 [connection signal="body_entered" from="WitchCauldron/Area2D" to="WitchCauldron" method="_on_area_2d_body_entered"]
 [connection signal="animation_finished" from="Smoke" to="Customer" method="_on_smoke_animation_finished"]
