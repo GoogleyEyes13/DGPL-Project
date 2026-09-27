@@ -1,5 +1,53 @@
 ~ start
-Queso: Man I'm starving... You got something filling?
-Queso: Just give me anything big.
+% Queso: Ugh, finally made it, I'm exhausted...
+% Queso: Hey! You! Potion maker!
+% Queso: Phew, had a rough day of work today.
+
+match Globals.wantedPotionType: # this is a placeholder while we set up a global variable for the wanted potions
+	when "MogFace":
+		Queso: Chat keeps saying I'm ugly, make me look confident!
+	when "Beautification":
+		Queso: I'm gonna see if I can get a date tonight, make me attractive!
+	when "ShakeRapidly":
+		Queso: I've got so much stress on me, I need to shake it out!
+	when "EyeColourSwap":
+		Queso: I'm gonna prank my chat, change my eye colour!
+	when "PermanentSmile":
+		Queso: People always say I have a bad resting face, fix it!
+	when "GreenSkin":
+		Queso: Change my hue!
+	when "Cure":
+		Queso: I got too excited and ate chicken that was too raw, cure me!
+	when "Bald":
+		Queso: I'm done with having hair. Get rid of it!
+	when "HeadSizeIncrease":
+		Queso: I hate people saying I look like a Laygo brick, my head is too small for my body!
+		# "laygo" to be an off-brand lego
+	when "HeadSizeDecrease":
+		Queso: I'm leaning into the bit now! Make my head like a little bump!
+	when "CreatureFeature":
+		Queso: People keep coming up to me on the street asking for pictures, make me into a different creature!
+	when "Rabies": #look idk what to put here, why would someone want this?
+		Queso: ...
+	when "ChangeLanguage":
+		Queso: I'm abouta do a collab stream, but I don't speak their language!
+	when "ChangeArtStyle":
+		Queso: I want to get some fan art, but make it real!
+	when "SwapBodies": #not sure what this one is about
+		Queso: People keep coming up to me on the street asking for pictures, make me into a different person!
+	when "Love":
+		Queso: I'm gonna see if I can get a date tonight, make me lovable!
+	when "Explode":
+		Queso: Help my channel blow up!
+	when "Skeleton":
+		Queso: I'm gonna scare my chat today! Make me spooky!
+	when "EnlargePerson":
+		Queso: They keep saying I'm obese, show them how big I can be!
+	when "ShrinkPerson":
+		Queso: They keep saying I'm obese, make me small!
+	else:
+		Queso: I dont even know what I want! Just give me something to drink! (placeholder: no requested potion set)
+
 - Confirm
+
 => END

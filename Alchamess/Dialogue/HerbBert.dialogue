@@ -46,7 +46,7 @@ match Globals.wantedPotionType: # this is a placeholder while we set up a global
 	when "ShrinkPerson":
 		Herb Bert: I'm trying to sneak into a dungeon, can you help me sneak by the monsters inside?
 	else:
-		Herb Bert: I'm not quite sure what I want...
+		Herb Bert: I'm not quite sure what I want... (placeholder: no requested potion set)
 
 - Confirm
 
