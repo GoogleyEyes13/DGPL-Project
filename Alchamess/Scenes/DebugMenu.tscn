@@ -18,10 +18,11 @@ mouse_filter = 2
 script = ExtResource("1_w86ti")
 
 [node name="Panel" type="Panel" parent="." unique_id=1388507694]
-custom_minimum_size = Vector2(800, 200)
+custom_minimum_size = Vector2(780, 200)
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
+offset_right = 750.0
 grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_w86ti")
@@ -34,6 +35,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer" unique_id=590842433]
 layout_mode = 2
