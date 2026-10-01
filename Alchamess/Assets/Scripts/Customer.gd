@@ -58,7 +58,7 @@ var PotionEffects: Dictionary = {
 
 # Audio
 var walk_sounds: Dictionary = {
-	"Queso": preload("res://Assets/Audio/SFX/Walking/quesowalking.wav"),
+	"Queso": preload("res://Assets/Audio/SFX/Walking/quesowalkingsynced.wav"),
 }
 var default_walk_sound: AudioStream = preload("res://Assets/Audio/SFX/Walking/regularwalking.wav")
 
