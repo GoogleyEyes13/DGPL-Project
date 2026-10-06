@@ -66,6 +66,7 @@ var default_walk_sound: AudioStream = preload("res://Assets/Audio/SFX/Walking/re
 @onready var smoke_sfx: AudioStreamPlayer = $SmokeSFX
 #endregion
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	DebugManager.register_customer(self)
@@ -94,6 +95,11 @@ func _ready() -> void:
 	stop()
 
 	hide()
+	await get_tree().create_timer(0.5).timeout
+	var resource = load("res://Dialogue/Tutorial.dialogue")
+	DialogueManager.show_dialogue_balloon(resource)
+	await DialogueManager.dialogue_ended
+	
 	
 	bob_in()
 
