@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://nk2mr8ongv5d"]
 
 [ext_resource type="Script" uid="uid://mg1gd6huuxje" path="res://Assets/Scripts/Ingredient.gd" id="1_i6ux4"]
-[ext_resource type="Texture2D" uid="uid://i8ohcjfi2ya1" path="res://icon.svg" id="1_p67ce"]
+[ext_resource type="PackedScene" uid="uid://dnch51pphowlp" path="res://Scenes/IngredientDial.tscn" id="3_kq52w"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hvpep"]
 radius = 97.61562
@@ -14,11 +14,10 @@ script = ExtResource("1_i6ux4")
 
 [node name="ShelfSprite" type="Sprite2D" parent="." unique_id=1517871503]
 scale = Vector2(0.09, 0.09)
-texture = ExtResource("1_p67ce")
 
 [node name="DraggedSprite" type="Sprite2D" parent="." unique_id=725578124]
+visible = false
 scale = Vector2(0.09, 0.09)
-texture = ExtResource("1_p67ce")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="." unique_id=1294795548]
 position = Vector2(0, -14)
@@ -27,3 +26,10 @@ shape = SubResource("CircleShape2D_hvpep")
 [node name="PickupSFX" type="AudioStreamPlayer" parent="." unique_id=1715404548]
 volume_db = -10.0
 bus = &"SFX"
+
+[node name="IngredientDial" parent="." unique_id=1125379738 instance=ExtResource("3_kq52w")]
+offset_left = -100.00001
+offset_top = -5.0000005
+offset_right = -100.00001
+offset_bottom = -5.0000005
+scale = Vector2(0.4, 0.4)

@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://dnch51pphowlp"]
+
+[ext_resource type="Script" uid="uid://dwbs1wd06u5pv" path="res://Assets/Scripts/IngredientDial.gd" id="1_l6xh4"]
+[ext_resource type="Texture2D" uid="uid://delr8tdx61yjv" path="res://Assets/UI/ProgressBar/progress-bar-circle.png" id="1_px1r5"]
+[ext_resource type="Texture2D" uid="uid://dnyyfww7a18je" path="res://Assets/UI/ProgressBar/progress-bar-frame.png" id="2_l6xh4"]
+
+[node name="IngredientDial" type="Control" unique_id=1125379738]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_l6xh4")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=543720880]
+layout_mode = 0
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+pivot_offset = Vector2(-32, 40)
+max_value = 10.0
+value = 3.0
+fill_mode = 4
+texture_under = ExtResource("1_px1r5")
+texture_over = ExtResource("2_l6xh4")
+texture_progress = ExtResource("1_px1r5")
+tint_under = Color(0.25, 0.25, 0.25, 0.5921569)
+tint_progress = Color(0.827451, 0.6862745, 0.21568628, 1)
