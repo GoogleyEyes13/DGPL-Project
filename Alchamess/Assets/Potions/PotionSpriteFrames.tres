@@ -1,0 +1,130 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://btwv0dsditp12"]
+
+[ext_resource type="Texture2D" uid="uid://bn44fqj2kaj31" path="res://Assets/Potions/EmptyPotion1.png" id="1_etf4b"]
+[ext_resource type="Texture2D" uid="uid://bbl1fn22u5vpn" path="res://Assets/Potions/GreenPotion1.png" id="2_khh3w"]
+[ext_resource type="Texture2D" uid="uid://cjthekjxalkos" path="res://Assets/Potions/OrangePotion1.png" id="3_dno01"]
+[ext_resource type="Texture2D" uid="uid://d2k0fd0gjnxcd" path="res://Assets/Potions/RedPotion1.png" id="4_3jqp4"]
+[ext_resource type="Texture2D" uid="uid://iwk2hgrjnnfk" path="res://Assets/Potions/YellowPotion1.png" id="5_7v2gr"]
+[ext_resource type="Texture2D" uid="uid://byu4ukcgr8xle" path="res://Assets/Potions/EmptyPotion2.png" id="6_h0np6"]
+[ext_resource type="Texture2D" uid="uid://ssgy7vscqmtq" path="res://Assets/Potions/GreenPotion2.png" id="7_rjcsl"]
+[ext_resource type="Texture2D" uid="uid://dgoy7usl7dfwh" path="res://Assets/Potions/OrangePotion2.png" id="8_goy4j"]
+[ext_resource type="Texture2D" uid="uid://cjubsytkamofu" path="res://Assets/Potions/RedPotion2.png" id="9_4tnok"]
+[ext_resource type="Texture2D" uid="uid://c86jkb5kro3ud" path="res://Assets/Potions/YellowPotion2.png" id="10_vrvmw"]
+[ext_resource type="Texture2D" uid="uid://c613pj11xj4wf" path="res://Assets/Potions/EmptyPotion3.png" id="11_udyr6"]
+[ext_resource type="Texture2D" uid="uid://c6tv40bul1sv3" path="res://Assets/Potions/GreenPotion3.png" id="12_j5gk8"]
+[ext_resource type="Texture2D" uid="uid://cbv60gk0fyone" path="res://Assets/Potions/OrangePotion3.png" id="13_h8i65"]
+[ext_resource type="Texture2D" uid="uid://j0mtkmny2w13" path="res://Assets/Potions/RedPotion3.png" id="14_cieno"]
+[ext_resource type="Texture2D" uid="uid://dwvcln1kbj0m2" path="res://Assets/Potions/YellowPotion3.png" id="15_tnkyd"]
+[ext_resource type="Texture2D" uid="uid://di5fwv6uaaou0" path="res://Assets/Potions/EmptyPotion4.png" id="16_qtrb7"]
+[ext_resource type="Texture2D" uid="uid://b7uaq54r4kkua" path="res://Assets/Potions/GreenPotion4.png" id="17_ucpat"]
+[ext_resource type="Texture2D" uid="uid://b0ay36xoqhqj7" path="res://Assets/Potions/OrangePotion4.png" id="18_upgh1"]
+[ext_resource type="Texture2D" uid="uid://bfodrgt73u8ni" path="res://Assets/Potions/RedPotion4.png" id="19_4x7fd"]
+[ext_resource type="Texture2D" uid="uid://d0wxly5qr13qj" path="res://Assets/Potions/YellowPotion4.png" id="20_1qen8"]
+[ext_resource type="Texture2D" uid="uid://da0crssdmo2sq" path="res://Assets/Potions/EmptyPotion5.png" id="21_46pt1"]
+[ext_resource type="Texture2D" uid="uid://yb312s56anxv" path="res://Assets/Potions/GreenPotion5.png" id="22_4iaev"]
+[ext_resource type="Texture2D" uid="uid://doml8knrv54bm" path="res://Assets/Potions/OrangePotion5.png" id="23_3da1r"]
+[ext_resource type="Texture2D" uid="uid://bruuijfi25i6r" path="res://Assets/Potions/RedPotion5.png" id="24_tu1n1"]
+[ext_resource type="Texture2D" uid="uid://f48eel4uv1q2" path="res://Assets/Potions/YellowPotion5.png" id="25_mk8je"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_etf4b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_khh3w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_dno01")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3jqp4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_7v2gr")
+}],
+"loop": 1,
+"name": &"Potion1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_h0np6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_rjcsl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_goy4j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_4tnok")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_vrvmw")
+}],
+"loop": 1,
+"name": &"Potion2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_udyr6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_j5gk8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_h8i65")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_cieno")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_tnkyd")
+}],
+"loop": 1,
+"name": &"Potion3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_qtrb7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_ucpat")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_upgh1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_4x7fd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_1qen8")
+}],
+"loop": 1,
+"name": &"Potion4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("21_46pt1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_4iaev")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_3da1r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_tu1n1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_mk8je")
+}],
+"loop": 1,
+"name": &"Potion5",
+"speed": 5.0
+}]

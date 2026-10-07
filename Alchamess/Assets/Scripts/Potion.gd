@@ -1,92 +1,64 @@
 extends CharacterBody2D
+class_name PotionBottle
 
-@export var potionType = "null"
-@export var potionName = "null"
-@export var potionSprite : SpriteFrames
+@export var potionType: String = "Potion1"
+@export var potionName: String = "Potion1"
 @export var flip_h: bool = false
 
-var is_grabbed : bool = false
-var on_customer : bool = false
+var is_grabbed: bool = true
+var on_customer: bool = false
+var is_filled: bool = false
 
 @onready var PotionBottleSprite: AnimatedSprite2D = $AnimatedSprite2D
 
-signal PotionToCustomer
-@onready var CurrentHeldPotion = "null"
+signal PotionToCustomer(potion_name: String)
+var CurrentHeldPotion: String = "null"
+
 
 func _ready() -> void:
-	$AnimatedSprite2D.sprite_frames = potionSprite
-	$AnimatedSprite2D.animation = potionType
-	$AnimatedSprite2D.flip_h = flip_h
+	global_position = get_global_mouse_position()
 	
-	$"../WitchCauldron".potion_bottle_filled.connect(potion_bottle_filled)
+	if potionType != "null":
+		PotionBottleSprite.animation = potionType
+	PotionBottleSprite.flip_h = flip_h
+	PotionBottleSprite.frame = 0 # Start empty
 
 
-func _process(_delta):
+func _process(_delta: float) -> void:
 	if is_grabbed:
 		global_position = get_global_mouse_position()
 
 
-func _input_event(_viewport, event, _shape_idx) -> void:
-	# Checks if the potion has been grabbed
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT:
-			if event.pressed:
-				is_grabbed = true
-
-
-func _input(event) -> void:
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT:
-			if not event.pressed and is_grabbed:
-				is_grabbed = false
-				
-				if on_customer: 
-					hand_potion_to_customer()
-				else:
-					return_potion_to_start()
-	
-		elif event.button_index == MOUSE_BUTTON_RIGHT:
-			if event.pressed and is_grabbed:
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		if not event.pressed and is_grabbed:
+			is_grabbed = false
+			
+			if on_customer and is_filled:
 				hand_potion_to_customer()
+			else:
+				queue_free()
+				
+	elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT:
+		if event.pressed and is_grabbed and on_customer and is_filled:
+			hand_potion_to_customer()
 
 
-func potion_bottle_filled(filled_potion_bottle, potion_type) -> void:
-	# Changing sprite to "fill up" the potion bottle
-	if filled_potion_bottle == potionName:
-		PotionBottleSprite.frame = 1
-		CurrentHeldPotion = potion_type
-		DebugManager.debug_log("Potion Bottle Filled! Made: " + CurrentHeldPotion)
-
-
-# Returning the relevant potion to their starting positions
-func return_potion_to_start() -> void:
-	match potionName:
-		"Potion1":
-			global_position = Vector2(653, 112)
-		"Potion1-2":
-			global_position = Vector2(1271, 112)
-		"Potion2":
-			global_position = Vector2(729, 113)
-		"Potion2-2":
-			global_position = Vector2(1198, 113)
-		"Potion3":
-			global_position = Vector2(906, 114)
-		"Potion4":
-			global_position = Vector2(1014, 112)
-		"Potion5":
-			global_position = Vector2(818, 107)
-		"Potion5-2":
-			global_position = Vector2(1105, 107)
+func fill_bottle(made_potion_name: String) -> void:
+	is_filled = true
+	CurrentHeldPotion = made_potion_name
+	PotionBottleSprite.frame = 1 # Show filled frame
+	DebugManager.debug_log("Potion Bottle Filled! Made: " + CurrentHeldPotion)
 
 
 func hand_potion_to_customer() -> void:
 	PotionToCustomer.emit(CurrentHeldPotion)
-	DebugManager.debug_log("Potion effect: " + CurrentHeldPotion + "has been applied to customer")
 	
-	# Returning potion empty and back to start
-	is_grabbed = false
-	return_potion_to_start()
-	PotionBottleSprite.frame = 0
+	if DebugManager.current_customer and DebugManager.current_customer.has_method("receive_potion"):
+		DebugManager.current_customer.receive_potion(CurrentHeldPotion)
+		
+	DebugManager.debug_log("Potion effect: " + CurrentHeldPotion + " applied to customer")
+	queue_free()
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:

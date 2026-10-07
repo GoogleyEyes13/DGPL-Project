@@ -1,11 +1,8 @@
-extends CharacterBody2D
+extends Sprite2D
 
 var has_logged_mix_finished: bool = false
-
-# A dictionary to store all the recieved ingredients
 var CauldronIngredients: Dictionary = {}
 
-# A dictionary to store all potion combinations
 var PotionRecipes: Dictionary = {
 	["ElbowGrease", "OilOfVitriol", "PhoenixFeather"]: "Potion of Mogging",
 	["OilOfVitriol", "PhoenixFeather", "Wormwood"]: "Potion of Beautification",
@@ -29,21 +26,15 @@ var PotionRecipes: Dictionary = {
 	["EyeOfNewt", "OilOfVitriol", "Stardust"]: "Potion of Shrink Person"
 }
 
-
-@onready var Potion = $"../CraftedPotion"
 @onready var MixingStick = $"../MixingStick"
-@onready var CauldronFull = false
+@onready var CauldronFull: bool = false
 
-# A signal to send to the customer when a potion is complete
 signal ingredients_updated(ingredients: Array, last_potion: String)
-signal potion_bottle_filled
+signal potion_bottle_filled(bottle_type: String, potion_name: String)
 
 var LastPotionCreated: String = "None"
+var PotionMixed: bool = false
 
-# Potion mixed state
-var PotionMixed = false
-
-# Ingredient/potion sounds
 var in_pot_sounds: Dictionary = {
 	"ElbowGrease": preload("res://Assets/Audio/SFX/Ingredients in Pot/elbow grease.wav"),
 	"EyeOfNewt": preload("res://Assets/Audio/SFX/Ingredients in Pot/eye of newt.wav"),
@@ -52,81 +43,93 @@ var in_pot_sounds: Dictionary = {
 	"Stardust": preload("res://Assets/Audio/SFX/Ingredients in Pot/stardust.wav"),
 	"Wormwood": preload("res://Assets/Audio/SFX/Ingredients in Pot/wormwood.wav"),
 }
+
 @onready var in_pot_sfx: AudioStreamPlayer = $InPotSFX
+@onready var area_2d: Area2D = $Area2D
 
-func _ready():
-	$"../MixingStick".potion_mixed.connect(_on_potion_mixed)
 
-func _add_ingredient_to_cauldron(ingredient_ingredient_name):
+func _ready() -> void:
+	MixingStick.potion_mixed.connect(_on_potion_mixed)
+	
+	# Connect Area2D collision signals safely if not connected via editor
+	if area_2d:
+		if not area_2d.body_entered.is_connected(_on_collision_entered):
+			area_2d.body_entered.connect(_on_collision_entered)
+		if not area_2d.area_entered.is_connected(_on_collision_entered):
+			area_2d.area_entered.connect(_on_collision_entered)
+
+
+func _add_ingredient_to_cauldron(ingredient_name: String) -> bool:
 	if CauldronIngredients.size() >= 3:
-		# If cauldron already has 3 ingredients, don't add another
 		DebugManager.debug_log("Cauldron full")
-		
-		return 
+		return false
 	
-	if CauldronIngredients.has(ingredient_ingredient_name):
-		# If ingredient is already in the pot, don't add another
-		DebugManager.debug_log(ingredient_ingredient_name + " is already in the pot")
-		return
+	if CauldronIngredients.has(ingredient_name):
+		DebugManager.debug_log(ingredient_name + " is already in the pot")
+		return false
 	
-	# Add ingredient to the pot
-	CauldronIngredients[ingredient_ingredient_name] = 1
-	DebugManager.debug_log(ingredient_ingredient_name + " has been placed in the pot")
+	CauldronIngredients[ingredient_name] = 1
+	DebugManager.debug_log(ingredient_name + " has been placed in the pot")
 	
-	if in_pot_sounds.has(ingredient_ingredient_name):
-		in_pot_sfx.stream = in_pot_sounds[ingredient_ingredient_name]
+	if in_pot_sounds.has(ingredient_name):
+		in_pot_sfx.stream = in_pot_sounds[ingredient_name]
 		in_pot_sfx.play()
 	
 	ingredients_updated.emit(CauldronIngredients.keys(), LastPotionCreated)
 	
-	if CauldronIngredients.size() == 3:		
-		# Setting CauldronFull to true
+	if CauldronIngredients.size() == 3:
 		CauldronFull = true
 		ingredients_updated.emit(CauldronIngredients.keys(), LastPotionCreated)
-		
-		# Allow mixing stick to mix
 		MixingStick.start_mixing()
-
-
-# Function for detecting ingredients touching the cauldron
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	# Getting the current cauldron ingredients and sorting them
-	var Ingredients = CauldronIngredients.keys()
 		
-	# Converting the node Stringingredient_names to Strings
-	for i in range(Ingredients.size()):
-		Ingredients[i] = str(Ingredients[i])
-		
-	# Sorting them alphabetically
-	Ingredients.sort()	
+	return true
 
-	if body is CharacterBody2D:
-		# Check if object is an ingredient
-		if body.has_method("return_ingredient_to_start"):
-			_add_ingredient_to_cauldron(body.ingredientType)
-			body.is_grabbed = false
-			body.get_node("Sprite2D").visible = false
-			body.return_ingredient_to_start()
-			return
-			
-		# Otherwise, it's a potion bottle
-		DebugManager.debug_log("Potion bottle detected")
-		# Check if the cauldron is full, if so, then fill the potion bottle
-		if CauldronFull == true and PotionMixed == true:
-			var potion_name = PotionRecipes[Ingredients]
-			LastPotionCreated = potion_name
-			potion_bottle_filled.emit(body.potionName, LastPotionCreated)
-			
-			# Resetting potion mixing and cauldron
-			MixingStick.reset_liquid_colour()
-			PotionMixed = false
-			CauldronFull = false
-			CauldronIngredients = {}
-			
-			# Updating label and journal
-			ingredients_updated.emit(CauldronIngredients.keys(), LastPotionCreated)
-			PotionJournal.register_potion(potion_name, Ingredients) 
+
+func _on_collision_entered(incoming_node: Node2D) -> void:
+	var target_node: Node2D = incoming_node
+	
+	# If an Area2D child enters, check its parent
+	if "ingredientType" not in target_node and "potionName" not in target_node and incoming_node.get_parent() != null:
+		target_node = incoming_node.get_parent()
+
+	# 1. Detect Ingredient
+	if "ingredientType" in target_node and target_node.ingredientType != "":
+		var ingredient_name: String = target_node.ingredientType
+		
+		if _add_ingredient_to_cauldron(ingredient_name):
+			if target_node.has_method("drop"):
+				target_node.drop()
+			else:
+				target_node.queue_free()
 		return
+
+	# 2. Detect Potion Bottle
+	if target_node is PotionBottle or "potionName" in target_node:
+		DebugManager.debug_log("Potion bottle detected in cauldron")
+		
+		if CauldronFull and PotionMixed:
+			var ingredients_list: Array = CauldronIngredients.keys()
+			ingredients_list.sort()
+			
+			if PotionRecipes.has(ingredients_list):
+				var potion_name: String = PotionRecipes[ingredients_list]
+				LastPotionCreated = potion_name
+				
+				if target_node.has_method("fill_bottle"):
+					target_node.fill_bottle(LastPotionCreated)
+				
+				potion_bottle_filled.emit(target_node.potionName, LastPotionCreated)
+				
+				# Reset state
+				MixingStick.reset_liquid_colour()
+				PotionMixed = false
+				CauldronFull = false
+				CauldronIngredients = {}
+				has_logged_mix_finished = false
+				
+				ingredients_updated.emit(CauldronIngredients.keys(), LastPotionCreated)
+				PotionJournal.register_potion(potion_name, ingredients_list)
+
 
 func _on_potion_mixed() -> void:
 	PotionMixed = true
