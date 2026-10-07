@@ -91,6 +91,11 @@ func _ready() -> void:
 
 
 func trigger_opening_dialogue() -> void:
+	if DebugManager.skip_dialogue:
+		DebugManager.debug_log("Skipping opening tutorial dialogue")
+		trigger_customer_dialogue()
+		return
+
 	var resource = load("res://Dialogue/Tutorial.dialogue")
 	DialogueManager.show_dialogue_balloon(resource)
 	await DialogueManager.dialogue_ended
@@ -99,6 +104,10 @@ func trigger_opening_dialogue() -> void:
 
 
 func trigger_customer_dialogue() -> void:
+	if DebugManager.skip_dialogue:
+		DebugManager.debug_log("Skipping customer dialogue for " + CustomerName)
+		return
+
 	match CustomerName:
 		"Queso":
 			var resource = load("res://Dialogue/Queso.dialogue")
