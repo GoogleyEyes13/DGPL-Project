@@ -21,6 +21,7 @@ bus = &"SFX"
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
+scale = Vector2(0.9927985, 1)
 color = Color(0.62644553, 0.55332667, 0.39108768, 0.6392157)
 
 [node name="AlchamessLogo[orange]" type="Sprite2D" parent="." unique_id=879874972]
