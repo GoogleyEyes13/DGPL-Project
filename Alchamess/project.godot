@@ -62,7 +62,7 @@ toggle_debug_menu={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://Dialogue/MrMonicle.dialogue", "res://Dialogue/untitled.dialogue", "res://Dialogue/HerbBert.dialogue", "res://Dialogue/Queso.dialogue")
+locale/translations_pot_files=PackedStringArray("res://Dialogue/MrMonicle.dialogue", "res://Dialogue/untitled.dialogue", "res://Dialogue/HerbBert.dialogue", "res://Dialogue/Queso.dialogue", "res://Dialogue/Tutorial.dialogue")
 
 [layer_names]
 
