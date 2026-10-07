@@ -13,9 +13,14 @@ var sfx_click = preload("res://Assets/Audio/SFX/Menu/buttonclick.wav")
 
 
 func _ready() -> void:
-	settings_button.pressed.connect(_on_settings_pressed)
-	play_button.pressed.connect(_on_play_button_pressed)
-	quit_button.pressed.connect(_on_quit_button_pressed)
+	if not settings_button.pressed.is_connected(_on_settings_pressed):
+		settings_button.pressed.connect(_on_settings_pressed)
+		
+	if not play_button.pressed.is_connected(_on_play_button_pressed):
+		play_button.pressed.connect(_on_play_button_pressed)
+		
+	if not quit_button.pressed.is_connected(_on_quit_button_pressed):
+		quit_button.pressed.connect(_on_quit_button_pressed)
 	
 	# Disable Play button until loading finishes
 	play_button.disabled = true

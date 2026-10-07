@@ -6,6 +6,7 @@ extends Control
 @onready var log_scroll: ScrollContainer = $Panel/MarginContainer/VBoxContainer/LogScroll
 @onready var log_label: RichTextLabel = $Panel/MarginContainer/VBoxContainer/LogScroll/LogLabel
 @onready var unlock_all_button: Button = $Panel/MarginContainer/VBoxContainer/HBoxContainer/UnlockAllButton
+@onready var action_hbox: HBoxContainer = $Panel/MarginContainer/VBoxContainer/HBoxContainer
 
 const MAX_LOG_LINES := 100
 var log_lines: Array[String] = []
@@ -27,14 +28,25 @@ func _ready() -> void:
 	button_container.add_theme_constant_override("h_separation", 10)
 	button_container.add_theme_constant_override("v_separation", 10)
 	_build_buttons()
+	_setup_skip_dialogue_checkbox()
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
-	
 	
 	$"/root/Game/WitchCauldron".ingredients_updated.connect(_on_ingredients_updated)
 	cauldron_label.text = ""
 
 	unlock_all_button.pressed.connect(_on_unlock_all_pressed)
 	DebugManager.log_message.connect(_on_log_message)
+
+
+func _setup_skip_dialogue_checkbox() -> void:
+	var skip_checkbox := CheckBox.new()
+	skip_checkbox.text = "Skip Dialogue"
+	skip_checkbox.button_pressed = DebugManager.skip_dialogue
+	skip_checkbox.toggled.connect(func(button_pressed: bool):
+		DebugManager.toggle_skip_dialogue(button_pressed)
+	)
+	action_hbox.add_child(skip_checkbox)
+
 	
 func _on_log_message(message: String) -> void:
 	log_lines.append(message)
