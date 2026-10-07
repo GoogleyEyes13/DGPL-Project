@@ -27,7 +27,6 @@ DialogueManager="*uid://c3rodes2l3gxb"
 Globals="*uid://coov8ubdpi33w"
 PotionJournal="*uid://cqvvr3h2ffhx"
 DebugManager="*uid://clm0nbkvgc103"
-PotionDatabase="*uid://bd854fpwstp5f"
 
 [dialogue_manager]
 

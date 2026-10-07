@@ -10,7 +10,16 @@ extends Control
 
 const MAX_LOG_LINES := 100
 var log_lines: Array[String] = []
-var potion_types: Array[String] = []
+
+var potion_types: Array[String] = [
+	"Potion of Curing", "Potion of Rapid Shaking", "Potion of Permanent Smile",
+	"Potion of Rabies", "Potion of Explode", "Potion of Change Language",
+	"Potion of Mogging", "Potion of Body Swap", "Potion of Love",
+	"Potion of Enlarge Person", "Potion of Shrink Person", "Potion Of Baldness",
+	"Potion of Head Size Increase", "Potion of Head Size Decrease",
+	"Potion of Green Skin", "Potion of Eye Colour Swap", "Potion of Skeleton",
+	"Potion of Change Art Styles", "Potion of Creature Feature", "Potion of Beautification"
+]
 #endregion
 
 
@@ -18,10 +27,6 @@ func _ready() -> void:
 	hide()
 	button_container.add_theme_constant_override("h_separation", 10)
 	button_container.add_theme_constant_override("v_separation", 10)
-	
-	# Dynamically populate potion list from PotionDatabase
-	potion_types = PotionDatabase.get_all_potion_types()
-	
 	_build_buttons()
 	_setup_skip_dialogue_checkbox()
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
