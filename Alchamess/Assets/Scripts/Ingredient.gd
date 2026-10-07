@@ -2,7 +2,7 @@
 extends CharacterBody2D
 class_name IngredientItem
 
-@export var ingredientType: String = "" # Needed for Cauldron detection!
+@export var ingredientType: String = ""
 
 @export_group("Textures")
 @export var shelf_texture: Texture2D
@@ -14,6 +14,7 @@ class_name IngredientItem
 @onready var shelf_sprite: Sprite2D = $ShelfSprite
 @onready var dragged_sprite: Sprite2D = $DraggedSprite
 @onready var pickup_sfx: AudioStreamPlayer = $PickupSFX
+@onready var dial: Control = get_node_or_null("IngredientDial")
 
 var is_grabbed: bool = false
 var start_position: Vector2
@@ -30,14 +31,25 @@ func _ready() -> void:
 	shelf_sprite.visible = true
 	dragged_sprite.visible = false
 	
-	# Automatically move into the Ingredients container folder if not already inside it
 	_ensure_in_ingredients_folder()
+	_connect_cauldron_signal()
 
 
 func _ensure_in_ingredients_folder() -> void:
 	var ingredients_folder = get_node_or_null("/root/Game/Ingredients")
 	if ingredients_folder and get_parent() != ingredients_folder:
 		reparent(ingredients_folder)
+
+
+func _connect_cauldron_signal() -> void:
+	var cauldron = get_node_or_null("/root/Game/WitchCauldron")
+	if cauldron and cauldron.has_signal("ingredient_counts_updated"):
+		cauldron.ingredient_counts_updated.connect(_on_ingredient_counts_updated)
+
+
+func _on_ingredient_counts_updated(counts: Dictionary) -> void:
+	if counts.has(ingredientType) and dial and dial.has_method("update_count"):
+		dial.update_count(counts[ingredientType])
 
 
 func _process(_delta: float) -> void:

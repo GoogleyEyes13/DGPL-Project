@@ -26,11 +26,21 @@ var PotionRecipes: Dictionary = {
 	["EyeOfNewt", "OilOfVitriol", "Stardust"]: "Potion of Shrink Person"
 }
 
+var ingredient_usage_counts: Dictionary = {
+	"ElbowGrease": 0,
+	"EyeOfNewt": 0,
+	"OilOfVitriol": 0,
+	"PhoenixFeather": 0,
+	"Stardust": 0,
+	"Wormwood": 0
+}
+
 @onready var MixingStick = $"../MixingStick"
 @onready var CauldronFull: bool = false
 
 signal ingredients_updated(ingredients: Array, last_potion: String)
 signal potion_bottle_filled(bottle_type: String, potion_name: String)
+signal ingredient_counts_updated(counts: Dictionary)
 
 var LastPotionCreated: String = "None"
 var PotionMixed: bool = false
@@ -51,7 +61,6 @@ var in_pot_sounds: Dictionary = {
 func _ready() -> void:
 	MixingStick.potion_mixed.connect(_on_potion_mixed)
 	
-	# Connect Area2D collision signals safely if not connected via editor
 	if area_2d:
 		if not area_2d.body_entered.is_connected(_on_collision_entered):
 			area_2d.body_entered.connect(_on_collision_entered)
@@ -88,7 +97,6 @@ func _add_ingredient_to_cauldron(ingredient_name: String) -> bool:
 func _on_collision_entered(incoming_node: Node2D) -> void:
 	var target_node: Node2D = incoming_node
 	
-	# If an Area2D child enters, check its parent
 	if "ingredientType" not in target_node and "potionName" not in target_node and incoming_node.get_parent() != null:
 		target_node = incoming_node.get_parent()
 
@@ -114,6 +122,13 @@ func _on_collision_entered(incoming_node: Node2D) -> void:
 			if PotionRecipes.has(ingredients_list):
 				var potion_name: String = PotionRecipes[ingredients_list]
 				LastPotionCreated = potion_name
+				
+				# Increment usage count for each ingredient in this crafted potion
+				for ingredient in ingredients_list:
+					if ingredient_usage_counts.has(ingredient):
+						ingredient_usage_counts[ingredient] += 1
+				
+				ingredient_counts_updated.emit(ingredient_usage_counts)
 				
 				if target_node.has_method("fill_bottle"):
 					target_node.fill_bottle(LastPotionCreated)
