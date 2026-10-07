@@ -24,6 +24,7 @@ buses/default_bus_layout="uid://srgrt78o1d6n"
 [autoload]
 
 DialogueManager="*uid://c3rodes2l3gxb"
+PotionDatabase="*uid://cu6ehia6l76m0"
 Globals="*uid://coov8ubdpi33w"
 PotionJournal="*uid://cqvvr3h2ffhx"
 DebugManager="*uid://clm0nbkvgc103"

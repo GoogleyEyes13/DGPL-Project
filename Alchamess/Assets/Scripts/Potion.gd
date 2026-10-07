@@ -18,10 +18,10 @@ var CurrentHeldPotion: String = "null"
 func _ready() -> void:
 	global_position = get_global_mouse_position()
 	
-	if potionType != "null":
+	if potionType != "null" and PotionBottleSprite:
 		PotionBottleSprite.animation = potionType
-	PotionBottleSprite.flip_h = flip_h
-	PotionBottleSprite.frame = 0 # Start empty
+		PotionBottleSprite.flip_h = flip_h
+		PotionBottleSprite.frame = 0 # Start empty
 
 
 func _process(_delta: float) -> void:
@@ -47,7 +47,8 @@ func _input(event: InputEvent) -> void:
 func fill_bottle(made_potion_name: String) -> void:
 	is_filled = true
 	CurrentHeldPotion = made_potion_name
-	PotionBottleSprite.frame = 1 # Show filled frame
+	if PotionBottleSprite:
+		PotionBottleSprite.frame = 1 # Show filled frame
 	DebugManager.debug_log("Potion Bottle Filled! Made: " + CurrentHeldPotion)
 
 

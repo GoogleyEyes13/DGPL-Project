@@ -3,29 +3,6 @@ extends Sprite2D
 var has_logged_mix_finished: bool = false
 var CauldronIngredients: Dictionary = {}
 
-var PotionRecipes: Dictionary = {
-	["ElbowGrease", "OilOfVitriol", "PhoenixFeather"]: "Potion of Mogging",
-	["OilOfVitriol", "PhoenixFeather", "Wormwood"]: "Potion of Beautification",
-	["ElbowGrease", "OilOfVitriol", "Stardust"]: "Potion of Rapid Shaking",
-	["ElbowGrease", "EyeOfNewt", "PhoenixFeather"]: "Potion of Eye Colour Swap",
-	["ElbowGrease", "EyeOfNewt", "Wormwood"]: "Potion of Permanent Smile",
-	["EyeOfNewt", "PhoenixFeather", "Wormwood"]: "Potion of Green Skin",
-	["ElbowGrease", "PhoenixFeather", "Wormwood"]: "Potion of Curing",
-	["EyeOfNewt", "OilOfVitriol", "Wormwood"]: "Potion Of Baldness",
-	["ElbowGrease", "OilOfVitriol", "Wormwood"]: "Potion of Head Size Increase",
-	["ElbowGrease", "EyeOfNewt", "OilOfVitriol"]: "Potion of Head Size Decrease",
-	["EyeOfNewt", "PhoenixFeather", "Stardust"]: "Potion of Creature Feature",
-	["ElbowGrease", "Stardust", "Wormwood"]: "Potion of Rabies",
-	["PhoenixFeather", "Stardust", "Wormwood"]: "Potion of Change Language",
-	["EyeOfNewt", "Stardust", "Wormwood"]: "Potion of Change Art Styles",
-	["ElbowGrease", "PhoenixFeather", "Stardust"]: "Potion of Body Swap",
-	["ElbowGrease", "EyeOfNewt", "Stardust"]: "Potion of Love",
-	["OilOfVitriol", "PhoenixFeather", "Stardust"]: "Potion of Explode",
-	["EyeOfNewt", "OilOfVitriol", "PhoenixFeather"]: "Potion of Skeleton",
-	["OilOfVitriol", "Stardust", "Wormwood"]: "Potion of Enlarge Person",
-	["EyeOfNewt", "OilOfVitriol", "Stardust"]: "Potion of Shrink Person"
-}
-
 var ingredient_usage_counts: Dictionary = {
 	"ElbowGrease": 0,
 	"EyeOfNewt": 0,
@@ -117,19 +94,20 @@ func _on_collision_entered(incoming_node: Node2D) -> void:
 		
 		if CauldronFull and PotionMixed:
 			var ingredients_list: Array = CauldronIngredients.keys()
-			ingredients_list.sort()
+			var potion_data: Dictionary = PotionDatabase.get_potion_data(ingredients_list)
 			
-			if PotionRecipes.has(ingredients_list):
-				var potion_name: String = PotionRecipes[ingredients_list]
+			if not potion_data.is_empty():
+				var potion_name: String = potion_data["name"]
 				LastPotionCreated = potion_name
 				
-				# Increment usage count for each ingredient in this crafted potion
+				# Track ingredient counts for dials
 				for ingredient in ingredients_list:
 					if ingredient_usage_counts.has(ingredient):
 						ingredient_usage_counts[ingredient] += 1
 				
 				ingredient_counts_updated.emit(ingredient_usage_counts)
 				
+				# Fill bottle using original fill_bottle method
 				if target_node.has_method("fill_bottle"):
 					target_node.fill_bottle(LastPotionCreated)
 				
