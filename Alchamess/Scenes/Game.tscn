@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cvlswtmdkf4hn"]
 
 [ext_resource type="PackedScene" uid="uid://bs1r4s6qk1h7a" path="res://Scenes/NotebookMenu.tscn" id="1_4eqlp"]
+[ext_resource type="Script" uid="uid://cn2mndv0xo157" path="res://Assets/Scripts/Game.gd" id="1_dctr5"]
 [ext_resource type="PackedScene" uid="uid://tbu6n7m6no5v" path="res://Scenes/DebugMenu.tscn" id="1_n2ugt"]
 [ext_resource type="Script" uid="uid://clyi4gvjf38r2" path="res://Assets/Scripts/Cauldron.gd" id="2_b2bpf"]
 [ext_resource type="Script" uid="uid://c13ys1t4joar2" path="res://Assets/Scripts/MixingStick.gd" id="2_fgofq"]
@@ -94,6 +95,12 @@ animations = [{
 }]
 
 [node name="Game" type="Node2D" unique_id=1061024810]
+script = ExtResource("1_dctr5")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1678639440]
+position = Vector2(953.00006, 407)
+scale = Vector2(0.93139935, 1)
+zoom = Vector2(4, 4)
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=976726611]
 layer = 99
@@ -105,6 +112,7 @@ visible = false
 visible = false
 
 [node name="BackgroundTEMP" type="Sprite2D" parent="." unique_id=197333015]
+visible = false
 z_index = -999
 position = Vector2(961, 542.5203)
 scale = Vector2(29.9375, 16.764988)

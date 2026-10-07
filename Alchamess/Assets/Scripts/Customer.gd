@@ -64,10 +64,11 @@ var default_walk_sound: AudioStream = preload("res://Assets/Audio/SFX/Walking/re
 
 @onready var walk_sfx: AudioStreamPlayer = $WalkSFX
 @onready var smoke_sfx: AudioStreamPlayer = $SmokeSFX
+
+var first_arrival: bool = true
 #endregion
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	DebugManager.register_customer(self)
 	
@@ -86,13 +87,31 @@ func _ready() -> void:
 	stop()
 
 	hide()
-	await get_tree().create_timer(0.5).timeout
+	bob_in()
+
+
+func trigger_opening_dialogue() -> void:
 	var resource = load("res://Dialogue/Tutorial.dialogue")
 	DialogueManager.show_dialogue_balloon(resource)
 	await DialogueManager.dialogue_ended
 	
-	
-	bob_in()
+	trigger_customer_dialogue()
+
+
+func trigger_customer_dialogue() -> void:
+	match CustomerName:
+		"Queso":
+			var resource = load("res://Dialogue/Queso.dialogue")
+			DialogueManager.show_dialogue_balloon(resource)
+		"HerbBert":
+			var resource = load("res://Dialogue/HerbBert.dialogue")
+			DialogueManager.show_dialogue_balloon(resource)
+		"MrMonicle":
+			var resource = load("res://Dialogue/MrMonicle.dialogue")
+			DialogueManager.show_dialogue_balloon(resource)
+		_:
+			var resource = load("res://Dialogue/Queso.dialogue")
+			DialogueManager.show_dialogue_balloon(resource)
 
 
 func bob_in() -> void:
@@ -101,17 +120,14 @@ func bob_in() -> void:
 	walk_sfx.stream = walk_sounds.get(CustomerName, default_walk_sound)
 	walk_sfx.play()
 	
-	#Time to reach the middle of the screen
-	var travel_duration: float = 4.5 
+	var travel_duration: float = 4.5
 	
-	#Main horizontal movement
 	var move_tween = create_tween()
 	move_tween.tween_property(self, "global_position:x", centre_pos.x, travel_duration)\
 		.set_trans(Tween.TRANS_QUAD)\
 		.set_ease(Tween.EASE_OUT)
 	move_tween.tween_callback(on_arrival)
 	
-	#Stepping loop
 	var march_tween = create_tween().set_loops()
 	march_tween.tween_property(self, "global_position:y", centre_pos.y - step_bounce_height, 1.0 / step_speed)\
 		.set_trans(Tween.TRANS_SINE)\
@@ -126,21 +142,14 @@ func bob_in() -> void:
 func on_arrival() -> void:
 	walk_sfx.stop()
 	global_position.y = centre_pos.y
-	DebugManager.debug_log(CustomerName + " is at the counter! Waiting for interaction...") #test
-	match CustomerName:
-		"Queso":
-			var resource = load("res://Dialogue/Queso.dialogue")
-			DialogueManager.show_dialogue_balloon(resource)
-		"HerbBert":
-			var resource = load("res://Dialogue/HerbBert.dialogue")
-			DialogueManager.show_dialogue_balloon(resource)
-		"MrMonicle":
-			var resource = load("res://Dialogue/MrMonicle.dialogue")
-			DialogueManager.show_dialogue_balloon(resource)
-		_:
-			var resource = load("res://Dialogue/Queso.dialogue")
-			DialogueManager.show_dialogue_balloon(resource)
+	DebugManager.debug_log(CustomerName + " is at the counter! Waiting for interaction...")
+	
 	cust_is_ready = true
+
+	if first_arrival:
+		first_arrival = false
+	else:
+		trigger_customer_dialogue()
 
 
 func jitter_effect(duration: float) -> void:
@@ -166,7 +175,6 @@ func receive_potion(potion_type: String) -> void:
 	cust_is_ready = false
 	
 	if PotionEffects.has(potion_type):
-		# Smoke transition effect
 		SmokeTransition.visible = true
 		SmokeTransition.play()
 		smoke_sfx.stream = preload("res://Assets/Audio/SFX/Smoke Puff/smoke puff.mp3")
@@ -185,13 +193,10 @@ func receive_potion(potion_type: String) -> void:
 			delay_time = 1.0
 			jitter_effect(delay_time + walk_out_duration)
 		elif potion_type == "Potion of Creature Feature":
-			# Increasing size of creature a lil bit
 			scale = Vector2(0.14, 0.14)
 		elif potion_type == "Potion of Enlarge Person":
-			# Increase size of sprite
 			scale = Vector2(0.14, 0.14)
 		elif potion_type == "Potion of Shrink Person":
-			# Decrease size of sprite
 			scale = Vector2(0.05, 0.05)
 			position.y += 45
 			is_shrunk = true
@@ -213,7 +218,6 @@ func bob_out() -> void:
 		.set_ease(Tween.EASE_IN)
 	move_tween.tween_callback(new_customer)
 	
-	# Making the customer sit lower if the shrink potion has been used
 	var bob_y = centre_pos.y
 	if is_shrunk:
 		bob_y += 45
@@ -228,29 +232,25 @@ func bob_out() -> void:
 
 	move_tween.tween_callback(march_tween.kill)
 
+
 func new_customer() -> void:
 	walk_sfx.stop()
 	
-	#edge case
 	if customer_names.is_empty():
 		push_warning("No customer names assigned!")
 		return
 	
-	# Setting customer size to default
 	modulate.a = 1.0
 	scale = Vector2(0.10, 0.10)
 
-	#Gets the next customer, 
 	var next_name: String = customer_names[randi() % customer_names.size()]
 	if customer_names.size() > 1:
-		while next_name == CustomerName: 
+		while next_name == CustomerName:
 			next_name = customer_names[randi() % customer_names.size()]
-			#Randomises so its never the same character twice in a row
 
 	CustomerName = next_name
 	animation = CustomerName
 	
-	#frame = 0 #Reset to default character (CHANGE THIS IF WE WANT TO RETAIN THE CHANGE)
 	stop()
 
 	global_position = start_pos
@@ -262,7 +262,6 @@ func new_customer() -> void:
 func explode_effect() -> void:
 	walk_sfx.stop()
 	
-	# Permanently remove this customer
 	customer_names.erase(CustomerName)
 	DebugManager.debug_log(CustomerName + " has been removed from the customer pool permanently")
 	
@@ -285,6 +284,7 @@ func explode_effect() -> void:
 	
 	explode_tween.tween_callback(_on_exploded)
 
+
 func _on_exploded() -> void:
 	offset = Vector2.ZERO
 	
@@ -292,13 +292,13 @@ func _on_exploded() -> void:
 		DebugManager.debug_log("All customers have been exploded! No one left to serve.")
 		modulate.a = 1.0
 		scale = original_scale
-		hide() # Change when there is an ending for killing everyone
+		hide()
 		return
 
 	var pause_tween = create_tween()
 	pause_tween.tween_interval(0.75)
 	pause_tween.tween_callback(new_customer)
 
+
 func _on_smoke_animation_finished() -> void:
-	# Making the smoke animation invisible after its played once
 	SmokeTransition.visible = false

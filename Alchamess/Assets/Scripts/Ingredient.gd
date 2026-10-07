@@ -4,7 +4,6 @@ class_name IngredientItem
 
 @export var ingredientType: String = "" # Needed for Cauldron detection!
 
-
 @export_group("Textures")
 @export var shelf_texture: Texture2D
 @export var dragged_texture: Texture2D
