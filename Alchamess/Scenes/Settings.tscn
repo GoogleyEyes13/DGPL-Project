@@ -91,10 +91,10 @@ text = "Sound Effects"
 custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
 
+[node name="KeybindContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer" unique_id=1697530254]
+layout_mode = 2
+
 [node name="BackButton" type="Button" parent="Panel/MarginContainer/VBoxContainer" unique_id=2048779876]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Back"
-
-[node name="KeybindContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer" unique_id=1697530254]
-layout_mode = 2

@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends Sprite2D
 
 var has_logged_mix_finished: bool = false
 
