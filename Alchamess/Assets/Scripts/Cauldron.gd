@@ -26,7 +26,6 @@ var PotionRecipes: Dictionary = {
 	["EyeOfNewt", "OilOfVitriol", "Stardust"]: "Potion of Shrink Person"
 }
 
-@onready var Potion = $"../CraftedPotion"
 @onready var MixingStick = $"../MixingStick"
 @onready var CauldronFull: bool = false
 

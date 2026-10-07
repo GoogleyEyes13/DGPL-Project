@@ -70,15 +70,6 @@ var default_walk_sound: AudioStream = preload("res://Assets/Audio/SFX/Walking/re
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	DebugManager.register_customer(self)
-	# Connecting potion given signals
-	$"../Potion1".PotionToCustomer.connect(receive_potion)
-	$"../Potion1-2".PotionToCustomer.connect(receive_potion)
-	$"../Potion2".PotionToCustomer.connect(receive_potion)
-	$"../Potion2-2".PotionToCustomer.connect(receive_potion)
-	$"../Potion3".PotionToCustomer.connect(receive_potion)
-	$"../Potion4".PotionToCustomer.connect(receive_potion)
-	$"../Potion5".PotionToCustomer.connect(receive_potion)
-	$"../Potion5-2".PotionToCustomer.connect(receive_potion)
 	
 	var window_size = get_viewport_rect().size
 	

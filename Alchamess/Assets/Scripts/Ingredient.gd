@@ -1,7 +1,9 @@
+@tool
 extends CharacterBody2D
 class_name IngredientItem
 
 @export var ingredientType: String = "" # Needed for Cauldron detection!
+
 
 @export_group("Textures")
 @export var shelf_texture: Texture2D
@@ -28,6 +30,15 @@ func _ready() -> void:
 		
 	shelf_sprite.visible = true
 	dragged_sprite.visible = false
+	
+	# Automatically move into the Ingredients container folder if not already inside it
+	_ensure_in_ingredients_folder()
+
+
+func _ensure_in_ingredients_folder() -> void:
+	var ingredients_folder = get_node_or_null("/root/Game/Ingredients")
+	if ingredients_folder and get_parent() != ingredients_folder:
+		reparent(ingredients_folder)
 
 
 func _process(_delta: float) -> void:
