@@ -1,59 +1,63 @@
 extends CharacterBody2D
+class_name IngredientItem
 
-@export var ingredientType = "null"
-@export var ingredientSprite : Texture2D
+@export var ingredientType: String = "" # Needed for Cauldron detection!
 
-var is_grabbed : bool = false
+@export_group("Textures")
+@export var shelf_texture: Texture2D
+@export var dragged_texture: Texture2D
 
-var pickup_sounds: Dictionary = {
-	"ElbowGrease": preload("res://Assets/Audio/SFX/Ingredient pickup/elbow grease.wav"),
-	"EyeOfNewt": preload("res://Assets/Audio/SFX/Ingredient pickup/eye of newt.wav"),
-	"OilOfVitriol": preload("res://Assets/Audio/SFX/Ingredient pickup/oil of vitriol.wav"),
-	"PhoenixFeather": preload("res://Assets/Audio/SFX/Ingredient pickup/phoenix feather.wav"),
-	"Stardust": preload("res://Assets/Audio/SFX/Ingredient pickup/stardust.wav"),
-	"Wormwood": preload("res://Assets/Audio/SFX/Ingredient pickup/wormwood.wav"),
-}
+@export_group("Audio")
+@export var pickup_sound: AudioStream
 
+@onready var shelf_sprite: Sprite2D = $ShelfSprite
+@onready var dragged_sprite: Sprite2D = $DraggedSprite
 @onready var pickup_sfx: AudioStreamPlayer = $PickupSFX
 
+var is_grabbed: bool = false
+var start_position: Vector2
+
+
 func _ready() -> void:
-	$Sprite2D.texture = ingredientSprite
-	$Sprite2D.visible = false
+	start_position = global_position
+	
+	if shelf_texture:
+		shelf_sprite.texture = shelf_texture
+	if dragged_texture:
+		dragged_sprite.texture = dragged_texture
+		
+	shelf_sprite.visible = true
+	dragged_sprite.visible = false
 
 
-func _process(_delta):
+func _process(_delta: float) -> void:
 	if is_grabbed:
 		global_position = get_global_mouse_position()
 
 
-func _input_event(_viewport, event, _shape_idx) -> void:
-	# Checks if the ingredient has been grabbed
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT:
-			if event.pressed:
-				is_grabbed = true
-				$Sprite2D.visible = true
-				if pickup_sounds.has(ingredientType):
-					pickup_sfx.stream = pickup_sounds[ingredientType]
-					pickup_sfx.play()
-			else:
-				is_grabbed = false
-				$Sprite2D.visible = false
-				return_ingredient_to_start()
+func _input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		if event.pressed:
+			pickup()
+		else:
+			drop()
 
 
-# Returning the relevant ingredient to their starting positions
-func return_ingredient_to_start() -> void:
-	match ingredientType:
-		"EyeOfNewt":
-			global_position = Vector2(391, 254)
-		"Wormwood":
-			global_position = Vector2(1548, 254)
-		"ElbowGrease":
-			global_position = Vector2(387, 481)
-		"PhoenixFeather":
-			global_position = Vector2(1538, 477)
-		"OilOfVitriol":
-			global_position = Vector2(397, 672)
-		"Stardust":
-			global_position = Vector2(1540, 672)
+func pickup() -> void:
+	is_grabbed = true
+	shelf_sprite.visible = false
+	dragged_sprite.visible = true
+	
+	if pickup_sound:
+		pickup_sfx.stream = pickup_sound
+		pickup_sfx.play()
+
+
+func drop() -> void:
+	if not is_grabbed:
+		return
+		
+	is_grabbed = false
+	shelf_sprite.visible = true
+	dragged_sprite.visible = false
+	global_position = start_position

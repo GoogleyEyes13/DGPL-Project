@@ -8,16 +8,19 @@ radius = 97.61562
 
 [node name="Ingredient" type="CharacterBody2D" unique_id=68873852]
 scale = Vector2(0.8, 0.8)
-collision_mask = 2
+collision_layer = 2
 input_pickable = true
 script = ExtResource("1_i6ux4")
-ingredientSprite = ExtResource("1_p67ce")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1517871503]
+[node name="ShelfSprite" type="Sprite2D" parent="." unique_id=1517871503]
 scale = Vector2(0.09, 0.09)
 texture = ExtResource("1_p67ce")
 
-[node name="CollisionShape" type="CollisionShape2D" parent="." unique_id=1294795548]
+[node name="DraggedSprite" type="Sprite2D" parent="." unique_id=725578124]
+scale = Vector2(0.09, 0.09)
+texture = ExtResource("1_p67ce")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1608491544]
 position = Vector2(0, -14)
 shape = SubResource("CircleShape2D_hvpep")
 

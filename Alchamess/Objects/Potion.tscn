@@ -1,8 +1,7 @@
 [gd_scene format=3 uid="uid://bvcwpspjid22w"]
 
 [ext_resource type="Script" uid="uid://c2tjyl7elk8ox" path="res://Assets/Scripts/Potion.gd" id="1_n4dr6"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
+[ext_resource type="SpriteFrames" uid="uid://btwv0dsditp12" path="res://Assets/Potions/PotionSpriteFrames.tres" id="2_r1nr0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lmarx"]
 radius = 485.7143
@@ -21,7 +20,8 @@ script = ExtResource("1_n4dr6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1940639748]
 texture_filter = 1
-sprite_frames = SubResource("SpriteFrames_g4v7s")
+sprite_frames = ExtResource("2_r1nr0")
+animation = &"Potion1"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=533873402]
 shape = SubResource("CapsuleShape2D_lmarx")
