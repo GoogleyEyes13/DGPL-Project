@@ -22,7 +22,7 @@ script = ExtResource("1_n4dr6")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1940639748]
 texture_filter = 1
 sprite_frames = ExtResource("2_r1nr0")
-animation = &"Potion1"
+animation = &"Potion4"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=533873402]
 shape = SubResource("CapsuleShape2D_lmarx")
