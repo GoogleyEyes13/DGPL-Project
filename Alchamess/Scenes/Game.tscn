@@ -318,8 +318,9 @@ frame_progress = 1.0
 
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=1419371689]
 stream = ExtResource("59_n24vg")
-volume_db = -15.0
+volume_db = -30.0
 autoplay = true
+bus = &"Music"
 parameters/looping = true
 
 [connection signal="area_entered" from="WitchCauldron/Area2D" to="WitchCauldron" method="_on_area_2d_area_entered"]

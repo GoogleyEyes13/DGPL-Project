@@ -1,51 +1,51 @@
 ~ start
-% Mr Monice: Good day to you, connoisseur of mystical beverages.
-% Mr Monice: All these pesants around me, so filthy!
-% Mr Monice: I demand you make a potion for me. Do so, and I shall pay you... exactly what you are due.
+% Mr Monicle: Good day to you, connoisseur of mystical beverages.
+% Mr Monicle: All these pesants around me, so filthy!
+% Mr Monicle: I demand you make a potion for me. Do so, and I shall pay you... exactly what you are due.
 
 match Globals.wantedPotionType: # this is a placeholder while we set up a global variable for the wanted potions
 	when "MogFace":
-		Mr Monice: I want everyone to see how far I outclass them!
+		Mr Monicle: I want everyone to see how far I outclass them!
 	when "Beautification":
-		Mr Monice: Help me enhance my already immaculate beauty.
+		Mr Monicle: Help me enhance my already immaculate beauty.
 	when "ShakeRapidly":
-		Mr Monice: ///////////////////////////////////////////////////////////////////// (placeholder, need help)
+		Mr Monicle: ///////////////////////////////////////////////////////////////////// (placeholder, need help)
 	when "EyeColourSwap":
-		Mr Monice: I desire a hue shift for my retinas.
+		Mr Monicle: I desire a hue shift for my retinas.
 	when "PermanentSmile":
-		Mr Monice: The poor are always complaining about my dismissive demeanor. Could you help put a fake grin on?
+		Mr Monicle: The poor are always complaining about my dismissive demeanor. Could you help put a fake grin on?
 	when "GreenSkin":
-		Mr Monice: I desire to become more verdant.
+		Mr Monicle: I desire to become more verdant.
 	when "Cure":
-		Mr Monice: I think a pauper gave me some kind of plague, fix it at once!
+		Mr Monicle: I think a pauper gave me some kind of plague, fix it at once!
 	when "Bald":
-		Mr Monice: My mane is bothering me, remove it at once!
+		Mr Monicle: My mane is bothering me, remove it at once!
 	when "HeadSizeIncrease":
-		Mr Monice: I demand a cranium the size of my ego!
+		Mr Monicle: I demand a cranium the size of my ego!
 	when "HeadSizeDecrease":
-		Mr Monice: ///////////////////////////////////////////////////////////////////// (placeholder, need help)
+		Mr Monicle: ///////////////////////////////////////////////////////////////////// (placeholder, need help)
 	when "CreatureFeature":
-		Mr Monice: ///////////////////////////////////////////////////////////////////// (placeholder, need help)
+		Mr Monicle: ///////////////////////////////////////////////////////////////////// (placeholder, need help)
 	when "Rabies": #look idk what to put here, why would someone want this?
-		Mr Monice: ...
+		Mr Monicle: ...
 	when "ChangeLanguage":
-		Mr Monice: To impress some investors, I must speak in their native dialect.
+		Mr Monicle: To impress some investors, I must speak in their native dialect.
 	when "ChangeArtStyle":
-		Mr Monice: The characature artist turned me down! How bothersome, but I am sure you could do just as well to me.
+		Mr Monicle: The characature artist turned me down! How bothersome, but I am sure you could do just as well to me.
 	when "SwapBodies": #not sure what this one is about
-		Mr Monice: ...
+		Mr Monicle: ...
 	when "Love":
-		Mr Monice: ///////////////////////////////////////////////////////////////////// (placeholder, need help)
+		Mr Monicle: ///////////////////////////////////////////////////////////////////// (placeholder, need help)
 	when "Explode":
-		Mr Monice: ///////////////////////////////////////////////////////////////////// (placeholder, need help)
+		Mr Monicle: ///////////////////////////////////////////////////////////////////// (placeholder, need help)
 	when "Skeleton":
-		Mr Monice: ///////////////////////////////////////////////////////////////////// (placeholder, need help)
+		Mr Monicle: ///////////////////////////////////////////////////////////////////// (placeholder, need help)
 	when "EnlargePerson":
-		Mr Monice: I wish to be as big as my ego!
+		Mr Monicle: I wish to be as big as my ego!
 	when "ShrinkPerson":
-		Mr Monice: ///////////////////////////////////////////////////////////////////// (placeholder, need help)
+		Mr Monicle: ///////////////////////////////////////////////////////////////////// (placeholder, need help)
 	else:
-		Mr Monice: I am feeling quite indecisive today. (placeholder: no requested potion set)
+		Mr Monicle: I am feeling quite indecisive today. (placeholder: no requested potion set)
 
 - Confirm
 
