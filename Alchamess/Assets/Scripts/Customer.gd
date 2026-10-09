@@ -104,6 +104,7 @@ func trigger_opening_dialogue() -> void:
 
 
 func trigger_customer_dialogue() -> void:
+	Globals.randomizeWantedType()
 	if DebugManager.skip_dialogue:
 		DebugManager.debug_log("Skipping customer dialogue for " + CustomerName)
 		return
@@ -119,7 +120,7 @@ func trigger_customer_dialogue() -> void:
 			var resource = load("res://Dialogue/MrMonicle.dialogue")
 			DialogueManager.show_dialogue_balloon(resource)
 		_:
-			var resource = load("res://Dialogue/Queso.dialogue")
+			var resource = load("res://Dialogue/HerbBert.dialogue")
 			DialogueManager.show_dialogue_balloon(resource)
 
 
@@ -183,6 +184,9 @@ func receive_potion(potion_type: String) -> void:
 		
 	cust_is_ready = false
 	
+	Globals.submitPotion(potion_type)
+	print(potion_type + " " + Globals.wantedPotionType)
+	
 	if PotionEffects.has(potion_type):
 		SmokeTransition.visible = true
 		SmokeTransition.play()
@@ -209,7 +213,22 @@ func receive_potion(potion_type: String) -> void:
 			scale = Vector2(0.05, 0.05)
 			position.y += 45
 			is_shrunk = true
-			
+		
+		match CustomerName:
+			"Queso":
+				var resource = load("res://Dialogue/QuesoDone.dialogue")
+				DialogueManager.show_dialogue_balloon(resource)
+			"HerbBert":
+				var resource = load("res://Dialogue/HerbBertDone.dialogue")
+				DialogueManager.show_dialogue_balloon(resource)
+			"MrMonicle":
+				var resource = load("res://Dialogue/MrMonicleDone.dialogue")
+				DialogueManager.show_dialogue_balloon(resource)
+			_:
+				var resource = load("res://Dialogue/HerbBertDone.dialogue")
+				DialogueManager.show_dialogue_balloon(resource)
+		
+		
 		var delay = create_tween()
 		delay.tween_interval(delay_time)
 		delay.tween_callback(bob_out)

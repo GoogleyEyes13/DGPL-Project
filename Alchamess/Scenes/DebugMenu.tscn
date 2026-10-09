@@ -47,6 +47,10 @@ layout_mode = 2
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 
+[node name="WantsLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer" unique_id=788180369]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+
 [node name="CauldronLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer" unique_id=1528877688]
 layout_mode = 2
 theme_override_font_sizes/font_size = 28

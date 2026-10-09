@@ -1,0 +1,6 @@
+~ start
+if Globals.submittedPotionType == Globals.wantedPotionType
+	Mr Monicle: Excellent. Your pay is nothing for me, but I'm sure you will savor it.
+else
+	Queso: Horrendous, my lawyers will be in touch.
+=> END

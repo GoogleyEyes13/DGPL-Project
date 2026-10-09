@@ -1,0 +1,6 @@
+~ start
+if Globals.submittedPotionType == Globals.wantedPotionType
+	Queso: Thanks, see? that wasn't too hard.
+else
+	Queso: THAT WAS THE WRONG ONE!!!
+=> END
