@@ -98,7 +98,7 @@ animations = [{
 script = ExtResource("1_dctr5")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1678639440]
-position = Vector2(953.00006, 407)
+position = Vector2(959, 420)
 scale = Vector2(0.93139935, 1)
 zoom = Vector2(4, 4)
 
@@ -224,6 +224,9 @@ texture = ExtResource("14_m15vq")
 [node name="CollisionShape" parent="Ingredients/EyeOfNewt" index="2" unique_id=1294795548]
 position = Vector2(4.9999995, 4.9999943)
 
+[node name="IngredientDial" parent="Ingredients/EyeOfNewt" index="4" unique_id=1125379738]
+metadata/_edit_use_anchors_ = true
+
 [node name="Wormwood" parent="Ingredients" unique_id=1599874296 instance=ExtResource("5_b2bpf")]
 position = Vector2(1548, 254)
 ingredientType = "Wormwood"
@@ -236,6 +239,9 @@ texture = ExtResource("13_n2ugt")
 
 [node name="DraggedSprite" parent="Ingredients/Wormwood" index="1" unique_id=725578124]
 texture = ExtResource("15_m15vq")
+
+[node name="IngredientDial" parent="Ingredients/Wormwood" index="4" unique_id=1125379738]
+metadata/_edit_use_anchors_ = true
 
 [node name="ElbowGrease" parent="Ingredients" unique_id=655124839 instance=ExtResource("5_b2bpf")]
 position = Vector2(398, 487)
