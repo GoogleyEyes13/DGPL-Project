@@ -34,6 +34,9 @@ func _ready() -> void:
 	_ensure_in_ingredients_folder()
 	_connect_cauldron_signal()
 
+	if not PotionJournal.NewIngredientUnlocked.is_connected(_on_new_ingredient_unlocked):
+		PotionJournal.NewIngredientUnlocked.connect(_on_new_ingredient_unlocked)
+
 
 func _ensure_in_ingredients_folder() -> void:
 	var ingredients_folder = get_node_or_null("/root/Game/Ingredients")
@@ -52,9 +55,16 @@ func _on_ingredient_counts_updated(counts: Dictionary) -> void:
 		dial.update_count(counts[ingredientType])
 
 
+func _on_new_ingredient_unlocked(ingredient_name: String) -> void:
+	if ingredient_name == ingredientType:
+		visible = true
+
+
 func _process(_delta: float) -> void:
 	if is_grabbed:
 		global_position = get_global_mouse_position()
+	
+	#PotionJournal.check_discovered_potions()
 
 
 func _input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
