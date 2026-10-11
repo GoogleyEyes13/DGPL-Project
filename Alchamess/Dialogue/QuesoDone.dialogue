@@ -2,5 +2,12 @@
 if Globals.submittedPotionType == Globals.wantedPotionType
 	Queso: Thanks, see? that wasn't too hard.
 else
-	Queso: THAT WAS THE WRONG ONE!!!
+	if Globals.submittedPotionType == "Potion Of Baldness"
+		Queso: WHAT DID YOU DO TO MY HAIR?!
+	elif Globals.submittedPotionType == "Potion Of Change Language"
+		Queso: 𓎢𓅲𓂋𓋴𓅂𓐍𓇌𓅱𓅲
+	elif Globals.submittedPotionType == "Potion of Explode"
+		There was nothing left but a pile of dust.
+	else
+		Queso: THAT WAS THE WRONG ONE!
 => END

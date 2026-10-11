@@ -1,6 +1,13 @@
 ~ start
 if Globals.submittedPotionType == Globals.wantedPotionType
-	Mr Monicle: Now that's more like it. Thanks!
+	Herb Bert: Now that's more like it. Thanks!
 else
-	Queso: Uhhh, that wasn't right...
+	if Globals.submittedPotionType == "Potion Of Baldness"
+		Herb Bert: Well I was meaning to go to the barber...
+	elif Globals.submittedPotionType == "Potion Of Change Language"
+		Herb Bert: Esto no está nada bien...
+	elif Globals.submittedPotionType == "Potion of Explode"
+		There was nothing left but a pile of dust.
+	else
+		Herb Bert: Uhhh, that wasn't right...
 => END

@@ -2,5 +2,12 @@
 if Globals.submittedPotionType == Globals.wantedPotionType
 	Mr Monicle: Excellent. Your pay is nothing for me, but I'm sure you will savor it.
 else
-	Queso: Horrendous, my lawyers will be in touch.
+	if Globals.submittedPotionType == "Potion Of Baldness"
+		Mr Monicle: WHAT HAVE YOU DONE? I'M GOING TO SUE YOU!
+	elif Globals.submittedPotionType == "Potion Of Change Language"
+		Mr Monicle: Te ex vita expellebo in ius vocabo!
+	elif Globals.submittedPotionType == "Potion of Explode"
+		There was nothing left but a pile of dust.
+	else
+		Mr Monicle: Horrendous, my lawyers will be in touch.
 => END
