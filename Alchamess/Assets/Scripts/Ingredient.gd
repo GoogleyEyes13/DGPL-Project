@@ -16,6 +16,8 @@ class_name IngredientItem
 @onready var pickup_sfx: AudioStreamPlayer = $PickupSFX
 @onready var dial: Control = get_node_or_null("IngredientDial")
 
+@onready var FrogMentor = $"../../FrogMaster"
+
 var is_grabbed: bool = false
 var start_position: Vector2
 
@@ -57,7 +59,11 @@ func _on_ingredient_counts_updated(counts: Dictionary) -> void:
 
 func _on_new_ingredient_unlocked(ingredient_name: String) -> void:
 	if ingredient_name == ingredientType:
+		FrogMentor.frame = 1
+		print("Fetching ingredient...")
+		await get_tree().create_timer(4.0).timeout
 		visible = true
+		FrogMentor.frame = 0
 
 
 func _process(_delta: float) -> void:
