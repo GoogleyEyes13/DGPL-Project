@@ -15,7 +15,7 @@ var potion_types: Array[String] = [
 	"Potion of Curing", "Potion of Rapid Shaking", "Potion of Permanent Smile",
 	"Potion of Rabies", "Potion of Explode", "Potion of Change Language",
 	"Potion of Mogging", "Potion of Body Swap", "Potion of Love",
-	"Potion of Enlarge Person", "Potion of Shrink Person", "Potion Of Baldness",
+	"Potion of Enlarge Person", "Potion of Shrink Person", "Potion of Baldness",
 	"Potion of Head Size Increase", "Potion of Head Size Decrease",
 	"Potion of Green Skin", "Potion of Eye Colour Swap", "Potion of Skeleton",
 	"Potion of Change Art Styles", "Potion of Creature Feature", "Potion of Beautification"

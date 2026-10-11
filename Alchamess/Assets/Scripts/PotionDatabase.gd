@@ -23,7 +23,7 @@ var recipes: Dictionary = {
 		"name": "Potion of Curing"
 	},
 	["EyeOfNewt", "OilOfVitriol", "Wormwood"]: {
-		"name": "Potion Of Baldness"
+		"name": "Potion of Baldness"
 	},
 	["ElbowGrease", "OilOfVitriol", "Wormwood"]: {
 		"name": "Potion of Head Size Increase"

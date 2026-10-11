@@ -33,7 +33,7 @@ func _ready() -> void:
 			PotionBottleSprite.animation = "Potion1"
 			PotionBottleSprite.frame = 0
 			FilledSprite = 2
-		"Potion of Permenent Smile":
+		"Potion of Permanent Smile":
 			PotionBottleSprite.animation = "Potion3"
 			PotionBottleSprite.frame = 0
 			FilledSprite = 2
@@ -61,7 +61,7 @@ func _ready() -> void:
 			PotionBottleSprite.animation = "Potion2"
 			PotionBottleSprite.frame = 0
 			FilledSprite = 2
-		"Potion Of Baldness": 
+		"Potion of Baldness": 
 			PotionBottleSprite.animation = "Potion4"
 			PotionBottleSprite.frame = 0
 			FilledSprite = 2
