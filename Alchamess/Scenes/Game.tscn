@@ -172,6 +172,48 @@ z_index = 5
 texture_filter = 1
 texture = ExtResource("10_dwhu0")
 
+[node name="ElbowGrease" type="Sprite2D" parent="WitchCauldron/WitchCauldronInside" unique_id=791109342]
+visible = false
+z_index = -1
+position = Vector2(-3123.333, -2970)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("19_n24vg")
+
+[node name="EyeOfNewt" type="Sprite2D" parent="WitchCauldron/WitchCauldronInside" unique_id=87036758]
+visible = false
+z_index = -1
+position = Vector2(-3123.333, -2970)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("14_m15vq")
+
+[node name="OilOfVitriol" type="Sprite2D" parent="WitchCauldron/WitchCauldronInside" unique_id=2084400825]
+visible = false
+z_index = -1
+position = Vector2(-3123.333, -2970)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("21_n24vg")
+
+[node name="PhoenixFeather" type="Sprite2D" parent="WitchCauldron/WitchCauldronInside" unique_id=335558634]
+visible = false
+z_index = -1
+position = Vector2(-3123.3335, -2970.0002)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("17_umnjm")
+
+[node name="Stardust" type="Sprite2D" parent="WitchCauldron/WitchCauldronInside" unique_id=751430015]
+visible = false
+z_index = -1
+position = Vector2(-3123.3335, -2970.0002)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("19_umnjm")
+
+[node name="Wormwood" type="Sprite2D" parent="WitchCauldron/WitchCauldronInside" unique_id=827795137]
+visible = false
+z_index = -1
+position = Vector2(-3123.3335, -2970.0002)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("15_m15vq")
+
 [node name="WitchCauldronBack" type="Sprite2D" parent="WitchCauldron" unique_id=516506129]
 z_index = 1
 texture_filter = 1

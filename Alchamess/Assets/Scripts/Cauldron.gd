@@ -12,6 +12,14 @@ var ingredient_usage_counts: Dictionary = {
 	"Wormwood": 0
 }
 
+# Cauldron ingredient spawn points
+var Ingredient1 = Vector2(-406, 370)
+var Ingredient2 = Vector2(7, 370)
+var Ingredient3 = Vector2(410, 370)
+
+# Pot ingredient sprites
+@onready var IngredientsInCauldron = $WitchCauldronInside
+
 @onready var MixingStick = $"../MixingStick"
 @onready var CauldronFull: bool = false
 
@@ -56,6 +64,9 @@ func _add_ingredient_to_cauldron(ingredient_name: String) -> bool:
 	
 	CauldronIngredients[ingredient_name] = 1
 	DebugManager.debug_log(ingredient_name + " has been placed in the pot")
+
+	# Show the ingredient sprite in the cauldron
+	_show_ingredient_in_pot(ingredient_name)
 	
 	if in_pot_sounds.has(ingredient_name):
 		in_pot_sfx.stream = in_pot_sounds[ingredient_name]
@@ -128,6 +139,10 @@ func _on_collision_entered(incoming_node: Node2D) -> void:
 				CauldronIngredients = {}
 				has_logged_mix_finished = false
 				
+				# Hide all ingredient sprites
+				for child in IngredientsInCauldron.get_children():
+					child.visible = false
+				
 				ingredients_updated.emit(CauldronIngredients.keys(), LastPotionCreated)
 				PotionJournal.register_potion(LastPotionCreated, ingredients_list)
 
@@ -137,3 +152,30 @@ func _on_potion_mixed() -> void:
 	if not has_logged_mix_finished:
 		DebugManager.debug_log("Cauldron has finished mixing!")
 		has_logged_mix_finished = true
+
+
+func _show_ingredient_in_pot(ingredient_name: String) -> void:
+	var ingredient_sprite = IngredientsInCauldron.get_node_or_null(ingredient_name)
+
+	if ingredient_sprite == null:
+		DebugManager.debug_log("Ingredient sprite not found: " + ingredient_name)
+		return
+
+	# Find an available spawn point
+	var spawn_points: Array[Vector2] = [
+		Ingredient1,
+		Ingredient2,
+		Ingredient3
+	]
+
+	var occupied_positions: Array[Vector2] = []
+
+	for child in IngredientsInCauldron.get_children():
+		if child.visible:
+			occupied_positions.append(child.position)
+
+	for spawn_point in spawn_points:
+		if not occupied_positions.has(spawn_point):
+			ingredient_sprite.position = spawn_point
+			ingredient_sprite.visible = true
+			return
