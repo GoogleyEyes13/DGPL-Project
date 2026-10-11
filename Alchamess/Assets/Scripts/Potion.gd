@@ -2,7 +2,8 @@ extends CharacterBody2D
 class_name PotionBottle
 
 @export var potionType: String = "Potion1"
-@export var potionName: String = "Potion1"
+@export var potionName: String = "null"
+@onready var FilledSprite = "1"
 @export var flip_h: bool = false
 
 var is_grabbed: bool = true
@@ -22,6 +23,92 @@ func _ready() -> void:
 		PotionBottleSprite.animation = potionType
 		PotionBottleSprite.flip_h = flip_h
 		PotionBottleSprite.frame = 0 # Start empty
+	
+	match potionName:
+		"Potion of Curing":
+			PotionBottleSprite.animation = "Potion3"
+			PotionBottleSprite.frame = 0
+			FilledSprite = 1
+		"Potion of Rapid Shaking":
+			PotionBottleSprite.animation = "Potion1"
+			PotionBottleSprite.frame = 0
+			FilledSprite = 2
+		"Potion of Permenent Smile":
+			PotionBottleSprite.animation = "Potion3"
+			PotionBottleSprite.frame = 0
+			FilledSprite = 2
+		"Potion of Explode":
+			PotionBottleSprite.animation = "Potion2"
+			PotionBottleSprite.frame = 0
+			FilledSprite = 3
+		"Potion of Change Language":
+			PotionBottleSprite.animation = "Potion2"
+			PotionBottleSprite.frame = 0
+			FilledSprite = 4
+		"Potion of Body Swap":
+			PotionBottleSprite.animation = "Potion3"
+			PotionBottleSprite.frame = 0
+			FilledSprite = 3
+		"Potion of Love": 
+			PotionBottleSprite.animation = "Potion3"
+			PotionBottleSprite.frame = 0
+			FilledSprite = 4
+		"Potion of Enlarge Person":
+			PotionBottleSprite.animation = "Potion2"
+			PotionBottleSprite.frame = 0
+			FilledSprite = 1
+		"Potion of Shrink Person":
+			PotionBottleSprite.animation = "Potion2"
+			PotionBottleSprite.frame = 0
+			FilledSprite = 2
+		"Potion Of Baldness": 
+			PotionBottleSprite.animation = "Potion4"
+			PotionBottleSprite.frame = 0
+			FilledSprite = 2
+		"Potion of Head Size Increase": 
+			PotionBottleSprite.animation = "Potion1"
+			PotionBottleSprite.frame = 0
+			FilledSprite = 3
+		"Potion of Head Size Decrease": 
+			PotionBottleSprite.animation = "Potion1"
+			PotionBottleSprite.frame = 0
+			FilledSprite = 4
+		"Potion of Green Skin": 
+			PotionBottleSprite.animation = "Potion4"
+			PotionBottleSprite.frame = 0
+			FilledSprite = 1
+		"Potion of Eye Colour Swap": 
+			PotionBottleSprite.animation = "Potion4"
+			PotionBottleSprite.frame = 0
+			FilledSprite = 3
+		"Potion of Skeleton": 
+			PotionBottleSprite.animation = "Potion4"
+			PotionBottleSprite.frame = 0
+			FilledSprite = 4
+		"Potion of Change Art Styles": 
+			PotionBottleSprite.animation = "Potion5"
+			PotionBottleSprite.frame = 0
+			FilledSprite = 1
+		"Potion of Creature Feature": 
+			PotionBottleSprite.animation = "Potion5"
+			PotionBottleSprite.frame = 0
+			FilledSprite = 2
+		"Potion of Beautification": 
+			PotionBottleSprite.animation = "Potion5"
+			PotionBottleSprite.frame = 0
+			FilledSprite = 3
+		"Potion of Rabies": 
+			PotionBottleSprite.animation = "Potion5"
+			PotionBottleSprite.frame = 0
+			FilledSprite = 4
+		"Potion of Mogging":
+			PotionBottleSprite.animation = "Potion1"
+			PotionBottleSprite.frame = 0
+			FilledSprite = 1
+		_:
+			PotionBottleSprite.animation = "Potion1"
+			PotionBottleSprite.frame = 0
+			FilledSprite = 1
 
 
 func _process(_delta: float) -> void:
@@ -47,8 +134,10 @@ func _input(event: InputEvent) -> void:
 func fill_bottle(made_potion_name: String) -> void:
 	is_filled = true
 	CurrentHeldPotion = made_potion_name
-	if PotionBottleSprite:
-		PotionBottleSprite.frame = 1 # Show filled frame
+	
+	# Showing filled frame
+	PotionBottleSprite.frame = FilledSprite
+		
 	DebugManager.debug_log("Potion Bottle Filled! Made: " + CurrentHeldPotion)
 
 

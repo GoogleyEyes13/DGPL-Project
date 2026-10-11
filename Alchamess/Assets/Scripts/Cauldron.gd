@@ -65,6 +65,18 @@ func _add_ingredient_to_cauldron(ingredient_name: String) -> bool:
 	
 	if CauldronIngredients.size() == 3:
 		CauldronFull = true
+
+		# Find the potion type
+		var ingredients_list: Array = CauldronIngredients.keys()
+		var potion_data: Dictionary = PotionDatabase.get_potion_data(ingredients_list)
+		
+		if not potion_data.is_empty():
+			LastPotionCreated = potion_data["name"]
+			DebugManager.debug_log("Potion identified: " + LastPotionCreated)
+		else:
+			LastPotionCreated = "Unknown Potion"
+			DebugManager.debug_log("No potion recipe found!")
+		
 		ingredients_updated.emit(CauldronIngredients.keys(), LastPotionCreated)
 		MixingStick.start_mixing()
 		
@@ -93,21 +105,17 @@ func _on_collision_entered(incoming_node: Node2D) -> void:
 		DebugManager.debug_log("Potion bottle detected in cauldron")
 		
 		if CauldronFull and PotionMixed:
-			var ingredients_list: Array = CauldronIngredients.keys()
-			var potion_data: Dictionary = PotionDatabase.get_potion_data(ingredients_list)
-			
-			if not potion_data.is_empty():
-				var potion_name: String = potion_data["name"]
-				LastPotionCreated = potion_name
-				
+			if LastPotionCreated != "Unknown Potion" and LastPotionCreated != "None":
 				# Track ingredient counts for dials
+				var ingredients_list: Array = CauldronIngredients.keys()
+				
 				for ingredient in ingredients_list:
 					if ingredient_usage_counts.has(ingredient):
 						ingredient_usage_counts[ingredient] += 1
 				
 				ingredient_counts_updated.emit(ingredient_usage_counts)
 				
-				# Fill bottle using original fill_bottle method
+				# Fill the bottle with the previously calculated potion.
 				if target_node.has_method("fill_bottle"):
 					target_node.fill_bottle(LastPotionCreated)
 				
@@ -121,7 +129,7 @@ func _on_collision_entered(incoming_node: Node2D) -> void:
 				has_logged_mix_finished = false
 				
 				ingredients_updated.emit(CauldronIngredients.keys(), LastPotionCreated)
-				PotionJournal.register_potion(potion_name, ingredients_list)
+				PotionJournal.register_potion(LastPotionCreated, ingredients_list)
 
 
 func _on_potion_mixed() -> void:
