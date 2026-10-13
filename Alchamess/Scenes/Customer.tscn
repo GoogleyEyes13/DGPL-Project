@@ -30,6 +30,7 @@
 [ext_resource type="Texture2D" uid="uid://dvudc0ypdgti6" path="res://Assets/Sprites/Mr Monicle/MrMonicleGreenSkin.png" id="18_ybyuj"]
 [ext_resource type="Texture2D" uid="uid://bbalq7wmlthu5" path="res://Assets/Sprites/Mr Monicle/MrMonicleBigHead.png" id="19_i14jh"]
 [ext_resource type="Texture2D" uid="uid://2ltqw6ajn2b2" path="res://Assets/Sprites/Mr Monicle/MrMonicleSmallHead.png" id="20_rhkq5"]
+[ext_resource type="Texture2D" uid="uid://bkigixebdoqsg" path="res://Assets/Sprites/Mr Monicle/MrMonicleMog.png" id="23_mebht"]
 [ext_resource type="Texture2D" uid="uid://dtixhieqpe15x" path="res://Assets/Sprites/Caseoh/CaseohRabies.png" id="24_v2fx3"]
 [ext_resource type="Texture2D" uid="uid://d11unljt1xx3l" path="res://Assets/Sprites/Caseoh/CaseohBeautification.png" id="25_c1vay"]
 [ext_resource type="Texture2D" uid="uid://b67wktbp2oah8" path="res://Assets/Sprites/Caseoh/CaseohArtStyleSwap.png" id="25_hl3cd"]
@@ -154,7 +155,7 @@ animations = [{
 "texture": ExtResource("17_jh1hx")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_kosw0")
+"texture": ExtResource("23_mebht")
 }],
 "loop": 1,
 "name": &"MrMonicle",
@@ -210,7 +211,7 @@ height = 4375.0
 texture_filter = 1
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_57qmd")
-animation = &"LadyP"
+animation = &"MrMonicle"
 script = ExtResource("7_cj036")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=621125951]
