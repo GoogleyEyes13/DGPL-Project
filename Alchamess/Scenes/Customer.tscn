@@ -18,7 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://be7ppixjevaeg" path="res://Assets/Sprites/Herb Bert/HerbBertRabies.png" id="10_rhkq5"]
 [ext_resource type="Texture2D" uid="uid://kjlv0sdj6die" path="res://Assets/Sprites/Herb Bert/HerbBertSmallHead.png" id="11_8tccj"]
 [ext_resource type="Texture2D" uid="uid://dgmleutps3smk" path="res://Assets/Sprites/Herb Bert/HerbBertGreen.png" id="12_a8pu0"]
-[ext_resource type="Texture2D" uid="uid://8relhuek1h1w" path="res://Assets/Sprites/MissP/MissPNormal.png" id="12_hoaph"]
+[ext_resource type="Texture2D" uid="uid://8relhuek1h1w" path="res://Assets/Sprites/LadyP/LadyPNormal.png" id="12_hoaph"]
 [ext_resource type="Texture2D" uid="uid://crnbt5igmh4ii" path="res://Assets/Sprites/Herb Bert/HerbBertGreenEyes.png" id="13_ybyuj"]
 [ext_resource type="Texture2D" uid="uid://b7dpjh3v0wk1r" path="res://Assets/Sprites/Herb Bert/HerbBertBeautification.png" id="16_8tccj"]
 [ext_resource type="Texture2D" uid="uid://nss261vbdk1g" path="res://Assets/Sprites/Mr Monicle/MrMonicleRabies.png" id="17_jh1hx"]
@@ -107,7 +107,7 @@ animations = [{
 "texture": ExtResource("12_hoaph")
 }],
 "loop": 1,
-"name": &"MissP",
+"name": &"LadyP",
 "speed": 5.0
 }, {
 "frames": [{
@@ -198,7 +198,7 @@ height = 4375.0
 texture_filter = 1
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_57qmd")
-animation = &"MissP"
+animation = &"LadyP"
 script = ExtResource("7_cj036")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=621125951]
