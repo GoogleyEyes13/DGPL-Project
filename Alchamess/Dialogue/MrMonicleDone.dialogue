@@ -1,6 +1,11 @@
 ~ start
 if Globals.submittedPotionType == Globals.wantedPotionType
-	Mr Monicle: Excellent. Your pay is nothing for me, but I'm sure you will savor it.
+	if Globals.submittedPotionType == "Potion of Creature Feature"
+		t̸̡̛̥̜̻̘̋͂̈̏͋̇h̴̬̘̼̟͉̞͔̠̀͛̉̉a̴̡̡̡̛̱̥̻͔̕͜ḱ̴̙͍̱̗͉͉ ̷̡̡̛̜̦̠̠͉̘͒̌̿̈́͠y̷̿̇͊̄̋̀͜o̶̢̮͐̈̆u̸̢̞̎̀͛̑̀
+	elif Globals.submittedPotionType == "Potion of Rabies"
+		Herb Bert: [Incomprehensible gratitude]
+	else
+		Mr Monicle: Excellent. Your pay is nothing for me, but I'm sure you will savor it.
 else
 	if Globals.submittedPotionType == "Potion Of Baldness"
 		Mr Monicle: WHAT HAVE YOU DONE? I'M GOING TO SUE YOU!
@@ -8,6 +13,10 @@ else
 		Mr Monicle: Te ex vita expellebo in ius vocabo!
 	elif Globals.submittedPotionType == "Potion of Explode"
 		There was nothing left but a pile of dust.
+	elif Globals.submittedPotionType == "Potion of Creature Feature"
+		...
+	elif Globals.submittedPotionType == "Potion of Rabies"
+		Mr Monicle foams at the mouth.
 	else
 		Mr Monicle: Horrendous, my lawyers will be in touch.
 => END
