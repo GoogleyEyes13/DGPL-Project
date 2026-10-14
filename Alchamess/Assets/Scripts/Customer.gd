@@ -79,13 +79,15 @@ func _ready() -> void:
 	start_pos = Vector2(window_size.x + 200, window_size.y / 2)
 	centre_pos = Vector2(window_size.x / 2, window_size.y / 2)
 	end_pos = Vector2(-200, window_size.y / 2)
-
+	
 	global_position = start_pos
-
+	
+	#await DialogueManager.dialogue_ended
+	
 	animation = CustomerName
 	frame = 0
 	stop()
-
+	
 	hide()
 	bob_in()
 
@@ -155,7 +157,7 @@ func on_arrival() -> void:
 	DebugManager.debug_log(CustomerName + " is at the counter! Waiting for interaction...")
 	
 	cust_is_ready = true
-
+	
 	if first_arrival:
 		first_arrival = false
 	else:
@@ -214,6 +216,8 @@ func receive_potion(potion_type: String) -> void:
 			position.y += 45
 			is_shrunk = true
 		
+		
+		
 		match CustomerName:
 			"Queso":
 				var resource = load("res://Dialogue/QuesoDone.dialogue")
@@ -228,6 +232,7 @@ func receive_potion(potion_type: String) -> void:
 				var resource = load("res://Dialogue/HerbBertDone.dialogue")
 				DialogueManager.show_dialogue_balloon(resource)
 		
+		await DialogueManager.dialogue_ended
 		
 		var delay = create_tween()
 		delay.tween_interval(delay_time)
