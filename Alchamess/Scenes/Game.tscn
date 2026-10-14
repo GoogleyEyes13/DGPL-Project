@@ -41,6 +41,7 @@
 [ext_resource type="AudioStream" uid="uid://bxlw06i77b37x" path="res://Assets/Audio/SFX/Ingredient pickup/stardust.wav" id="29_ahn08"]
 [ext_resource type="Texture2D" uid="uid://b3543n0wcom5w" path="res://Assets/Sprites/FrogMentor/FrogMasterNormal.png" id="33_dctr5"]
 [ext_resource type="Texture2D" uid="uid://d2v65mkbgyj05" path="res://Assets/Sprites/FrogMentor/FrogMentorOpenMouth.png" id="34_mi7vx"]
+[ext_resource type="Texture2D" uid="uid://dc8qgcpaolg0g" path="res://Assets/Sprites/FrogMentor/TongueEnd.png" id="35_t2joc"]
 [ext_resource type="Texture2D" uid="uid://bf6o3r6p3l6kw" path="res://Assets/Potions/PotionStack.png" id="44_mi7vx"]
 [ext_resource type="AudioStream" uid="uid://bo3e5nhmsm6wc" path="res://Assets/Audio/SFX/Music/Medieval Vol. 2 5 (Loop).mp3" id="59_n24vg"]
 [ext_resource type="Script" uid="uid://cm7mnkc84mlru" path="res://Assets/Scripts/PotionStack.gd" id="67_w61tf"]
@@ -363,7 +364,35 @@ z_index = -20
 position = Vector2(1268, 489.99997)
 scale = Vector2(0.045, 0.045)
 sprite_frames = SubResource("SpriteFrames_yf5fn")
-frame_progress = 0.20477977
+frame = 1
+frame_progress = 0.8880631
+
+[node name="FrogTongue" type="Sprite2D" parent="." unique_id=299112104]
+position = Vector2(1267, 504.521)
+scale = Vector2(0.035, 0.003)
+texture = ExtResource("35_t2joc")
+centered = false
+offset = Vector2(-1860, -5050)
+
+[node name="FrogTongueIngredients" type="CanvasLayer" parent="." unique_id=1129086136]
+
+[node name="PhoenixFeather" type="TextureButton" parent="FrogTongueIngredients" unique_id=1761070426]
+visible = false
+offset_left = 1180.9999
+offset_top = 316.99997
+offset_right = 3229.0
+offset_bottom = 2365.0
+scale = Vector2(0.09, 0.09)
+texture_normal = ExtResource("8_4eqlp")
+
+[node name="Stardust" type="TextureButton" parent="FrogTongueIngredients" unique_id=1688487474]
+visible = false
+offset_left = 1186.0002
+offset_top = 337.00006
+offset_right = 3234.0002
+offset_bottom = 2385.0
+scale = Vector2(0.09, 0.09)
+texture_normal = ExtResource("13_4eqlp")
 
 [node name="Customer" parent="." unique_id=1519350129 instance=ExtResource("10_71axn")]
 z_index = -100
@@ -389,6 +418,8 @@ parameters/looping = true
 
 [connection signal="area_entered" from="WitchCauldron/Area2D" to="WitchCauldron" method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="WitchCauldron/Area2D" to="WitchCauldron" method="_on_area_2d_body_entered"]
+[connection signal="pressed" from="FrogTongueIngredients/PhoenixFeather" to="Ingredients/PhoenixFeather" method="_on_phoenix_feather_pressed"]
+[connection signal="pressed" from="FrogTongueIngredients/Stardust" to="Ingredients/Stardust" method="_on_stardust_pressed"]
 [connection signal="animation_finished" from="Smoke" to="Customer" method="_on_smoke_animation_finished"]
 
 [editable path="Ingredients/EyeOfNewt"]

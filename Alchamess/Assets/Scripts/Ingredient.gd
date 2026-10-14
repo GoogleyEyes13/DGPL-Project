@@ -17,6 +17,9 @@ class_name IngredientItem
 @onready var dial: Control = get_node_or_null("IngredientDial")
 
 @onready var FrogMentor = $"../../FrogMaster"
+@onready var FrogTongue = $"../../FrogTongue"
+@onready var FrogPhoenixFeather = $"../../FrogTongueIngredients/PhoenixFeather"
+@onready var FrogStardust = $"../../FrogTongueIngredients/Stardust"
 
 var is_grabbed: bool = false
 var start_position: Vector2
@@ -24,6 +27,8 @@ var start_position: Vector2
 
 func _ready() -> void:
 	start_position = global_position
+	FrogMentor.frame = 0
+	FrogTongue.visible = false
 	
 	if shelf_texture:
 		shelf_sprite.texture = shelf_texture
@@ -60,17 +65,40 @@ func _on_ingredient_counts_updated(counts: Dictionary) -> void:
 func _on_new_ingredient_unlocked(ingredient_name: String) -> void:
 	if ingredient_name == ingredientType:
 		FrogMentor.frame = 1
-		print("Fetching ingredient...")
-		await get_tree().create_timer(4.0).timeout
+		FrogTongue.visible = true
+
+		# Stretch the tongue outward from its base
+		var stretch_tween = create_tween()
+		stretch_tween.tween_property(FrogTongue, "scale:y", 0.226, 0.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+
+		await stretch_tween.finished
+
+		# Keep the tongue extended while fetching
+		await get_tree().create_timer(3.0).timeout
+
+		# Retract the tongue
+		var retract_tween = create_tween()
+		retract_tween.tween_property(FrogTongue, "scale:y", 0.003, 0.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+		await retract_tween.finished
+		
+		if ingredient_name == "PhoenixFeather":
+			FrogPhoenixFeather.visible = true
+		else:
+			FrogStardust.visible = true
+
+
+func _on_new_ingredient_clicked(ingredient_name: String) -> void:
+	if ingredient_name == ingredientType:
+		FrogTongue.visible = false
 		visible = true
 		FrogMentor.frame = 0
+		FrogPhoenixFeather.visible = false
+		FrogStardust.visible = false
 
 
 func _process(_delta: float) -> void:
 	if is_grabbed:
 		global_position = get_global_mouse_position()
-	
-	#PotionJournal.check_discovered_potions()
 
 
 func _input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
@@ -99,3 +127,12 @@ func drop() -> void:
 	shelf_sprite.visible = true
 	dragged_sprite.visible = false
 	global_position = start_position
+
+
+func _on_phoenix_feather_pressed() -> void:
+	_on_new_ingredient_clicked("PhoenixFeather")
+
+
+func _on_stardust_pressed() -> void:
+	_on_new_ingredient_clicked("Stardust")
+	
