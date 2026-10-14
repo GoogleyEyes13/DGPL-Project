@@ -43,6 +43,7 @@
 [ext_resource type="Texture2D" uid="uid://cmnh27ikjiu7y" path="res://Assets/Sprites/FrogMentor/FrogMasterNormal.png" id="33_dctr5"]
 [ext_resource type="Texture2D" uid="uid://drvlxbxis64ft" path="res://Assets/Sprites/FrogMentor/FrogMentorOpenMouth.png" id="34_mi7vx"]
 [ext_resource type="Texture2D" uid="uid://vnfa0dfvsn7y" path="res://Assets/Sprites/FrogMentor/TongueEnd.png" id="35_t2joc"]
+[ext_resource type="AudioStream" uid="uid://c4hvn021da6pf" path="res://Assets/Audio/SFX/Frog/croak 1 mid.mp3" id="36_7w24h"]
 [ext_resource type="Texture2D" uid="uid://bf6o3r6p3l6kw" path="res://Assets/Potions/PotionStack.png" id="44_mi7vx"]
 [ext_resource type="AudioStream" uid="uid://bo3e5nhmsm6wc" path="res://Assets/Audio/SFX/Music/Medieval Vol. 2 5 (Loop).mp3" id="59_n24vg"]
 [ext_resource type="Script" uid="uid://cm7mnkc84mlru" path="res://Assets/Scripts/PotionStack.gd" id="67_w61tf"]
@@ -378,6 +379,9 @@ offset = Vector2(-1860, -4410)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FrogMaster" unique_id=1265293864]
 position = Vector2(1267, 491)
 shape = SubResource("CircleShape2D_g4v7s")
+
+[node name="Croak1Mid" type="AudioStreamPlayer" parent="FrogMaster" unique_id=571583395]
+stream = ExtResource("36_7w24h")
 
 [node name="FrogTongue" type="Sprite2D" parent="." unique_id=299112104]
 visible = false

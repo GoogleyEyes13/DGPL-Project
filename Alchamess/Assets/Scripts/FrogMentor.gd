@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @onready var animated_sprite: AnimatedSprite2D = $Sprite
+@onready var croak = $Croak1Mid
 
 var original_scale: Vector2
 var squish_tween: Tween
@@ -21,16 +22,8 @@ func squish() -> void:
 	animated_sprite.scale = original_scale
 
 	squish_tween = create_tween()
-	squish_tween.tween_property(
-		animated_sprite,
-		"scale",
-		original_scale * Vector2(1.2, 0.7),
-		0.08
-	).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
-
-	squish_tween.tween_property(
-		animated_sprite,
-		"scale",
-		original_scale,
-		0.15
-	).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	squish_tween.tween_property(animated_sprite, "scale", original_scale * Vector2(1.2, 0.7), 0.08).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	
+	croak.play()
+	
+	squish_tween.tween_property(animated_sprite,"scale", original_scale, 0.15).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
