@@ -22,9 +22,13 @@
 [ext_resource type="Texture2D" uid="uid://rrt76prpyl7d" path="res://Assets/Sprites/LadyP/LadyPBeautification.png" id="13_67trj"]
 [ext_resource type="Texture2D" uid="uid://7xxtf85lyhk5" path="res://Assets/Sprites/LadyP/LadyPEyeColourSwap.png" id="13_dwek5"]
 [ext_resource type="Texture2D" uid="uid://5aksov6dv2oy" path="res://Assets/Sprites/LadyP/LadyPRabies.png" id="13_gsmmf"]
+[ext_resource type="Texture2D" uid="uid://dd8xc2db6jx8a" path="res://Assets/Sprites/LadyP/LadyPBald.png" id="13_kdj2y"]
 [ext_resource type="Texture2D" uid="uid://crnbt5igmh4ii" path="res://Assets/Sprites/Herb Bert/HerbBertGreenEyes.png" id="13_ybyuj"]
 [ext_resource type="Texture2D" uid="uid://cc1wg4d58i1y6" path="res://Assets/Sprites/LadyP/LadyPMog.png" id="14_jsqc0"]
+[ext_resource type="Texture2D" uid="uid://0tkbbhx3j3wc" path="res://Assets/Sprites/LadyP/LadyPBigHead.png" id="14_p7eft"]
+[ext_resource type="Texture2D" uid="uid://lyh024aixu30" path="res://Assets/Sprites/LadyP/LadyPSmallHead.png" id="15_j7dqm"]
 [ext_resource type="Texture2D" uid="uid://b7dpjh3v0wk1r" path="res://Assets/Sprites/Herb Bert/HerbBertBeautification.png" id="16_8tccj"]
+[ext_resource type="Texture2D" uid="uid://c7vea4ind4llx" path="res://Assets/Sprites/LadyP/LadyPGreenSkin.png" id="16_mqhyu"]
 [ext_resource type="Texture2D" uid="uid://nss261vbdk1g" path="res://Assets/Sprites/Mr Monicle/MrMonicleRabies.png" id="17_jh1hx"]
 [ext_resource type="Texture2D" uid="uid://oadqjpwqt1l3" path="res://Assets/Sprites/Mr Monicle/MrMonicleBrownEyes.png" id="18_a8pu0"]
 [ext_resource type="Texture2D" uid="uid://cg1voorgdt2n4" path="res://Assets/Sprites/Mr Monicle/MrMonicleBald.png" id="18_bx880"]
@@ -86,16 +90,16 @@ animations = [{
 "texture": ExtResource("12_hoaph")
 }, {
 "duration": 1.0,
-"texture": ExtResource("12_hoaph")
+"texture": ExtResource("13_kdj2y")
 }, {
 "duration": 1.0,
-"texture": ExtResource("12_hoaph")
+"texture": ExtResource("14_p7eft")
 }, {
 "duration": 1.0,
-"texture": ExtResource("12_hoaph")
+"texture": ExtResource("15_j7dqm")
 }, {
 "duration": 1.0,
-"texture": ExtResource("12_hoaph")
+"texture": ExtResource("16_mqhyu")
 }, {
 "duration": 1.0,
 "texture": ExtResource("13_dwek5")
@@ -213,7 +217,7 @@ height = 4375.0
 texture_filter = 1
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_57qmd")
-animation = &"MrMonicle"
+animation = &"LadyP"
 script = ExtResource("7_cj036")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=621125951]
