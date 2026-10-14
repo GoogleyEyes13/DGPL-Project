@@ -41,7 +41,7 @@ var PotionEffects: Dictionary = {
 	"Potion of Love": 0,
 	"Potion of Enlarge Person": 0,
 	"Potion of Shrink Person": 0,
-	"Potion Of Baldness": 1,
+	"Potion of Baldness": 1,
 	"Potion of Head Size Increase": 2,
 	"Potion of Head Size Decrease": 3,
 	"Potion of Green Skin": 4,

@@ -4,12 +4,14 @@ if Globals.submittedPotionType == Globals.wantedPotionType
 		t̸̡̛̥̜̻̘̋͂̈̏͋̇h̴̬̘̼̟͉̞͔̠̀͛̉̉a̴̡̡̡̛̱̥̻͔̕͜ḱ̴̙͍̱̗͉͉ ̷̡̡̛̜̦̠̠͉̘͒̌̿̈́͠y̷̿̇͊̄̋̀͜o̶̢̮͐̈̆u̸̢̞̎̀͛̑̀
 	elif Globals.submittedPotionType == "Potion of Rabies"
 		Herb Bert: [Incomprehensible gratitude]
+	elif Globals.submittedPotionType == "Potion of Change Language"
+		Herb Bert: ¡Gracias, vendedor de pociones!
 	else
 		Herb Bert: Now that's more like it. Thanks!
 else
-	if Globals.submittedPotionType == "Potion Of Baldness"
+	if Globals.submittedPotionType == "Potion of Baldness"
 		Herb Bert: Well I was meaning to go to the barber...
-	elif Globals.submittedPotionType == "Potion Of Change Language"
+	elif Globals.submittedPotionType == "Potion of Change Language"
 		Herb Bert: Esto no está nada bien...
 	elif Globals.submittedPotionType == "Potion of Explode"
 		There was nothing left but a pile of dust.
