@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dcsy71e6rjejo" path="res://Assets/Foreground.png" id="4_dctr5"]
 [ext_resource type="PackedScene" uid="uid://nk2mr8ongv5d" path="res://Objects/Ingredient.tscn" id="5_b2bpf"]
 [ext_resource type="Texture2D" uid="uid://bfo1be5pyst2d" path="res://Assets/Sprites/Cauldron/MixingStick.png" id="6_n24vg"]
-[ext_resource type="Texture2D" uid="uid://cja8xl5cua4by" path="res://Assets/Sprites/Cauldron/CauldronLiquid.png" id="7_n2ugt"]
+[ext_resource type="Texture2D" uid="uid://bsklj833jogwm" path="res://Assets/Sprites/Cauldron/CauldronLiquid.png" id="7_n2ugt"]
 [ext_resource type="Texture2D" uid="uid://b6smgfgjh7ryp" path="res://Assets/Ingredients/ShelfPhoenixFeather.png" id="8_4eqlp"]
 [ext_resource type="Texture2D" uid="uid://8jw17i82i2xa" path="res://Assets/Sprites/Cauldron/CauldronOpen.png" id="8_8ekww"]
 [ext_resource type="Texture2D" uid="uid://rbcus64g34tf" path="res://Assets/Sprites/Cauldron/Cauldron.png" id="8_a05uw"]
@@ -39,9 +39,10 @@
 [ext_resource type="AudioStream" uid="uid://dayxguoxp7lrx" path="res://Assets/Audio/SFX/Ingredient pickup/phoenix feather.wav" id="25_5eiyn"]
 [ext_resource type="AudioStream" uid="uid://mg0ki8rdcbmw" path="res://Assets/Audio/SFX/Ingredient pickup/oil of vitriol.wav" id="27_8eewk"]
 [ext_resource type="AudioStream" uid="uid://bxlw06i77b37x" path="res://Assets/Audio/SFX/Ingredient pickup/stardust.wav" id="29_ahn08"]
-[ext_resource type="Texture2D" uid="uid://b3543n0wcom5w" path="res://Assets/Sprites/FrogMentor/FrogMasterNormal.png" id="33_dctr5"]
-[ext_resource type="Texture2D" uid="uid://d2v65mkbgyj05" path="res://Assets/Sprites/FrogMentor/FrogMentorOpenMouth.png" id="34_mi7vx"]
-[ext_resource type="Texture2D" uid="uid://dc8qgcpaolg0g" path="res://Assets/Sprites/FrogMentor/TongueEnd.png" id="35_t2joc"]
+[ext_resource type="Script" uid="uid://cw52nnx0mstao" path="res://Assets/Scripts/FrogMentor.gd" id="33_audqb"]
+[ext_resource type="Texture2D" uid="uid://cmnh27ikjiu7y" path="res://Assets/Sprites/FrogMentor/FrogMasterNormal.png" id="33_dctr5"]
+[ext_resource type="Texture2D" uid="uid://drvlxbxis64ft" path="res://Assets/Sprites/FrogMentor/FrogMentorOpenMouth.png" id="34_mi7vx"]
+[ext_resource type="Texture2D" uid="uid://vnfa0dfvsn7y" path="res://Assets/Sprites/FrogMentor/TongueEnd.png" id="35_t2joc"]
 [ext_resource type="Texture2D" uid="uid://bf6o3r6p3l6kw" path="res://Assets/Potions/PotionStack.png" id="44_mi7vx"]
 [ext_resource type="AudioStream" uid="uid://bo3e5nhmsm6wc" path="res://Assets/Audio/SFX/Music/Medieval Vol. 2 5 (Loop).mp3" id="59_n24vg"]
 [ext_resource type="Script" uid="uid://cm7mnkc84mlru" path="res://Assets/Scripts/PotionStack.gd" id="67_w61tf"]
@@ -77,6 +78,9 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
+radius = 79.025314
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
 animations = [{
@@ -359,15 +363,24 @@ texture = ExtResource("13_4eqlp")
 [node name="DraggedSprite" parent="Ingredients/Stardust" index="1" unique_id=725578124]
 texture = ExtResource("19_umnjm")
 
-[node name="FrogMaster" type="AnimatedSprite2D" parent="." unique_id=1755691723]
+[node name="FrogMaster" type="CharacterBody2D" parent="." unique_id=1261034331]
+input_pickable = true
+script = ExtResource("33_audqb")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="FrogMaster" unique_id=1755691723]
 z_index = -20
-position = Vector2(1268, 489.99997)
+position = Vector2(1268, 570)
 scale = Vector2(0.045, 0.045)
 sprite_frames = SubResource("SpriteFrames_yf5fn")
-frame = 1
-frame_progress = 0.8880631
+centered = false
+offset = Vector2(-1860, -4410)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FrogMaster" unique_id=1265293864]
+position = Vector2(1267, 491)
+shape = SubResource("CircleShape2D_g4v7s")
 
 [node name="FrogTongue" type="Sprite2D" parent="." unique_id=299112104]
+visible = false
 position = Vector2(1267, 504.521)
 scale = Vector2(0.035, 0.003)
 texture = ExtResource("35_t2joc")

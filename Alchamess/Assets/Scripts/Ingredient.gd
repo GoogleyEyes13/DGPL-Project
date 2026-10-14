@@ -16,7 +16,7 @@ class_name IngredientItem
 @onready var pickup_sfx: AudioStreamPlayer = $PickupSFX
 @onready var dial: Control = get_node_or_null("IngredientDial")
 
-@onready var FrogMentor = $"../../FrogMaster"
+@onready var FrogMentor = $"../../FrogMaster/Sprite"
 @onready var FrogTongue = $"../../FrogTongue"
 @onready var FrogPhoenixFeather = $"../../FrogTongueIngredients/PhoenixFeather"
 @onready var FrogStardust = $"../../FrogTongueIngredients/Stardust"
