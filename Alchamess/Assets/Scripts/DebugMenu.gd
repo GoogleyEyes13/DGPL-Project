@@ -7,6 +7,7 @@ extends Control
 @onready var log_label: RichTextLabel = $Panel/MarginContainer/VBoxContainer/LogScroll/LogLabel
 @onready var unlock_all_button: Button = $Panel/MarginContainer/VBoxContainer/HBoxContainer/UnlockAllButton
 @onready var action_hbox: HBoxContainer = $Panel/MarginContainer/VBoxContainer/HBoxContainer
+@onready var wants_label: Label = $Panel/MarginContainer/VBoxContainer/WantsLabel
 
 const MAX_LOG_LINES := 100
 var log_lines: Array[String] = []
@@ -77,6 +78,7 @@ func _update_status() -> void:
 	if DebugManager.current_customer:
 		var c = DebugManager.current_customer
 		status_label.text = "Customer: %s | Ready: %s" % [c.CustomerName, c.cust_is_ready]
+		wants_label.text = "Current want: " + Globals.wantedPotionType
 	else:
 		status_label.text = "No customer registered"
 

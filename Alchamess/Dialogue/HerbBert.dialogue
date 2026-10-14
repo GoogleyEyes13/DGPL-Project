@@ -4,47 +4,47 @@
 % Herb Bert: Phew, had a rough day of work today.
 
 match Globals.wantedPotionType: # this is a placeholder while we set up a global variable for the wanted potions
-	when "MogFace":
+	when "Potion of Mogging":
 		Herb Bert: I want to look like I outclass the room around me!
-	when "Beautification":
+	when "Potion of Beautification":
 		Herb Bert: I'm going on a date tonight, can you make me more attractive?
-	when "ShakeRapidly":
+	when "Potion of Rapid Shaking":
 		Herb Bert: I've got so much stress on me, I need to shake it out!
-	when "EyeColourSwap":
+	when "Potion of Eye Colour Swap":
 		Herb Bert: I'm getting bored with my eye colour, can you do anything about that?
-	when "PermanentSmile":
+	when "Potion of Permanent Smile":
 		Herb Bert: People always say I have a bad resting face, think you can deal with that?
-	when "GreenSkin":
+	when "Potion of Green Skin":
 		Herb Bert: Could you possibly make me green? It's for a costume.
-	when "Cure":
-		Herb Bert: I may have had some poison the other day, got any cures?
-	when "Bald":
+	when "Potion of Curing":
+		Herb Bert: I had to cut back some poison ivy the other day, got any cures?
+	when "Potion Of Baldness":
 		% Herb Bert: I need some help looking more like a monk.
 		% Herb Bert: I'm done with having hair. Get rid of it!
-	when "HeadSizeIncrease":
+	when "Potion of Head Size Increase":
 		Herb Bert: If I had a bigger head, would that make me smarter?
-	when "HeadSizeDecrease":
+	when "Potion of Head Size Decrease":
 		Herb Bert: I'm feeling self-consious about my head, could you make it smaller?
-	when "CreatureFeature":
+	when "Potion of Creature Feature":
 		Herb Bert: I'm looking to scare some friends camping in the woods, could you make me some kind of creature?
-	when "Rabies": #look idk what to put here, why would someone want this?
-		Herb Bert: ...
-	when "ChangeLanguage":
+	when "Potion of Rabies":
+		Herb Bert: I wanna play a little trick on a friend, can you help me look like I'm foaming at the mouth?
+	when "Potion of Change Language":
 		Herb Bert: I'm looking to go overseas, could you help with the language barrier?
-	when "ChangeArtStyle":
+	when "Potion of Change Art Styles":
 		Herb Bert: I want to see myself in an entirely new way!
-	when "SwapBodies": #not sure what this one is about
-		Herb Bert: ...
-	when "Love":
+	when "Potion of Body Swap":
+		Herb Bert: I sometimes wonder what it'd be like to be someone else... think you could help with that?
+	when "Potion of Love":
 		Herb Bert: I'm going on a date tonight, can you make me more loveable?
-	when "Explode":
-		Herb Bert: My main goal is to blow up, then act like I don't know nobody!
-	when "Skeleton":
+	when "Potion of Explode":
+		Herb Bert: I got a boomin' harvest today, and I want to match it!
+	when "Potion of Skeleton":
 		Herb Bert: I'm trying to sneak into a dungeon, can you help me disguise with the monsters down there?
-	when "EnlargePerson":
-		Herb Bert: I want to look down at everyone around me!
-	when "ShrinkPerson":
-		Herb Bert: I'm trying to sneak into a dungeon, can you help me sneak by the monsters inside?
+	when "Potion of Enlarge Person":
+		Herb Bert: Birds keep stealing my crops, help me catch them!
+	when "Potion of Shrink Person":
+		Herb Bert: Some rats keep getting into my garden, could you shrink me down to help me fight them eye-to-eye?
 	else:
 		Herb Bert: I'm not quite sure what I want... (placeholder: no requested potion set)
 

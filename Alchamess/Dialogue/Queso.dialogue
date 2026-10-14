@@ -4,46 +4,46 @@
 % Queso: Phew, had a rough day of work today.
 
 match Globals.wantedPotionType: # this is a placeholder while we set up a global variable for the wanted potions
-	when "MogFace":
+	when "Potion of Mogging":
 		Queso: Chat keeps saying I'm ugly, make me look confident!
-	when "Beautification":
+	when "Potion of Beautification":
 		Queso: I'm gonna see if I can get a date tonight, make me attractive!
-	when "ShakeRapidly":
+	when "Potion of Rapid Shaking":
 		Queso: I've got so much stress on me, I need to shake it out!
-	when "EyeColourSwap":
+	when "Potion of Eye Colour Swap":
 		Queso: I'm gonna prank my chat, change my eye colour!
-	when "PermanentSmile":
+	when "Potion of Permanent Smile":
 		Queso: People always say I have a bad resting face, fix it!
-	when "GreenSkin":
+	when "Potion of Green Skin":
 		Queso: Change my hue!
-	when "Cure":
+	when "Potion of Curing":
 		Queso: I got too excited and ate chicken that was too raw, cure me!
-	when "Bald":
+	when "Potion Of Baldness":
 		Queso: I'm done with having hair. Get rid of it!
-	when "HeadSizeIncrease":
+	when "Potion of Head Size Increase":
 		Queso: I hate people saying I look like a Laygo brick, my head is too small for my body!
 		# "laygo" to be an off-brand lego
-	when "HeadSizeDecrease":
+	when "Potion of Head Size Decrease":
 		Queso: I'm leaning into the bit now! Make my head like a little bump!
-	when "CreatureFeature":
+	when "Potion of Creature Feature":
 		Queso: People keep coming up to me on the street asking for pictures, make me into a different creature!
-	when "Rabies": #look idk what to put here, why would someone want this?
-		Queso: ...
-	when "ChangeLanguage":
+	when "Potion of Rabies": #look idk what to put here, why would someone want this?
+		Queso: I wanna freak people out! Make me look like I'm dying!
+	when "Potion of Change Language":
 		Queso: I'm abouta do a collab stream, but I don't speak their language!
-	when "ChangeArtStyle":
+	when "Potion of Change Art Styles":
 		Queso: I want to get some fan art, but make it real!
-	when "SwapBodies": #not sure what this one is about
+	when "Potion of Body Swap":
 		Queso: People keep coming up to me on the street asking for pictures, make me into a different person!
-	when "Love":
+	when "Potion of Love":
 		Queso: I'm gonna see if I can get a date tonight, make me lovable!
-	when "Explode":
+	when "Potion of Explode":
 		Queso: Help my channel blow up!
-	when "Skeleton":
+	when "Potion of Skeleton":
 		Queso: I'm gonna scare my chat today! Make me spooky!
-	when "EnlargePerson":
+	when "Potion of Enlarge Person":
 		Queso: They keep saying I'm obese, show them how big I can be!
-	when "ShrinkPerson":
+	when "Potion of Shrink Person":
 		Queso: They keep saying I'm obese, make me small!
 	else:
 		Queso: I dont even know what I want! Just give me something to drink! (placeholder: no requested potion set)
