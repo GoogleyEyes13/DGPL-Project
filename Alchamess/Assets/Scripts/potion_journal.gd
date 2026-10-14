@@ -8,6 +8,9 @@ var all_potions_by_ingredient: Dictionary = {}
 
 # potion_name -> true once discovered
 var discovered_potions: Dictionary = {}
+var has_made_four_potions: bool = false
+var has_made_ten_potions: bool = false
+signal NewIngredientUnlocked(IngredientName)
 
 # potion_name -> { "ingredients": Array, "notes": String, "last_customer": String, "last_frame": int }
 var potion_data: Dictionary = {}
@@ -44,6 +47,14 @@ func register_potion(potion_name: String, ingredients: Array) -> void:
 			"last_frame": 0
 		}
 		potion_discovered.emit(potion_name)
+	
+	# Checking if 4 potions have been discovered (For progression)
+	if discovered_potions.size() == 4 and not has_made_four_potions:
+		has_made_four_potions = true
+		NewIngredientUnlocked.emit("PhoenixFeather")
+	elif discovered_potions.size() == 10 and not has_made_ten_potions:
+		has_made_ten_potions = true
+		NewIngredientUnlocked.emit("Stardust")
 	
 	journal_updated.emit()
 

@@ -4,9 +4,9 @@
 [ext_resource type="Theme" uid="uid://clxl8pps2dife" path="res://Assets/UI/JournalUI/bento_sketch.tres" id="2_8saeu"]
 [ext_resource type="Texture2D" uid="uid://dmrugnh5nj1ii" path="res://Assets/Placeholders/AlchamessLogo[Orange].png" id="2_853f1"]
 [ext_resource type="PackedScene" uid="uid://dmft8eqa80pop" path="res://Scenes/Settings.tscn" id="3_8saeu"]
-[ext_resource type="Texture2D" uid="uid://bfs6s45u5ksek" path="res://Assets/Menu/shutter.png" id="3_df05h"]
-[ext_resource type="Texture2D" uid="uid://es5fvll1jwn1" path="res://Assets/MenuForeground.png" id="6_8um5k"]
-[ext_resource type="Texture2D" uid="uid://w64h0sdd102a" path="res://Assets/Placeholders/FrogMaster.png" id="7_xim88"]
+[ext_resource type="Texture2D" uid="uid://c7vf37bo1a0fa" path="res://Assets/Menu/shutter.png" id="3_df05h"]
+[ext_resource type="Texture2D" uid="uid://cwpjymeg4uot2" path="res://Assets/MenuForeground.png" id="6_8um5k"]
+[ext_resource type="Texture2D" uid="uid://b3543n0wcom5w" path="res://Assets/Sprites/FrogMentor/FrogMasterNormal.png" id="7_xim88"]
 
 [node name="MainMenu" type="Control" unique_id=927422500]
 z_index = -100
@@ -108,7 +108,7 @@ texture = ExtResource("6_8um5k")
 
 [node name="FrogMaster" type="Sprite2D" parent="." unique_id=1291636036]
 z_index = 100
-position = Vector2(1635.0001, 698.00006)
+position = Vector2(1636.0001, 697.00006)
 scale = Vector2(0.099, 0.099)
 texture = ExtResource("7_xim88")
 

@@ -16,12 +16,19 @@ class_name IngredientItem
 @onready var pickup_sfx: AudioStreamPlayer = $PickupSFX
 @onready var dial: Control = get_node_or_null("IngredientDial")
 
+@onready var FrogMentor = $"../../FrogMaster"
+@onready var FrogTongue = $"../../FrogTongue"
+@onready var FrogPhoenixFeather = $"../../FrogTongueIngredients/PhoenixFeather"
+@onready var FrogStardust = $"../../FrogTongueIngredients/Stardust"
+
 var is_grabbed: bool = false
 var start_position: Vector2
 
 
 func _ready() -> void:
 	start_position = global_position
+	FrogMentor.frame = 0
+	FrogTongue.visible = false
 	
 	if shelf_texture:
 		shelf_sprite.texture = shelf_texture
@@ -33,6 +40,9 @@ func _ready() -> void:
 	
 	_ensure_in_ingredients_folder()
 	_connect_cauldron_signal()
+
+	if not PotionJournal.NewIngredientUnlocked.is_connected(_on_new_ingredient_unlocked):
+		PotionJournal.NewIngredientUnlocked.connect(_on_new_ingredient_unlocked)
 
 
 func _ensure_in_ingredients_folder() -> void:
@@ -50,6 +60,40 @@ func _connect_cauldron_signal() -> void:
 func _on_ingredient_counts_updated(counts: Dictionary) -> void:
 	if counts.has(ingredientType) and dial and dial.has_method("update_count"):
 		dial.update_count(counts[ingredientType])
+
+
+func _on_new_ingredient_unlocked(ingredient_name: String) -> void:
+	if ingredient_name == ingredientType:
+		FrogMentor.frame = 1
+		FrogTongue.visible = true
+
+		# Stretch the tongue outward from its base
+		var stretch_tween = create_tween()
+		stretch_tween.tween_property(FrogTongue, "scale:y", 0.226, 0.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+
+		await stretch_tween.finished
+
+		# Keep the tongue extended while fetching
+		await get_tree().create_timer(3.0).timeout
+
+		# Retract the tongue
+		var retract_tween = create_tween()
+		retract_tween.tween_property(FrogTongue, "scale:y", 0.003, 0.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+		await retract_tween.finished
+		
+		if ingredient_name == "PhoenixFeather":
+			FrogPhoenixFeather.visible = true
+		else:
+			FrogStardust.visible = true
+
+
+func _on_new_ingredient_clicked(ingredient_name: String) -> void:
+	if ingredient_name == ingredientType:
+		FrogTongue.visible = false
+		visible = true
+		FrogMentor.frame = 0
+		FrogPhoenixFeather.visible = false
+		FrogStardust.visible = false
 
 
 func _process(_delta: float) -> void:
@@ -83,3 +127,12 @@ func drop() -> void:
 	shelf_sprite.visible = true
 	dragged_sprite.visible = false
 	global_position = start_position
+
+
+func _on_phoenix_feather_pressed() -> void:
+	_on_new_ingredient_clicked("PhoenixFeather")
+
+
+func _on_stardust_pressed() -> void:
+	_on_new_ingredient_clicked("Stardust")
+	

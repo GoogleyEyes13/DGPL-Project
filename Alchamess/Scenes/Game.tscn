@@ -5,15 +5,15 @@
 [ext_resource type="PackedScene" uid="uid://tbu6n7m6no5v" path="res://Scenes/DebugMenu.tscn" id="1_n2ugt"]
 [ext_resource type="Script" uid="uid://clyi4gvjf38r2" path="res://Assets/Scripts/Cauldron.gd" id="2_b2bpf"]
 [ext_resource type="Script" uid="uid://c13ys1t4joar2" path="res://Assets/Scripts/MixingStick.gd" id="2_fgofq"]
-[ext_resource type="Texture2D" uid="uid://d3h0lci64i1c" path="res://Assets/Foreground.png" id="4_dctr5"]
+[ext_resource type="Texture2D" uid="uid://dcsy71e6rjejo" path="res://Assets/Foreground.png" id="4_dctr5"]
 [ext_resource type="PackedScene" uid="uid://nk2mr8ongv5d" path="res://Objects/Ingredient.tscn" id="5_b2bpf"]
-[ext_resource type="Texture2D" uid="uid://dwxjow6xy6150" path="res://Assets/Sprites/Cauldron/MixingStick.png" id="6_n24vg"]
-[ext_resource type="Texture2D" uid="uid://bjdby7d6joop1" path="res://Assets/Sprites/Cauldron/CauldronLiquid.png" id="7_n2ugt"]
+[ext_resource type="Texture2D" uid="uid://bfo1be5pyst2d" path="res://Assets/Sprites/Cauldron/MixingStick.png" id="6_n24vg"]
+[ext_resource type="Texture2D" uid="uid://cja8xl5cua4by" path="res://Assets/Sprites/Cauldron/CauldronLiquid.png" id="7_n2ugt"]
 [ext_resource type="Texture2D" uid="uid://b6smgfgjh7ryp" path="res://Assets/Ingredients/ShelfPhoenixFeather.png" id="8_4eqlp"]
-[ext_resource type="Texture2D" uid="uid://cdnjvadim7j2m" path="res://Assets/Sprites/Cauldron/CauldronOpen.png" id="8_8ekww"]
-[ext_resource type="Texture2D" uid="uid://ct8fp13f7c0ou" path="res://Assets/Sprites/Cauldron/Cauldron.png" id="8_a05uw"]
+[ext_resource type="Texture2D" uid="uid://8jw17i82i2xa" path="res://Assets/Sprites/Cauldron/CauldronOpen.png" id="8_8ekww"]
+[ext_resource type="Texture2D" uid="uid://rbcus64g34tf" path="res://Assets/Sprites/Cauldron/Cauldron.png" id="8_a05uw"]
 [ext_resource type="PackedScene" uid="uid://dsymvu0mirgfh" path="res://Scenes/Customer.tscn" id="10_71axn"]
-[ext_resource type="Texture2D" uid="uid://b45kkd8kymeob" path="res://Assets/Sprites/Cauldron/CauldronInside.png" id="10_dwhu0"]
+[ext_resource type="Texture2D" uid="uid://boi566e1kd2k3" path="res://Assets/Sprites/Cauldron/CauldronInside.png" id="10_dwhu0"]
 [ext_resource type="Texture2D" uid="uid://xekkf41anj7g" path="res://Assets/Ingredients/ShelfStardust.png" id="13_4eqlp"]
 [ext_resource type="Texture2D" uid="uid://u5krystq3q6w" path="res://Assets/Ingredients/ShelfWormwood.png" id="13_n2ugt"]
 [ext_resource type="Texture2D" uid="uid://b1b2xkudanhmy" path="res://Assets/Ingredients/ShelfElbowGrease.png" id="13_n24vg"]
@@ -39,8 +39,10 @@
 [ext_resource type="AudioStream" uid="uid://dayxguoxp7lrx" path="res://Assets/Audio/SFX/Ingredient pickup/phoenix feather.wav" id="25_5eiyn"]
 [ext_resource type="AudioStream" uid="uid://mg0ki8rdcbmw" path="res://Assets/Audio/SFX/Ingredient pickup/oil of vitriol.wav" id="27_8eewk"]
 [ext_resource type="AudioStream" uid="uid://bxlw06i77b37x" path="res://Assets/Audio/SFX/Ingredient pickup/stardust.wav" id="29_ahn08"]
-[ext_resource type="Texture2D" uid="uid://w64h0sdd102a" path="res://Assets/Placeholders/FrogMaster.png" id="36_umnjm"]
-[ext_resource type="Texture2D" uid="uid://bwua268nobr3d" path="res://Assets/Potions/PotionStack.png" id="44_mi7vx"]
+[ext_resource type="Texture2D" uid="uid://b3543n0wcom5w" path="res://Assets/Sprites/FrogMentor/FrogMasterNormal.png" id="33_dctr5"]
+[ext_resource type="Texture2D" uid="uid://d2v65mkbgyj05" path="res://Assets/Sprites/FrogMentor/FrogMentorOpenMouth.png" id="34_mi7vx"]
+[ext_resource type="Texture2D" uid="uid://dc8qgcpaolg0g" path="res://Assets/Sprites/FrogMentor/TongueEnd.png" id="35_t2joc"]
+[ext_resource type="Texture2D" uid="uid://bf6o3r6p3l6kw" path="res://Assets/Potions/PotionStack.png" id="44_mi7vx"]
 [ext_resource type="AudioStream" uid="uid://bo3e5nhmsm6wc" path="res://Assets/Audio/SFX/Music/Medieval Vol. 2 5 (Loop).mp3" id="59_n24vg"]
 [ext_resource type="Script" uid="uid://cm7mnkc84mlru" path="res://Assets/Scripts/PotionStack.gd" id="67_w61tf"]
 
@@ -61,6 +63,20 @@ size = Vector2(135.84586, 39.624634)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mi7vx"]
 size = Vector2(521.90576, 18.869469)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yf5fn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("33_dctr5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_mi7vx")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
 animations = [{
@@ -270,7 +286,7 @@ position = Vector2(4.9999995, 4.9999943)
 metadata/_edit_use_anchors_ = true
 
 [node name="Wormwood" parent="Ingredients" unique_id=1599874296 instance=ExtResource("5_b2bpf")]
-position = Vector2(1548, 254)
+position = Vector2(1548.0001, 257)
 ingredientType = "Wormwood"
 shelf_texture = ExtResource("13_n2ugt")
 dragged_texture = ExtResource("15_m15vq")
@@ -298,21 +314,8 @@ texture = ExtResource("13_n24vg")
 [node name="DraggedSprite" parent="Ingredients/ElbowGrease" index="1" unique_id=725578124]
 texture = ExtResource("19_n24vg")
 
-[node name="PhoenixFeather" parent="Ingredients" unique_id=1704942985 instance=ExtResource("5_b2bpf")]
-position = Vector2(1538, 477)
-ingredientType = "PhoenixFeather"
-shelf_texture = ExtResource("8_4eqlp")
-dragged_texture = ExtResource("17_umnjm")
-pickup_sound = ExtResource("25_5eiyn")
-
-[node name="ShelfSprite" parent="Ingredients/PhoenixFeather" index="0" unique_id=1517871503]
-texture = ExtResource("8_4eqlp")
-
-[node name="DraggedSprite" parent="Ingredients/PhoenixFeather" index="1" unique_id=725578124]
-texture = ExtResource("17_umnjm")
-
 [node name="OilOfVitriol" parent="Ingredients" unique_id=70480956 instance=ExtResource("5_b2bpf")]
-position = Vector2(404, 672)
+position = Vector2(1538, 485)
 ingredientType = "OilOfVitriol"
 shelf_texture = ExtResource("15_n24vg")
 dragged_texture = ExtResource("21_n24vg")
@@ -328,7 +331,22 @@ texture = ExtResource("21_n24vg")
 [node name="CollisionShape" parent="Ingredients/OilOfVitriol" index="2" unique_id=1294795548]
 position = Vector2(-1.250038, -21.250061)
 
+[node name="PhoenixFeather" parent="Ingredients" unique_id=1704942985 instance=ExtResource("5_b2bpf")]
+visible = false
+position = Vector2(395.00003, 666.00006)
+ingredientType = "PhoenixFeather"
+shelf_texture = ExtResource("8_4eqlp")
+dragged_texture = ExtResource("17_umnjm")
+pickup_sound = ExtResource("25_5eiyn")
+
+[node name="ShelfSprite" parent="Ingredients/PhoenixFeather" index="0" unique_id=1517871503]
+texture = ExtResource("8_4eqlp")
+
+[node name="DraggedSprite" parent="Ingredients/PhoenixFeather" index="1" unique_id=725578124]
+texture = ExtResource("17_umnjm")
+
 [node name="Stardust" parent="Ingredients" unique_id=860062454 instance=ExtResource("5_b2bpf")]
+visible = false
 position = Vector2(1540, 672)
 ingredientType = "Stardust"
 shelf_texture = ExtResource("13_4eqlp")
@@ -341,11 +359,40 @@ texture = ExtResource("13_4eqlp")
 [node name="DraggedSprite" parent="Ingredients/Stardust" index="1" unique_id=725578124]
 texture = ExtResource("19_umnjm")
 
-[node name="FrogMaster" type="Sprite2D" parent="." unique_id=342284683]
+[node name="FrogMaster" type="AnimatedSprite2D" parent="." unique_id=1755691723]
 z_index = -20
 position = Vector2(1268, 489.99997)
 scale = Vector2(0.045, 0.045)
-texture = ExtResource("36_umnjm")
+sprite_frames = SubResource("SpriteFrames_yf5fn")
+frame = 1
+frame_progress = 0.8880631
+
+[node name="FrogTongue" type="Sprite2D" parent="." unique_id=299112104]
+position = Vector2(1267, 504.521)
+scale = Vector2(0.035, 0.003)
+texture = ExtResource("35_t2joc")
+centered = false
+offset = Vector2(-1860, -5050)
+
+[node name="FrogTongueIngredients" type="CanvasLayer" parent="." unique_id=1129086136]
+
+[node name="PhoenixFeather" type="TextureButton" parent="FrogTongueIngredients" unique_id=1761070426]
+visible = false
+offset_left = 1180.9999
+offset_top = 316.99997
+offset_right = 3229.0
+offset_bottom = 2365.0
+scale = Vector2(0.09, 0.09)
+texture_normal = ExtResource("8_4eqlp")
+
+[node name="Stardust" type="TextureButton" parent="FrogTongueIngredients" unique_id=1688487474]
+visible = false
+offset_left = 1186.0002
+offset_top = 337.00006
+offset_right = 3234.0002
+offset_bottom = 2385.0
+scale = Vector2(0.09, 0.09)
+texture_normal = ExtResource("13_4eqlp")
 
 [node name="Customer" parent="." unique_id=1519350129 instance=ExtResource("10_71axn")]
 z_index = -100
@@ -371,11 +418,13 @@ parameters/looping = true
 
 [connection signal="area_entered" from="WitchCauldron/Area2D" to="WitchCauldron" method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="WitchCauldron/Area2D" to="WitchCauldron" method="_on_area_2d_body_entered"]
+[connection signal="pressed" from="FrogTongueIngredients/PhoenixFeather" to="Ingredients/PhoenixFeather" method="_on_phoenix_feather_pressed"]
+[connection signal="pressed" from="FrogTongueIngredients/Stardust" to="Ingredients/Stardust" method="_on_stardust_pressed"]
 [connection signal="animation_finished" from="Smoke" to="Customer" method="_on_smoke_animation_finished"]
 
 [editable path="Ingredients/EyeOfNewt"]
 [editable path="Ingredients/Wormwood"]
 [editable path="Ingredients/ElbowGrease"]
-[editable path="Ingredients/PhoenixFeather"]
 [editable path="Ingredients/OilOfVitriol"]
+[editable path="Ingredients/PhoenixFeather"]
 [editable path="Ingredients/Stardust"]
