@@ -218,10 +218,10 @@ func receive_potion(potion_type: String) -> void:
 			scale = Vector2(0.05, 0.05)
 			position.y += 45
 			is_shrunk = true
-    elif potion_type == "Potion of Skeleton" and CustomerName != "Queso":
+		elif potion_type == "Potion of Skeleton" and CustomerName != "Queso":
 			scale = Vector2(0.22, 0.22)
-
-
+		
+		
 		match CustomerName:
 			"Queso":
 				var resource = load("res://Dialogue/QuesoDone.dialogue")
