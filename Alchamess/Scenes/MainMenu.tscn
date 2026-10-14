@@ -4,9 +4,13 @@
 [ext_resource type="Theme" uid="uid://clxl8pps2dife" path="res://Assets/UI/JournalUI/bento_sketch.tres" id="2_8saeu"]
 [ext_resource type="Texture2D" uid="uid://dmrugnh5nj1ii" path="res://Assets/Placeholders/AlchamessLogo[Orange].png" id="2_853f1"]
 [ext_resource type="PackedScene" uid="uid://dmft8eqa80pop" path="res://Scenes/Settings.tscn" id="3_8saeu"]
-[ext_resource type="Texture2D" uid="uid://bfs6s45u5ksek" path="res://Assets/Menu/shutter.png" id="3_df05h"]
+[ext_resource type="Texture2D" uid="uid://c7vf37bo1a0fa" path="res://Assets/Menu/shutter.png" id="3_df05h"]
+[ext_resource type="Texture2D" uid="uid://cwpjymeg4uot2" path="res://Assets/MenuForeground.png" id="6_8um5k"]
+[ext_resource type="Texture2D" uid="uid://b3543n0wcom5w" path="res://Assets/Sprites/FrogMentor/FrogMasterNormal.png" id="7_xim88"]
 
 [node name="MainMenu" type="Control" unique_id=927422500]
+z_index = -100
+z_as_relative = false
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_tt5f1")
@@ -20,10 +24,10 @@ bus = &"SFX"
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1881713620]
 layout_mode = 0
-offset_left = -35.999996
-offset_top = -36.999996
+offset_left = -35.999992
+offset_top = -41.999996
 offset_right = 1963.9999
-offset_bottom = 1131.9749
+offset_bottom = 1126.9749
 scale = Vector2(1, 0.9991661)
 texture = ExtResource("3_df05h")
 
@@ -36,8 +40,8 @@ scale = Vector2(0.9927985, 1)
 color = Color(0.62644553, 0.55332667, 0.39108768, 0.6392157)
 
 [node name="AlchamessLogo[orange]" type="Sprite2D" parent="." unique_id=879874972]
-position = Vector2(231.00012, 208.99994)
-scale = Vector2(0.17382813, 0.1787261)
+position = Vector2(214.99997, 176)
+scale = Vector2(0.174, 0.179)
 texture = ExtResource("2_853f1")
 
 [node name="PlayButton" type="Button" parent="." unique_id=1531628275]
@@ -47,10 +51,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 1137.0
-offset_top = 253.0
-offset_right = 1798.0
-offset_bottom = 343.0
+offset_left = 874.0
+offset_top = 350.0
+offset_right = 1535.0
+offset_bottom = 440.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1, 1.0051382)
@@ -65,10 +69,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 1299.0
-offset_top = 389.0
-offset_right = 1651.0
-offset_bottom = 465.0
+offset_left = 1028.0
+offset_top = 486.0
+offset_right = 1380.0
+offset_bottom = 562.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_8saeu")
@@ -82,10 +86,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 1303.0
-offset_top = 513.0
-offset_right = 1655.0
-offset_bottom = 589.0
+offset_left = 1028.0
+offset_top = 610.0
+offset_right = 1380.0
+offset_bottom = 686.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_8saeu")
@@ -94,6 +98,19 @@ text = "Quit"
 
 [node name="ClickSFX" type="AudioStreamPlayer" parent="." unique_id=1094349586]
 bus = &"SFX"
+
+[node name="MenuForeground" type="Sprite2D" parent="." unique_id=1234653490]
+z_index = 100
+texture_filter = 1
+position = Vector2(959, 572)
+scale = Vector2(2.2, 2.2)
+texture = ExtResource("6_8um5k")
+
+[node name="FrogMaster" type="Sprite2D" parent="." unique_id=1291636036]
+z_index = 100
+position = Vector2(1636.0001, 697.00006)
+scale = Vector2(0.099, 0.099)
+texture = ExtResource("7_xim88")
 
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="SettingsButton" to="." method="_on_option_button_pressed"]

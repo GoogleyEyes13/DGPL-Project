@@ -5,6 +5,8 @@ extends Control
 @onready var play_button: Button = $PlayButton
 @onready var quit_button: Button = $QuitButton
 
+@onready var MenuForeground = $MenuForeground
+
 @onready var click_sfx: AudioStreamPlayer = $ClickSFX
 var sfx_click = preload("res://Assets/Audio/SFX/Menu/buttonclick.wav")
 
@@ -43,20 +45,29 @@ func _play_click() -> void:
 	click_sfx.play()
 
 
+
 func _on_play_button_pressed() -> void:
 	_play_click()
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	
 	var screen_height = get_viewport_rect().size.y
 	var slide_tween = create_tween()
+	slide_tween.set_parallel(true)
 	
-	slide_tween.tween_property(
-		self, 
-		"position:y", 
-		-screen_height, 
-		door_slide_duration
-	).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+	for child in get_children():
+		if child == MenuForeground:
+			continue
+		
+		if child is Control:
+			slide_tween.tween_property(
+				child,
+				"position:y",
+				child.position.y - screen_height,
+				door_slide_duration
+			).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
 	
+	# Wait for all parallel tweens to finish before changing scenes
+	slide_tween.set_parallel(false)
 	slide_tween.tween_callback(change_to_preloaded_game)
 
 

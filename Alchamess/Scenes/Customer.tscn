@@ -8,25 +8,39 @@
 [ext_resource type="Texture2D" uid="uid://bee8cjyoeqcfh" path="res://Assets/Sprites/Caseoh/CaseohBlueEyes.png" id="6_yd18k"]
 [ext_resource type="Texture2D" uid="uid://cs2hoqx0f8b4m" path="res://Assets/Sprites/Caseoh/CaseohSkeleton.png" id="7_c7i8l"]
 [ext_resource type="Script" uid="uid://bmpdj2jewm2v8" path="res://Assets/Scripts/Customer.gd" id="7_cj036"]
+[ext_resource type="Texture2D" uid="uid://icr0kwpjomlw" path="res://Assets/Sprites/Non-Unique/Skeleton.png" id="7_e4mfo"]
 [ext_resource type="Texture2D" uid="uid://bsi1m2qrrswqw" path="res://Assets/Sprites/Non-Unique/TheFeaturedCreature.png" id="8_8q8uq"]
 [ext_resource type="Texture2D" uid="uid://cuxbg1ndm6osm" path="res://Assets/Sprites/Herb Bert/HerbBertNormal.png" id="8_kosw0"]
 [ext_resource type="Texture2D" uid="uid://dqjgleeflraml" path="res://Assets/Sprites/Herb Bert/HerbBertArtStyleSwap.png" id="9_1r5ol"]
 [ext_resource type="Texture2D" uid="uid://m0bky37fmah1" path="res://Assets/Sprites/Herb Bert/HerbBertBald.png" id="9_08swe"]
-[ext_resource type="Texture2D" uid="uid://mkn78o3qnb3a" path="res://Assets/Sprites/Mr Monicle/MrMonicle.png" id="9_kosw0"]
+[ext_resource type="Texture2D" uid="uid://bqlnp3scy0e0k" path="res://Assets/Sprites/Mr Monicle/MrMonicle.png" id="9_kosw0"]
 [ext_resource type="Texture2D" uid="uid://cmw2a472yk00q" path="res://Assets/Sprites/Herb Bert/HerbBertBigHead.png" id="10_8q8uq"]
 [ext_resource type="Texture2D" uid="uid://be7ppixjevaeg" path="res://Assets/Sprites/Herb Bert/HerbBertRabies.png" id="10_rhkq5"]
 [ext_resource type="Texture2D" uid="uid://kjlv0sdj6die" path="res://Assets/Sprites/Herb Bert/HerbBertSmallHead.png" id="11_8tccj"]
 [ext_resource type="Texture2D" uid="uid://dgmleutps3smk" path="res://Assets/Sprites/Herb Bert/HerbBertGreen.png" id="12_a8pu0"]
+[ext_resource type="Texture2D" uid="uid://cvfnkkecy3cg7" path="res://Assets/Sprites/LadyP/LadyPNormal.png" id="12_hoaph"]
+[ext_resource type="Texture2D" uid="uid://rrt76prpyl7d" path="res://Assets/Sprites/LadyP/LadyPBeautification.png" id="13_67trj"]
+[ext_resource type="Texture2D" uid="uid://7xxtf85lyhk5" path="res://Assets/Sprites/LadyP/LadyPEyeColourSwap.png" id="13_dwek5"]
+[ext_resource type="Texture2D" uid="uid://5aksov6dv2oy" path="res://Assets/Sprites/LadyP/LadyPRabies.png" id="13_gsmmf"]
+[ext_resource type="Texture2D" uid="uid://dd8xc2db6jx8a" path="res://Assets/Sprites/LadyP/LadyPBald.png" id="13_kdj2y"]
 [ext_resource type="Texture2D" uid="uid://crnbt5igmh4ii" path="res://Assets/Sprites/Herb Bert/HerbBertGreenEyes.png" id="13_ybyuj"]
+[ext_resource type="Texture2D" uid="uid://cc1wg4d58i1y6" path="res://Assets/Sprites/LadyP/LadyPMog.png" id="14_jsqc0"]
+[ext_resource type="Texture2D" uid="uid://0tkbbhx3j3wc" path="res://Assets/Sprites/LadyP/LadyPBigHead.png" id="14_p7eft"]
+[ext_resource type="Texture2D" uid="uid://lyh024aixu30" path="res://Assets/Sprites/LadyP/LadyPSmallHead.png" id="15_j7dqm"]
 [ext_resource type="Texture2D" uid="uid://b7dpjh3v0wk1r" path="res://Assets/Sprites/Herb Bert/HerbBertBeautification.png" id="16_8tccj"]
+[ext_resource type="Texture2D" uid="uid://c7vea4ind4llx" path="res://Assets/Sprites/LadyP/LadyPGreenSkin.png" id="16_mqhyu"]
 [ext_resource type="Texture2D" uid="uid://nss261vbdk1g" path="res://Assets/Sprites/Mr Monicle/MrMonicleRabies.png" id="17_jh1hx"]
-[ext_resource type="Texture2D" uid="uid://mhum55p8wdeg" path="res://Assets/Sprites/Mr Monicle/MrMonicleBrownEyes.png" id="18_a8pu0"]
-[ext_resource type="Texture2D" uid="uid://fhwky58falh3" path="res://Assets/Sprites/Mr Monicle/MrMonicleBald.png" id="18_bx880"]
+[ext_resource type="Texture2D" uid="uid://oadqjpwqt1l3" path="res://Assets/Sprites/Mr Monicle/MrMonicleBrownEyes.png" id="18_a8pu0"]
+[ext_resource type="Texture2D" uid="uid://cg1voorgdt2n4" path="res://Assets/Sprites/Mr Monicle/MrMonicleBald.png" id="18_bx880"]
 [ext_resource type="Texture2D" uid="uid://dvudc0ypdgti6" path="res://Assets/Sprites/Mr Monicle/MrMonicleGreenSkin.png" id="18_ybyuj"]
 [ext_resource type="Texture2D" uid="uid://bbalq7wmlthu5" path="res://Assets/Sprites/Mr Monicle/MrMonicleBigHead.png" id="19_i14jh"]
 [ext_resource type="Texture2D" uid="uid://2ltqw6ajn2b2" path="res://Assets/Sprites/Mr Monicle/MrMonicleSmallHead.png" id="20_rhkq5"]
+[ext_resource type="Texture2D" uid="uid://c3tdrlemjagd5" path="res://Assets/Sprites/Mr Monicle/MrMonicleBeautification.png" id="23_5wd0f"]
+[ext_resource type="Texture2D" uid="uid://daele5ew5g5vl" path="res://Assets/Sprites/Mr Monicle/MrMonicleMog.png" id="23_mebht"]
 [ext_resource type="Texture2D" uid="uid://dtixhieqpe15x" path="res://Assets/Sprites/Caseoh/CaseohRabies.png" id="24_v2fx3"]
 [ext_resource type="Texture2D" uid="uid://d11unljt1xx3l" path="res://Assets/Sprites/Caseoh/CaseohBeautification.png" id="25_c1vay"]
+[ext_resource type="Texture2D" uid="uid://b67wktbp2oah8" path="res://Assets/Sprites/Caseoh/CaseohArtStyleSwap.png" id="25_hl3cd"]
+[ext_resource type="Texture2D" uid="uid://biv5q2yb23lp8" path="res://Assets/Sprites/Caseoh/CaseohMog.png" id="27_7yobe"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_57qmd"]
 animations = [{
@@ -50,7 +64,7 @@ animations = [{
 "texture": ExtResource("13_ybyuj")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_kosw0")
+"texture": ExtResource("7_e4mfo")
 }, {
 "duration": 1.0,
 "texture": ExtResource("9_1r5ol")
@@ -63,9 +77,53 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("10_rhkq5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_kosw0")
 }],
 "loop": 1,
 "name": &"HerbBert",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_hoaph")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_kdj2y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_p7eft")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_j7dqm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_mqhyu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_dwek5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_e4mfo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_hoaph")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_8q8uq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_67trj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_gsmmf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_jsqc0")
+}],
+"loop": 1,
+"name": &"LadyP",
 "speed": 5.0
 }, {
 "frames": [{
@@ -88,7 +146,7 @@ animations = [{
 "texture": ExtResource("18_a8pu0")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_kosw0")
+"texture": ExtResource("7_e4mfo")
 }, {
 "duration": 1.0,
 "texture": ExtResource("9_kosw0")
@@ -97,10 +155,13 @@ animations = [{
 "texture": ExtResource("8_8q8uq")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_kosw0")
+"texture": ExtResource("23_5wd0f")
 }, {
 "duration": 1.0,
 "texture": ExtResource("17_jh1hx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_mebht")
 }],
 "loop": 1,
 "name": &"MrMonicle",
@@ -129,7 +190,7 @@ animations = [{
 "texture": ExtResource("7_c7i8l")
 }, {
 "duration": 1.0,
-"texture": ExtResource("1_r206j")
+"texture": ExtResource("25_hl3cd")
 }, {
 "duration": 1.0,
 "texture": ExtResource("8_8q8uq")
@@ -139,6 +200,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("24_v2fx3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_7yobe")
 }],
 "loop": 1,
 "name": &"Queso",
@@ -153,9 +217,7 @@ height = 4375.0
 texture_filter = 1
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_57qmd")
-animation = &"Queso"
-frame = 9
-frame_progress = 0.35138607
+animation = &"LadyP"
 script = ExtResource("7_cj036")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=621125951]

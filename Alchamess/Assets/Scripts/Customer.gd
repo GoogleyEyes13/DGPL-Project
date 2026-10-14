@@ -17,7 +17,7 @@ var is_shrunk = false
 #Horizontal speed(time between each bounce)
 @export var step_speed: float = 6.0
 #Customer name list (Animation names)
-@export var customer_names: Array[String] = ["Queso", "HerbBert", "MrMonicle"]
+@export var customer_names: Array[String] = ["Queso", "HerbBert", "MrMonicle", "LadyP"]
 
 #Rapid Shaking potion
 @export var jitter_intensity: float = 4.0
@@ -36,7 +36,6 @@ var PotionEffects: Dictionary = {
 	"Potion of Permanent Smile": 0,
 	"Potion of Explode": 0,
 	"Potion of Change Language": 0,
-	"Potion of Mogging": 0,
 	"Potion of Body Swap": 0,
 	"Potion of Love": 0,
 	"Potion of Enlarge Person": 0,
@@ -50,7 +49,8 @@ var PotionEffects: Dictionary = {
 	"Potion of Change Art Styles": 7,
 	"Potion of Creature Feature": 8,
 	"Potion of Beautification": 9,
-	"Potion of Rabies": 10
+	"Potion of Rabies": 10,
+	"Potion of Mogging": 11
 }
 
 @onready var PotionEffectSprite: AnimatedSprite2D = $"."
@@ -121,6 +121,9 @@ func trigger_customer_dialogue() -> void:
 		"MrMonicle":
 			var resource = load("res://Dialogue/MrMonicle.dialogue")
 			DialogueManager.show_dialogue_balloon(resource)
+		"LadyP":
+			# Put Lady P dialogue file path here
+			pass
 		_:
 			var resource = load("res://Dialogue/HerbBert.dialogue")
 			DialogueManager.show_dialogue_balloon(resource)
@@ -215,9 +218,10 @@ func receive_potion(potion_type: String) -> void:
 			scale = Vector2(0.05, 0.05)
 			position.y += 45
 			is_shrunk = true
-		
-		
-		
+    elif potion_type == "Potion of Skeleton" and CustomerName != "Queso":
+			scale = Vector2(0.22, 0.22)
+
+
 		match CustomerName:
 			"Queso":
 				var resource = load("res://Dialogue/QuesoDone.dialogue")

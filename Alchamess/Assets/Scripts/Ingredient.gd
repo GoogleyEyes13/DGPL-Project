@@ -22,7 +22,7 @@ var start_position: Vector2
 
 func _ready() -> void:
 	start_position = global_position
-	
+
 	if shelf_texture:
 		shelf_sprite.texture = shelf_texture
 	if dragged_texture:
@@ -83,3 +83,5 @@ func drop() -> void:
 	shelf_sprite.visible = true
 	dragged_sprite.visible = false
 	global_position = start_position
+
+	

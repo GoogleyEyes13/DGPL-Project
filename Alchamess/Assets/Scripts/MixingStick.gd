@@ -14,7 +14,8 @@ var last_side := ""
 
 var allow_mixing = false
 
-# The liquid in the cauldron
+# The cauldron assets
+@onready var Cauldron = $"../WitchCauldron"
 @onready var WitchCauldronLiquid = $"../WitchCauldron/WitchCauldronLiquid"
 
 # Stirring sounds
@@ -30,6 +31,7 @@ signal potion_mixed
 
 func _ready():
 	starting_position = position
+	WitchCauldronLiquid.self_modulate = Color.SKY_BLUE
 
 
 func _process(_delta):
@@ -112,13 +114,55 @@ func change_liquid_colour() -> void:
 	var target_colour = Color("#99855D")
 	var progress = float(mix_count) / 8.0
 	
-	WitchCauldronLiquid.self_modulate = Color.WHITE.lerp(
+	match Cauldron.LastPotionCreated:
+		"Potion of Curing":
+			target_colour = Color("#99855D")
+		"Potion of Enlarge Person":
+			target_colour = Color("#99855D")
+		"Potion of Green Skin":
+			target_colour = Color("#99855D")
+		"Potion of Change Art Styles":
+			target_colour = Color("#99855D")
+		"Potion of Mogging":
+			target_colour = Color("#99855D")
+		"Potion of Rapid Shaking":
+			target_colour = Color("#964D27")
+		"Potion of Permanent Smile":
+			target_colour = Color("#964D27")
+		"Potion of Shrink Person":
+			target_colour = Color("#964D27")
+		"Potion of Baldness":
+			target_colour = Color("#964D27")
+		"Potion of Creature Feature":
+			target_colour = Color("#964D27")
+		"Potion of Beautification":
+			target_colour = Color("#AD3922")
+		"Potion of Explode":
+			target_colour = Color("#AD3922")
+		"Potion of Body Swap":
+			target_colour = Color("#AD3922")
+		"Potion of Head Size Increase":
+			target_colour = Color("#AD3922")
+		"Potion of Eye Colour Swap":
+			target_colour = Color("#AD3922")
+		"Potion of Head Size Decrease":
+			target_colour = Color("#c38840")
+		"Potion of Skeleton":
+			target_colour = Color("#c38840")
+		"Potion of Rabies":
+			target_colour = Color("#c38840")
+		"Potion of Change Language":
+			target_colour = Color("#c38840")
+		"Potion of Love":
+			target_colour = Color("#c38840")
+	
+	WitchCauldronLiquid.self_modulate = Color.SKY_BLUE.lerp(
 		target_colour,
 		progress
 	)
 
 
 func reset_liquid_colour() -> void:
-	WitchCauldronLiquid.self_modulate = Color.WHITE
+	WitchCauldronLiquid.self_modulate = Color.SKY_BLUE
 	mix_count = 0
 	last_side = ""

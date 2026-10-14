@@ -3,6 +3,8 @@ extends Area2D
 @export var potion_scene: PackedScene = preload("res://Objects/Potion.tscn")
 @export var default_potion_type: String = "Potion1"
 
+@onready var Cauldron = $"../WitchCauldron"
+
 
 func _input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
@@ -15,7 +17,6 @@ func spawn_bottle() -> void:
 		return
 		
 	var new_bottle: PotionBottle = potion_scene.instantiate()
-	new_bottle.potionType = default_potion_type
-	new_bottle.potionName = default_potion_type
+	new_bottle.potionName = Cauldron.LastPotionCreated
 	
 	get_tree().current_scene.add_child(new_bottle)

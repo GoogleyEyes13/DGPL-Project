@@ -12,6 +12,14 @@ var ingredient_usage_counts: Dictionary = {
 	"Wormwood": 0
 }
 
+# Cauldron ingredient spawn points
+var Ingredient1 = Vector2(-406, 370)
+var Ingredient2 = Vector2(7, 370)
+var Ingredient3 = Vector2(410, 370)
+
+# Pot ingredient sprites
+@onready var IngredientsInCauldron = $WitchCauldronInside
+
 @onready var MixingStick = $"../MixingStick"
 @onready var CauldronFull: bool = false
 
@@ -56,6 +64,9 @@ func _add_ingredient_to_cauldron(ingredient_name: String) -> bool:
 	
 	CauldronIngredients[ingredient_name] = 1
 	DebugManager.debug_log(ingredient_name + " has been placed in the pot")
+
+	# Show the ingredient sprite in the cauldron
+	_show_ingredient_in_pot(ingredient_name)
 	
 	if in_pot_sounds.has(ingredient_name):
 		in_pot_sfx.stream = in_pot_sounds[ingredient_name]
@@ -65,6 +76,18 @@ func _add_ingredient_to_cauldron(ingredient_name: String) -> bool:
 	
 	if CauldronIngredients.size() == 3:
 		CauldronFull = true
+
+		# Find the potion type
+		var ingredients_list: Array = CauldronIngredients.keys()
+		var potion_data: Dictionary = PotionDatabase.get_potion_data(ingredients_list)
+		
+		if not potion_data.is_empty():
+			LastPotionCreated = potion_data["name"]
+			DebugManager.debug_log("Potion identified: " + LastPotionCreated)
+		else:
+			LastPotionCreated = "Unknown Potion"
+			DebugManager.debug_log("No potion recipe found!")
+		
 		ingredients_updated.emit(CauldronIngredients.keys(), LastPotionCreated)
 		MixingStick.start_mixing()
 		
@@ -93,21 +116,17 @@ func _on_collision_entered(incoming_node: Node2D) -> void:
 		DebugManager.debug_log("Potion bottle detected in cauldron")
 		
 		if CauldronFull and PotionMixed:
-			var ingredients_list: Array = CauldronIngredients.keys()
-			var potion_data: Dictionary = PotionDatabase.get_potion_data(ingredients_list)
-			
-			if not potion_data.is_empty():
-				var potion_name: String = potion_data["name"]
-				LastPotionCreated = potion_name
-				
+			if LastPotionCreated != "Unknown Potion" and LastPotionCreated != "None":
 				# Track ingredient counts for dials
+				var ingredients_list: Array = CauldronIngredients.keys()
+				
 				for ingredient in ingredients_list:
 					if ingredient_usage_counts.has(ingredient):
 						ingredient_usage_counts[ingredient] += 1
 				
 				ingredient_counts_updated.emit(ingredient_usage_counts)
 				
-				# Fill bottle using original fill_bottle method
+				# Fill the bottle with the previously calculated potion.
 				if target_node.has_method("fill_bottle"):
 					target_node.fill_bottle(LastPotionCreated)
 				
@@ -120,8 +139,12 @@ func _on_collision_entered(incoming_node: Node2D) -> void:
 				CauldronIngredients = {}
 				has_logged_mix_finished = false
 				
+				# Hide all ingredient sprites
+				for child in IngredientsInCauldron.get_children():
+					child.visible = false
+				
 				ingredients_updated.emit(CauldronIngredients.keys(), LastPotionCreated)
-				PotionJournal.register_potion(potion_name, ingredients_list)
+				PotionJournal.register_potion(LastPotionCreated, ingredients_list)
 
 
 func _on_potion_mixed() -> void:
@@ -129,3 +152,30 @@ func _on_potion_mixed() -> void:
 	if not has_logged_mix_finished:
 		DebugManager.debug_log("Cauldron has finished mixing!")
 		has_logged_mix_finished = true
+
+
+func _show_ingredient_in_pot(ingredient_name: String) -> void:
+	var ingredient_sprite = IngredientsInCauldron.get_node_or_null(ingredient_name)
+
+	if ingredient_sprite == null:
+		DebugManager.debug_log("Ingredient sprite not found: " + ingredient_name)
+		return
+
+	# Find an available spawn point
+	var spawn_points: Array[Vector2] = [
+		Ingredient1,
+		Ingredient2,
+		Ingredient3
+	]
+
+	var occupied_positions: Array[Vector2] = []
+
+	for child in IngredientsInCauldron.get_children():
+		if child.visible:
+			occupied_positions.append(child.position)
+
+	for spawn_point in spawn_points:
+		if not occupied_positions.has(spawn_point):
+			ingredient_sprite.position = spawn_point
+			ingredient_sprite.visible = true
+			return

@@ -5,12 +5,12 @@ extends Node2D
 
 
 @export_group("Camera Positions")
-@export var start_position: Vector2 = Vector2(953, 407)
+@export var start_position: Vector2 = Vector2(959, 420)
 @export var target_position: Vector2 = Vector2(960, 540)
 
 @export_group("Camera Zoom")
-@export var start_zoom: Vector2 = Vector2(4, 4)
-@export var target_zoom: Vector2 = Vector2(1.0, 1.0)
+@export var start_zoom: Vector2 = Vector2(2.2, 2.2)
+@export var target_zoom: Vector2 = Vector2(1, 1)
 @export var zoom_duration: float = 2.5
 
 func _ready() -> void:
