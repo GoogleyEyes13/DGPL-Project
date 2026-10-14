@@ -17,7 +17,7 @@ var is_shrunk = false
 #Horizontal speed(time between each bounce)
 @export var step_speed: float = 6.0
 #Customer name list (Animation names)
-@export var customer_names: Array[String] = ["Queso", "HerbBert", "MrMonicle"]
+@export var customer_names: Array[String] = ["Queso", "HerbBert", "MrMonicle", "LadyP"]
 
 #Rapid Shaking potion
 @export var jitter_intensity: float = 4.0
@@ -118,6 +118,9 @@ func trigger_customer_dialogue() -> void:
 		"MrMonicle":
 			var resource = load("res://Dialogue/MrMonicle.dialogue")
 			DialogueManager.show_dialogue_balloon(resource)
+		"LadyP":
+			# Put Lady P dialogue file path here
+			pass
 		_:
 			var resource = load("res://Dialogue/Queso.dialogue")
 			DialogueManager.show_dialogue_balloon(resource)
