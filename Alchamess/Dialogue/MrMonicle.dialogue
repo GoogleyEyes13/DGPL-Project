@@ -4,46 +4,46 @@
 % Mr Monicle: I demand you make a potion for me. Do so, and I shall pay you... exactly what you are due.
 
 match Globals.wantedPotionType: # this is a placeholder while we set up a global variable for the wanted potions
-	when "MogFace":
+	when "Potion of Mogging":
 		Mr Monicle: I want everyone to see how far I outclass them!
-	when "Beautification":
+	when "Potion of Beautification":
 		Mr Monicle: Help me enhance my already immaculate beauty.
-	when "ShakeRapidly":
-		Mr Monicle: ///////////////////////////////////////////////////////////////////// (placeholder, need help)
-	when "EyeColourSwap":
+	when "Potion of Rapid Shaking":
+		Mr Monicle: It's been a while since I've felt the jitters, I desire to re-live that feeling.
+	when "Potion of Eye Colour Swap":
 		Mr Monicle: I desire a hue shift for my retinas.
-	when "PermanentSmile":
-		Mr Monicle: The poor are always complaining about my dismissive demeanor. Could you help put a fake grin on?
-	when "GreenSkin":
+	when "Potion of Permanent Smile":
+		Mr Monicle: The poor are always complaining about my dismissive demeanor. May you aid with that?
+	when "Potion of Green Skin":
 		Mr Monicle: I desire to become more verdant.
-	when "Cure":
+	when "Potion of Curing":
 		Mr Monicle: I think a pauper gave me some kind of plague, fix it at once!
-	when "Bald":
+	when "Potion Of Baldness":
 		Mr Monicle: My mane is bothering me, remove it at once!
-	when "HeadSizeIncrease":
+	when "Potion of Head Size Increase":
 		Mr Monicle: I demand a cranium the size of my ego!
-	when "HeadSizeDecrease":
-		Mr Monicle: ///////////////////////////////////////////////////////////////////// (placeholder, need help)
-	when "CreatureFeature":
-		Mr Monicle: ///////////////////////////////////////////////////////////////////// (placeholder, need help)
-	when "Rabies": #look idk what to put here, why would someone want this?
-		Mr Monicle: ...
-	when "ChangeLanguage":
+	when "Potion of Head Size Decrease":
+		Mr Monicle: I need to rest from thinking, downsize my cranium!
+	when "Potion of Creature Feature":
+		Mr Monicle: Make me into one of your creatures, my friend.
+	when "Potion of Rabies":
+		Mr Monicle: I want to demonstrate to the pesants what they will look like if they remain in the slums
+	when "Potion of Change Language":
 		Mr Monicle: To impress some investors, I must speak in their native dialect.
-	when "ChangeArtStyle":
+	when "Potion of Change Art Styles":
 		Mr Monicle: The characature artist turned me down! How bothersome, but I am sure you could do just as well to me.
-	when "SwapBodies": #not sure what this one is about
-		Mr Monicle: ...
-	when "Love":
-		Mr Monicle: ///////////////////////////////////////////////////////////////////// (placeholder, need help)
-	when "Explode":
-		Mr Monicle: ///////////////////////////////////////////////////////////////////// (placeholder, need help)
-	when "Skeleton":
-		Mr Monicle: ///////////////////////////////////////////////////////////////////// (placeholder, need help)
-	when "EnlargePerson":
+	when "Potion of Body Swap":
+		Mr Monicle: I wish to see what it's like to be one with the pesants.
+	when "Potion of Love":
+		Mr Monicle: I wish to get more money from others. Help me trick another into falling for me.
+	when "Potion of Explode":
+		Mr Monicle: I wish to get more money from my potion insurance. Give me something truly devestating to my health.
+	when "Potion of Skeleton":
+		Mr Monicle: Help me get the best costume at the halloween party to win the grand prize.
+	when "Potion of Enlarge Person":
 		Mr Monicle: I wish to be as big as my ego!
-	when "ShrinkPerson":
-		Mr Monicle: ///////////////////////////////////////////////////////////////////// (placeholder, need help)
+	when "Potion of Shrink Person":
+		Mr Monicle: I need a potion to let me evesdrop on my advesaries.
 	else:
 		Mr Monicle: I am feeling quite indecisive today. (placeholder: no requested potion set)
 

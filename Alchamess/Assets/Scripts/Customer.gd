@@ -79,13 +79,15 @@ func _ready() -> void:
 	start_pos = Vector2(window_size.x + 200, window_size.y / 2)
 	centre_pos = Vector2(window_size.x / 2, window_size.y / 2)
 	end_pos = Vector2(-200, window_size.y / 2)
-
+	
 	global_position = start_pos
-
+	
+	#await DialogueManager.dialogue_ended
+	
 	animation = CustomerName
 	frame = 0
 	stop()
-
+	
 	hide()
 	bob_in()
 
@@ -104,6 +106,7 @@ func trigger_opening_dialogue() -> void:
 
 
 func trigger_customer_dialogue() -> void:
+	Globals.randomizeWantedType()
 	if DebugManager.skip_dialogue:
 		DebugManager.debug_log("Skipping customer dialogue for " + CustomerName)
 		return
@@ -122,7 +125,7 @@ func trigger_customer_dialogue() -> void:
 			# Put Lady P dialogue file path here
 			pass
 		_:
-			var resource = load("res://Dialogue/Queso.dialogue")
+			var resource = load("res://Dialogue/HerbBert.dialogue")
 			DialogueManager.show_dialogue_balloon(resource)
 
 
@@ -157,7 +160,7 @@ func on_arrival() -> void:
 	DebugManager.debug_log(CustomerName + " is at the counter! Waiting for interaction...")
 	
 	cust_is_ready = true
-
+	
 	if first_arrival:
 		first_arrival = false
 	else:
@@ -185,6 +188,9 @@ func receive_potion(potion_type: String) -> void:
 		return
 		
 	cust_is_ready = false
+	
+	Globals.submitPotion(potion_type)
+	print(potion_type + " " + Globals.wantedPotionType)
 	
 	if PotionEffects.has(potion_type):
 		SmokeTransition.visible = true
@@ -214,7 +220,24 @@ func receive_potion(potion_type: String) -> void:
 			is_shrunk = true
 		elif potion_type == "Potion of Skeleton" and CustomerName != "Queso":
 			scale = Vector2(0.22, 0.22)
-			
+		
+		
+		match CustomerName:
+			"Queso":
+				var resource = load("res://Dialogue/QuesoDone.dialogue")
+				DialogueManager.show_dialogue_balloon(resource)
+			"HerbBert":
+				var resource = load("res://Dialogue/HerbBertDone.dialogue")
+				DialogueManager.show_dialogue_balloon(resource)
+			"MrMonicle":
+				var resource = load("res://Dialogue/MrMonicleDone.dialogue")
+				DialogueManager.show_dialogue_balloon(resource)
+			_:
+				var resource = load("res://Dialogue/HerbBertDone.dialogue")
+				DialogueManager.show_dialogue_balloon(resource)
+		
+		await DialogueManager.dialogue_ended
+		
 		var delay = create_tween()
 		delay.tween_interval(delay_time)
 		delay.tween_callback(bob_out)
