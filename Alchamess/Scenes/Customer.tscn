@@ -41,6 +41,7 @@
 [ext_resource type="Texture2D" uid="uid://d11unljt1xx3l" path="res://Assets/Sprites/Caseoh/CaseohBeautification.png" id="25_c1vay"]
 [ext_resource type="Texture2D" uid="uid://b67wktbp2oah8" path="res://Assets/Sprites/Caseoh/CaseohArtStyleSwap.png" id="25_hl3cd"]
 [ext_resource type="Texture2D" uid="uid://biv5q2yb23lp8" path="res://Assets/Sprites/Caseoh/CaseohMog.png" id="27_7yobe"]
+[ext_resource type="Texture2D" uid="uid://dnv8dskbj7uvs" path="res://Assets/Sprites/Caseoh/CaseohBodySwap.png" id="41_p7eft"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_57qmd"]
 animations = [{
@@ -203,6 +204,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("27_7yobe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_p7eft")
 }],
 "loop": 1,
 "name": &"Queso",
@@ -217,7 +221,7 @@ height = 4375.0
 texture_filter = 1
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_57qmd")
-animation = &"LadyP"
+animation = &"Queso"
 script = ExtResource("7_cj036")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=621125951]
