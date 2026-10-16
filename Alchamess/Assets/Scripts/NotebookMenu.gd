@@ -1,25 +1,62 @@
 extends Control
 
-#region Variables
-# Point this to your book button in the scene
+#region Node References
 @onready var book_button: TextureButton = $BookButton
-@onready var panel: Panel = $NotebookPanel
+@onready var panel: Control = $NotebookPanel
+@onready var close_button: BaseButton = $NotebookPanel.get_node_or_null("CloseButton")
 
-@onready var ingredient_list_view: VBoxContainer = $NotebookPanel/MarginContainer/IngredientListView
-@onready var ingredient_list_container: GridContainer = $NotebookPanel/MarginContainer/IngredientListView/ScrollContainer/IngredientListContainer
+# Left Page (Ingredients)
+@onready var ingredient_grid: GridContainer = $NotebookPanel/MarginContainer/BookSpread/LeftPage/ScrollContainer/IngredientGrid
 @export var ingredient_icons: Array[Texture2D] = []
 
-@onready var potion_list_view: VBoxContainer = $NotebookPanel/MarginContainer/PotionListView
-@onready var potion_list_container: VBoxContainer = $NotebookPanel/MarginContainer/PotionListView/ScrollContainer/PotionListContainer
-@onready var back_to_ingredients_button: Button = $NotebookPanel/MarginContainer/PotionListView/BackButton
+# Right Page (Ingredient Showcase & Potion List)
+@onready var right_page: Control = $NotebookPanel/MarginContainer/BookSpread/RightPage
+@onready var potion_list_view: Control = right_page.get_node_or_null("PotionListView")
 
-@onready var potion_detail_view: VBoxContainer = $NotebookPanel/MarginContainer/PotionDetailView
-@onready var back_to_potions_button: Button = $NotebookPanel/MarginContainer/PotionDetailView/BackButton
-@onready var detail_title_label: Label = $NotebookPanel/MarginContainer/PotionDetailView/TitleLabel
-@onready var detail_image_1: TextureRect = $NotebookPanel/MarginContainer/PotionDetailView/ImageRow/Image1
-@onready var detail_image_2: TextureRect = $NotebookPanel/MarginContainer/PotionDetailView/ImageRow/Image2
-@onready var detail_ingredients_label: Label = $NotebookPanel/MarginContainer/PotionDetailView/IngredientsLabel
-@onready var detail_notes_field: TextEdit = $NotebookPanel/MarginContainer/PotionDetailView/NotesField
+@onready var potion_list_header: Label = (
+	right_page.get_node_or_null("PotionListView/ListHeader") 
+	if right_page.has_node("PotionListView/ListHeader") 
+	else right_page.get_node_or_null("ListHeader")
+)
+
+@onready var big_ingredient_icon: TextureRect = (
+	right_page.get_node_or_null("PotionListView/FeaturedIngredientsBox/BigIngredientIcon")
+	if right_page.has_node("PotionListView/FeaturedIngredientsBox/BigIngredientIcon")
+	else right_page.get_node_or_null("FeaturedIngredientsBox/BigIngredientIcon")
+)
+
+@onready var ingredient_flavor_text: Label = (
+	right_page.get_node_or_null("PotionListView/FeaturedIngredientsBox/IngredientFlavorText")
+	if right_page.has_node("PotionListView/FeaturedIngredientsBox/IngredientFlavorText")
+	else right_page.get_node_or_null("FeaturedIngredientsBox/IngredientFlavorText")
+)
+
+@onready var potion_list_container: GridContainer = (
+	right_page.get_node_or_null("PotionListView/ScrollContainer/PotionListContainer")
+	if right_page.has_node("PotionListView/ScrollContainer/PotionListContainer")
+	else right_page.get_node_or_null("ScrollContainer/PotionListContainer")
+)
+
+# Radial Dial Nodes
+@onready var notebook_dial: RadialDial = (
+	right_page.get_node_or_null("PotionListView/DialContainer/NotebookRadialDial")
+	if right_page.has_node("PotionListView/DialContainer/NotebookRadialDial")
+	else right_page.get_node_or_null("NotebookRadialDial")
+)
+@onready var dial_progress_label: Label = (
+	right_page.get_node_or_null("PotionListView/DialContainer/ProgressLabel")
+	if right_page.has_node("PotionListView/DialContainer/ProgressLabel")
+	else right_page.get_node_or_null("ProgressLabel")
+)
+
+# Right Page (Potion Detail View)
+@onready var potion_detail_view: Control = right_page.get_node_or_null("PotionDetailView")
+@onready var back_to_potions_button: Button = right_page.get_node_or_null("PotionDetailView/DetailTopBar/BackToPotionsButton")
+@onready var detail_title_label: Label = right_page.get_node_or_null("PotionDetailView/DetailTopBar/DetailTitleLabel")
+@onready var detail_image_1: TextureRect = right_page.get_node_or_null("PotionDetailView/ImageRow/Image1")
+@onready var detail_image_2: TextureRect = right_page.get_node_or_null("PotionDetailView/ImageRow/Image2")
+@onready var detail_ingredients_label: Label = right_page.get_node_or_null("PotionDetailView/DetailIngredientsLabel")
+@onready var detail_notes_field: TextEdit = right_page.get_node_or_null("PotionDetailView/DetailNotesField")
 
 # Hover Tween Settings
 @export var hover_scale: Vector2 = Vector2(0.22, 0.22)
@@ -27,11 +64,19 @@ extends Control
 var base_scale: Vector2 = Vector2.ONE
 var scale_tween: Tween
 
-
 var ingredient_names: Array[String] = [
 	"ElbowGrease", "OilOfVitriol", "PhoenixFeather",
 	"Wormwood", "EyeOfNewt", "Stardust"
 ]
+
+var ingredient_descriptions: Dictionary = {
+	"ElbowGrease": "Pure, condensed physical labor. Clouded and dense.",
+	"EyeOfNewt": "Pickled amphibian oculars. Known to alter vision and forms.",
+	"OilOfVitriol": "Corrosive and volatile. Strips away extraneous features.",
+	"PhoenixFeather": "Radiates eternal warmth. Essential for restorative draughts.",
+	"Stardust": "Glinting cosmic residue. Unlocks strange celestial mutations.",
+	"Wormwood": "Bitter perennial herb. Calms nerves and fixes stubborn mixtures."
+}
 
 var ingredient_display_names: Dictionary = {
 	"ElbowGrease": "Elbow Grease",
@@ -45,12 +90,13 @@ var ingredient_display_names: Dictionary = {
 var current_ingredient: String = ""
 var current_potion: String = ""
 
-# Default silhouette / placeholder
+const INGREDIENT_ICON_BASE_PATH: String = "res://Assets/Ingredients/%s.png"
+
 var default_before_texture = preload("res://Assets/Sprites/Herb Bert/HerbBertBigHead.png")
 var default_after_texture = preload("res://Assets/Sprites/Herb Bert/HerbBertBald.png")
 
 # Audio
-@onready var notebook_sfx: AudioStreamPlayer = $NotebookSFX
+@onready var notebook_sfx: AudioStreamPlayer = get_node_or_null("NotebookSFX")
 var sfx_open = preload("res://Assets/Audio/SFX/Notebook/notebook open.wav")
 var sfx_close = preload("res://Assets/Audio/SFX/Notebook/notebookclose.wav")
 var sfx_forward = preload("res://Assets/Audio/SFX/Notebook/notebookforward.wav")
@@ -70,45 +116,39 @@ const POTION_SUFFIX_MAP: Dictionary = {
 	"Potion of Body Swap": "BodySwap",
 	"Potion of Change Art Styles": "ArtStyleSwap",
 	"Potion of Creature Feature": "TheFeaturedCreature",
-	# Add additional potions as their corresponding sprites are completed:
-	# "Potion of Permanent Smile": "PermanentSmile",
-	# "Potion of Explode": "Explode",
-	# "Potion of Change Language": "ChangeLanguage",
-	# "Potion of Love": "Love",
-	# "Potion of Enlarge Person": "Enlarge",
-	# "Potion of Shrink Person": "Shrink",
-	# "Potion of Rapid Shaking": "RapidShaking",
-	# "Potion of Curing": "Normal"
-}
-const CHARACTER_FOLDER_ALIASES: Dictionary = {
-	"HerbBert": "Herb Bert",
-	"Caseoh": "Caseoh",
-	"LadyPenelope": "LadyP"
 }
 
+const CHARACTER_FOLDER_ALIASES: Dictionary = {
+	"HerbBert": "Herb Bert",
+	"Caseoh": "Caseoh"
+}
 #endregion
 
 func _ready() -> void:
 	visible = true
 	panel.visible = false
+	book_button.visible = true
 	
-	# Setup Book Button
 	base_scale = book_button.scale
 	book_button.pivot_offset = book_button.size / 2.0
 	book_button.pressed.connect(_on_book_pressed)
 	book_button.mouse_entered.connect(_on_book_hover_enter)
 	book_button.mouse_exited.connect(_on_book_hover_exit)
 	
-	back_to_ingredients_button.pressed.connect(_on_back_to_ingredients_pressed)
-	back_to_potions_button.pressed.connect(_on_back_to_potions)
-	detail_notes_field.text_changed.connect(_on_notes_changed)
+	if close_button:
+		close_button.pressed.connect(close_journal)
+	
+	if back_to_potions_button:
+		back_to_potions_button.pressed.connect(_on_back_to_potions_pressed)
+		
+	if detail_notes_field:
+		detail_notes_field.text_changed.connect(_on_notes_changed)
 	
 	_setup_ingredient_buttons()
-	_show_ingredient_list()
-	
-	potion_list_container.add_theme_constant_override("separation", 10)
+	if potion_list_container:
+		potion_list_container.add_theme_constant_override("separation", 8)
 
-#region Hover Animation & Click Handling
+#region Open / Close / Hover
 func _on_book_hover_enter() -> void:
 	_animate_book_scale(hover_scale)
 
@@ -122,12 +162,21 @@ func _animate_book_scale(target: Vector2) -> void:
 	scale_tween.tween_property(book_button, "scale", target, tween_duration)
 
 func _on_book_pressed() -> void:
-	panel.visible = not panel.visible
-	book_button.visible = not panel.visible  # <--- Hides the desk button while viewing the journal
-	_play_sfx(sfx_open if panel.visible else sfx_close)
 	if panel.visible:
-		_show_ingredient_list()
-		
+		close_journal()
+	else:
+		open_journal()
+
+func open_journal() -> void:
+	panel.visible = true
+	book_button.visible = false
+	_play_sfx(sfx_open)
+	
+	if current_ingredient.is_empty():
+		_on_ingredient_selected(ingredient_names[0])
+	else:
+		_show_potion_list(current_ingredient)
+
 func close_journal() -> void:
 	panel.visible = false
 	book_button.visible = true
@@ -135,12 +184,16 @@ func close_journal() -> void:
 #endregion
 
 func _play_sfx(stream: AudioStream) -> void:
-	notebook_sfx.stream = stream
-	notebook_sfx.play()
+	if notebook_sfx and stream:
+		notebook_sfx.stream = stream
+		notebook_sfx.play()
 
 func _setup_ingredient_buttons() -> void:
+	if not ingredient_grid:
+		return
+		
 	for ingredient in ingredient_names:
-		var button: Button = ingredient_list_container.get_node_or_null("Row_" + ingredient)
+		var button: Button = ingredient_grid.get_node_or_null("Row_" + ingredient)
 		if not button:
 			continue
 		
@@ -149,11 +202,16 @@ func _setup_ingredient_buttons() -> void:
 		
 		if label:
 			label.text = ingredient_display_names.get(ingredient, ingredient)
-		button.pressed.connect(_on_ingredient_selected.bind(ingredient))
 		
-		var icon_index = ingredient_names.find(ingredient)
-		if icon and icon_index < ingredient_icons.size():
-			icon.texture = ingredient_icons[icon_index]
+		if icon:
+			var icon_path = INGREDIENT_ICON_BASE_PATH % ingredient
+			if ResourceLoader.exists(icon_path):
+				icon.texture = load(icon_path)
+			else:
+				push_warning("Ingredient icon missing at: " + icon_path)
+		
+		if not button.pressed.is_connected(_on_ingredient_selected):
+			button.pressed.connect(_on_ingredient_selected.bind(ingredient))
 
 func _on_ingredient_selected(ingredient: String) -> void:
 	current_ingredient = ingredient
@@ -161,98 +219,102 @@ func _on_ingredient_selected(ingredient: String) -> void:
 	_show_potion_list(ingredient)
 
 func _show_potion_list(ingredient: String) -> void:
-	ingredient_list_view.visible = false
-	potion_detail_view.visible = false
-	potion_list_view.visible = true
+	if potion_detail_view:
+		potion_detail_view.visible = false
+	if potion_list_view:
+		potion_list_view.visible = true
 	
-	for child in potion_list_container.get_children():
-		child.queue_free()
+	if potion_list_header:
+		potion_list_header.text = ingredient_display_names.get(ingredient, ingredient) + " Recipes"
 	
-	var potions: Array = PotionJournal.get_potions_for_ingredient(ingredient)
+	# Load featured reagent icon & lore text
+	var icon_path = INGREDIENT_ICON_BASE_PATH % ingredient
+	if big_ingredient_icon and ResourceLoader.exists(icon_path):
+		big_ingredient_icon.texture = load(icon_path)
+		
+	if ingredient_flavor_text:
+		ingredient_flavor_text.text = ingredient_descriptions.get(ingredient, "")
 	
-	if potions.is_empty():
+	# Clear old list buttons
+	if potion_list_container:
+		for child in potion_list_container.get_children():
+			child.queue_free()
+	
+	# Fetch discovered count and total possible recipes for this ingredient
+	var unlocked_potions: Array = PotionJournal.get_potions_for_ingredient(ingredient)
+	var total_potions_for_ingredient: int = PotionJournal.get_total_count_for_ingredient(ingredient)
+
+	# If the database has 10 potions per ingredient but none are loaded yet, fall back gracefully
+	if total_potions_for_ingredient == 0:
+		total_potions_for_ingredient = 10
+
+	# Update the Radial Dial & Label
+	if notebook_dial:
+		notebook_dial.set_max_count(total_potions_for_ingredient)
+		notebook_dial.update_count(unlocked_potions.size(), true)
+		
+	if dial_progress_label:
+		dial_progress_label.text = "Discovered: %d / %d" % [unlocked_potions.size(), total_potions_for_ingredient]
+		
+	# Populate buttons
+	if unlocked_potions.is_empty():
 		var label := Label.new()
-		label.text = "No potions discovered yet using " + ingredient_display_names.get(ingredient, ingredient)
+		label.text = "No potions discovered yet with this ingredient."
 		label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		potion_list_container.add_child(label)
+		label.autowrap_mode = TextServer.AUTOWRAP_WORD
+		label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		if potion_list_container:
+			potion_list_container.add_child(label)
 		return
 	
-	for potion_name in potions:
-		var entry := HBoxContainer.new()
-		entry.custom_minimum_size = Vector2(0, 56)
-		entry.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		entry.add_theme_constant_override("separation", 12)
-		
-		var icon := TextureRect.new()
-		icon.custom_minimum_size = Vector2(48, 48)
-		icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-		icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-		entry.add_child(icon)
-		
+	for potion_name in unlocked_potions:
 		var button := Button.new()
 		button.text = potion_name
 		button.custom_minimum_size = Vector2(0, 44)
 		button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		button.add_theme_font_size_override("font_size", 18)
 		button.pressed.connect(_on_potion_selected.bind(potion_name))
-		entry.add_child(button)
-		
-		potion_list_container.add_child(entry)
+		if potion_list_container:
+			potion_list_container.add_child(button)
 
-func _show_ingredient_list() -> void:
-	ingredient_list_view.visible = true
-	potion_list_view.visible = false
-	potion_detail_view.visible = false
-
-func _on_back_to_ingredients_pressed() -> void:
+func _on_back_to_potions_pressed() -> void:
 	_play_sfx(sfx_backward)
-	_show_ingredient_list()
-
-func _on_back_to_potions() -> void:
-	_play_sfx(sfx_backward)
-	_show_potion_list(current_ingredient)
+	if potion_detail_view:
+		potion_detail_view.visible = false
+	if potion_list_view:
+		potion_list_view.visible = true
 
 func _on_potion_selected(potion_name: String) -> void:
 	current_potion = potion_name
 	_play_sfx(sfx_forward)
-	potion_list_view.visible = false
-	potion_detail_view.visible = true
 	
-	detail_title_label.text = potion_name
+	if potion_list_view:
+		potion_list_view.visible = false
+	if potion_detail_view:
+		potion_detail_view.visible = true
 	
-	# Ingredients list formatting
+	if detail_title_label:
+		detail_title_label.text = potion_name
+	
 	var ingredients: Array = PotionJournal.get_ingredients_for_potion(potion_name)
 	var formatted_ingredients: Array = []
 	for ing in ingredients:
 		formatted_ingredients.append("• " + ingredient_display_names.get(ing, ing))
-	detail_ingredients_label.text = "Ingredients:\n" + "\n".join(formatted_ingredients)
+		
+	if detail_ingredients_label:
+		detail_ingredients_label.text = "\n".join(formatted_ingredients)
 	
-	# Fetch customer recorded in PotionJournal
 	var customer_name: String = PotionJournal.get_potion_customer(potion_name)
 	var portraits: Dictionary = _get_customer_portraits(customer_name, potion_name)
 	
-	detail_image_1.texture = portraits["before"]
-	detail_image_2.texture = portraits["after"]
+	if detail_image_1:
+		detail_image_1.texture = portraits["before"]
+	if detail_image_2:
+		detail_image_2.texture = portraits["after"]
 	
-	# Always ensure both slots remain visible
-	detail_image_1.visible = true
-	detail_image_2.visible = true
-	
-	detail_notes_field.text = PotionJournal.get_note(potion_name)
-
-func _on_notes_changed() -> void:
-	if current_potion != "":
-		PotionJournal.set_note(current_potion, detail_notes_field.text)
-
-func _unhandled_input(event: InputEvent) -> void:
-	if detail_notes_field.has_focus():
-		return
-		
-	if event.is_action_pressed("toggle_journal"):
-		_on_book_pressed()
+	if detail_notes_field:
+		detail_notes_field.text = PotionJournal.get_note(potion_name)
 
 func _get_customer_portraits(customer_name: String, potion_name: String) -> Dictionary:
-	# Default to HerbBert for debug testing if no customer has been recorded yet
 	var char_name: String = customer_name
 	if char_name.is_empty():
 		char_name = "HerbBert"
@@ -260,7 +322,6 @@ func _get_customer_portraits(customer_name: String, potion_name: String) -> Dict
 	var folder_name: String = CHARACTER_FOLDER_ALIASES.get(char_name, char_name)
 	var suffix: String = POTION_SUFFIX_MAP.get(potion_name, "Normal")
 
-	# Target path: res://Assets/Sprites/(customer name)/(customer name)(suffix).png
 	var base_folder: String = "res://Assets/Sprites/" + folder_name + "/"
 	var before_path: String = base_folder + char_name + "Normal.png"
 	var after_path: String = base_folder + char_name + suffix + ".png"
@@ -268,20 +329,27 @@ func _get_customer_portraits(customer_name: String, potion_name: String) -> Dict
 	var before_tex: Texture2D = null
 	var after_tex: Texture2D = null
 
-	# Load 'before' portrait (checks for Normal, then falls back to default)
 	if ResourceLoader.exists(before_path):
 		before_tex = load(before_path)
 	else:
 		before_tex = default_before_texture
 
-	# Load 'after' portrait for the specific potion effect
 	if ResourceLoader.exists(after_path):
 		after_tex = load(after_path)
 	else:
-		print("Sprite not found at: ", after_path) # Helps identify missing art or naming mismatches
 		after_tex = default_after_texture
 
 	return {
 		"before": before_tex,
 		"after": after_tex
 	}
+
+func _on_notes_changed() -> void:
+	if current_potion != "" and detail_notes_field:
+		PotionJournal.set_note(current_potion, detail_notes_field.text)
+
+func _unhandled_input(event: InputEvent) -> void:
+	if detail_notes_field and detail_notes_field.has_focus():
+		return
+	if event.is_action_pressed("toggle_journal"):
+		_on_book_pressed()

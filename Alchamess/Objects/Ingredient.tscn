@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://nk2mr8ongv5d"]
 
 [ext_resource type="Script" uid="uid://mg1gd6huuxje" path="res://Assets/Scripts/Ingredient.gd" id="1_i6ux4"]
-[ext_resource type="PackedScene" uid="uid://dnch51pphowlp" path="res://Scenes/IngredientDial.tscn" id="3_kq52w"]
+[ext_resource type="PackedScene" uid="uid://dnch51pphowlp" path="res://Scenes/RadialDial.tscn" id="3_kq52w"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hvpep"]
 radius = 97.61562

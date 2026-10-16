@@ -127,6 +127,9 @@ zoom = Vector2(4, 4)
 layer = 99
 
 [node name="NotebookMenu" parent="UI" unique_id=856325922 instance=ExtResource("1_4eqlp")]
+visible = false
+offset_top = -1.0
+offset_bottom = -1.0
 
 [node name="DebugMenu" parent="UI" unique_id=1243030641 instance=ExtResource("1_n2ugt")]
 visible = false
