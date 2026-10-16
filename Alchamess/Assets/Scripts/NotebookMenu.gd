@@ -27,6 +27,7 @@ extends Control
 var base_scale: Vector2 = Vector2.ONE
 var scale_tween: Tween
 
+
 var ingredient_names: Array[String] = [
 	"ElbowGrease", "OilOfVitriol", "PhoenixFeather",
 	"Wormwood", "EyeOfNewt", "Stardust"
@@ -44,12 +45,47 @@ var ingredient_display_names: Dictionary = {
 var current_ingredient: String = ""
 var current_potion: String = ""
 
+# Default silhouette / placeholder
+var default_before_texture = preload("res://Assets/Sprites/Herb Bert/HerbBertBigHead.png")
+var default_after_texture = preload("res://Assets/Sprites/Herb Bert/HerbBertBald.png")
+
 # Audio
 @onready var notebook_sfx: AudioStreamPlayer = $NotebookSFX
 var sfx_open = preload("res://Assets/Audio/SFX/Notebook/notebook open.wav")
 var sfx_close = preload("res://Assets/Audio/SFX/Notebook/notebookclose.wav")
 var sfx_forward = preload("res://Assets/Audio/SFX/Notebook/notebookforward.wav")
 var sfx_backward = preload("res://Assets/Audio/SFX/Notebook/notebookbackward.wav")
+
+const POTION_SUFFIX_MAP: Dictionary = {
+	"Normal": "Normal",
+	"Potion of Baldness": "Bald",
+	"Potion of Head Size Increase": "BigHead",
+	"Potion of Head Size Decrease": "SmallHead",
+	"Potion of Eye Colour Swap": "BlueEyes",
+	"Potion of Beautification": "Beautification",
+	"Potion of Green Skin": "Green",
+	"Potion of Mogging": "Mog",
+	"Potion of Rabies": "Rabies",
+	"Potion of Skeleton": "Skeleton",
+	"Potion of Body Swap": "BodySwap",
+	"Potion of Change Art Styles": "ArtStyleSwap",
+	"Potion of Creature Feature": "TheFeaturedCreature",
+	# Add additional potions as their corresponding sprites are completed:
+	# "Potion of Permanent Smile": "PermanentSmile",
+	# "Potion of Explode": "Explode",
+	# "Potion of Change Language": "ChangeLanguage",
+	# "Potion of Love": "Love",
+	# "Potion of Enlarge Person": "Enlarge",
+	# "Potion of Shrink Person": "Shrink",
+	# "Potion of Rapid Shaking": "RapidShaking",
+	# "Potion of Curing": "Normal"
+}
+const CHARACTER_FOLDER_ALIASES: Dictionary = {
+	"HerbBert": "Herb Bert",
+	"Caseoh": "Caseoh",
+	"LadyPenelope": "LadyP"
+}
+
 #endregion
 
 func _ready() -> void:
@@ -87,9 +123,15 @@ func _animate_book_scale(target: Vector2) -> void:
 
 func _on_book_pressed() -> void:
 	panel.visible = not panel.visible
+	book_button.visible = not panel.visible  # <--- Hides the desk button while viewing the journal
 	_play_sfx(sfx_open if panel.visible else sfx_close)
 	if panel.visible:
 		_show_ingredient_list()
+		
+func close_journal() -> void:
+	panel.visible = false
+	book_button.visible = true
+	_play_sfx(sfx_close)
 #endregion
 
 func _play_sfx(stream: AudioStream) -> void:
@@ -178,11 +220,23 @@ func _on_potion_selected(potion_name: String) -> void:
 	
 	detail_title_label.text = potion_name
 	
+	# Ingredients list formatting
 	var ingredients: Array = PotionJournal.get_ingredients_for_potion(potion_name)
-	detail_ingredients_label.text = "Ingredients:\n" + "\n".join(ingredients)
+	var formatted_ingredients: Array = []
+	for ing in ingredients:
+		formatted_ingredients.append("• " + ingredient_display_names.get(ing, ing))
+	detail_ingredients_label.text = "Ingredients:\n" + "\n".join(formatted_ingredients)
 	
-	detail_image_1.texture = load("res://Assets/Sprites/Herb Bert/HerbBertBigHead.png")
-	detail_image_2.texture = load("res://Assets/Sprites/Herb Bert/HerbBertBald.png")
+	# Fetch customer recorded in PotionJournal
+	var customer_name: String = PotionJournal.get_potion_customer(potion_name)
+	var portraits: Dictionary = _get_customer_portraits(customer_name, potion_name)
+	
+	detail_image_1.texture = portraits["before"]
+	detail_image_2.texture = portraits["after"]
+	
+	# Always ensure both slots remain visible
+	detail_image_1.visible = true
+	detail_image_2.visible = true
 	
 	detail_notes_field.text = PotionJournal.get_note(potion_name)
 
@@ -196,3 +250,38 @@ func _unhandled_input(event: InputEvent) -> void:
 		
 	if event.is_action_pressed("toggle_journal"):
 		_on_book_pressed()
+
+func _get_customer_portraits(customer_name: String, potion_name: String) -> Dictionary:
+	# Default to HerbBert for debug testing if no customer has been recorded yet
+	var char_name: String = customer_name
+	if char_name.is_empty():
+		char_name = "HerbBert"
+
+	var folder_name: String = CHARACTER_FOLDER_ALIASES.get(char_name, char_name)
+	var suffix: String = POTION_SUFFIX_MAP.get(potion_name, "Normal")
+
+	# Target path: res://Assets/Sprites/(customer name)/(customer name)(suffix).png
+	var base_folder: String = "res://Assets/Sprites/" + folder_name + "/"
+	var before_path: String = base_folder + char_name + "Normal.png"
+	var after_path: String = base_folder + char_name + suffix + ".png"
+
+	var before_tex: Texture2D = null
+	var after_tex: Texture2D = null
+
+	# Load 'before' portrait (checks for Normal, then falls back to default)
+	if ResourceLoader.exists(before_path):
+		before_tex = load(before_path)
+	else:
+		before_tex = default_before_texture
+
+	# Load 'after' portrait for the specific potion effect
+	if ResourceLoader.exists(after_path):
+		after_tex = load(after_path)
+	else:
+		print("Sprite not found at: ", after_path) # Helps identify missing art or naming mismatches
+		after_tex = default_after_texture
+
+	return {
+		"before": before_tex,
+		"after": after_tex
+	}
