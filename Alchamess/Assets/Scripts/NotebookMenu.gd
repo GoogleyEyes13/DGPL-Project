@@ -1,8 +1,8 @@
 extends Control
 
-
 #region Variables
-@onready var tab_button: Button = $NotebookTab
+# Point this to your book button in the scene
+@onready var book_button: TextureButton = $BookButton
 @onready var panel: Panel = $NotebookPanel
 
 @onready var ingredient_list_view: VBoxContainer = $NotebookPanel/MarginContainer/IngredientListView
@@ -21,6 +21,11 @@ extends Control
 @onready var detail_ingredients_label: Label = $NotebookPanel/MarginContainer/PotionDetailView/IngredientsLabel
 @onready var detail_notes_field: TextEdit = $NotebookPanel/MarginContainer/PotionDetailView/NotesField
 
+# Hover Tween Settings
+@export var hover_scale: Vector2 = Vector2(0.22, 0.22)
+@export var tween_duration: float = 0.15
+var base_scale: Vector2 = Vector2.ONE
+var scale_tween: Tween
 
 var ingredient_names: Array[String] = [
 	"ElbowGrease", "OilOfVitriol", "PhoenixFeather",
@@ -49,17 +54,43 @@ var sfx_backward = preload("res://Assets/Audio/SFX/Notebook/notebookbackward.wav
 
 func _ready() -> void:
 	visible = true
-	tab_button.pressed.connect(_on_tab_pressed)
+	panel.visible = false
+	
+	# Setup Book Button
+	base_scale = book_button.scale
+	book_button.pivot_offset = book_button.size / 2.0
+	book_button.pressed.connect(_on_book_pressed)
+	book_button.mouse_entered.connect(_on_book_hover_enter)
+	book_button.mouse_exited.connect(_on_book_hover_exit)
+	
 	back_to_ingredients_button.pressed.connect(_on_back_to_ingredients_pressed)
 	back_to_potions_button.pressed.connect(_on_back_to_potions)
 	detail_notes_field.text_changed.connect(_on_notes_changed)
 	
-	tab_button.visible = true
-	panel.visible = false
 	_setup_ingredient_buttons()
 	_show_ingredient_list()
 	
 	potion_list_container.add_theme_constant_override("separation", 10)
+
+#region Hover Animation & Click Handling
+func _on_book_hover_enter() -> void:
+	_animate_book_scale(hover_scale)
+
+func _on_book_hover_exit() -> void:
+	_animate_book_scale(base_scale)
+
+func _animate_book_scale(target: Vector2) -> void:
+	if scale_tween and scale_tween.is_running():
+		scale_tween.kill()
+	scale_tween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	scale_tween.tween_property(book_button, "scale", target, tween_duration)
+
+func _on_book_pressed() -> void:
+	panel.visible = not panel.visible
+	_play_sfx(sfx_open if panel.visible else sfx_close)
+	if panel.visible:
+		_show_ingredient_list()
+#endregion
 
 func _play_sfx(stream: AudioStream) -> void:
 	notebook_sfx.stream = stream
@@ -67,23 +98,20 @@ func _play_sfx(stream: AudioStream) -> void:
 
 func _setup_ingredient_buttons() -> void:
 	for ingredient in ingredient_names:
-		var button: Button = ingredient_list_container.get_node("Row_" + ingredient)
-		var icon: TextureRect = button.get_node("VBoxContainer/Icon")
-		var label: Label = button.get_node("VBoxContainer/Label")
+		var button: Button = ingredient_list_container.get_node_or_null("Row_" + ingredient)
+		if not button:
+			continue
 		
-		label.text = ingredient_display_names.get(ingredient, ingredient)
+		var icon: TextureRect = button.get_node_or_null("VBoxContainer/Icon")
+		var label: Label = button.get_node_or_null("VBoxContainer/Label")
+		
+		if label:
+			label.text = ingredient_display_names.get(ingredient, ingredient)
 		button.pressed.connect(_on_ingredient_selected.bind(ingredient))
 		
 		var icon_index = ingredient_names.find(ingredient)
-		if icon_index < ingredient_icons.size():
+		if icon and icon_index < ingredient_icons.size():
 			icon.texture = ingredient_icons[icon_index]
-			
-func _on_tab_pressed() -> void:
-	DebugManager.debug_log("Tab clicked, panel visible: " + str(panel.visible))
-	panel.visible = not panel.visible
-	_play_sfx(sfx_open if panel.visible else sfx_close)
-	if panel.visible:
-		_show_ingredient_list()
 
 func _on_ingredient_selected(ingredient: String) -> void:
 	current_ingredient = ingredient
@@ -102,7 +130,7 @@ func _show_potion_list(ingredient: String) -> void:
 	
 	if potions.is_empty():
 		var label := Label.new()
-		label.text = "No potions discovered yet using " + ingredient
+		label.text = "No potions discovered yet using " + ingredient_display_names.get(ingredient, ingredient)
 		label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		potion_list_container.add_child(label)
 		return
@@ -117,7 +145,6 @@ func _show_potion_list(ingredient: String) -> void:
 		icon.custom_minimum_size = Vector2(48, 48)
 		icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 		icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-		# icon.texture = load("res://path/to/%s_icon.png" % potion_name)  # plug in art later
 		entry.add_child(icon)
 		
 		var button := Button.new()
@@ -154,18 +181,18 @@ func _on_potion_selected(potion_name: String) -> void:
 	var ingredients: Array = PotionJournal.get_ingredients_for_potion(potion_name)
 	detail_ingredients_label.text = "Ingredients:\n" + "\n".join(ingredients)
 	
-	detail_image_1.texture = load("res://Assets/Sprites/Herb Bert/HerbBertBigHead.png") #placeholder for testing photos in journal
-	detail_image_2.texture = load("res://Assets/Sprites/Herb Bert/HerbBertBald.png")  
+	detail_image_1.texture = load("res://Assets/Sprites/Herb Bert/HerbBertBigHead.png")
+	detail_image_2.texture = load("res://Assets/Sprites/Herb Bert/HerbBertBald.png")
 	
 	detail_notes_field.text = PotionJournal.get_note(potion_name)
 
 func _on_notes_changed() -> void:
 	if current_potion != "":
 		PotionJournal.set_note(current_potion, detail_notes_field.text)
-		
+
 func _unhandled_input(event: InputEvent) -> void:
+	if detail_notes_field.has_focus():
+		return
+		
 	if event.is_action_pressed("toggle_journal"):
-		panel.visible = not panel.visible
-		_play_sfx(sfx_open if panel.visible else sfx_close)
-		if panel.visible:
-			_show_ingredient_list()
+		_on_book_pressed()

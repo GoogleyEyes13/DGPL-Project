@@ -92,10 +92,13 @@ func _build_buttons() -> void:
 		button_container.add_child(button)
 		
 func _on_unlock_all_pressed() -> void:
-	var cauldron = $"/root/Game/WitchCauldron"
-	PotionJournal.unlock_all_potions(cauldron.PotionRecipes)
+	var recipes_for_journal: Dictionary = {}
+	for ingredients in PotionDatabase.recipes.keys():
+		recipes_for_journal[ingredients] = PotionDatabase.recipes[ingredients]["name"]
+	
+	PotionJournal.unlock_all_potions(recipes_for_journal)
 	DebugManager.debug_log("All potions unlocked in journal")
-
+	
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("toggle_debug_menu"):
 		visible = not visible

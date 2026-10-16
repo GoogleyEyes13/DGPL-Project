@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cd02yewpj52sp" path="res://Assets/Scripts/NotebookMenu.gd" id="1_htgb8"]
 [ext_resource type="Texture2D" uid="uid://buuegr8mli5rp" path="res://Assets/Ingredients/ShelfEyeOfNewt.png" id="3_1xjk5"]
+[ext_resource type="Texture2D" uid="uid://of12ihqbnqq1" path="res://Assets/UI/JournalUI/journal.png" id="3_4lqga"]
 [ext_resource type="Texture2D" uid="uid://u5krystq3q6w" path="res://Assets/Ingredients/ShelfWormwood.png" id="4_1xjk5"]
 [ext_resource type="Texture2D" uid="uid://b1b2xkudanhmy" path="res://Assets/Ingredients/ShelfElbowGrease.png" id="5_1xjk5"]
 [ext_resource type="Texture2D" uid="uid://b6smgfgjh7ryp" path="res://Assets/Ingredients/ShelfPhoenixFeather.png" id="6_1xjk5"]
@@ -23,30 +24,21 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_htgb8")
 
-[node name="NotebookTab" type="Button" parent="." unique_id=218187933]
-self_modulate = Color(0.61960787, 0.3529412, 0.1882353, 0.8627451)
-top_level = true
+[node name="BookButton" type="TextureButton" parent="." unique_id=1609530167]
 z_index = 999
-layout_mode = 1
-anchors_preset = 11
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -64.0
-offset_right = 1.0
-grow_horizontal = 0
-grow_vertical = 2
+layout_mode = 0
+offset_left = 606.0
+offset_top = 278.0
+offset_right = 2526.0
+offset_bottom = 1358.0
+scale = Vector2(0.2, 0.2)
+pivot_offset = Vector2(960, 530)
 theme = ExtResource("8_lstkl")
 toggle_mode = true
-text = "J
-O
-U
-R
-N
-A
-L"
+texture_normal = ExtResource("3_4lqga")
 
 [node name="NotebookPanel" type="Panel" parent="." unique_id=665566909]
+top_level = true
 custom_minimum_size = Vector2(835, 1080)
 layout_mode = 1
 anchors_preset = 11
