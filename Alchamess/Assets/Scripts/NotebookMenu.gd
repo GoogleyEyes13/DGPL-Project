@@ -3,7 +3,6 @@ extends Control
 #region Node References
 @onready var book_button: TextureButton = $BookButton
 @onready var panel: Control = $NotebookPanel
-@onready var close_button: BaseButton = $NotebookPanel.get_node_or_null("CloseButton")
 
 # Left Page (Ingredients)
 @onready var ingredient_grid: GridContainer = $NotebookPanel/MarginContainer/BookSpread/LeftPage/ScrollContainer/IngredientGrid
@@ -82,6 +81,7 @@ func _ready() -> void:
 	visible = true
 	panel.visible = false
 	book_button.visible = true
+	book_button.focus_mode = Control.FOCUS_NONE
 	
 	base_scale = book_button.scale
 	book_button.pivot_offset = book_button.size / 2.0
@@ -89,17 +89,16 @@ func _ready() -> void:
 	book_button.mouse_entered.connect(_on_book_hover_enter)
 	book_button.mouse_exited.connect(_on_book_hover_exit)
 	
-	if close_button:
-		close_button.pressed.connect(close_journal)
+	var close_btn: BaseButton = panel.find_child("CloseButton", true, false) as BaseButton
+	if close_btn:
+		close_btn.pressed.connect(close_journal)
+		
 	if back_to_potions_button:
 		back_to_potions_button.pressed.connect(_on_back_to_potions_pressed)
 	if detail_notes_field:
 		detail_notes_field.text_changed.connect(_on_notes_changed)
 	
-	if PotionDatabase.has_method("get_all_ingredient_names"):
-		ingredient_names = PotionDatabase.get_all_ingredient_names()
-	else:
-		ingredient_names = ["ElbowGrease", "OilOfVitriol", "PhoenixFeather", "Wormwood", "EyeOfNewt", "Stardust"]
+	ingredient_names = PotionDatabase.get_all_ingredient_names()
 	
 	_setup_ingredient_buttons()
 	if potion_list_container:
@@ -129,9 +128,9 @@ func open_journal() -> void:
 	book_button.visible = false
 	_play_sfx(sfx_open)
 	
-	if current_ingredient.is_empty():
+	if current_ingredient.is_empty() and not ingredient_names.is_empty():
 		_on_ingredient_selected(ingredient_names[0])
-	else:
+	elif not current_ingredient.is_empty():
 		_show_potion_list(current_ingredient)
 
 func close_journal() -> void:
@@ -269,8 +268,12 @@ func _on_potion_selected(potion_name: String) -> void:
 
 func _get_customer_portraits(customer_name: String, potion_name: String) -> Dictionary:
 	var raw_name: String = customer_name.strip_edges()
+	
 	if raw_name.is_empty():
-		raw_name = "HerbBert"
+		if DebugManager.current_customer and "CustomerName" in DebugManager.current_customer:
+			raw_name = DebugManager.current_customer.CustomerName
+		else:
+			raw_name = "HerbBert"
 
 	var info: Dictionary = PotionDatabase.get_potion_info_by_name(potion_name)
 	var suffix: String = info.get("suffix", "Normal")
@@ -279,11 +282,18 @@ func _get_customer_portraits(customer_name: String, potion_name: String) -> Dict
 	var after_path: String = CharacterData.get_sprite_path(raw_name, suffix)
 
 	var before_tex: Texture2D = load(before_path) if ResourceLoader.exists(before_path) else default_before_texture
-	var after_tex: Texture2D = load(after_path) if ResourceLoader.exists(after_path) else default_after_texture
+	
+	var after_tex: Texture2D = null
+	if ResourceLoader.exists(after_path):
+		after_tex = load(after_path)
+	elif before_tex:
+		after_tex = before_tex
+	else:
+		after_tex = default_after_texture
 
 	return {
 		"before": before_tex,
-		"after": after_tex if after_tex else before_tex
+		"after": after_tex
 	}
 
 func _on_notes_changed() -> void:
@@ -295,3 +305,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		return
 	if event.is_action_pressed("toggle_journal"):
 		_on_book_pressed()
+	elif panel.visible and event.is_action_pressed("ui_cancel"):
+		close_journal()
+		get_viewport().set_input_as_handled()

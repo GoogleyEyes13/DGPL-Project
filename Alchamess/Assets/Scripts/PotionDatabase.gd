@@ -1,4 +1,5 @@
-extends Node
+class_name PotionDatabase
+extends RefCounted
 
 const INGREDIENTS: Dictionary = {
 	"ElbowGrease": {
@@ -33,156 +34,197 @@ const INGREDIENTS: Dictionary = {
 	}
 }
 
-var recipes: Dictionary = {
+const RECIPES: Dictionary = {
 	["ElbowGrease", "OilOfVitriol", "PhoenixFeather"]: {
 		"name": "Potion of Mogging",
 		"frame": 11,
-		"suffix": "Mog"
+		"suffix": "Mog",
+		"bottle_anim": "Potion1",
+		"bottle_frame": 1
 	},
 	["OilOfVitriol", "PhoenixFeather", "Wormwood"]: {
 		"name": "Potion of Beautification",
 		"frame": 9,
-		"suffix": "Beautification"
+		"suffix": "Beautification",
+		"bottle_anim": "Potion5",
+		"bottle_frame": 3
 	},
 	["ElbowGrease", "OilOfVitriol", "Stardust"]: {
 		"name": "Potion of Rapid Shaking",
 		"frame": 0,
 		"suffix": "Normal",
-		"effect": "shake"
+		"effect": "shake",
+		"bottle_anim": "Potion1",
+		"bottle_frame": 2
 	},
 	["ElbowGrease", "EyeOfNewt", "PhoenixFeather"]: {
 		"name": "Potion of Eye Colour Swap",
 		"frame": 5,
-		"suffix": "BlueEyes"
+		"suffix": "BlueEyes",
+		"bottle_anim": "Potion4",
+		"bottle_frame": 3
 	},
 	["ElbowGrease", "EyeOfNewt", "Wormwood"]: {
 		"name": "Potion of Permanent Smile",
 		"frame": 0,
-		"suffix": "Normal"
+		"suffix": "Normal",
+		"bottle_anim": "Potion3",
+		"bottle_frame": 2
 	},
 	["EyeOfNewt", "PhoenixFeather", "Wormwood"]: {
 		"name": "Potion of Green Skin",
 		"frame": 4,
-		"suffix": "Green"
+		"suffix": "Green",
+		"bottle_anim": "Potion4",
+		"bottle_frame": 1
 	},
 	["ElbowGrease", "PhoenixFeather", "Wormwood"]: {
 		"name": "Potion of Curing",
 		"frame": 0,
-		"suffix": "Normal"
+		"suffix": "Normal",
+		"bottle_anim": "Potion3",
+		"bottle_frame": 1
 	},
 	["EyeOfNewt", "OilOfVitriol", "Wormwood"]: {
 		"name": "Potion of Baldness",
 		"frame": 1,
-		"suffix": "Bald"
+		"suffix": "Bald",
+		"bottle_anim": "Potion4",
+		"bottle_frame": 2
 	},
 	["ElbowGrease", "OilOfVitriol", "Wormwood"]: {
 		"name": "Potion of Head Size Increase",
 		"frame": 2,
-		"suffix": "BigHead"
+		"suffix": "BigHead",
+		"bottle_anim": "Potion1",
+		"bottle_frame": 3
 	},
 	["ElbowGrease", "EyeOfNewt", "OilOfVitriol"]: {
 		"name": "Potion of Head Size Decrease",
 		"frame": 3,
-		"suffix": "SmallHead"
+		"suffix": "SmallHead",
+		"bottle_anim": "Potion1",
+		"bottle_frame": 4
 	},
 	["EyeOfNewt", "PhoenixFeather", "Stardust"]: {
 		"name": "Potion of Creature Feature",
 		"frame": 8,
 		"suffix": "TheFeaturedCreature",
-		"scale": Vector2(0.14, 0.14)
+		"scale": Vector2(0.14, 0.14),
+		"bottle_anim": "Potion5",
+		"bottle_frame": 2
 	},
 	["ElbowGrease", "Stardust", "Wormwood"]: {
 		"name": "Potion of Rabies",
 		"frame": 10,
-		"suffix": "Rabies"
+		"suffix": "Rabies",
+		"bottle_anim": "Potion5",
+		"bottle_frame": 4
 	},
 	["PhoenixFeather", "Stardust", "Wormwood"]: {
 		"name": "Potion of Change Language",
 		"frame": 0,
-		"suffix": "Normal"
+		"suffix": "Normal",
+		"bottle_anim": "Potion2",
+		"bottle_frame": 4
 	},
 	["EyeOfNewt", "Stardust", "Wormwood"]: {
 		"name": "Potion of Change Art Styles",
 		"frame": 7,
-		"suffix": "ArtStyleSwap"
+		"suffix": "ArtStyleSwap",
+		"bottle_anim": "Potion5",
+		"bottle_frame": 1
 	},
 	["ElbowGrease", "PhoenixFeather", "Stardust"]: {
 		"name": "Potion of Body Swap",
 		"frame": 12,
-		"suffix": "BodySwap"
+		"suffix": "BodySwap",
+		"bottle_anim": "Potion3",
+		"bottle_frame": 3
 	},
 	["ElbowGrease", "EyeOfNewt", "Stardust"]: {
 		"name": "Potion of Love",
 		"frame": 0,
-		"suffix": "Normal"
+		"suffix": "Normal",
+		"bottle_anim": "Potion3",
+		"bottle_frame": 4
 	},
 	["OilOfVitriol", "PhoenixFeather", "Stardust"]: {
 		"name": "Potion of Explode",
 		"frame": 0,
 		"suffix": "Skeleton",
-		"effect": "explode"
+		"effect": "explode",
+		"bottle_anim": "Potion2",
+		"bottle_frame": 3
 	},
 	["EyeOfNewt", "OilOfVitriol", "PhoenixFeather"]: {
 		"name": "Potion of Skeleton",
 		"frame": 6,
-		"suffix": "Skeleton"
+		"suffix": "Skeleton",
+		"bottle_anim": "Potion4",
+		"bottle_frame": 4
 	},
 	["OilOfVitriol", "Stardust", "Wormwood"]: {
 		"name": "Potion of Enlarge Person",
 		"frame": 0,
 		"suffix": "BigHead",
-		"scale": Vector2(0.14, 0.14)
+		"scale": Vector2(0.14, 0.14),
+		"bottle_anim": "Potion2",
+		"bottle_frame": 1
 	},
 	["EyeOfNewt", "OilOfVitriol", "Stardust"]: {
 		"name": "Potion of Shrink Person",
 		"frame": 0,
 		"suffix": "SmallHead",
 		"scale": Vector2(0.05, 0.05),
-		"shrink": true
+		"shrink": true,
+		"bottle_anim": "Potion2",
+		"bottle_frame": 2
 	}
 }
 
-var _by_name: Dictionary = {}
+# Compatibility alias for scripts reading PotionDatabase.recipes
+static var recipes: Dictionary:
+	get:
+		return RECIPES
 
-func _ready() -> void:
-	_build_name_cache()
+static var _by_name: Dictionary = {}
 
-func _build_name_cache() -> void:
-	_by_name.clear()
-	for recipe_data in recipes.values():
-		_by_name[recipe_data["name"]] = recipe_data
+static func _ensure_name_cache() -> void:
+	if _by_name.is_empty():
+		for recipe_data in RECIPES.values():
+			_by_name[recipe_data["name"]] = recipe_data
 
-func get_potion_data(ingredients: Array) -> Dictionary:
+static func get_potion_data(ingredients: Array) -> Dictionary:
 	var sorted_ingredients = ingredients.duplicate()
 	sorted_ingredients.sort()
 	
-	if recipes.has(sorted_ingredients):
-		return recipes[sorted_ingredients]
+	if RECIPES.has(sorted_ingredients):
+		return RECIPES[sorted_ingredients]
 	
-	for recipe_key in recipes.keys():
+	for recipe_key in RECIPES.keys():
 		var sorted_key = recipe_key.duplicate()
 		sorted_key.sort()
 		if sorted_key == sorted_ingredients:
-			return recipes[recipe_key]
+			return RECIPES[recipe_key]
 			
 	return {}
 
-func get_potion_name(ingredients: Array) -> String:
+static func get_potion_name(ingredients: Array) -> String:
 	var data = get_potion_data(ingredients)
 	return data.get("name", "")
 
-func get_all_potion_types() -> Array[String]:
+static func get_all_potion_types() -> Array[String]:
 	var names: Array[String] = []
-	for recipe_data in recipes.values():
+	for recipe_data in RECIPES.values():
 		names.append(recipe_data["name"])
 	return names
 
-func get_potion_info_by_name(potion_name: String) -> Dictionary:
-	if _by_name.is_empty():
-		_build_name_cache()
+static func get_potion_info_by_name(potion_name: String) -> Dictionary:
+	_ensure_name_cache()
 	return _by_name.get(potion_name, {})
 
-func get_ingredient_info(id: String) -> Dictionary:
+static func get_ingredient_info(id: String) -> Dictionary:
 	var key = id.strip_edges()
 	return INGREDIENTS.get(key, {
 		"display_name": key.capitalize(),
@@ -190,8 +232,8 @@ func get_ingredient_info(id: String) -> Dictionary:
 		"icon": "res://Assets/Ingredients/%s.png" % key
 	})
 
-func get_ingredient_display_name(id: String) -> String:
+static func get_ingredient_display_name(id: String) -> String:
 	return get_ingredient_info(id).get("display_name", id)
 
-func get_all_ingredient_names() -> Array:
+static func get_all_ingredient_names() -> Array:
 	return INGREDIENTS.keys()

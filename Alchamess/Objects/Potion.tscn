@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bvcwpspjid22w"]
 
-[ext_resource type="Script" uid="uid://c2tjyl7elk8ox" path="res://Assets/Scripts/Potion.gd" id="1_n4dr6"]
+[ext_resource type="Script" uid="uid://c2tjyl7elk8ox" path="res://Assets/Scripts/PotionBottle.gd" id="1_n4dr6"]
 [ext_resource type="SpriteFrames" uid="uid://btwv0dsditp12" path="res://Assets/Potions/PotionSpriteFrames.tres" id="2_r1nr0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lmarx"]

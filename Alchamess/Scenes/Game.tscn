@@ -374,7 +374,6 @@ texture_normal = ExtResource("13_4eqlp")
 z_index = -100
 position = Vector2(1603.9999, 549.86005)
 scale = Vector2(0.12, 0.120053194)
-animation = &"HerbBert"
 
 [node name="Smoke" type="AnimatedSprite2D" parent="." unique_id=454387287]
 visible = false

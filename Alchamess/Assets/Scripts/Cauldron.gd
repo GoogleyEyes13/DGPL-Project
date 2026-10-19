@@ -19,16 +19,17 @@ var Ingredient3 = Vector2(410, 370)
 
 # Pot ingredient sprites
 @onready var IngredientsInCauldron = $WitchCauldronInside
-
 @onready var MixingStick = $"../MixingStick"
-@onready var CauldronFull: bool = false
+@onready var in_pot_sfx: AudioStreamPlayer = $InPotSFX
+@onready var area_2d: Area2D = $Area2D
+
+var CauldronFull: bool = false
+var LastPotionCreated: String = "None"
+var PotionMixed: bool = false
 
 signal ingredients_updated(ingredients: Array, last_potion: String)
 signal potion_bottle_filled(bottle_type: String, potion_name: String)
 signal ingredient_counts_updated(counts: Dictionary)
-
-var LastPotionCreated: String = "None"
-var PotionMixed: bool = false
 
 var in_pot_sounds: Dictionary = {
 	"ElbowGrease": preload("res://Assets/Audio/SFX/Ingredients in Pot/elbow grease.wav"),
@@ -39,12 +40,11 @@ var in_pot_sounds: Dictionary = {
 	"Wormwood": preload("res://Assets/Audio/SFX/Ingredients in Pot/wormwood.wav"),
 }
 
-@onready var in_pot_sfx: AudioStreamPlayer = $InPotSFX
-@onready var area_2d: Area2D = $Area2D
-
 
 func _ready() -> void:
-	MixingStick.potion_mixed.connect(_on_potion_mixed)
+	DebugManager.register_cauldron(self)
+	if MixingStick:
+		MixingStick.potion_mixed.connect(_on_potion_mixed)
 	
 	if area_2d:
 		if not area_2d.body_entered.is_connected(_on_collision_entered):
@@ -65,7 +65,6 @@ func _add_ingredient_to_cauldron(ingredient_name: String) -> bool:
 	CauldronIngredients[ingredient_name] = 1
 	DebugManager.debug_log(ingredient_name + " has been placed in the pot")
 
-	# Show the ingredient sprite in the cauldron
 	_show_ingredient_in_pot(ingredient_name)
 	
 	if in_pot_sounds.has(ingredient_name):
@@ -77,7 +76,6 @@ func _add_ingredient_to_cauldron(ingredient_name: String) -> bool:
 	if CauldronIngredients.size() == 3:
 		CauldronFull = true
 
-		# Find the potion type
 		var ingredients_list: Array = CauldronIngredients.keys()
 		var potion_data: Dictionary = PotionDatabase.get_potion_data(ingredients_list)
 		
@@ -89,7 +87,8 @@ func _add_ingredient_to_cauldron(ingredient_name: String) -> bool:
 			DebugManager.debug_log("No potion recipe found!")
 		
 		ingredients_updated.emit(CauldronIngredients.keys(), LastPotionCreated)
-		MixingStick.start_mixing()
+		if MixingStick:
+			MixingStick.start_mixing()
 		
 	return true
 
@@ -103,7 +102,6 @@ func _on_collision_entered(incoming_node: Node2D) -> void:
 	# 1. Detect Ingredient
 	if "ingredientType" in target_node and target_node.ingredientType != "":
 		var ingredient_name: String = target_node.ingredientType
-		
 		if _add_ingredient_to_cauldron(ingredient_name):
 			if target_node.has_method("drop"):
 				target_node.drop()
@@ -117,7 +115,6 @@ func _on_collision_entered(incoming_node: Node2D) -> void:
 		
 		if CauldronFull and PotionMixed:
 			if LastPotionCreated != "Unknown Potion" and LastPotionCreated != "None":
-				# Track ingredient counts for dials
 				var ingredients_list: Array = CauldronIngredients.keys()
 				
 				for ingredient in ingredients_list:
@@ -126,20 +123,19 @@ func _on_collision_entered(incoming_node: Node2D) -> void:
 				
 				ingredient_counts_updated.emit(ingredient_usage_counts)
 				
-				# Fill the bottle with the previously calculated potion.
 				if target_node.has_method("fill_bottle"):
 					target_node.fill_bottle(LastPotionCreated)
 				
 				potion_bottle_filled.emit(target_node.potionName, LastPotionCreated)
 				
 				# Reset state
-				MixingStick.reset_liquid_colour()
+				if MixingStick:
+					MixingStick.reset_liquid_colour()
 				PotionMixed = false
 				CauldronFull = false
 				CauldronIngredients = {}
 				has_logged_mix_finished = false
 				
-				# Hide all ingredient sprites
 				for child in IngredientsInCauldron.get_children():
 					child.visible = false
 				
@@ -156,18 +152,11 @@ func _on_potion_mixed() -> void:
 
 func _show_ingredient_in_pot(ingredient_name: String) -> void:
 	var ingredient_sprite = IngredientsInCauldron.get_node_or_null(ingredient_name)
-
 	if ingredient_sprite == null:
 		DebugManager.debug_log("Ingredient sprite not found: " + ingredient_name)
 		return
 
-	# Find an available spawn point
-	var spawn_points: Array[Vector2] = [
-		Ingredient1,
-		Ingredient2,
-		Ingredient3
-	]
-
+	var spawn_points: Array[Vector2] = [Ingredient1, Ingredient2, Ingredient3]
 	var occupied_positions: Array[Vector2] = []
 
 	for child in IngredientsInCauldron.get_children():

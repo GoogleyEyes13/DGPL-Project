@@ -20,12 +20,8 @@ signal journal_updated
 var potion_data: Dictionary = {}
 
 func _ready() -> void:
-	var db = get_node_or_null("/root/PotionDatabase")
-	if db:
-		if "recipes" in db:
-			initialize_recipes(db.recipes)
-		elif db.has_method("get_all_recipes"):
-			initialize_recipes(db.get_all_recipes())
+	if PotionDatabase:
+		initialize_recipes(PotionDatabase.recipes)
 
 func initialize_recipes(recipes: Dictionary) -> void:
 	if not all_potion_ingredients.is_empty():
