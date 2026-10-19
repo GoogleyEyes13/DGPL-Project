@@ -20,9 +20,8 @@ signal journal_updated
 var potion_data: Dictionary = {}
 
 func _ready() -> void:
-	# Automatically populate recipes if PotionDatabase exists
-	if Engine.has_singleton("PotionDatabase") or get_node_or_null("/root/PotionDatabase"):
-		var db = get_node("/root/PotionDatabase")
+	var db = get_node_or_null("/root/PotionDatabase")
+	if db:
 		if "recipes" in db:
 			initialize_recipes(db.recipes)
 		elif db.has_method("get_all_recipes"):
@@ -39,7 +38,6 @@ func initialize_recipes(recipes: Dictionary) -> void:
 		var raw_val = recipes[ingredients]
 		var potion_name: String = ""
 		
-		# Handles both {"name": "Potion Name"} and "Potion Name"
 		if raw_val is Dictionary and raw_val.has("name"):
 			potion_name = str(raw_val["name"])
 		elif raw_val is String:
@@ -64,13 +62,11 @@ func initialize_recipes(recipes: Dictionary) -> void:
 	journal_updated.emit()
 
 func register_potion(potion_name: String, ingredients: Array = []) -> void:
-	# Guard against duplicate registrations
 	if discovered_potions.has(potion_name):
 		return
 
 	discovered_potions[potion_name] = true
 
-	# Pull canonical recipe ingredients if not passed directly
 	var final_ingredients: Array = ingredients
 	if final_ingredients.is_empty():
 		final_ingredients = all_potion_ingredients.get(potion_name, [])
@@ -84,11 +80,9 @@ func register_potion(potion_name: String, ingredients: Array = []) -> void:
 		"last_frame": 0
 	}
 
-	# Emit discovery signals ONLY for genuinely new discoveries
 	potion_discovered.emit(potion_name)
 	potion_unlocked.emit(potion_name, discovered_potions.size())
 
-	# Progression milestone checks
 	var current_total: int = discovered_potions.size()
 	if current_total >= 4 and not has_made_four_potions:
 		has_made_four_potions = true
@@ -118,21 +112,14 @@ func get_potion_customer(potion_name: String) -> String:
 func get_potion_customer_frame(potion_name: String) -> int:
 	return potion_data.get(potion_name, {}).get("last_frame", 0)
 
-# Returns deduplicated array of discovered potions that contain this ingredient
 func get_potions_for_ingredient(ingredient: String) -> Array:
 	var result: Array = []
-	var seen: Dictionary = {}
 	var ing_key: String = ingredient.strip_edges()
-	var all_potions: Array = all_potions_by_ingredient.get(ing_key, [])
-	
-	for potion_name in all_potions:
-		if discovered_potions.has(potion_name) and not seen.has(potion_name):
-			seen[potion_name] = true
+	for potion_name in all_potions_by_ingredient.get(ing_key, []):
+		if discovered_potions.has(potion_name):
 			result.append(potion_name)
-			
 	return result
 
-# Returns all potions that use this ingredient (discovered or not)
 func get_all_potions_for_ingredient(ingredient: String) -> Array:
 	return all_potions_by_ingredient.get(ingredient.strip_edges(), [])
 
@@ -140,27 +127,15 @@ func get_discovered_count_for_ingredient(ingredient: String) -> int:
 	return get_potions_for_ingredient(ingredient).size()
 
 func get_total_count_for_ingredient(ingredient: String) -> int:
-	var unique_potions: Dictionary = {}
-	for potion_name in all_potions_by_ingredient.get(ingredient.strip_edges(), []):
-		unique_potions[potion_name] = true
-	return unique_potions.size()
+	return all_potions_by_ingredient.get(ingredient.strip_edges(), []).size()
 
 func get_total_discovered_count() -> int:
-	return discovered_potions.size()
-
-func get_unlocked_count() -> int:
 	return discovered_potions.size()
 
 func get_total_potion_count() -> int:
 	return all_potion_ingredients.size()
 
-func get_total_possible_potions() -> int:
-	return all_potion_ingredients.size()
-
 func is_potion_discovered(potion_name: String) -> bool:
-	return discovered_potions.has(potion_name)
-
-func is_potion_unlocked(potion_name: String) -> bool:
 	return discovered_potions.has(potion_name)
 
 func get_ingredients_for_potion(potion_name: String) -> Array:
@@ -194,14 +169,3 @@ func unlock_all_potions(recipes: Dictionary) -> void:
 		
 		if not potion_name.is_empty():
 			register_potion(potion_name, ingredients)
-
-static func build_progress_dots(discovered: int, total: int, dot_size: float = 8.0) -> HBoxContainer:
-	var row := HBoxContainer.new()
-	row.add_theme_constant_override("separation", 3)
-	row.alignment = BoxContainer.ALIGNMENT_CENTER
-	for i in total:
-		var dot := ColorRect.new()
-		dot.custom_minimum_size = Vector2(dot_size, dot_size)
-		dot.color = Color(0.95, 0.78, 0.2) if i < discovered else Color(0.35, 0.35, 0.35, 0.6)
-		row.add_child(dot)
-	return row

@@ -1,8 +1,6 @@
 extends AnimatedSprite2D
 
-
 #region Variables
-# The current customer loaded
 var CustomerName: String = "Queso"
 
 var start_pos: Vector2
@@ -10,50 +8,22 @@ var centre_pos: Vector2
 var end_pos: Vector2
 var cust_is_ready: bool = false
 var original_scale: Vector2
-var is_shrunk = false
+var is_shrunk: bool = false
 
-#Vetical movement
+# Movement
 @export var step_bounce_height: float = 8.0
-#Horizontal speed(time between each bounce)
 @export var step_speed: float = 6.0
-#Customer name list (Animation names)
 @export var customer_names: Array[String] = ["Queso", "HerbBert", "MrMonicle", "LadyP"]
 
-#Rapid Shaking potion
+# Potion effect timing & shake variables
 @export var jitter_intensity: float = 4.0
-@export var jitter_step_time: float = 0.05 #time per shake
-@export var walk_out_duration: float = 3.5 #total time spent shaking (should generally match bob_out's travel_duration
+@export var jitter_step_time: float = 0.05
+@export var walk_out_duration: float = 3.5
 
 @export var explode_shake_intensity: float = 12.0
 @export var explode_shake_duration: float = 0.5
 @export var explode_fade_duration: float = 0.8
 
-# Dictionary for potions and their effects
-var PotionEffects: Dictionary = {
-	"Normal": 0,
-	"Potion of Curing": 0,
-	"Potion of Rapid Shaking": 0,
-	"Potion of Permanent Smile": 0,
-	"Potion of Explode": 0,
-	"Potion of Change Language": 0,
-	"Potion of Love": 0,
-	"Potion of Enlarge Person": 0,
-	"Potion of Shrink Person": 0,
-	"Potion of Baldness": 1,
-	"Potion of Head Size Increase": 2,
-	"Potion of Head Size Decrease": 3,
-	"Potion of Green Skin": 4,
-	"Potion of Eye Colour Swap": 5,
-	"Potion of Skeleton": 6,
-	"Potion of Change Art Styles": 7,
-	"Potion of Creature Feature": 8,
-	"Potion of Beautification": 9,
-	"Potion of Rabies": 10,
-	"Potion of Mogging": 11,
-	"Potion of Body Swap": 12
-}
-
-@onready var PotionEffectSprite: AnimatedSprite2D = $"."
 @onready var SmokeTransition = $"../Smoke"
 
 # Audio
@@ -73,7 +43,6 @@ func _ready() -> void:
 	DebugManager.register_customer(self)
 	
 	var window_size = get_viewport_rect().size
-	
 	original_scale = scale
 	
 	start_pos = Vector2(window_size.x + 200, window_size.y / 2)
@@ -81,9 +50,6 @@ func _ready() -> void:
 	end_pos = Vector2(-200, window_size.y / 2)
 	
 	global_position = start_pos
-	
-	#await DialogueManager.dialogue_ended
-	
 	animation = CustomerName
 	frame = 0
 	stop()
@@ -111,22 +77,9 @@ func trigger_customer_dialogue() -> void:
 		DebugManager.debug_log("Skipping customer dialogue for " + CustomerName)
 		return
 
-	match CustomerName:
-		"Queso":
-			var resource = load("res://Dialogue/Queso.dialogue")
-			DialogueManager.show_dialogue_balloon(resource)
-		"HerbBert":
-			var resource = load("res://Dialogue/HerbBert.dialogue")
-			DialogueManager.show_dialogue_balloon(resource)
-		"MrMonicle":
-			var resource = load("res://Dialogue/MrMonicle.dialogue")
-			DialogueManager.show_dialogue_balloon(resource)
-		"LadyP":
-			# Put Lady P dialogue file path here
-			pass
-		_:
-			var resource = load("res://Dialogue/HerbBert.dialogue")
-			DialogueManager.show_dialogue_balloon(resource)
+	# Single-line resolution with automatic HerbBert fallback via CharacterData
+	var dialogue_path = CharacterData.get_dialogue_path(CustomerName)
+	DialogueManager.show_dialogue_balloon(load(dialogue_path))
 
 
 func bob_in() -> void:
@@ -183,66 +136,59 @@ func jitter_effect(duration: float) -> void:
 
 func receive_potion(potion_type: String) -> void:
 	DebugManager.debug_log("Potion Received")
-	
 	if not cust_is_ready:
 		return
-		
 	cust_is_ready = false
 	
 	Globals.submitPotion(potion_type)
 	print(potion_type + " " + Globals.wantedPotionType)
 	
-	if PotionEffects.has(potion_type):
-		SmokeTransition.visible = true
-		SmokeTransition.play()
-		smoke_sfx.stream = preload("res://Assets/Audio/SFX/Smoke Puff/smoke puff.mp3")
-		smoke_sfx.play()
-		
-		await get_tree().create_timer(0.3).timeout
-		
-		frame = PotionEffects[potion_type]
-		DebugManager.debug_log("Potion effect on customer: " + potion_type)
-		var delay_time: float = 1.0
-		
-		if potion_type == "Potion of Explode":
-			explode_effect()
-			return
-		elif potion_type == "Potion of Rapid Shaking":
-			delay_time = 1.0
-			jitter_effect(delay_time + walk_out_duration)
-		elif potion_type == "Potion of Creature Feature":
-			scale = Vector2(0.14, 0.14)
-		elif potion_type == "Potion of Enlarge Person":
-			scale = Vector2(0.14, 0.14)
-		elif potion_type == "Potion of Shrink Person":
-			scale = Vector2(0.05, 0.05)
-			position.y += 45
-			is_shrunk = true
-		elif potion_type == "Potion of Skeleton" and CustomerName != "Queso":
-			scale = Vector2(0.22, 0.22)
-		
-		
-		match CustomerName:
-			"Queso":
-				var resource = load("res://Dialogue/QuesoDone.dialogue")
-				DialogueManager.show_dialogue_balloon(resource)
-			"HerbBert":
-				var resource = load("res://Dialogue/HerbBertDone.dialogue")
-				DialogueManager.show_dialogue_balloon(resource)
-			"MrMonicle":
-				var resource = load("res://Dialogue/MrMonicleDone.dialogue")
-				DialogueManager.show_dialogue_balloon(resource)
-			_:
-				var resource = load("res://Dialogue/HerbBertDone.dialogue")
-				DialogueManager.show_dialogue_balloon(resource)
-		
-		await DialogueManager.dialogue_ended
-		
-		var delay = create_tween()
-		delay.tween_interval(delay_time)
-		delay.tween_callback(bob_out)
-	else:
+	var info: Dictionary = PotionDatabase.get_potion_info_by_name(potion_type)
+	if info.is_empty():
 		push_warning("Unknown potion type: " + potion_type)
+		return
+
+	var target_frame: int = info.get("frame", 0)
+	PotionJournal.record_potion_given(potion_type, CustomerName, target_frame)
+	
+	SmokeTransition.visible = true
+	SmokeTransition.play()
+	smoke_sfx.stream = preload("res://Assets/Audio/SFX/Smoke Puff/smoke puff.mp3")
+	smoke_sfx.play()
+	
+	await get_tree().create_timer(0.3).timeout
+	frame = target_frame
+	DebugManager.debug_log("Potion effect on customer: " + potion_type)
+
+	var delay_time: float = 1.0
+
+	# Process data-driven effects
+	var effect: String = info.get("effect", "")
+	if effect == "explode":
+		explode_effect()
+		return
+	elif effect == "shake":
+		delay_time = 1.0
+		jitter_effect(delay_time + walk_out_duration)
+	
+	if info.has("scale"):
+		scale = info["scale"]
+	elif potion_type == "Potion of Skeleton" and CustomerName != "Queso":
+		scale = Vector2(0.22, 0.22)
+		
+	if info.get("shrink", false):
+		position.y += 45
+		is_shrunk = true
+	
+	# Single-line completion dialogue resolution via CharacterData
+	var dialogue_path = CharacterData.get_dialogue_path(CustomerName, "Done")
+	DialogueManager.show_dialogue_balloon(load(dialogue_path))
+	
+	await DialogueManager.dialogue_ended
+	
+	var delay = create_tween()
+	delay.tween_interval(delay_time)
+	delay.tween_callback(bob_out)
 
 
 func bob_out() -> void:
@@ -272,13 +218,13 @@ func bob_out() -> void:
 
 func new_customer() -> void:
 	walk_sfx.stop()
-	
 	if customer_names.is_empty():
 		push_warning("No customer names assigned!")
 		return
 	
 	modulate.a = 1.0
 	scale = Vector2(0.10, 0.10)
+	is_shrunk = false
 
 	var next_name: String = customer_names[randi() % customer_names.size()]
 	if customer_names.size() > 1:
@@ -287,23 +233,19 @@ func new_customer() -> void:
 
 	CustomerName = next_name
 	animation = CustomerName
-	
 	stop()
 
 	global_position = start_pos
 	cust_is_ready = false
-
 	bob_in()
 
 
 func explode_effect() -> void:
 	walk_sfx.stop()
-	
 	customer_names.erase(CustomerName)
-	DebugManager.debug_log(CustomerName + " has been removed from the customer pool permanently")
+	DebugManager.debug_log(CustomerName + " has been removed from customer pool permanently")
 	
 	var explode_tween = create_tween()
-	
 	var shake_steps: int = int(explode_shake_duration / 0.03)
 	for i in shake_steps:
 		var shake_offset = Vector2(
@@ -318,15 +260,13 @@ func explode_effect() -> void:
 		.set_ease(Tween.EASE_IN)
 	explode_tween.tween_property(self, "modulate:a", 0.0, explode_fade_duration)
 	explode_tween.set_parallel(false)
-	
 	explode_tween.tween_callback(_on_exploded)
 
 
 func _on_exploded() -> void:
 	offset = Vector2.ZERO
-	
 	if customer_names.is_empty():
-		DebugManager.debug_log("All customers have been exploded! No one left to serve.")
+		DebugManager.debug_log("All customers exploded!")
 		modulate.a = 1.0
 		scale = original_scale
 		hide()

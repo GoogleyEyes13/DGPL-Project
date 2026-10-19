@@ -7,7 +7,6 @@ extends Control
 
 # Left Page (Ingredients)
 @onready var ingredient_grid: GridContainer = $NotebookPanel/MarginContainer/BookSpread/LeftPage/ScrollContainer/IngredientGrid
-@export var ingredient_icons: Array[Texture2D] = []
 
 # Right Page (Ingredient Showcase & Potion List)
 @onready var right_page: Control = $NotebookPanel/MarginContainer/BookSpread/RightPage
@@ -64,36 +63,12 @@ extends Control
 var base_scale: Vector2 = Vector2.ONE
 var scale_tween: Tween
 
-var ingredient_names: Array[String] = [
-	"ElbowGrease", "OilOfVitriol", "PhoenixFeather",
-	"Wormwood", "EyeOfNewt", "Stardust"
-]
-
-var ingredient_descriptions: Dictionary = {
-	"ElbowGrease": "Pure, condensed physical labor. Clouded and dense.",
-	"EyeOfNewt": "Pickled amphibian oculars. Known to alter vision and forms.",
-	"OilOfVitriol": "Corrosive and volatile. Strips away extraneous features.",
-	"PhoenixFeather": "Radiates eternal warmth. Essential for restorative draughts.",
-	"Stardust": "Glinting cosmic residue. Unlocks strange celestial mutations.",
-	"Wormwood": "Bitter perennial herb. Calms nerves and fixes stubborn mixtures."
-}
-
-var ingredient_display_names: Dictionary = {
-	"ElbowGrease": "Elbow Grease",
-	"OilOfVitriol": "Oil Of Vitriol",
-	"PhoenixFeather": "Phoenix Feather",
-	"Wormwood": "Wormwood",
-	"EyeOfNewt": "Eye Of Newt",
-	"Stardust": "Stardust"
-}
-
+var ingredient_names: Array = []
 var current_ingredient: String = ""
 var current_potion: String = ""
 
-const INGREDIENT_ICON_BASE_PATH: String = "res://Assets/Ingredients/%s.png"
-
-var default_before_texture = preload("res://Assets/Sprites/Herb Bert/HerbBertBigHead.png")
-var default_after_texture = preload("res://Assets/Sprites/Herb Bert/HerbBertBald.png")
+var default_before_texture = preload("res://Assets/Sprites/Herb Bert/HerbBertBigHead.png") if ResourceLoader.exists("res://Assets/Sprites/Herb Bert/HerbBertBigHead.png") else null
+var default_after_texture = preload("res://Assets/Sprites/Herb Bert/HerbBertBald.png") if ResourceLoader.exists("res://Assets/Sprites/Herb Bert/HerbBertBald.png") else null
 
 # Audio
 @onready var notebook_sfx: AudioStreamPlayer = get_node_or_null("NotebookSFX")
@@ -101,27 +76,6 @@ var sfx_open = preload("res://Assets/Audio/SFX/Notebook/notebook open.wav")
 var sfx_close = preload("res://Assets/Audio/SFX/Notebook/notebookclose.wav")
 var sfx_forward = preload("res://Assets/Audio/SFX/Notebook/notebookforward.wav")
 var sfx_backward = preload("res://Assets/Audio/SFX/Notebook/notebookbackward.wav")
-
-const POTION_SUFFIX_MAP: Dictionary = {
-	"Normal": "Normal",
-	"Potion of Baldness": "Bald",
-	"Potion of Head Size Increase": "BigHead",
-	"Potion of Head Size Decrease": "SmallHead",
-	"Potion of Eye Colour Swap": "BlueEyes",
-	"Potion of Beautification": "Beautification",
-	"Potion of Green Skin": "Green",
-	"Potion of Mogging": "Mog",
-	"Potion of Rabies": "Rabies",
-	"Potion of Skeleton": "Skeleton",
-	"Potion of Body Swap": "BodySwap",
-	"Potion of Change Art Styles": "ArtStyleSwap",
-	"Potion of Creature Feature": "TheFeaturedCreature",
-}
-
-const CHARACTER_FOLDER_ALIASES: Dictionary = {
-	"HerbBert": "Herb Bert",
-	"Caseoh": "Caseoh"
-}
 #endregion
 
 func _ready() -> void:
@@ -137,12 +91,15 @@ func _ready() -> void:
 	
 	if close_button:
 		close_button.pressed.connect(close_journal)
-	
 	if back_to_potions_button:
 		back_to_potions_button.pressed.connect(_on_back_to_potions_pressed)
-		
 	if detail_notes_field:
 		detail_notes_field.text_changed.connect(_on_notes_changed)
+	
+	if PotionDatabase.has_method("get_all_ingredient_names"):
+		ingredient_names = PotionDatabase.get_all_ingredient_names()
+	else:
+		ingredient_names = ["ElbowGrease", "OilOfVitriol", "PhoenixFeather", "Wormwood", "EyeOfNewt", "Stardust"]
 	
 	_setup_ingredient_buttons()
 	if potion_list_container:
@@ -199,16 +156,15 @@ func _setup_ingredient_buttons() -> void:
 		
 		var icon: TextureRect = button.get_node_or_null("VBoxContainer/Icon")
 		var label: Label = button.get_node_or_null("VBoxContainer/Label")
+		var ing_data: Dictionary = PotionDatabase.get_ingredient_info(ingredient)
 		
 		if label:
-			label.text = ingredient_display_names.get(ingredient, ingredient)
+			label.text = ing_data.get("display_name", ingredient)
 		
 		if icon:
-			var icon_path = INGREDIENT_ICON_BASE_PATH % ingredient
+			var icon_path: String = ing_data.get("icon", "")
 			if ResourceLoader.exists(icon_path):
 				icon.texture = load(icon_path)
-			else:
-				push_warning("Ingredient icon missing at: " + icon_path)
 		
 		if not button.pressed.is_connected(_on_ingredient_selected):
 			button.pressed.connect(_on_ingredient_selected.bind(ingredient))
@@ -224,31 +180,28 @@ func _show_potion_list(ingredient: String) -> void:
 	if potion_list_view:
 		potion_list_view.visible = true
 	
-	if potion_list_header:
-		potion_list_header.text = ingredient_display_names.get(ingredient, ingredient) + " Recipes"
+	var ing_data: Dictionary = PotionDatabase.get_ingredient_info(ingredient)
 	
-	# Load featured reagent icon & lore text
-	var icon_path = INGREDIENT_ICON_BASE_PATH % ingredient
+	if potion_list_header:
+		potion_list_header.text = ing_data.get("display_name", ingredient) + " Recipes"
+	
+	var icon_path: String = ing_data.get("icon", "")
 	if big_ingredient_icon and ResourceLoader.exists(icon_path):
 		big_ingredient_icon.texture = load(icon_path)
 		
 	if ingredient_flavor_text:
-		ingredient_flavor_text.text = ingredient_descriptions.get(ingredient, "")
+		ingredient_flavor_text.text = ing_data.get("desc", "")
 	
-	# Clear old list buttons
 	if potion_list_container:
 		for child in potion_list_container.get_children():
 			child.queue_free()
 	
-	# Fetch discovered count and total possible recipes for this ingredient
 	var unlocked_potions: Array = PotionJournal.get_potions_for_ingredient(ingredient)
 	var total_potions_for_ingredient: int = PotionJournal.get_total_count_for_ingredient(ingredient)
 
-	# If the database has 10 potions per ingredient but none are loaded yet, fall back gracefully
 	if total_potions_for_ingredient == 0:
 		total_potions_for_ingredient = 10
 
-	# Update the Radial Dial & Label
 	if notebook_dial:
 		notebook_dial.set_max_count(total_potions_for_ingredient)
 		notebook_dial.update_count(unlocked_potions.size(), true)
@@ -256,7 +209,6 @@ func _show_potion_list(ingredient: String) -> void:
 	if dial_progress_label:
 		dial_progress_label.text = "Discovered: %d / %d" % [unlocked_potions.size(), total_potions_for_ingredient]
 		
-	# Populate buttons
 	if unlocked_potions.is_empty():
 		var label := Label.new()
 		label.text = "No potions discovered yet with this ingredient."
@@ -298,7 +250,8 @@ func _on_potion_selected(potion_name: String) -> void:
 	var ingredients: Array = PotionJournal.get_ingredients_for_potion(potion_name)
 	var formatted_ingredients: Array = []
 	for ing in ingredients:
-		formatted_ingredients.append("• " + ingredient_display_names.get(ing, ing))
+		var ing_display = PotionDatabase.get_ingredient_display_name(ing)
+		formatted_ingredients.append("• " + ing_display)
 		
 	if detail_ingredients_label:
 		detail_ingredients_label.text = "\n".join(formatted_ingredients)
@@ -315,33 +268,22 @@ func _on_potion_selected(potion_name: String) -> void:
 		detail_notes_field.text = PotionJournal.get_note(potion_name)
 
 func _get_customer_portraits(customer_name: String, potion_name: String) -> Dictionary:
-	var char_name: String = customer_name
-	if char_name.is_empty():
-		char_name = "HerbBert"
+	var raw_name: String = customer_name.strip_edges()
+	if raw_name.is_empty():
+		raw_name = "HerbBert"
 
-	var folder_name: String = CHARACTER_FOLDER_ALIASES.get(char_name, char_name)
-	var suffix: String = POTION_SUFFIX_MAP.get(potion_name, "Normal")
+	var info: Dictionary = PotionDatabase.get_potion_info_by_name(potion_name)
+	var suffix: String = info.get("suffix", "Normal")
 
-	var base_folder: String = "res://Assets/Sprites/" + folder_name + "/"
-	var before_path: String = base_folder + char_name + "Normal.png"
-	var after_path: String = base_folder + char_name + suffix + ".png"
+	var before_path: String = CharacterData.get_sprite_path(raw_name, "Normal")
+	var after_path: String = CharacterData.get_sprite_path(raw_name, suffix)
 
-	var before_tex: Texture2D = null
-	var after_tex: Texture2D = null
-
-	if ResourceLoader.exists(before_path):
-		before_tex = load(before_path)
-	else:
-		before_tex = default_before_texture
-
-	if ResourceLoader.exists(after_path):
-		after_tex = load(after_path)
-	else:
-		after_tex = default_after_texture
+	var before_tex: Texture2D = load(before_path) if ResourceLoader.exists(before_path) else default_before_texture
+	var after_tex: Texture2D = load(after_path) if ResourceLoader.exists(after_path) else default_after_texture
 
 	return {
 		"before": before_tex,
-		"after": after_tex
+		"after": after_tex if after_tex else before_tex
 	}
 
 func _on_notes_changed() -> void:
