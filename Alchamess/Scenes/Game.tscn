@@ -127,6 +127,9 @@ zoom = Vector2(4, 4)
 layer = 99
 
 [node name="NotebookMenu" parent="UI" unique_id=856325922 instance=ExtResource("1_4eqlp")]
+visible = false
+offset_top = -1.0
+offset_bottom = -1.0
 
 [node name="DebugMenu" parent="UI" unique_id=1243030641 instance=ExtResource("1_n2ugt")]
 visible = false
@@ -276,34 +279,12 @@ shelf_texture = ExtResource("14_n24vg")
 dragged_texture = ExtResource("14_m15vq")
 pickup_sound = ExtResource("19_7edvx")
 
-[node name="ShelfSprite" parent="Ingredients/EyeOfNewt" index="0" unique_id=1517871503]
-position = Vector2(0, -1.2499999)
-texture = ExtResource("14_n24vg")
-
-[node name="DraggedSprite" parent="Ingredients/EyeOfNewt" index="1" unique_id=725578124]
-texture = ExtResource("14_m15vq")
-
-[node name="CollisionShape" parent="Ingredients/EyeOfNewt" index="2" unique_id=1294795548]
-position = Vector2(4.9999995, 4.9999943)
-
-[node name="IngredientDial" parent="Ingredients/EyeOfNewt" index="4" unique_id=1125379738]
-metadata/_edit_use_anchors_ = true
-
 [node name="Wormwood" parent="Ingredients" unique_id=1599874296 instance=ExtResource("5_b2bpf")]
 position = Vector2(1548.0001, 257)
 ingredientType = "Wormwood"
 shelf_texture = ExtResource("13_n2ugt")
 dragged_texture = ExtResource("15_m15vq")
 pickup_sound = ExtResource("21_w61tf")
-
-[node name="ShelfSprite" parent="Ingredients/Wormwood" index="0" unique_id=1517871503]
-texture = ExtResource("13_n2ugt")
-
-[node name="DraggedSprite" parent="Ingredients/Wormwood" index="1" unique_id=725578124]
-texture = ExtResource("15_m15vq")
-
-[node name="IngredientDial" parent="Ingredients/Wormwood" index="4" unique_id=1125379738]
-metadata/_edit_use_anchors_ = true
 
 [node name="ElbowGrease" parent="Ingredients" unique_id=655124839 instance=ExtResource("5_b2bpf")]
 position = Vector2(398, 487)
@@ -312,28 +293,12 @@ shelf_texture = ExtResource("13_n24vg")
 dragged_texture = ExtResource("19_n24vg")
 pickup_sound = ExtResource("23_a8bb1")
 
-[node name="ShelfSprite" parent="Ingredients/ElbowGrease" index="0" unique_id=1517871503]
-texture = ExtResource("13_n24vg")
-
-[node name="DraggedSprite" parent="Ingredients/ElbowGrease" index="1" unique_id=725578124]
-texture = ExtResource("19_n24vg")
-
 [node name="OilOfVitriol" parent="Ingredients" unique_id=70480956 instance=ExtResource("5_b2bpf")]
 position = Vector2(1538, 485)
 ingredientType = "OilOfVitriol"
 shelf_texture = ExtResource("15_n24vg")
 dragged_texture = ExtResource("21_n24vg")
 pickup_sound = ExtResource("27_8eewk")
-
-[node name="ShelfSprite" parent="Ingredients/OilOfVitriol" index="0" unique_id=1517871503]
-position = Vector2(-3.814697e-05, -25.000074)
-texture = ExtResource("15_n24vg")
-
-[node name="DraggedSprite" parent="Ingredients/OilOfVitriol" index="1" unique_id=725578124]
-texture = ExtResource("21_n24vg")
-
-[node name="CollisionShape" parent="Ingredients/OilOfVitriol" index="2" unique_id=1294795548]
-position = Vector2(-1.250038, -21.250061)
 
 [node name="PhoenixFeather" parent="Ingredients" unique_id=1704942985 instance=ExtResource("5_b2bpf")]
 visible = false
@@ -343,12 +308,6 @@ shelf_texture = ExtResource("8_4eqlp")
 dragged_texture = ExtResource("17_umnjm")
 pickup_sound = ExtResource("25_5eiyn")
 
-[node name="ShelfSprite" parent="Ingredients/PhoenixFeather" index="0" unique_id=1517871503]
-texture = ExtResource("8_4eqlp")
-
-[node name="DraggedSprite" parent="Ingredients/PhoenixFeather" index="1" unique_id=725578124]
-texture = ExtResource("17_umnjm")
-
 [node name="Stardust" parent="Ingredients" unique_id=860062454 instance=ExtResource("5_b2bpf")]
 visible = false
 position = Vector2(1540, 672)
@@ -356,12 +315,6 @@ ingredientType = "Stardust"
 shelf_texture = ExtResource("13_4eqlp")
 dragged_texture = ExtResource("19_umnjm")
 pickup_sound = ExtResource("29_ahn08")
-
-[node name="ShelfSprite" parent="Ingredients/Stardust" index="0" unique_id=1517871503]
-texture = ExtResource("13_4eqlp")
-
-[node name="DraggedSprite" parent="Ingredients/Stardust" index="1" unique_id=725578124]
-texture = ExtResource("19_umnjm")
 
 [node name="FrogMaster" type="CharacterBody2D" parent="." unique_id=1261034331]
 input_pickable = true
@@ -437,10 +390,3 @@ parameters/looping = true
 [connection signal="pressed" from="FrogTongueIngredients/PhoenixFeather" to="FrogMaster" method="_on_phoenix_feather_pressed"]
 [connection signal="pressed" from="FrogTongueIngredients/Stardust" to="FrogMaster" method="_on_stardust_pressed"]
 [connection signal="animation_finished" from="Smoke" to="Customer" method="_on_smoke_animation_finished"]
-
-[editable path="Ingredients/EyeOfNewt"]
-[editable path="Ingredients/Wormwood"]
-[editable path="Ingredients/ElbowGrease"]
-[editable path="Ingredients/OilOfVitriol"]
-[editable path="Ingredients/PhoenixFeather"]
-[editable path="Ingredients/Stardust"]

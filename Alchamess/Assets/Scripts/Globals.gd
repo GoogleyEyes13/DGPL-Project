@@ -58,3 +58,6 @@ func randomizeWantedType():
 
 func submitPotion(potion : String):
 	submittedPotionType = potion
+
+func _ready() -> void:
+	PotionJournal.initialize_recipes(PotionDatabase.recipes)
