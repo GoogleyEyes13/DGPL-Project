@@ -4,6 +4,7 @@ extends Area2D
 @export var default_potion_type: String = "Potion1"
 
 @onready var Cauldron = $"../WitchCauldron"
+@onready var pickup_sfx: AudioStreamPlayer2D = get_node_or_null("PickupSFX")
 
 
 func _input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
@@ -20,3 +21,8 @@ func spawn_bottle() -> void:
 	new_bottle.potionName = Cauldron.LastPotionCreated
 	
 	get_tree().current_scene.add_child(new_bottle)
+	
+	# Play bottle pickup sound
+	if pickup_sfx:
+		pickup_sfx.pitch_scale = randf_range(0.95, 1.05) # Optional subtle pitch variation
+		pickup_sfx.play()

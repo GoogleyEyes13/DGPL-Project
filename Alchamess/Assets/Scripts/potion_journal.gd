@@ -3,7 +3,7 @@ extends Node
 # potion_name -> Array of ingredient names (ALL potions, not just discovered)
 var all_potion_ingredients: Dictionary = {}
 
-# ingredient_name -> Array of ALL potion names that use it (fixed order once built)
+# ingredient_name -> Array of ALL unique potion names that use it
 var all_potions_by_ingredient: Dictionary = {}
 
 # potion_name -> true once discovered
@@ -39,7 +39,7 @@ func initialize_recipes(recipes: Dictionary) -> void:
 		var raw_val = recipes[ingredients]
 		var potion_name: String = ""
 		
-		# Handles both { "name": "Potion Name" } and "Potion Name"
+		# Handles both {"name": "Potion Name"} and "Potion Name"
 		if raw_val is Dictionary and raw_val.has("name"):
 			potion_name = str(raw_val["name"])
 		elif raw_val is String:
@@ -51,11 +51,12 @@ func initialize_recipes(recipes: Dictionary) -> void:
 		all_potion_ingredients[potion_name] = ingredients_copy
 
 		for ingredient in ingredients_copy:
-			if not all_potions_by_ingredient.has(ingredient):
-				all_potions_by_ingredient[ingredient] = []
+			var ing_str = str(ingredient).strip_edges()
+			if not all_potions_by_ingredient.has(ing_str):
+				all_potions_by_ingredient[ing_str] = []
 			
-			if not all_potions_by_ingredient[ingredient].has(potion_name):
-				all_potions_by_ingredient[ingredient].append(potion_name)
+			if not all_potions_by_ingredient[ing_str].has(potion_name):
+				all_potions_by_ingredient[ing_str].append(potion_name)
 
 	for ingredient in all_potions_by_ingredient.keys():
 		all_potions_by_ingredient[ingredient].sort()
@@ -63,46 +64,41 @@ func initialize_recipes(recipes: Dictionary) -> void:
 	journal_updated.emit()
 
 func register_potion(potion_name: String, ingredients: Array = []) -> void:
-	var is_new: bool = false
+	# Guard against duplicate registrations
+	if discovered_potions.has(potion_name):
+		return
 
-	# Ensure the potion exists in the master ingredients lookup
-	if not all_potion_ingredients.has(potion_name):
-		if not ingredients.is_empty():
-			all_potion_ingredients[potion_name] = ingredients.duplicate()
-			for ing in ingredients:
-				if not all_potions_by_ingredient.has(ing):
-					all_potions_by_ingredient[ing] = []
-				if not all_potions_by_ingredient[ing].has(potion_name):
-					all_potions_by_ingredient[ing].append(potion_name)
-					all_potions_by_ingredient[ing].sort()
+	discovered_potions[potion_name] = true
 
-	if not discovered_potions.has(potion_name):
-		discovered_potions[potion_name] = true
-		
-		var final_ingredients: Array = ingredients
-		if final_ingredients.is_empty():
-			final_ingredients = all_potion_ingredients.get(potion_name, [])
+	# Pull canonical recipe ingredients if not passed directly
+	var final_ingredients: Array = ingredients
+	if final_ingredients.is_empty():
+		final_ingredients = all_potion_ingredients.get(potion_name, [])
+	elif not all_potion_ingredients.has(potion_name):
+		all_potion_ingredients[potion_name] = final_ingredients.duplicate()
 
-		potion_data[potion_name] = {
-			"ingredients": final_ingredients.duplicate(),
-			"notes": "",
-			"last_customer": "",
-			"last_frame": 0
-		}
-		is_new = true
-		potion_discovered.emit(potion_name)
-		potion_unlocked.emit(potion_name, discovered_potions.size())
+	potion_data[potion_name] = {
+		"ingredients": final_ingredients.duplicate(),
+		"notes": "",
+		"last_customer": "",
+		"last_frame": 0
+	}
 
-	# Milestones
-	if discovered_potions.size() == 4 and not has_made_four_potions:
+	# Emit discovery signals ONLY for genuinely new discoveries
+	potion_discovered.emit(potion_name)
+	potion_unlocked.emit(potion_name, discovered_potions.size())
+
+	# Progression milestone checks
+	var current_total: int = discovered_potions.size()
+	if current_total >= 4 and not has_made_four_potions:
 		has_made_four_potions = true
 		NewIngredientUnlocked.emit("PhoenixFeather")
-	elif discovered_potions.size() == 10 and not has_made_ten_potions:
+		
+	if current_total >= 10 and not has_made_ten_potions:
 		has_made_ten_potions = true
 		NewIngredientUnlocked.emit("Stardust")
 
-	if is_new:
-		journal_updated.emit()
+	journal_updated.emit()
 
 func record_potion_given(potion_name: String, customer_name: String, frame: int) -> void:
 	if not potion_data.has(potion_name):
@@ -122,24 +118,32 @@ func get_potion_customer(potion_name: String) -> String:
 func get_potion_customer_frame(potion_name: String) -> int:
 	return potion_data.get(potion_name, {}).get("last_frame", 0)
 
-# Returns all discovered potions that contain this ingredient
+# Returns deduplicated array of discovered potions that contain this ingredient
 func get_potions_for_ingredient(ingredient: String) -> Array:
 	var result: Array = []
-	var all_potions: Array = all_potions_by_ingredient.get(ingredient, [])
+	var seen: Dictionary = {}
+	var ing_key: String = ingredient.strip_edges()
+	var all_potions: Array = all_potions_by_ingredient.get(ing_key, [])
+	
 	for potion_name in all_potions:
-		if discovered_potions.has(potion_name):
+		if discovered_potions.has(potion_name) and not seen.has(potion_name):
+			seen[potion_name] = true
 			result.append(potion_name)
+			
 	return result
 
 # Returns all potions that use this ingredient (discovered or not)
 func get_all_potions_for_ingredient(ingredient: String) -> Array:
-	return all_potions_by_ingredient.get(ingredient, [])
+	return all_potions_by_ingredient.get(ingredient.strip_edges(), [])
 
 func get_discovered_count_for_ingredient(ingredient: String) -> int:
 	return get_potions_for_ingredient(ingredient).size()
 
 func get_total_count_for_ingredient(ingredient: String) -> int:
-	return all_potions_by_ingredient.get(ingredient, []).size()
+	var unique_potions: Dictionary = {}
+	for potion_name in all_potions_by_ingredient.get(ingredient.strip_edges(), []):
+		unique_potions[potion_name] = true
+	return unique_potions.size()
 
 func get_total_discovered_count() -> int:
 	return discovered_potions.size()
