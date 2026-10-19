@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://c13ys1t4joar2" path="res://Assets/Scripts/MixingStick.gd" id="2_fgofq"]
 [ext_resource type="Texture2D" uid="uid://dldv72qq8jife" path="res://Assets/Foreground.png" id="4_dctr5"]
 [ext_resource type="PackedScene" uid="uid://nk2mr8ongv5d" path="res://Objects/Ingredient.tscn" id="5_b2bpf"]
-[ext_resource type="Texture2D" uid="uid://dwxjow6xy6150" path="res://Assets/Sprites/Cauldron/MixingStick.png" id="6_n24vg"]
+[ext_resource type="Texture2D" uid="uid://dhpj4m8jgund1" path="res://Assets/Sprites/Cauldron/ladle.png" id="6_7w24h"]
 [ext_resource type="Texture2D" uid="uid://cja8xl5cua4by" path="res://Assets/Sprites/Cauldron/CauldronLiquid.png" id="7_n2ugt"]
 [ext_resource type="Texture2D" uid="uid://b6smgfgjh7ryp" path="res://Assets/Ingredients/ShelfPhoenixFeather.png" id="8_4eqlp"]
 [ext_resource type="Texture2D" uid="uid://cdnjvadim7j2m" path="res://Assets/Sprites/Cauldron/CauldronOpen.png" id="8_8ekww"]
@@ -159,13 +159,16 @@ script = ExtResource("2_fgofq")
 
 [node name="Sprite2D" type="Sprite2D" parent="MixingStick" unique_id=1925342764]
 z_index = 2
-position = Vector2(-30.2041, 103.813354)
-scale = Vector2(0.1, 0.1664117)
-texture = ExtResource("6_n24vg")
+position = Vector2(-11.563774, 59.191395)
+rotation = 0.14847234
+scale = Vector2(0.2329608, 0.2697573)
+skew = -0.069075584
+texture = ExtResource("6_7w24h")
+flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MixingStick" unique_id=1572271056]
-position = Vector2(-2.8250122, -7.8223114)
-rotation = 0.06597116
+position = Vector2(2.1803946, -10.252951)
+rotation = -0.010678545
 scale = Vector2(0.9999998, 0.9999998)
 shape = SubResource("RectangleShape2D_7lihs")
 
@@ -269,6 +272,8 @@ texture = ExtResource("44_mi7vx")
 position = Vector2(-5.88208, -47.985962)
 scale = Vector2(3.3136473, 84.89134)
 shape = SubResource("RectangleShape2D_mi7vx")
+
+[node name="PickupSFX" type="AudioStreamPlayer2D" parent="PotionStack" unique_id=1190031815]
 
 [node name="Ingredients" type="Node2D" parent="." unique_id=1575719010]
 
