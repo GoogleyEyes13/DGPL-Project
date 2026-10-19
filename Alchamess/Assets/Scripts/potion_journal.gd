@@ -27,7 +27,7 @@ func _ready() -> void:
 			initialize_recipes(db.recipes)
 		elif db.has_method("get_all_recipes"):
 			initialize_recipes(db.get_all_recipes())
-			
+
 func initialize_recipes(recipes: Dictionary) -> void:
 	if not all_potion_ingredients.is_empty():
 		return
@@ -36,7 +36,17 @@ func initialize_recipes(recipes: Dictionary) -> void:
 	all_potions_by_ingredient.clear()
 
 	for ingredients in recipes.keys():
-		var potion_name = recipes[ingredients]
+		var raw_val = recipes[ingredients]
+		var potion_name: String = ""
+		
+		# Handles both { "name": "Potion Name" } and "Potion Name"
+		if raw_val is Dictionary and raw_val.has("name"):
+			potion_name = str(raw_val["name"])
+		elif raw_val is String:
+			potion_name = raw_val
+		else:
+			continue
+
 		var ingredients_copy: Array = ingredients.duplicate()
 		all_potion_ingredients[potion_name] = ingredients_copy
 
@@ -44,7 +54,6 @@ func initialize_recipes(recipes: Dictionary) -> void:
 			if not all_potions_by_ingredient.has(ingredient):
 				all_potions_by_ingredient[ingredient] = []
 			
-			# Strict check: never add duplicate potion names under any circumstance
 			if not all_potions_by_ingredient[ingredient].has(potion_name):
 				all_potions_by_ingredient[ingredient].append(potion_name)
 
@@ -56,20 +65,20 @@ func initialize_recipes(recipes: Dictionary) -> void:
 func register_potion(potion_name: String, ingredients: Array = []) -> void:
 	var is_new: bool = false
 
-	# 1. DO NOT touch all_potions_by_ingredient here.
-	# The master total should only be set once during initialize_recipes().
-	# We only record the ingredients if the master list was somehow completely empty:
+	# Ensure the potion exists in the master ingredients lookup
 	if not all_potion_ingredients.has(potion_name):
 		if not ingredients.is_empty():
 			all_potion_ingredients[potion_name] = ingredients.duplicate()
-		else:
-			all_potion_ingredients[potion_name] = []
+			for ing in ingredients:
+				if not all_potions_by_ingredient.has(ing):
+					all_potions_by_ingredient[ing] = []
+				if not all_potions_by_ingredient[ing].has(potion_name):
+					all_potions_by_ingredient[ing].append(potion_name)
+					all_potions_by_ingredient[ing].sort()
 
-	# 2. Register discovery
 	if not discovered_potions.has(potion_name):
 		discovered_potions[potion_name] = true
 		
-		# Prefer master recipe ingredients if passed empty
 		var final_ingredients: Array = ingredients
 		if final_ingredients.is_empty():
 			final_ingredients = all_potion_ingredients.get(potion_name, [])
@@ -122,7 +131,7 @@ func get_potions_for_ingredient(ingredient: String) -> Array:
 			result.append(potion_name)
 	return result
 
-# Returns all potions (discovered or not) that use this ingredient
+# Returns all potions that use this ingredient (discovered or not)
 func get_all_potions_for_ingredient(ingredient: String) -> Array:
 	return all_potions_by_ingredient.get(ingredient, [])
 
@@ -135,7 +144,6 @@ func get_total_count_for_ingredient(ingredient: String) -> int:
 func get_total_discovered_count() -> int:
 	return discovered_potions.size()
 
-# Aliases to match helper callers
 func get_unlocked_count() -> int:
 	return discovered_potions.size()
 
@@ -173,8 +181,15 @@ func unlock_all_potions(recipes: Dictionary) -> void:
 		initialize_recipes(recipes)
 		
 	for ingredients in recipes.keys():
-		var potion_name = recipes[ingredients]
-		register_potion(potion_name, ingredients)
+		var raw_val = recipes[ingredients]
+		var potion_name: String = ""
+		if raw_val is Dictionary and raw_val.has("name"):
+			potion_name = str(raw_val["name"])
+		elif raw_val is String:
+			potion_name = raw_val
+		
+		if not potion_name.is_empty():
+			register_potion(potion_name, ingredients)
 
 static func build_progress_dots(discovered: int, total: int, dot_size: float = 8.0) -> HBoxContainer:
 	var row := HBoxContainer.new()

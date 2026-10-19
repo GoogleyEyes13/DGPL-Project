@@ -352,7 +352,9 @@ alignment = 1
 
 [node name="NotebookRadialDial" parent="NotebookPanel/MarginContainer/BookSpread/RightPage/PotionListView/DialContainer" unique_id=1125379738 instance=ExtResource("5_3cw0p")]
 layout_mode = 2
+ingredient_filter = null
 ring_thickness = 10.0
+auto_track_journal = null
 
 [node name="ProgressLabel" type="Label" parent="NotebookPanel/MarginContainer/BookSpread/RightPage/PotionListView/DialContainer" unique_id=1057661506]
 layout_mode = 2
@@ -416,6 +418,7 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 size_flags_vertical = 3
+placeholder_text = "What's been observed..."
 
 [node name="NotebookSFX" type="AudioStreamPlayer" parent="." unique_id=644226143]
 bus = &"SFX"

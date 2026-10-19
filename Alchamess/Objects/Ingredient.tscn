@@ -28,8 +28,10 @@ volume_db = -10.0
 bus = &"SFX"
 
 [node name="IngredientDial" parent="." unique_id=1125379738 instance=ExtResource("3_kq52w")]
-offset_left = -100.00001
-offset_top = -5.0000005
-offset_right = -100.00001
-offset_bottom = -5.0000005
-scale = Vector2(0.4, 0.4)
+offset_left = -32.5
+offset_top = -148.75
+offset_right = 31.5
+offset_bottom = -84.75
+background_color = Color(0.47843137, 0.39215687, 0.30980393, 0.38039216)
+ring_thickness = 10.0
+auto_track_global_journal = true
