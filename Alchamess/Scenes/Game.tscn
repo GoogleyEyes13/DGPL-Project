@@ -125,13 +125,15 @@ offset_bottom = -1.0
 
 [node name="DebugMenu" parent="UI" unique_id=1243030641 instance=ExtResource("1_n2ugt")]
 visible = false
+z_index = 127
 
 [node name="Background" type="Sprite2D" parent="." unique_id=197333015]
 modulate = Color(0.7141888, 0.7141888, 0.7141888, 1)
 z_index = -999
-position = Vector2(961, 430)
-scale = Vector2(0.45, 0.47)
+position = Vector2(526, 173)
+scale = Vector2(0.45, 0.475586)
 texture = ExtResource("4_6okg5")
+centered = false
 
 [node name="Foreground" type="Sprite2D" parent="." unique_id=300035624]
 z_index = -20
@@ -274,6 +276,7 @@ shape = SubResource("RectangleShape2D_mi7vx")
 [node name="EyeOfNewt" parent="Ingredients" unique_id=2023870098 instance=ExtResource("5_b2bpf")]
 position = Vector2(391, 258)
 ingredientType = "EyeOfNewt"
+ingredient_name = "EyeOfNewt"
 shelf_texture = ExtResource("14_n24vg")
 dragged_texture = ExtResource("14_m15vq")
 pickup_sound = ExtResource("19_7edvx")
@@ -281,6 +284,7 @@ pickup_sound = ExtResource("19_7edvx")
 [node name="Wormwood" parent="Ingredients" unique_id=1599874296 instance=ExtResource("5_b2bpf")]
 position = Vector2(1548.0001, 257)
 ingredientType = "Wormwood"
+ingredient_name = "Wormwood"
 shelf_texture = ExtResource("13_n2ugt")
 dragged_texture = ExtResource("15_m15vq")
 pickup_sound = ExtResource("21_w61tf")
@@ -288,6 +292,7 @@ pickup_sound = ExtResource("21_w61tf")
 [node name="ElbowGrease" parent="Ingredients" unique_id=655124839 instance=ExtResource("5_b2bpf")]
 position = Vector2(398, 487)
 ingredientType = "ElbowGrease"
+ingredient_name = "ElbowGrease"
 shelf_texture = ExtResource("13_n24vg")
 dragged_texture = ExtResource("19_n24vg")
 pickup_sound = ExtResource("23_a8bb1")
@@ -295,6 +300,7 @@ pickup_sound = ExtResource("23_a8bb1")
 [node name="OilOfVitriol" parent="Ingredients" unique_id=70480956 instance=ExtResource("5_b2bpf")]
 position = Vector2(1538, 485)
 ingredientType = "OilOfVitriol"
+ingredient_name = "OilOfVitriol"
 shelf_texture = ExtResource("15_n24vg")
 dragged_texture = ExtResource("21_n24vg")
 pickup_sound = ExtResource("27_8eewk")
@@ -303,6 +309,7 @@ pickup_sound = ExtResource("27_8eewk")
 visible = false
 position = Vector2(395.00003, 666.00006)
 ingredientType = "PhoenixFeather"
+ingredient_name = "PhoenixFeather"
 shelf_texture = ExtResource("8_4eqlp")
 dragged_texture = ExtResource("17_umnjm")
 pickup_sound = ExtResource("25_5eiyn")
@@ -311,6 +318,7 @@ pickup_sound = ExtResource("25_5eiyn")
 visible = false
 position = Vector2(1540, 672)
 ingredientType = "Stardust"
+ingredient_name = "Stardust"
 shelf_texture = ExtResource("13_4eqlp")
 dragged_texture = ExtResource("19_umnjm")
 pickup_sound = ExtResource("29_ahn08")
@@ -379,7 +387,7 @@ frame_progress = 1.0
 
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=1419371689]
 stream = ExtResource("59_n24vg")
-volume_db = -30.0
+volume_db = -5.0
 autoplay = true
 bus = &"Music"
 parameters/looping = true

@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://b3m8qvo8bik08"]
+
+[ext_resource type="Script" uid="uid://d138lffv4sfma" path="res://Assets/Scripts/PauseMenu.gd" id="1_5w4ur"]
+[ext_resource type="PackedScene" uid="uid://dmft8eqa80pop" path="res://Scenes/Settings.tscn" id="1_lj4oq"]
+[ext_resource type="Theme" uid="uid://clxl8pps2dife" path="res://Assets/UI/JournalUI/bento_sketch.tres" id="1_qwhev"]
+
+[node name="PauseMenu" type="CanvasLayer" unique_id=1698110650]
+layer = 128
+script = ExtResource("1_5w4ur")
+
+[node name="Overlay" type="ColorRect" parent="." unique_id=1027505555]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_qwhev")
+color = Color(1, 1, 1, 0.1254902)
+
+[node name="CenterContainer" type="CenterContainer" parent="Overlay" unique_id=1605972221]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainPauseVBox" type="VBoxContainer" parent="Overlay/CenterContainer" unique_id=860772357]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Overlay/CenterContainer/MainPauseVBox" unique_id=2101760494]
+layout_mode = 2
+text = "PAUSED"
+
+[node name="ResumeButton" type="Button" parent="Overlay/CenterContainer/MainPauseVBox" unique_id=1544433777]
+layout_mode = 2
+text = "Resume"
+
+[node name="RestartButton" type="Button" parent="Overlay/CenterContainer/MainPauseVBox" unique_id=1630933671]
+layout_mode = 2
+text = "Restart Game"
+
+[node name="OptionsButton" type="Button" parent="Overlay/CenterContainer/MainPauseVBox" unique_id=1134492413]
+layout_mode = 2
+text = "Options"
+
+[node name="MainMenuButton" type="Button" parent="Overlay/CenterContainer/MainPauseVBox" unique_id=855300387]
+layout_mode = 2
+text = "Main Menu"
+
+[node name="QuitButton" type="Button" parent="Overlay/CenterContainer/MainPauseVBox" unique_id=136629490]
+layout_mode = 2
+text = "Quit to Desktop"
+
+[node name="OptionsMenuContainer" type="VBoxContainer" parent="Overlay/CenterContainer" unique_id=279281188]
+visible = false
+layout_mode = 2
+
+[node name="SettingsMenu" parent="Overlay/CenterContainer/OptionsMenuContainer" unique_id=1802880493 instance=ExtResource("1_lj4oq")]
+layout_mode = 2
+
+[node name="ClickSFX" type="AudioStreamPlayer" parent="Overlay/CenterContainer/OptionsMenuContainer/SettingsMenu" unique_id=174951426]
+bus = &"SFX"

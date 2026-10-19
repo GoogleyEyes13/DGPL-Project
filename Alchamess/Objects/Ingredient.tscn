@@ -11,8 +11,6 @@ scale = Vector2(0.8, 0.8)
 collision_layer = 2
 input_pickable = true
 script = ExtResource("1_i6ux4")
-ingredientType = null
-ingredient_name = null
 
 [node name="ShelfSprite" type="Sprite2D" parent="." unique_id=1517871503]
 scale = Vector2(0.09, 0.09)

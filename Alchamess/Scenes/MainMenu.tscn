@@ -4,57 +4,103 @@
 [ext_resource type="Theme" uid="uid://clxl8pps2dife" path="res://Assets/UI/JournalUI/bento_sketch.tres" id="2_8saeu"]
 [ext_resource type="Texture2D" uid="uid://dmrugnh5nj1ii" path="res://Assets/Placeholders/AlchamessLogo[Orange].png" id="2_853f1"]
 [ext_resource type="PackedScene" uid="uid://dmft8eqa80pop" path="res://Scenes/Settings.tscn" id="3_8saeu"]
-[ext_resource type="Texture2D" uid="uid://c7vf37bo1a0fa" path="res://Assets/Menu/shutter.png" id="3_df05h"]
-[ext_resource type="Texture2D" uid="uid://cwpjymeg4uot2" path="res://Assets/MenuForeground.png" id="6_8um5k"]
+[ext_resource type="Texture2D" uid="uid://bfs6s45u5ksek" path="res://Assets/Menu/shutter.png" id="3_df05h"]
+[ext_resource type="Texture2D" uid="uid://cg1eujfhysm4a" path="res://Assets/background.png" id="4_koqhg"]
+[ext_resource type="Texture2D" uid="uid://es5fvll1jwn1" path="res://Assets/MenuForeground.png" id="6_8um5k"]
 [ext_resource type="Texture2D" uid="uid://b3543n0wcom5w" path="res://Assets/Sprites/FrogMentor/FrogMasterNormal.png" id="7_xim88"]
 
 [node name="MainMenu" type="Control" unique_id=927422500]
 z_index = -100
 z_as_relative = false
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1920.0
+offset_bottom = -1080.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_tt5f1")
 
-[node name="SettingsMenu" parent="." unique_id=1802880493 instance=ExtResource("3_8saeu")]
-visible = false
+[node name="ScreenCenter" type="CenterContainer" parent="." unique_id=9166914]
 layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
-[node name="ClickSFX" type="AudioStreamPlayer" parent="SettingsMenu" unique_id=530368301]
-bus = &"SFX"
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="ScreenCenter" unique_id=303279644]
+layout_mode = 2
+ratio = 1.7778
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=1881713620]
-layout_mode = 0
-offset_left = -35.999992
-offset_top = -41.999996
-offset_right = 1963.9999
-offset_bottom = 1126.9749
-scale = Vector2(1, 0.9991661)
+[node name="Canvas" type="Control" parent="ScreenCenter/AspectRatioContainer" unique_id=86698616]
+custom_minimum_size = Vector2(1920, 1080)
+clip_contents = true
+layout_mode = 2
+
+[node name="GarageDoor" type="TextureRect" parent="ScreenCenter/AspectRatioContainer/Canvas" unique_id=1881713620]
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -34.99994
+offset_top = -35.0
+offset_right = -35.0
+offset_bottom = -35.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.0393305, 1.072067)
 texture = ExtResource("3_df05h")
+expand_mode = 1
+stretch_mode = 6
 
-[node name="BackgroundColour" type="ColorRect" parent="." unique_id=1562538587]
-visible = false
+[node name="Background" type="TextureRect" parent="ScreenCenter/AspectRatioContainer/Canvas" unique_id=1188055891]
+modulate = Color(0.7137255, 0.7137255, 0.7137255, 1)
+z_index = -999
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
-scale = Vector2(0.9927985, 1)
-color = Color(0.62644553, 0.55332667, 0.39108768, 0.6392157)
+texture = ExtResource("4_koqhg")
+expand_mode = 1
+stretch_mode = 6
 
-[node name="AlchamessLogo[orange]" type="Sprite2D" parent="." unique_id=879874972]
-position = Vector2(214.99997, 176)
+[node name="AlchamessLogo[orange]" type="Sprite2D" parent="ScreenCenter/AspectRatioContainer/Canvas" unique_id=879874972]
+z_index = 5
+position = Vector2(208.00005, 248)
 scale = Vector2(0.174, 0.179)
 texture = ExtResource("2_853f1")
 
-[node name="PlayButton" type="Button" parent="." unique_id=1531628275]
+[node name="MenuForeground" type="Sprite2D" parent="ScreenCenter/AspectRatioContainer/Canvas" unique_id=1234653490]
+z_index = 100
+texture_filter = 1
+position = Vector2(-151.99994, -32)
+scale = Vector2(2.2283845, 2.2657967)
+texture = ExtResource("6_8um5k")
+centered = false
+
+[node name="FrogMaster" type="Sprite2D" parent="ScreenCenter/AspectRatioContainer/Canvas" unique_id=1291636036]
+z_index = 100
+position = Vector2(1656.0001, 680)
+scale = Vector2(0.099, 0.099)
+texture = ExtResource("7_xim88")
+
+[node name="PlayButton" type="Button" parent="ScreenCenter/AspectRatioContainer/Canvas" unique_id=1531628275]
+z_index = 2
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 874.0
-offset_top = 350.0
-offset_right = 1535.0
-offset_bottom = 440.0
+offset_left = -23.999939
+offset_top = -196.0
+offset_right = 637.0
+offset_bottom = -106.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1, 1.0051382)
@@ -62,56 +108,56 @@ theme = ExtResource("2_8saeu")
 theme_override_font_sizes/font_size = 50
 text = "Play"
 
-[node name="SettingsButton" type="Button" parent="." unique_id=881915766]
+[node name="QuitButton" type="Button" parent="ScreenCenter/AspectRatioContainer/Canvas" unique_id=199838649]
+z_index = 2
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 1028.0
-offset_top = 486.0
-offset_right = 1380.0
-offset_bottom = 562.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("2_8saeu")
-theme_override_font_sizes/font_size = 40
-text = "Settings"
-
-[node name="QuitButton" type="Button" parent="." unique_id=199838649]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 1028.0
-offset_top = 610.0
-offset_right = 1380.0
-offset_bottom = 686.0
+offset_left = 130.0
+offset_top = 64.0
+offset_right = 482.0
+offset_bottom = 140.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_8saeu")
 theme_override_font_sizes/font_size = 40
 text = "Quit"
 
+[node name="SettingsButton" type="Button" parent="ScreenCenter/AspectRatioContainer/Canvas" unique_id=881915766]
+z_index = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 130.0
+offset_top = -60.0
+offset_right = 482.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_8saeu")
+theme_override_font_sizes/font_size = 40
+text = "Settings"
+
+[node name="SettingsMenu" parent="ScreenCenter/AspectRatioContainer/Canvas" unique_id=1802880493 instance=ExtResource("3_8saeu")]
+visible = false
+layout_mode = 1
+offset_left = -960.0
+offset_top = -540.0
+offset_right = -960.0
+offset_bottom = -540.0
+
+[node name="ClickSFX" type="AudioStreamPlayer" parent="ScreenCenter/AspectRatioContainer/Canvas/SettingsMenu" unique_id=530368301]
+bus = &"SFX"
+
 [node name="ClickSFX" type="AudioStreamPlayer" parent="." unique_id=1094349586]
 bus = &"SFX"
 
-[node name="MenuForeground" type="Sprite2D" parent="." unique_id=1234653490]
-z_index = 100
-texture_filter = 1
-position = Vector2(959, 572)
-scale = Vector2(2.2, 2.2)
-texture = ExtResource("6_8um5k")
-
-[node name="FrogMaster" type="Sprite2D" parent="." unique_id=1291636036]
-z_index = 100
-position = Vector2(1636.0001, 697.00006)
-scale = Vector2(0.099, 0.099)
-texture = ExtResource("7_xim88")
-
-[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="SettingsButton" to="." method="_on_option_button_pressed"]
-[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="ScreenCenter/AspectRatioContainer/Canvas/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="ScreenCenter/AspectRatioContainer/Canvas/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="ScreenCenter/AspectRatioContainer/Canvas/SettingsButton" to="." method="_on_option_button_pressed"]
