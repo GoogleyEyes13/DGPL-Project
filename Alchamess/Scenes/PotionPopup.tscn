@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://b7257jafof3g3"]
+
+[ext_resource type="Theme" uid="uid://clxl8pps2dife" path="res://Assets/UI/JournalUI/bento_sketch.tres" id="1_s5vu2"]
+[ext_resource type="Script" uid="uid://bom2twcs7dicd" path="res://Assets/Scripts/PotionPopup.gd" id="2_1txye"]
+[ext_resource type="Texture2D" uid="uid://bruuijfi25i6r" path="res://Assets/Potions/RedPotion5.png" id="3_1txye"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1txye"]
+content_margin_left = 8.0
+content_margin_top = 6.0
+content_margin_right = 8.0
+content_margin_bottom = 6.0
+bg_color = Color(0, 0, 0, 0)
+border_color = Color(0, 0, 0, 0)
+corner_radius_top_left = 9
+corner_radius_top_right = 7
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 6
+
+[node name="PotionPopup" type="Control" unique_id=875975927]
+layout_mode = 3
+anchors_preset = 0
+scale = Vector2(2, 2)
+theme = ExtResource("1_s5vu2")
+script = ExtResource("2_1txye")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=736742963]
+layout_mode = 0
+offset_right = 253.0
+offset_bottom = 106.0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=383591890]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer" unique_id=114897897]
+layout_mode = 2
+
+[node name="PotionIcon" type="TextureRect" parent="PanelContainer/MarginContainer/HBoxContainer" unique_id=355992061]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+texture = ExtResource("3_1txye")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer" unique_id=1407649326]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SubtitleLabel" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1498801641]
+modulate = Color(4.105588, 3.1754143, 0.66911405, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "BREWED!"
+horizontal_alignment = 1
+
+[node name="PotionNameLabel" type="RichTextLabel" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=975364930]
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_1txye")
+bbcode_enabled = true
+text = "Potion of Curing"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="IngredientsBox" type="HBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1237622245]
+layout_mode = 2
+alignment = 1

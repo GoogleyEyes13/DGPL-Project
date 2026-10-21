@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://c13ys1t4joar2" path="res://Assets/Scripts/MixingStick.gd" id="2_fgofq"]
 [ext_resource type="Texture2D" uid="uid://cg1eujfhysm4a" path="res://Assets/background.png" id="4_6okg5"]
 [ext_resource type="Texture2D" uid="uid://dldv72qq8jife" path="res://Assets/Foreground.png" id="4_dctr5"]
+[ext_resource type="PackedScene" uid="uid://b7257jafof3g3" path="res://Scenes/PotionPopup.tscn" id="4_e2w45"]
 [ext_resource type="PackedScene" uid="uid://nk2mr8ongv5d" path="res://Objects/Ingredient.tscn" id="5_b2bpf"]
 [ext_resource type="Texture2D" uid="uid://dhpj4m8jgund1" path="res://Assets/Sprites/Cauldron/ladle.png" id="6_7w24h"]
 [ext_resource type="Texture2D" uid="uid://cja8xl5cua4by" path="res://Assets/Sprites/Cauldron/CauldronLiquid.png" id="7_n2ugt"]
@@ -133,6 +134,17 @@ offset_bottom = -1.0
 [node name="DebugMenu" parent="UI" unique_id=1243030641 instance=ExtResource("1_n2ugt")]
 visible = false
 z_index = 127
+
+[node name="PotionPopup" parent="UI" unique_id=875975927 groups=["PotionPopup"] instance=ExtResource("4_e2w45")]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 52.0
+offset_top = -274.0
+offset_right = 52.0
+offset_bottom = -274.0
+grow_vertical = 0
+scale = Vector2(1, 1)
 
 [node name="Background" type="Sprite2D" parent="." unique_id=197333015]
 modulate = Color(0.7141888, 0.7141888, 0.7141888, 1)

@@ -128,6 +128,10 @@ func _on_collision_entered(incoming_node: Node2D) -> void:
 				
 				potion_bottle_filled.emit(target_node.potionName, LastPotionCreated)
 				
+				var popup: PotionPopup = get_tree().get_first_node_in_group("PotionPopup") as PotionPopup
+				if popup:
+					popup.display_potion(LastPotionCreated, ingredients_list)
+					
 				# Reset state
 				if MixingStick:
 					MixingStick.reset_liquid_colour()
