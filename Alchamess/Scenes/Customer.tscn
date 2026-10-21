@@ -44,7 +44,7 @@
 [ext_resource type="Texture2D" uid="uid://d11unljt1xx3l" path="res://Assets/Sprites/Caseoh/CaseohBeautification.png" id="25_c1vay"]
 [ext_resource type="Texture2D" uid="uid://b67wktbp2oah8" path="res://Assets/Sprites/Caseoh/CaseohArtStyleSwap.png" id="25_hl3cd"]
 [ext_resource type="Texture2D" uid="uid://cv7qspssu5oh1" path="res://Assets/Sprites/Caseoh/CaseohMog.png" id="27_7yobe"]
-[ext_resource type="Texture2D" path="res://Assets/Sprites/Mr Monicle/MrMonicleArtStyleSwap.png" id="29_gq25i"]
+[ext_resource type="Texture2D" uid="uid://dq3kolojtd8fs" path="res://Assets/Sprites/Mr Monicle/MrMonicleArtStyleSwap.png" id="29_gq25i"]
 [ext_resource type="Texture2D" uid="uid://civg7vg1hrgfx" path="res://Assets/Sprites/Mr Monicle/MrMonicleBodySwap.png" id="31_mqhyu"]
 [ext_resource type="Texture2D" uid="uid://dnv8dskbj7uvs" path="res://Assets/Sprites/Caseoh/CaseohBodySwap.png" id="41_p7eft"]
 
