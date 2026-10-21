@@ -13,7 +13,7 @@ var is_shrunk: bool = false
 # Movement
 @export var step_bounce_height: float = 8.0
 @export var step_speed: float = 6.0
-@export var customer_names: Array[String] = ["Queso", "HerbBert", "MrMonicle", "LadyP"]
+@export var customer_names: Array[String] = ["Queso", "HerbBert", "MrMonicle", "LadyP", "Norkl"]
 
 # Potion effect timing & shake variables
 @export var jitter_intensity: float = 4.0
