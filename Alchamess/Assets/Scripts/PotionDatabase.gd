@@ -66,7 +66,7 @@ const RECIPES: Dictionary = {
 	},
 	["ElbowGrease", "EyeOfNewt", "Wormwood"]: {
 		"name": "Potion of Permanent Smile",
-		"frame": 0,
+		"frame": 13,
 		"suffix": "Normal",
 		"bottle_anim": "Potion3",
 		"bottle_frame": 2
