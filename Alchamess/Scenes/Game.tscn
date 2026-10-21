@@ -107,8 +107,15 @@ animations = [{
 "speed": 9.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(239.86987, 115.18352)
+
 [node name="Game" type="Node2D" unique_id=1061024810]
 script = ExtResource("1_dctr5")
+
+[node name="PotionRestPoint" type="Marker2D" parent="." unique_id=701863573 groups=["PotionRestPoint"]]
+position = Vector2(1323, 732)
+scale = Vector2(2.877, 2.877)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1678639440]
 position = Vector2(959, 420)
@@ -383,6 +390,17 @@ scale = Vector2(1.6, 1.6)
 sprite_frames = SubResource("SpriteFrames_g4v7s")
 frame = 7
 frame_progress = 1.0
+
+[node name="Sink" type="Area2D" parent="." unique_id=1800479688 groups=["Disposal"]]
+light_mask = 0
+visibility_layer = 2
+position = Vector2(1939, 745)
+collision_mask = 2097154
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sink" unique_id=401769631]
+position = Vector2(-145.5, -12.5)
+scale = Vector2(0.67119765, 1.415134)
+shape = SubResource("RectangleShape2D_g4v7s")
 
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=1419371689]
 stream = ExtResource("59_n24vg")

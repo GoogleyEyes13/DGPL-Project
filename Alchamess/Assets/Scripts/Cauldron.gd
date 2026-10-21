@@ -140,7 +140,6 @@ func _on_collision_entered(incoming_node: Node2D) -> void:
 					child.visible = false
 				
 				ingredients_updated.emit(CauldronIngredients.keys(), LastPotionCreated)
-				PotionJournal.register_potion(LastPotionCreated, ingredients_list)
 
 
 func _on_potion_mixed() -> void:

@@ -149,6 +149,16 @@ func receive_potion(potion_type: String) -> void:
 		return
 
 	var target_frame: int = info.get("frame", 0)
+	
+	# 1. Discover potion in journal
+	var ingredients: Array = []
+	for recipe_ingredients in PotionDatabase.RECIPES.keys():
+		if PotionDatabase.RECIPES[recipe_ingredients]["name"] == potion_type:
+			ingredients = recipe_ingredients.duplicate()
+			break
+	PotionJournal.register_potion(potion_type, ingredients)
+	
+	# 2. Record the customer portrait and state
 	PotionJournal.record_potion_given(potion_type, CustomerName, target_frame)
 	
 	SmokeTransition.visible = true
@@ -162,7 +172,6 @@ func receive_potion(potion_type: String) -> void:
 
 	var delay_time: float = 1.0
 
-	# Process data-driven effects
 	var effect: String = info.get("effect", "")
 	if effect == "explode":
 		explode_effect()
@@ -180,7 +189,6 @@ func receive_potion(potion_type: String) -> void:
 		position.y += 45
 		is_shrunk = true
 	
-	# Single-line completion dialogue resolution via CharacterData
 	var dialogue_path = CharacterData.get_dialogue_path(CustomerName, "Done")
 	DialogueManager.show_dialogue_balloon(load(dialogue_path))
 	
