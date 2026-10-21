@@ -44,8 +44,16 @@
 [ext_resource type="Texture2D" uid="uid://d11unljt1xx3l" path="res://Assets/Sprites/Caseoh/CaseohBeautification.png" id="25_c1vay"]
 [ext_resource type="Texture2D" uid="uid://b67wktbp2oah8" path="res://Assets/Sprites/Caseoh/CaseohArtStyleSwap.png" id="25_hl3cd"]
 [ext_resource type="Texture2D" uid="uid://cv7qspssu5oh1" path="res://Assets/Sprites/Caseoh/CaseohMog.png" id="27_7yobe"]
-[ext_resource type="Texture2D" uid="uid://dq3kolojtd8fs" path="res://Assets/Sprites/Mr Monicle/MrMonicleArtStyleSwap.png" id="29_gq25i"]
+<<<<<<< HEAD
+[ext_resource type="Texture2D" path="res://Assets/Sprites/Mr Monicle/MrMonicleArtStyleSwap.png" id="29_gq25i"]
+=======
+[ext_resource type="Texture2D" uid="uid://ch6wcs0b70h7" path="res://Assets/Sprites/Mr Monicle/MrMonicleArtStyleSwap.png" id="29_gq25i"]
+>>>>>>> 6eb8ac58b126bf37f22622d7764e8822ab2ef2a3
 [ext_resource type="Texture2D" uid="uid://civg7vg1hrgfx" path="res://Assets/Sprites/Mr Monicle/MrMonicleBodySwap.png" id="31_mqhyu"]
+[ext_resource type="Texture2D" uid="uid://csex4s4fff0cx" path="res://Assets/Sprites/Norkl/NorklNormal.png" id="34_0vafy"]
+[ext_resource type="Texture2D" uid="uid://buaplctlybjdr" path="res://Assets/Sprites/Norkl/NorklRabies.png" id="35_b172t"]
+[ext_resource type="Texture2D" uid="uid://xv8gvmk1im81" path="res://Assets/Sprites/Norkl/NorklMog.png" id="36_iqu3q"]
+[ext_resource type="Texture2D" uid="uid://c013nqqhmyca4" path="res://Assets/Sprites/Norkl/NorklPermanentSmile.png" id="37_08j0q"]
 [ext_resource type="Texture2D" uid="uid://dnv8dskbj7uvs" path="res://Assets/Sprites/Caseoh/CaseohBodySwap.png" id="41_p7eft"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_57qmd"]
@@ -193,6 +201,53 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("34_0vafy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_0vafy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_0vafy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_0vafy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_0vafy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_0vafy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_e4mfo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_0vafy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_8q8uq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_0vafy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_b172t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_iqu3q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_0vafy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_08j0q")
+}],
+"loop": 1,
+"name": &"Norkl",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("1_r206j")
 }, {
 "duration": 1.0,
@@ -247,7 +302,11 @@ height = 4375.0
 texture_filter = 1
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_57qmd")
-animation = &"Queso"
+<<<<<<< HEAD
+animation = &"MrMonicle"
+=======
+animation = &"Norkl"
+>>>>>>> 6eb8ac58b126bf37f22622d7764e8822ab2ef2a3
 script = ExtResource("7_cj036")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=621125951]
