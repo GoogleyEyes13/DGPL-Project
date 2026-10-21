@@ -173,8 +173,11 @@ func receive_potion(potion_type: String) -> void:
 	
 	if info.has("scale"):
 		scale = info["scale"]
-	elif potion_type == "Potion of Skeleton" and CustomerName != "Queso":
+	
+	if potion_type == "Potion of Skeleton" and CustomerName != "Queso":
 		scale = Vector2(0.22, 0.22)
+	if potion_type == "Potion of Change Art Styles" and CustomerName == "MrMonicle":
+		scale = Vector2(0.24, 0.24)
 		
 	if info.get("shrink", false):
 		position.y += 45
