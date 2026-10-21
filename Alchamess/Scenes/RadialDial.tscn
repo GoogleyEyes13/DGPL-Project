@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dnch51pphowlp"]
 
-[ext_resource type="Script" uid="uid://dwbs1wd06u5pv" path="res://Assets/Scripts/RadialDial.gd" id="1_l6xh4"]
+[ext_resource type="Script" uid="uid://dwbs1wd06u5pv" path="res://Assets/Scripts/UI/RadialDial.gd" id="1_l6xh4"]
 
 [node name="RadialDial" type="Control" unique_id=1125379738]
 custom_minimum_size = Vector2(64, 64)

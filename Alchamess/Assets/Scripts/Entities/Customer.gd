@@ -141,7 +141,6 @@ func receive_potion(potion_type: String) -> void:
 	cust_is_ready = false
 	
 	Globals.submitPotion(potion_type)
-	print(potion_type + " " + Globals.wantedPotionType)
 	
 	var info: Dictionary = PotionDatabase.get_potion_info_by_name(potion_type)
 	if info.is_empty():
@@ -150,17 +149,24 @@ func receive_potion(potion_type: String) -> void:
 
 	var target_frame: int = info.get("frame", 0)
 	
-	# 1. Discover potion in journal
+	# Fetch recipe ingredients for the journal & popup
 	var ingredients: Array = []
 	for recipe_ingredients in PotionDatabase.RECIPES.keys():
 		if PotionDatabase.RECIPES[recipe_ingredients]["name"] == potion_type:
 			ingredients = recipe_ingredients.duplicate()
 			break
+
+	# 1. Register with Journal
 	PotionJournal.register_potion(potion_type, ingredients)
-	
-	# 2. Record the customer portrait and state
 	PotionJournal.record_potion_given(potion_type, CustomerName, target_frame)
-	
+
+	# --- 2. SHOW POPUP ON DELIVERY ---
+	var popup: PotionPopup = get_tree().get_first_node_in_group("PotionPopup") as PotionPopup
+	if popup:
+		popup.display_potion(potion_type, ingredients)
+	# ---------------------------------
+
+	# Visual effects & smoke transition
 	SmokeTransition.visible = true
 	SmokeTransition.play()
 	smoke_sfx.stream = preload("res://Assets/Audio/SFX/Smoke Puff/smoke puff.mp3")

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bs1r4s6qk1h7a"]
 
-[ext_resource type="Script" uid="uid://cd02yewpj52sp" path="res://Assets/Scripts/NotebookMenu.gd" id="1_htgb8"]
+[ext_resource type="Script" uid="uid://cd02yewpj52sp" path="res://Assets/Scripts/UI/NotebookMenu.gd" id="1_htgb8"]
 [ext_resource type="Texture2D" uid="uid://of12ihqbnqq1" path="res://Assets/UI/JournalUI/journal.png" id="3_4lqga"]
 [ext_resource type="Texture2D" uid="uid://u5krystq3q6w" path="res://Assets/Ingredients/ShelfWormwood.png" id="4_1xjk5"]
 [ext_resource type="PackedScene" uid="uid://dnch51pphowlp" path="res://Scenes/RadialDial.tscn" id="5_3cw0p"]

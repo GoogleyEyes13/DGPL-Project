@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://tbu6n7m6no5v"]
 
-[ext_resource type="Script" uid="uid://2ckftq74w5ph" path="res://Assets/Scripts/DebugMenu.gd" id="1_w86ti"]
+[ext_resource type="Script" uid="uid://2ckftq74w5ph" path="res://Assets/Scripts/Debug/DebugMenu.gd" id="1_w86ti"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w86ti"]
 bg_color = Color(0.6, 0.6, 0.6, 0.18039216)

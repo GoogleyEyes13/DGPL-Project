@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dpv2ywmfixlf7" path="res://Assets/Sprites/Caseoh/CaseohGreen.png" id="5_cj036"]
 [ext_resource type="Texture2D" uid="uid://bee8cjyoeqcfh" path="res://Assets/Sprites/Caseoh/CaseohEyes.png" id="6_yd18k"]
 [ext_resource type="Texture2D" uid="uid://cs2hoqx0f8b4m" path="res://Assets/Sprites/Caseoh/CaseohSkeleton.png" id="7_c7i8l"]
-[ext_resource type="Script" uid="uid://bmpdj2jewm2v8" path="res://Assets/Scripts/Customer.gd" id="7_cj036"]
+[ext_resource type="Script" uid="uid://bmpdj2jewm2v8" path="res://Assets/Scripts/Entities/Customer.gd" id="7_cj036"]
 [ext_resource type="Texture2D" uid="uid://icr0kwpjomlw" path="res://Assets/Sprites/Non-Unique/Skeleton.png" id="7_e4mfo"]
 [ext_resource type="Texture2D" uid="uid://bsi1m2qrrswqw" path="res://Assets/Sprites/Non-Unique/TheFeaturedCreature.png" id="8_8q8uq"]
 [ext_resource type="Texture2D" uid="uid://cuxbg1ndm6osm" path="res://Assets/Sprites/Herb Bert/HerbBertNormal.png" id="8_kosw0"]

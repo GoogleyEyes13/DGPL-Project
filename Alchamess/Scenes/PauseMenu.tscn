@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b3m8qvo8bik08"]
 
-[ext_resource type="Script" uid="uid://d138lffv4sfma" path="res://Assets/Scripts/PauseMenu.gd" id="1_5w4ur"]
+[ext_resource type="Script" uid="uid://d138lffv4sfma" path="res://Assets/Scripts/UI/PauseMenu.gd" id="1_5w4ur"]
 [ext_resource type="PackedScene" uid="uid://dmft8eqa80pop" path="res://Scenes/Settings.tscn" id="1_lj4oq"]
 [ext_resource type="Theme" uid="uid://clxl8pps2dife" path="res://Assets/UI/JournalUI/bento_sketch.tres" id="1_qwhev"]
 
