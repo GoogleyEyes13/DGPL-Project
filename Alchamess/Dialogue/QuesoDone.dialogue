@@ -4,13 +4,25 @@ if Globals.submittedPotionType == Globals.wantedPotionType
 		t̸̡̛̥̜̻̘̋͂̈̏͋̇h̴̬̘̼̟͉̞͔̠̀͛̉̉a̴̡̡̡̛̱̥̻͔̕͜ḱ̴̙͍̱̗͉͉ ̷̡̡̛̜̦̠̠͉̘͒̌̿̈́͠y̷̿̇͊̄̋̀͜o̶̢̮͐̈̆u̸̢̞̎̀͛̑̀
 	elif Globals.submittedPotionType == "Potion of Rabies"
 		Herb Bert: [Incomprehensible gratitude]
+	elif Globals.submittedPotionType == "Potion of Change Language"
+		% Queso: Grazie mille! È perfetto!
+		% Queso: Фала многу! Овој е одличен!
+		% Queso: Makasi banyak! Mantap beut.
+		% Queso: Matur nuwun yo!
+		% Queso: Arigatou! Sugoi desu!
+		% Queso: Kore chigau yo, boke!
 	else
 		Queso: Thanks, see? that wasn't too hard.
 else
 	if Globals.submittedPotionType == "Potion of Baldness"
 		Queso: WHAT DID YOU DO TO MY HAIR?!
 	elif Globals.submittedPotionType == "Potion of Change Language"
-		Queso: 𓎢𓅲𓂋𓋴𓅂𓐍𓇌𓅱𓅲
+		% Queso: Questa lingua è sbagliata, stai scemo!
+		% Queso: Тикво! Шо прајш, бе?!
+		% Queso: Weh, bahasanya salah, blog!
+		% Queso: Boso opo ki rek?!
+		% Queso: Kore chigau yo, boke!
+		% Queso: Zhī shì shěn me yǔyán a?! bèn dàn!
 	elif Globals.submittedPotionType == "Potion of Explode"
 		There was nothing left but a pile of dust.
 	elif Globals.submittedPotionType == "Potion of Creature Feature"

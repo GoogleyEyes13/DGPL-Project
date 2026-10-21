@@ -5,14 +5,24 @@ if Globals.submittedPotionType == Globals.wantedPotionType
 	elif Globals.submittedPotionType == "Potion of Rabies"
 		Herb Bert: [Incomprehensible gratitude]
 	elif Globals.submittedPotionType == "Potion of Change Language"
-		Herb Bert: ¡Gracias, vendedor de pociones!
+		% Herb Bert: ¡Gracias, vendedor de pociones!
+		% Herb Bert: Фала многу! Овој е одличен!
+		% Herb Bert: Makasi banyak! Mantap beut.
+		% Herb Bert: Matur nuwun yo!
+		% Herb Bert: Arigatou! Sugoi desu!
+		% Herb Bert: Kore chigau yo, boke!
 	else
 		Herb Bert: Now that's more like it. Thanks!
 else
 	if Globals.submittedPotionType == "Potion of Baldness"
 		Herb Bert: Well I was meaning to go to the barber...
 	elif Globals.submittedPotionType == "Potion of Change Language"
-		Herb Bert: Esto no está nada bien...
+		% Herb Bert: Questa lingua è sbagliata, stai scemo!
+		% Herb Bert: Тикво! Шо прајш, бе?!
+		% Herb Bert: Weh, bahasanya salah, blog!
+		% Herb Bert: Boso opo ki rek?!
+		% Herb Bert: Kore chigau yo, boke!
+		% Herb Bert: Zhī shì shěn me yǔyán a?! bèn dàn!
 	elif Globals.submittedPotionType == "Potion of Explode"
 		There was nothing left but a pile of dust.
 	elif Globals.submittedPotionType == "Potion of Creature Feature"
