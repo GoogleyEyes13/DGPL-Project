@@ -103,13 +103,24 @@ func _ready() -> void:
 	_setup_ingredient_buttons()
 	if potion_list_container:
 		potion_list_container.add_theme_constant_override("separation", 8)
+		
+	# Connect to journal unlock signals to update button visibility in real time
+	if PotionJournal:
+		PotionJournal.NewIngredientUnlocked.connect(_on_ingredient_unlocked)
+
+
+func _on_ingredient_unlocked(_ingredient_name: String) -> void:
+	_update_ingredient_button_visibility()
+
 
 #region Open / Close / Hover
 func _on_book_hover_enter() -> void:
 	_animate_book_scale(hover_scale)
 
+
 func _on_book_hover_exit() -> void:
 	_animate_book_scale(base_scale)
+
 
 func _animate_book_scale(target: Vector2) -> void:
 	if scale_tween and scale_tween.is_running():
@@ -117,21 +128,28 @@ func _animate_book_scale(target: Vector2) -> void:
 	scale_tween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 	scale_tween.tween_property(book_button, "scale", target, tween_duration)
 
+
 func _on_book_pressed() -> void:
 	if panel.visible:
 		close_journal()
 	else:
 		open_journal()
 
+
 func open_journal() -> void:
 	panel.visible = true
 	book_button.visible = false
 	_play_sfx(sfx_open)
 	
-	if current_ingredient.is_empty() and not ingredient_names.is_empty():
-		_on_ingredient_selected(ingredient_names[0])
-	elif not current_ingredient.is_empty():
+	_update_ingredient_button_visibility()
+	
+	var unlocked: Array[String] = _get_unlocked_ingredients()
+	if current_ingredient.is_empty() or not unlocked.has(current_ingredient):
+		if not unlocked.is_empty():
+			_on_ingredient_selected(unlocked[0])
+	else:
 		_show_potion_list(current_ingredient)
+
 
 func close_journal() -> void:
 	panel.visible = false
@@ -143,6 +161,24 @@ func _play_sfx(stream: AudioStream) -> void:
 	if notebook_sfx and stream:
 		notebook_sfx.stream = stream
 		notebook_sfx.play()
+
+
+func _get_unlocked_ingredients() -> Array[String]:
+	if PotionJournal and PotionJournal.has_method("get_unlocked_ingredients"):
+		return PotionJournal.get_unlocked_ingredients()
+	return ["ElbowGrease", "OilOfVitriol", "Wormwood", "EyeOfNewt"]
+
+
+func _update_ingredient_button_visibility() -> void:
+	if not ingredient_grid:
+		return
+		
+	var unlocked: Array[String] = _get_unlocked_ingredients()
+	for ingredient in ingredient_names:
+		var button: Button = ingredient_grid.get_node_or_null("Row_" + ingredient)
+		if button:
+			button.visible = unlocked.has(ingredient)
+
 
 func _setup_ingredient_buttons() -> void:
 	if not ingredient_grid:
@@ -167,11 +203,15 @@ func _setup_ingredient_buttons() -> void:
 		
 		if not button.pressed.is_connected(_on_ingredient_selected):
 			button.pressed.connect(_on_ingredient_selected.bind(ingredient))
+			
+	_update_ingredient_button_visibility()
+
 
 func _on_ingredient_selected(ingredient: String) -> void:
 	current_ingredient = ingredient
 	_play_sfx(sfx_forward)
 	_show_potion_list(ingredient)
+
 
 func _show_potion_list(ingredient: String) -> void:
 	if potion_detail_view:
@@ -212,7 +252,7 @@ func _show_potion_list(ingredient: String) -> void:
 		var label := Label.new()
 		label.text = "No potions discovered yet with this ingredient."
 		label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		# label.autowrap_mode = TextServer.AUTOWRAP_WORD #Removed Autowrap as it causes placeholder text to wrap.
+		#label.autowrap_mode = TextServer.AUTOWRAP_WORD  #removed to fix a bug for the placeholder text.
 		label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		if potion_list_container:
 			potion_list_container.add_child(label)
@@ -227,12 +267,14 @@ func _show_potion_list(ingredient: String) -> void:
 		if potion_list_container:
 			potion_list_container.add_child(button)
 
+
 func _on_back_to_potions_pressed() -> void:
 	_play_sfx(sfx_backward)
 	if potion_detail_view:
 		potion_detail_view.visible = false
 	if potion_list_view:
 		potion_list_view.visible = true
+
 
 func _on_potion_selected(potion_name: String) -> void:
 	current_potion = potion_name
@@ -266,6 +308,7 @@ func _on_potion_selected(potion_name: String) -> void:
 	if detail_notes_field:
 		detail_notes_field.text = PotionJournal.get_note(potion_name)
 
+
 func _get_customer_portraits(customer_name: String, potion_name: String) -> Dictionary:
 	var raw_name: String = customer_name.strip_edges()
 	
@@ -296,9 +339,11 @@ func _get_customer_portraits(customer_name: String, potion_name: String) -> Dict
 		"after": after_tex
 	}
 
+
 func _on_notes_changed() -> void:
 	if current_potion != "" and detail_notes_field:
 		PotionJournal.set_note(current_potion, detail_notes_field.text)
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	if detail_notes_field and detail_notes_field.has_focus():

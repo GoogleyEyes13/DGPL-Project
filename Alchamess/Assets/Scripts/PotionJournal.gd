@@ -19,9 +19,11 @@ signal journal_updated
 # potion_name -> { "ingredients": Array, "notes": String, "last_customer": String, "last_frame": int }
 var potion_data: Dictionary = {}
 
+
 func _ready() -> void:
 	if PotionDatabase:
 		initialize_recipes(PotionDatabase.recipes)
+
 
 func initialize_recipes(recipes: Dictionary) -> void:
 	if not all_potion_ingredients.is_empty():
@@ -57,6 +59,7 @@ func initialize_recipes(recipes: Dictionary) -> void:
 
 	journal_updated.emit()
 
+
 func register_potion(potion_name: String, ingredients: Array = []) -> void:
 	if discovered_potions.has(potion_name):
 		return
@@ -90,6 +93,19 @@ func register_potion(potion_name: String, ingredients: Array = []) -> void:
 
 	journal_updated.emit()
 
+
+func get_unlocked_ingredients() -> Array[String]:
+	var available: Array[String] = ["ElbowGrease", "OilOfVitriol", "Wormwood", "EyeOfNewt"]
+	
+	if has_made_four_potions:
+		available.append("PhoenixFeather")
+		
+	if has_made_ten_potions:
+		available.append("Stardust")
+		
+	return available
+
+
 func record_potion_given(potion_name: String, customer_name: String, frame: int) -> void:
 	if not potion_data.has(potion_name):
 		potion_data[potion_name] = {
@@ -102,11 +118,14 @@ func record_potion_given(potion_name: String, customer_name: String, frame: int)
 	potion_data[potion_name]["last_frame"] = frame
 	journal_updated.emit()
 
+
 func get_potion_customer(potion_name: String) -> String:
 	return potion_data.get(potion_name, {}).get("last_customer", "")
 
+
 func get_potion_customer_frame(potion_name: String) -> int:
 	return potion_data.get(potion_name, {}).get("last_frame", 0)
+
 
 func get_potions_for_ingredient(ingredient: String) -> Array:
 	var result: Array = []
@@ -116,40 +135,51 @@ func get_potions_for_ingredient(ingredient: String) -> Array:
 			result.append(potion_name)
 	return result
 
+
 func get_all_potions_for_ingredient(ingredient: String) -> Array:
 	return all_potions_by_ingredient.get(ingredient.strip_edges(), [])
+
 
 func get_discovered_count_for_ingredient(ingredient: String) -> int:
 	return get_potions_for_ingredient(ingredient).size()
 
+
 func get_total_count_for_ingredient(ingredient: String) -> int:
 	return all_potions_by_ingredient.get(ingredient.strip_edges(), []).size()
+
 
 func get_total_discovered_count() -> int:
 	return discovered_potions.size()
 
+
 func get_total_potion_count() -> int:
 	return all_potion_ingredients.size()
 
+
 func is_potion_discovered(potion_name: String) -> bool:
 	return discovered_potions.has(potion_name)
+
 
 func get_ingredients_for_potion(potion_name: String) -> Array:
 	if potion_data.has(potion_name):
 		return potion_data[potion_name]["ingredients"]
 	return all_potion_ingredients.get(potion_name, [])
 
+
 func set_note(potion_name: String, note: String) -> void:
 	if potion_data.has(potion_name):
 		potion_data[potion_name]["notes"] = note
 
+
 func get_note(potion_name: String) -> String:
 	return potion_data.get(potion_name, {}).get("notes", "")
+
 
 func unlock_potion(potion_name: String, ingredients: Array = []) -> void:
 	if ingredients.is_empty():
 		ingredients = all_potion_ingredients.get(potion_name, [])
 	register_potion(potion_name, ingredients)
+
 
 func unlock_all_potions(recipes: Dictionary) -> void:
 	if all_potion_ingredients.is_empty():
