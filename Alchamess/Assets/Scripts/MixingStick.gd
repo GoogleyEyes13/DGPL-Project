@@ -136,7 +136,7 @@ func change_liquid_colour() -> void:
 			target_colour = Color("#99855D")
 		"Potion of Rapid Shaking", "Potion of Permanent Smile", "Potion of Shrink Person", \
 		"Potion of Baldness", "Potion of Creature Feature":
-			target_colour = Color("#5B3867")
+			target_colour = Color("#964D27")
 		"Potion of Beautification", "Potion of Explode", "Potion of Body Swap", \
 		"Potion of Head Size Increase", "Potion of Eye Colour Swap":
 			target_colour = Color("#AD3922")
