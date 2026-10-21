@@ -60,7 +60,7 @@ const RECIPES: Dictionary = {
 	["ElbowGrease", "EyeOfNewt", "PhoenixFeather"]: {
 		"name": "Potion of Eye Colour Swap",
 		"frame": 5,
-		"suffix": "BlueEyes",
+		"suffix": "Eyes",
 		"bottle_anim": "Potion4",
 		"bottle_frame": 3
 	},

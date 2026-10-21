@@ -23,7 +23,7 @@ func _ready() -> void:
 
 func display_potion(potion_name: String, ingredients: Array = []) -> void:
 	# 1. Fetch Potion Data & format bold using BBCode
-	var info: Dictionary = PotionDatabase.get_potion_info_by_name(potion_name)
+	var _info: Dictionary = PotionDatabase.get_potion_info_by_name(potion_name)
 	potion_name_label.text = "[b]" + potion_name + "[/b]"
 
 	if ingredients.is_empty():
