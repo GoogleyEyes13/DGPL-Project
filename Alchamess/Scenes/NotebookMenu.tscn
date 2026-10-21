@@ -334,12 +334,14 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="NotebookPanel/MarginContainer/BookSpread/RightPage/PotionListView" unique_id=1510700027]
+clip_contents = false
 layout_mode = 2
 size_flags_vertical = 3
 
 [node name="PotionListContainer" type="GridContainer" parent="NotebookPanel/MarginContainer/BookSpread/RightPage/PotionListView/ScrollContainer" unique_id=1555688994]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
 columns = 2
 
 [node name="HSeparator3" type="HSeparator" parent="NotebookPanel/MarginContainer/BookSpread/RightPage/PotionListView" unique_id=1916444720]

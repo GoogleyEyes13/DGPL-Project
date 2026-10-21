@@ -212,7 +212,7 @@ func _show_potion_list(ingredient: String) -> void:
 		var label := Label.new()
 		label.text = "No potions discovered yet with this ingredient."
 		label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		label.autowrap_mode = TextServer.AUTOWRAP_WORD
+		# label.autowrap_mode = TextServer.AUTOWRAP_WORD #Removed Autowrap as it causes placeholder text to wrap.
 		label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		if potion_list_container:
 			potion_list_container.add_child(label)
