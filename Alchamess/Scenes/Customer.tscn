@@ -25,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://bjcfcnl851udh" path="res://Assets/Sprites/LadyP/LadyPEyes.png" id="13_dwek5"]
 [ext_resource type="Texture2D" uid="uid://cepfe45urmhbr" path="res://Assets/Sprites/LadyP/LadyPRabies.png" id="13_gsmmf"]
 [ext_resource type="Texture2D" uid="uid://dd8xc2db6jx8a" path="res://Assets/Sprites/LadyP/LadyPBald.png" id="13_kdj2y"]
+[ext_resource type="Texture2D" uid="uid://xxpjoegvj2rq" path="res://Assets/Sprites/Herb Bert/HerbBertSmile.png" id="13_lw81b"]
 [ext_resource type="Texture2D" uid="uid://bjub8akikddl7" path="res://Assets/Sprites/Herb Bert/HerbBertEyes.png" id="13_ybyuj"]
 [ext_resource type="Texture2D" uid="uid://cxpqhyk6677ic" path="res://Assets/Sprites/LadyP/LadyPMog.png" id="14_jsqc0"]
 [ext_resource type="Texture2D" uid="uid://drmbaysxfp0ce" path="res://Assets/Sprites/LadyP/LadyPBigHead.png" id="14_p7eft"]
@@ -103,7 +104,7 @@ animations = [{
 "texture": ExtResource("12_j7dqm")
 }, {
 "duration": 1.0,
-"texture": ExtResource("13_0vafy")
+"texture": ExtResource("13_lw81b")
 }],
 "loop": 1,
 "name": &"HerbBert",
@@ -306,7 +307,7 @@ height = 4375.0
 texture_filter = 1
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_57qmd")
-animation = &"MrMonicle"
+animation = &"HerbBert"
 script = ExtResource("7_cj036")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=621125951]

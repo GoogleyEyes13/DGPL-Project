@@ -1,0 +1,52 @@
+~ start
+% Lady P: Good day to you, connoisseur of mystical beverages.
+% Lady P: All these pesants around me, so filthy!
+% Lady P: I demand you make a potion for me. Do so, and I shall pay you... exactly what you are due.
+
+match Globals.wantedPotionType: # this is a placeholder while we set up a global variable for the wanted potions
+	when "Potion of Mogging":
+		Lady P: I want everyone to see how far I outclass them!
+	when "Potion of Beautification":
+		Lady P: Help me enhance my already immaculate beauty.
+	when "Potion of Rapid Shaking":
+		Lady P: It's been a while since I've felt the jitters, I desire to re-live that feeling.
+	when "Potion of Eye Colour Swap":
+		Lady P: I desire a hue shift for my retinas.
+	when "Potion of Permanent Smile":
+		Lady P: The poor are always complaining about my dismissive demeanor. May you aid with that?
+	when "Potion of Green Skin":
+		Lady P: I desire to become more verdant.
+	when "Potion of Curing":
+		Lady P: I think a pauper gave me some kind of plague, fix it at once!
+	when "Potion Of Baldness":
+		Lady P: My mane is bothering me, remove it at once!
+	when "Potion of Head Size Increase":
+		Lady P: I demand a cranium the size of my ego!
+	when "Potion of Head Size Decrease":
+		Lady P: I need to rest from thinking, downsize my cranium!
+	when "Potion of Creature Feature":
+		Lady P: Make me into one of your creatures, my friend.
+	when "Potion of Rabies":
+		Lady P: I want to demonstrate to the pesants what they will look like if they remain in the slums
+	when "Potion of Change Language":
+		Lady P: To impress some investors, I must speak in their native dialect.
+	when "Potion of Change Art Styles":
+		Lady P: The characature artist turned me down! How bothersome, but I am sure you could do just as well to me.
+	when "Potion of Body Swap":
+		Lady P: I wish to see what it's like to be one with the pesants.
+	when "Potion of Love":
+		Lady P: I wish to get more money from others. Help me trick another into falling for me.
+	when "Potion of Explode":
+		Lady P: I wish to get more money from my potion insurance. Give me something truly devestating to my health.
+	when "Potion of Skeleton":
+		Lady P: Help me get the best costume at the halloween party to win the grand prize.
+	when "Potion of Enlarge Person":
+		Lady P: I wish to be as big as my ego!
+	when "Potion of Shrink Person":
+		Lady P: I need a potion to let me evesdrop on my advesaries.
+	else:
+		Lady P: I am feeling quite indecisive today. (placeholder: no requested potion set)
+
+- Confirm
+
+=> END

@@ -44,8 +44,6 @@ match Globals.wantedPotionType: # this is a placeholder while we set up a global
 		Mr Monicle: I wish to be as big as my ego!
 	when "Potion of Shrink Person":
 		Mr Monicle: I need a potion to let me evesdrop on my advesaries.
-	else:
-		Mr Monicle: I am feeling quite indecisive today. (placeholder: no requested potion set)
 
 - Confirm
 
