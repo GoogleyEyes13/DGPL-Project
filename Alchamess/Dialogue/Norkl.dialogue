@@ -1,0 +1,50 @@
+~ start
+% Norkl: Hehehe, other goblins underestimate Norkl.
+% Norkl: Norkl got coin! Norkl want brew!
+% Norkl: Norkl will best other goblin, and Norkl know how!
+
+match Globals.wantedPotionType: # this is a placeholder while we set up a global variable for the wanted potions
+	when "Potion of Mogging":
+		Norkl: Norkl want chad!
+	when "Potion of Beautification":
+		Norkl: Norkl want charm!
+	when "Potion of Rapid Shaking":
+		Norkl: Norkl want zoomies!
+	when "Potion of Eye Colour Swap":
+		Norkl: Norkl want to see with new colours!
+	when "Potion of Permanent Smile":
+		Norkl: Norkl want evil grin!
+	when "Potion of Green Skin":
+		Norkl: Norkl want more green!
+	when "Potion of Curing":
+		Norkl: Norkl sick! Norkl want not sick!
+	when "Potion Of Baldness":
+		Norkl: Norkl hair catch fire easy, no more Norkl hair!
+	when "Potion of Head Size Increase":
+		Norkl: Make Norkl smarter!
+	when "Potion of Head Size Decrease":
+		Norkl: Make Norkl head hard to hit!
+	when "Potion of Creature Feature":
+		Norkl: Norkl want to evolve to new creature!
+	when "Potion of Rabies":
+		Norkl: Norkl want froth!
+	when "Potion of Change Language":
+		Norkl: Help Norkl talk to enemies!
+	when "Potion of Change Art Styles":
+		Norkl: Make Norkl stick out like hammered thumb!
+	when "Potion of Body Swap":
+		Norkl: Muddle Norkl with another guy!
+	when "Potion of Love":
+		Norkl: Norkl wants to charm enemy!
+	when "Potion of Explode":
+		Norkl: Norkl wants to fly!
+	when "Potion of Skeleton":
+		Norkl: Norkl want to hang out with undead!
+	when "Potion of Enlarge Person":
+		Norkl: Make Norkl big goblin man!
+	when "Potion of Shrink Person":
+		Norkl: Make Norkl little goblin man!
+
+- Confirm
+
+=> END
