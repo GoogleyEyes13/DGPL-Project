@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://be7ppixjevaeg" path="res://Assets/Sprites/Herb Bert/HerbBertRabies.png" id="10_rhkq5"]
 [ext_resource type="Texture2D" uid="uid://kjlv0sdj6die" path="res://Assets/Sprites/Herb Bert/HerbBertSmallHead.png" id="11_8tccj"]
 [ext_resource type="Texture2D" uid="uid://dgmleutps3smk" path="res://Assets/Sprites/Herb Bert/HerbBertGreen.png" id="12_a8pu0"]
+[ext_resource type="Texture2D" uid="uid://dyctltbgc0geh" path="res://Assets/Sprites/Herb Bert/HerbBertMog.png" id="12_h6c2s"]
 [ext_resource type="Texture2D" uid="uid://bllm6nkpd1wot" path="res://Assets/Sprites/LadyP/LadyPNormal.png" id="12_hoaph"]
 [ext_resource type="Texture2D" uid="uid://b5ggfv4el0x50" path="res://Assets/Sprites/Herb Bert/HerbBertBodySwap.png" id="12_j7dqm"]
 [ext_resource type="Texture2D" uid="uid://l5cxn0ig5vtq" path="res://Assets/Sprites/Caseoh/CaseohSmile.png" id="13_0vafy"]
@@ -98,7 +99,7 @@ animations = [{
 "texture": ExtResource("10_rhkq5")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_kosw0")
+"texture": ExtResource("12_h6c2s")
 }, {
 "duration": 1.0,
 "texture": ExtResource("12_j7dqm")
