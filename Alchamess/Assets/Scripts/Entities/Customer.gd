@@ -1,7 +1,7 @@
 extends AnimatedSprite2D
 
 #region Variables
-var CustomerName: String = "Norkl"
+var CustomerName: String = "Queso"
 
 var start_pos: Vector2
 var centre_pos: Vector2
