@@ -3,7 +3,13 @@
 [ext_resource type="Script" uid="uid://cd02yewpj52sp" path="res://Assets/Scripts/UI/NotebookMenu.gd" id="1_htgb8"]
 [ext_resource type="Texture2D" uid="uid://of12ihqbnqq1" path="res://Assets/UI/JournalUI/journal.png" id="3_4lqga"]
 [ext_resource type="Texture2D" uid="uid://u5krystq3q6w" path="res://Assets/Ingredients/ShelfWormwood.png" id="4_1xjk5"]
+[ext_resource type="Texture2D" uid="uid://cs003mqc567gw" path="res://Assets/UI/JournalUI/NotebookAssets/NotebookBackground.png" id="4_pqtwh"]
 [ext_resource type="PackedScene" uid="uid://dnch51pphowlp" path="res://Scenes/RadialDial.tscn" id="5_3cw0p"]
+[ext_resource type="Texture2D" uid="uid://hqkvvk1b367c" path="res://Assets/UI/JournalUI/NotebookAssets/TopMargin.tres" id="5_8ycv8"]
+[ext_resource type="Texture2D" uid="uid://oyh8bvu8ugec" path="res://Assets/UI/JournalUI/NotebookAssets/IconNormal.png" id="6_1xjk5"]
+[ext_resource type="Texture2D" uid="uid://bunejp4hqilgp" path="res://Assets/UI/JournalUI/NotebookAssets/LBackground.tres" id="6_8ycv8"]
+[ext_resource type="Texture2D" uid="uid://cn7cc0w4mwr54" path="res://Assets/UI/JournalUI/NotebookAssets/IconClick.png" id="7_8ycv8"]
+[ext_resource type="Texture2D" uid="uid://d3rgwvjwj7e6b" path="res://Assets/UI/JournalUI/NotebookAssets/IconHover.png" id="8_4lqga"]
 [ext_resource type="Theme" uid="uid://clxl8pps2dife" path="res://Assets/UI/JournalUI/bento_sketch.tres" id="8_lstkl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fei2f"]
@@ -21,6 +27,15 @@ corner_radius_top_left = 17
 corner_radius_top_right = 15
 corner_radius_bottom_right = 18
 corner_radius_bottom_left = 14
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d0u6y"]
+texture = ExtResource("6_1xjk5")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g4v7s"]
+texture = ExtResource("7_8ycv8")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3gngh"]
+texture = ExtResource("8_4lqga")
 
 [node name="NotebookMenu" type="Control" unique_id=856325922]
 z_index = 999
@@ -47,7 +62,7 @@ theme = ExtResource("8_lstkl")
 toggle_mode = true
 texture_normal = ExtResource("3_4lqga")
 
-[node name="NotebookPanel" type="Panel" parent="." unique_id=665566909]
+[node name="NotebookPanel" type="TextureRect" parent="." unique_id=1955696923]
 top_level = true
 custom_minimum_size = Vector2(1920, 1080)
 layout_mode = 1
@@ -56,14 +71,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -417.5
+offset_left = -960.0
 offset_top = -540.0
-offset_right = 417.5
+offset_right = 960.0
 offset_bottom = 540.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("8_lstkl")
+texture = ExtResource("4_pqtwh")
 
 [node name="CloseButton" type="Button" parent="NotebookPanel" unique_id=1734330865]
 top_level = true
@@ -97,7 +113,6 @@ theme_override_constants/separation = 24
 [node name="LeftPage" type="VBoxContainer" parent="NotebookPanel/MarginContainer/BookSpread" unique_id=395054855]
 layout_mode = 2
 size_flags_horizontal = 3
-alignment = 1
 
 [node name="LeftPageHeader" type="Label" parent="NotebookPanel/MarginContainer/BookSpread/LeftPage" unique_id=1359443518]
 layout_mode = 2
@@ -105,29 +120,47 @@ theme_override_font_sizes/font_size = 32
 text = "Ingredients Index"
 horizontal_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="NotebookPanel/MarginContainer/BookSpread/LeftPage" unique_id=198641575]
+[node name="TopMargin" type="MarginContainer" parent="NotebookPanel/MarginContainer/BookSpread/LeftPage" unique_id=1508379991]
 layout_mode = 2
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 9
 
-[node name="ScrollContainer" type="ScrollContainer" parent="NotebookPanel/MarginContainer/BookSpread/LeftPage" unique_id=401015715]
+[node name="HSeparator" type="TextureRect" parent="NotebookPanel/MarginContainer/BookSpread/LeftPage/TopMargin" unique_id=450086287]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 6
-horizontal_scroll_mode = 0
-vertical_scroll_mode = 0
+texture = ExtResource("5_8ycv8")
 
-[node name="IngredientGrid" type="GridContainer" parent="NotebookPanel/MarginContainer/BookSpread/LeftPage/ScrollContainer" unique_id=351046800]
+[node name="IngredientsPanel" type="TextureRect" parent="NotebookPanel/MarginContainer/BookSpread/LeftPage" unique_id=1617111836]
 layout_mode = 2
-theme_override_constants/h_separation = 24
-theme_override_constants/v_separation = 20
+texture = ExtResource("6_8ycv8")
+stretch_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="NotebookPanel/MarginContainer/BookSpread/LeftPage/IngredientsPanel" unique_id=1966498317]
+layout_mode = 0
+offset_left = -2.0
+offset_top = -17.0
+offset_right = 886.0
+offset_bottom = 957.0
+theme_override_constants/margin_left = 51
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 48
+
+[node name="IngredientGrid" type="GridContainer" parent="NotebookPanel/MarginContainer/BookSpread/LeftPage/IngredientsPanel/MarginContainer" unique_id=351046800]
+layout_mode = 2
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = 12
 columns = 2
 
-[node name="Row_EyeOfNewt" type="Button" parent="NotebookPanel/MarginContainer/BookSpread/LeftPage/ScrollContainer/IngredientGrid" unique_id=228307785]
+[node name="Row_EyeOfNewt" type="Button" parent="NotebookPanel/MarginContainer/BookSpread/LeftPage/IngredientsPanel/MarginContainer/IngredientGrid" unique_id=228307785]
 custom_minimum_size = Vector2(400, 290)
 layout_mode = 2
 size_flags_horizontal = 5
 size_flags_vertical = 5
+theme_override_styles/normal = SubResource("StyleBoxTexture_d0u6y")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_g4v7s")
+theme_override_styles/hover = SubResource("StyleBoxTexture_3gngh")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="NotebookPanel/MarginContainer/BookSpread/LeftPage/ScrollContainer/IngredientGrid/Row_EyeOfNewt" unique_id=1193003902]
+[node name="VBoxContainer" type="VBoxContainer" parent="NotebookPanel/MarginContainer/BookSpread/LeftPage/IngredientsPanel/MarginContainer/IngredientGrid/Row_EyeOfNewt" unique_id=1193003902]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -138,25 +171,28 @@ mouse_filter = 2
 theme_override_constants/separation = 8
 alignment = 1
 
-[node name="Icon" type="TextureRect" parent="NotebookPanel/MarginContainer/BookSpread/LeftPage/ScrollContainer/IngredientGrid/Row_EyeOfNewt/VBoxContainer" unique_id=2028296354]
+[node name="Icon" type="TextureRect" parent="NotebookPanel/MarginContainer/BookSpread/LeftPage/IngredientsPanel/MarginContainer/IngredientGrid/Row_EyeOfNewt/VBoxContainer" unique_id=2028296354]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 mouse_filter = 2
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="NotebookPanel/MarginContainer/BookSpread/LeftPage/ScrollContainer/IngredientGrid/Row_EyeOfNewt/VBoxContainer" unique_id=672373322]
+[node name="Label" type="Label" parent="NotebookPanel/MarginContainer/BookSpread/LeftPage/IngredientsPanel/MarginContainer/IngredientGrid/Row_EyeOfNewt/VBoxContainer" unique_id=672373322]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 horizontal_alignment = 1
 
-[node name="Row_Wormwood" type="Button" parent="NotebookPanel/MarginContainer/BookSpread/LeftPage/ScrollContainer/IngredientGrid" unique_id=1531343294]
+[node name="Row_Wormwood" type="Button" parent="NotebookPanel/MarginContainer/BookSpread/LeftPage/IngredientsPanel/MarginContainer/IngredientGrid" unique_id=1531343294]
 custom_minimum_size = Vector2(400, 290)
 layout_mode = 2
 size_flags_horizontal = 5
 size_flags_vertical = 5
+theme_override_styles/normal = SubResource("StyleBoxTexture_d0u6y")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_g4v7s")
+theme_override_styles/hover = SubResource("StyleBoxTexture_3gngh")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="NotebookPanel/MarginContainer/BookSpread/LeftPage/ScrollContainer/IngredientGrid/Row_Wormwood" unique_id=157715924]
+[node name="VBoxContainer" type="VBoxContainer" parent="NotebookPanel/MarginContainer/BookSpread/LeftPage/IngredientsPanel/MarginContainer/IngredientGrid/Row_Wormwood" unique_id=157715924]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -167,25 +203,28 @@ mouse_filter = 2
 theme_override_constants/separation = 8
 alignment = 1
 
-[node name="Icon" type="TextureRect" parent="NotebookPanel/MarginContainer/BookSpread/LeftPage/ScrollContainer/IngredientGrid/Row_Wormwood/VBoxContainer" unique_id=1978985798]
+[node name="Icon" type="TextureRect" parent="NotebookPanel/MarginContainer/BookSpread/LeftPage/IngredientsPanel/MarginContainer/IngredientGrid/Row_Wormwood/VBoxContainer" unique_id=1978985798]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 mouse_filter = 2
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="NotebookPanel/MarginContainer/BookSpread/LeftPage/ScrollContainer/IngredientGrid/Row_Wormwood/VBoxContainer" unique_id=429506824]
+[node name="Label" type="Label" parent="NotebookPanel/MarginContainer/BookSpread/LeftPage/IngredientsPanel/MarginContainer/IngredientGrid/Row_Wormwood/VBoxContainer" unique_id=429506824]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 horizontal_alignment = 1
 
-[node name="Row_ElbowGrease" type="Button" parent="NotebookPanel/MarginContainer/BookSpread/LeftPage/ScrollContainer/IngredientGrid" unique_id=629829824]
+[node name="Row_ElbowGrease" type="Button" parent="NotebookPanel/MarginContainer/BookSpread/LeftPage/IngredientsPanel/MarginContainer/IngredientGrid" unique_id=629829824]
 custom_minimum_size = Vector2(400, 290)
 layout_mode = 2
 size_flags_horizontal = 5
 size_flags_vertical = 5
+theme_override_styles/normal = SubResource("StyleBoxTexture_d0u6y")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_g4v7s")
+theme_override_styles/hover = SubResource("StyleBoxTexture_3gngh")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="NotebookPanel/MarginContainer/BookSpread/LeftPage/ScrollContainer/IngredientGrid/Row_ElbowGrease" unique_id=1834204245]
+[node name="VBoxContainer" type="VBoxContainer" parent="NotebookPanel/MarginContainer/BookSpread/LeftPage/IngredientsPanel/MarginContainer/IngredientGrid/Row_ElbowGrease" unique_id=1834204245]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -196,25 +235,28 @@ mouse_filter = 2
 theme_override_constants/separation = 8
 alignment = 1
 
-[node name="Icon" type="TextureRect" parent="NotebookPanel/MarginContainer/BookSpread/LeftPage/ScrollContainer/IngredientGrid/Row_ElbowGrease/VBoxContainer" unique_id=686053428]
+[node name="Icon" type="TextureRect" parent="NotebookPanel/MarginContainer/BookSpread/LeftPage/IngredientsPanel/MarginContainer/IngredientGrid/Row_ElbowGrease/VBoxContainer" unique_id=686053428]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 mouse_filter = 2
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="NotebookPanel/MarginContainer/BookSpread/LeftPage/ScrollContainer/IngredientGrid/Row_ElbowGrease/VBoxContainer" unique_id=248259540]
+[node name="Label" type="Label" parent="NotebookPanel/MarginContainer/BookSpread/LeftPage/IngredientsPanel/MarginContainer/IngredientGrid/Row_ElbowGrease/VBoxContainer" unique_id=248259540]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 horizontal_alignment = 1
 
-[node name="Row_OilOfVitriol" type="Button" parent="NotebookPanel/MarginContainer/BookSpread/LeftPage/ScrollContainer/IngredientGrid" unique_id=163127798]
+[node name="Row_OilOfVitriol" type="Button" parent="NotebookPanel/MarginContainer/BookSpread/LeftPage/IngredientsPanel/MarginContainer/IngredientGrid" unique_id=163127798]
 custom_minimum_size = Vector2(400, 290)
 layout_mode = 2
 size_flags_horizontal = 5
 size_flags_vertical = 5
+theme_override_styles/normal = SubResource("StyleBoxTexture_d0u6y")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_g4v7s")
+theme_override_styles/hover = SubResource("StyleBoxTexture_3gngh")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="NotebookPanel/MarginContainer/BookSpread/LeftPage/ScrollContainer/IngredientGrid/Row_OilOfVitriol" unique_id=1585211542]
+[node name="VBoxContainer" type="VBoxContainer" parent="NotebookPanel/MarginContainer/BookSpread/LeftPage/IngredientsPanel/MarginContainer/IngredientGrid/Row_OilOfVitriol" unique_id=1585211542]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -225,25 +267,28 @@ mouse_filter = 2
 theme_override_constants/separation = 8
 alignment = 1
 
-[node name="Icon" type="TextureRect" parent="NotebookPanel/MarginContainer/BookSpread/LeftPage/ScrollContainer/IngredientGrid/Row_OilOfVitriol/VBoxContainer" unique_id=1669349686]
+[node name="Icon" type="TextureRect" parent="NotebookPanel/MarginContainer/BookSpread/LeftPage/IngredientsPanel/MarginContainer/IngredientGrid/Row_OilOfVitriol/VBoxContainer" unique_id=1669349686]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 mouse_filter = 2
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="NotebookPanel/MarginContainer/BookSpread/LeftPage/ScrollContainer/IngredientGrid/Row_OilOfVitriol/VBoxContainer" unique_id=1210347027]
+[node name="Label" type="Label" parent="NotebookPanel/MarginContainer/BookSpread/LeftPage/IngredientsPanel/MarginContainer/IngredientGrid/Row_OilOfVitriol/VBoxContainer" unique_id=1210347027]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 horizontal_alignment = 1
 
-[node name="Row_PhoenixFeather" type="Button" parent="NotebookPanel/MarginContainer/BookSpread/LeftPage/ScrollContainer/IngredientGrid" unique_id=477368328]
+[node name="Row_PhoenixFeather" type="Button" parent="NotebookPanel/MarginContainer/BookSpread/LeftPage/IngredientsPanel/MarginContainer/IngredientGrid" unique_id=477368328]
 custom_minimum_size = Vector2(400, 290)
 layout_mode = 2
 size_flags_horizontal = 5
 size_flags_vertical = 5
+theme_override_styles/normal = SubResource("StyleBoxTexture_d0u6y")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_g4v7s")
+theme_override_styles/hover = SubResource("StyleBoxTexture_3gngh")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="NotebookPanel/MarginContainer/BookSpread/LeftPage/ScrollContainer/IngredientGrid/Row_PhoenixFeather" unique_id=2106004275]
+[node name="VBoxContainer" type="VBoxContainer" parent="NotebookPanel/MarginContainer/BookSpread/LeftPage/IngredientsPanel/MarginContainer/IngredientGrid/Row_PhoenixFeather" unique_id=2106004275]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -254,25 +299,28 @@ mouse_filter = 2
 theme_override_constants/separation = 8
 alignment = 1
 
-[node name="Icon" type="TextureRect" parent="NotebookPanel/MarginContainer/BookSpread/LeftPage/ScrollContainer/IngredientGrid/Row_PhoenixFeather/VBoxContainer" unique_id=1529434653]
+[node name="Icon" type="TextureRect" parent="NotebookPanel/MarginContainer/BookSpread/LeftPage/IngredientsPanel/MarginContainer/IngredientGrid/Row_PhoenixFeather/VBoxContainer" unique_id=1529434653]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 mouse_filter = 2
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="NotebookPanel/MarginContainer/BookSpread/LeftPage/ScrollContainer/IngredientGrid/Row_PhoenixFeather/VBoxContainer" unique_id=946407039]
+[node name="Label" type="Label" parent="NotebookPanel/MarginContainer/BookSpread/LeftPage/IngredientsPanel/MarginContainer/IngredientGrid/Row_PhoenixFeather/VBoxContainer" unique_id=946407039]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 horizontal_alignment = 1
 
-[node name="Row_Stardust" type="Button" parent="NotebookPanel/MarginContainer/BookSpread/LeftPage/ScrollContainer/IngredientGrid" unique_id=75281799]
+[node name="Row_Stardust" type="Button" parent="NotebookPanel/MarginContainer/BookSpread/LeftPage/IngredientsPanel/MarginContainer/IngredientGrid" unique_id=75281799]
 custom_minimum_size = Vector2(400, 290)
 layout_mode = 2
 size_flags_horizontal = 5
 size_flags_vertical = 5
+theme_override_styles/normal = SubResource("StyleBoxTexture_d0u6y")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_g4v7s")
+theme_override_styles/hover = SubResource("StyleBoxTexture_3gngh")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="NotebookPanel/MarginContainer/BookSpread/LeftPage/ScrollContainer/IngredientGrid/Row_Stardust" unique_id=936826541]
+[node name="VBoxContainer" type="VBoxContainer" parent="NotebookPanel/MarginContainer/BookSpread/LeftPage/IngredientsPanel/MarginContainer/IngredientGrid/Row_Stardust" unique_id=936826541]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -283,14 +331,14 @@ mouse_filter = 2
 theme_override_constants/separation = 8
 alignment = 1
 
-[node name="Icon" type="TextureRect" parent="NotebookPanel/MarginContainer/BookSpread/LeftPage/ScrollContainer/IngredientGrid/Row_Stardust/VBoxContainer" unique_id=1972979658]
+[node name="Icon" type="TextureRect" parent="NotebookPanel/MarginContainer/BookSpread/LeftPage/IngredientsPanel/MarginContainer/IngredientGrid/Row_Stardust/VBoxContainer" unique_id=1972979658]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 mouse_filter = 2
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="NotebookPanel/MarginContainer/BookSpread/LeftPage/ScrollContainer/IngredientGrid/Row_Stardust/VBoxContainer" unique_id=1331215325]
+[node name="Label" type="Label" parent="NotebookPanel/MarginContainer/BookSpread/LeftPage/IngredientsPanel/MarginContainer/IngredientGrid/Row_Stardust/VBoxContainer" unique_id=1331215325]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 horizontal_alignment = 1
@@ -313,8 +361,14 @@ theme_override_font_sizes/font_size = 32
 text = "Eye Of Newt Potions"
 horizontal_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="NotebookPanel/MarginContainer/BookSpread/RightPage/PotionListView" unique_id=155625437]
+[node name="TopMargin" type="MarginContainer" parent="NotebookPanel/MarginContainer/BookSpread/RightPage/PotionListView" unique_id=202684587]
 layout_mode = 2
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 7
+
+[node name="HSeparator" type="TextureRect" parent="NotebookPanel/MarginContainer/BookSpread/RightPage/PotionListView/TopMargin" unique_id=1774695037]
+layout_mode = 2
+texture = ExtResource("5_8ycv8")
 
 [node name="FeaturedIngredientsBox" type="VBoxContainer" parent="NotebookPanel/MarginContainer/BookSpread/RightPage/PotionListView" unique_id=1611813867]
 layout_mode = 2
@@ -330,8 +384,14 @@ stretch_mode = 5
 [node name="IngredientFlavorText" type="Label" parent="NotebookPanel/MarginContainer/BookSpread/RightPage/PotionListView/FeaturedIngredientsBox" unique_id=1799501976]
 layout_mode = 2
 
-[node name="HSeparator2" type="HSeparator" parent="NotebookPanel/MarginContainer/BookSpread/RightPage/PotionListView" unique_id=1001578263]
+[node name="CenterMargin" type="MarginContainer" parent="NotebookPanel/MarginContainer/BookSpread/RightPage/PotionListView" unique_id=291680405]
 layout_mode = 2
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 9
+
+[node name="HSeparator" type="TextureRect" parent="NotebookPanel/MarginContainer/BookSpread/RightPage/PotionListView/CenterMargin" unique_id=1813751249]
+layout_mode = 2
+texture = ExtResource("5_8ycv8")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="NotebookPanel/MarginContainer/BookSpread/RightPage/PotionListView" unique_id=1510700027]
 clip_contents = false
@@ -344,8 +404,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 2
 
-[node name="HSeparator3" type="HSeparator" parent="NotebookPanel/MarginContainer/BookSpread/RightPage/PotionListView" unique_id=1916444720]
+[node name="BottomMargin" type="MarginContainer" parent="NotebookPanel/MarginContainer/BookSpread/RightPage/PotionListView" unique_id=1314518044]
 layout_mode = 2
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 9
+
+[node name="HSeparator" type="TextureRect" parent="NotebookPanel/MarginContainer/BookSpread/RightPage/PotionListView/BottomMargin" unique_id=152930933]
+layout_mode = 2
+texture = ExtResource("5_8ycv8")
 
 [node name="DialContainer" type="HBoxContainer" parent="NotebookPanel/MarginContainer/BookSpread/RightPage/PotionListView" unique_id=388817437]
 layout_mode = 2

@@ -5,7 +5,7 @@ extends Control
 @onready var panel: Control = $NotebookPanel
 
 # Left Page (Ingredients)
-@onready var ingredient_grid: GridContainer = $NotebookPanel/MarginContainer/BookSpread/LeftPage/ScrollContainer/IngredientGrid
+@onready var ingredient_grid: GridContainer = $NotebookPanel/MarginContainer/BookSpread/LeftPage/IngredientsPanel/MarginContainer/IngredientGrid
 
 # Right Page (Ingredient Showcase & Potion List)
 @onready var right_page: Control = $NotebookPanel/MarginContainer/BookSpread/RightPage
