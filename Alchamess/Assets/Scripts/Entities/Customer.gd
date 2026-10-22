@@ -1,7 +1,7 @@
 extends AnimatedSprite2D
 
 #region Variables
-var CustomerName: String = "Queso"
+var CustomerName: String = "HerbBert"
 
 var start_pos: Vector2
 var centre_pos: Vector2
@@ -193,6 +193,8 @@ func receive_potion(potion_type: String) -> void:
 		scale = Vector2(0.22, 0.22)
 	elif potion_type == "Potion of Change Art Styles" and CustomerName == "MrMonicle":
 		scale = Vector2(0.24, 0.24)
+	elif potion_type == "Potion of Mogging" and CustomerName == "HerbBert":
+		scale = Vector2(0.60, 0.60)
 		
 	if info.get("shrink", false):
 		position.y += 45
