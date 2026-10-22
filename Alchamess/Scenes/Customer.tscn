@@ -48,8 +48,11 @@
 [ext_resource type="Texture2D" uid="uid://civg7vg1hrgfx" path="res://Assets/Sprites/Mr Monicle/MrMonicleBodySwap.png" id="31_mqhyu"]
 [ext_resource type="Texture2D" uid="uid://csex4s4fff0cx" path="res://Assets/Sprites/Norkl/NorklNormal.png" id="35_lpm1r"]
 [ext_resource type="Texture2D" uid="uid://xv8gvmk1im81" path="res://Assets/Sprites/Norkl/NorklMog.png" id="36_2q8x0"]
+[ext_resource type="Texture2D" uid="uid://quqbjecpwt34" path="res://Assets/Sprites/Norkl/NorklEyeColourSwap.png" id="36_6oidm"]
 [ext_resource type="Texture2D" uid="uid://bm62vx6gbtwi" path="res://Assets/Sprites/Norkl/NorkBeautification.png" id="36_08j0q"]
+[ext_resource type="Texture2D" uid="uid://7cbdksq1aojs" path="res://Assets/Sprites/Norkl/NorklGreenSkin.png" id="36_ct4vb"]
 [ext_resource type="Texture2D" uid="uid://bhbuj1eunqlq2" path="res://Assets/Sprites/Norkl/NorkRabies.png" id="36_iqu3q"]
+[ext_resource type="Texture2D" uid="uid://ccpu1ppic6mwc" path="res://Assets/Sprites/Norkl/NorklBald.png" id="36_m3my7"]
 [ext_resource type="Texture2D" uid="uid://cbacacx4letyb" path="res://Assets/Sprites/Norkl/NorkSmile.png" id="37_b172t"]
 [ext_resource type="Texture2D" uid="uid://dnv8dskbj7uvs" path="res://Assets/Sprites/Caseoh/CaseohBodySwap.png" id="41_p7eft"]
 
@@ -201,7 +204,7 @@ animations = [{
 "texture": ExtResource("35_lpm1r")
 }, {
 "duration": 1.0,
-"texture": ExtResource("35_lpm1r")
+"texture": ExtResource("36_m3my7")
 }, {
 "duration": 1.0,
 "texture": ExtResource("35_lpm1r")
@@ -210,10 +213,10 @@ animations = [{
 "texture": ExtResource("35_lpm1r")
 }, {
 "duration": 1.0,
-"texture": ExtResource("35_lpm1r")
+"texture": ExtResource("36_ct4vb")
 }, {
 "duration": 1.0,
-"texture": ExtResource("35_lpm1r")
+"texture": ExtResource("36_6oidm")
 }, {
 "duration": 1.0,
 "texture": ExtResource("7_e4mfo")
