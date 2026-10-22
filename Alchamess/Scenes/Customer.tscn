@@ -53,7 +53,9 @@
 [ext_resource type="Texture2D" uid="uid://7cbdksq1aojs" path="res://Assets/Sprites/Norkl/NorklGreenSkin.png" id="36_ct4vb"]
 [ext_resource type="Texture2D" uid="uid://bhbuj1eunqlq2" path="res://Assets/Sprites/Norkl/NorkRabies.png" id="36_iqu3q"]
 [ext_resource type="Texture2D" uid="uid://ccpu1ppic6mwc" path="res://Assets/Sprites/Norkl/NorklBald.png" id="36_m3my7"]
+[ext_resource type="Texture2D" uid="uid://btjjmu5q30w43" path="res://Assets/Sprites/Norkl/NorklBigHead.png" id="37_4nr73"]
 [ext_resource type="Texture2D" uid="uid://cbacacx4letyb" path="res://Assets/Sprites/Norkl/NorkSmile.png" id="37_b172t"]
+[ext_resource type="Texture2D" uid="uid://g5k4sm16dpbh" path="res://Assets/Sprites/Norkl/NorklSmallHead.png" id="38_4cxl1"]
 [ext_resource type="Texture2D" uid="uid://dnv8dskbj7uvs" path="res://Assets/Sprites/Caseoh/CaseohBodySwap.png" id="41_p7eft"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_57qmd"]
@@ -207,10 +209,10 @@ animations = [{
 "texture": ExtResource("36_m3my7")
 }, {
 "duration": 1.0,
-"texture": ExtResource("35_lpm1r")
+"texture": ExtResource("37_4nr73")
 }, {
 "duration": 1.0,
-"texture": ExtResource("35_lpm1r")
+"texture": ExtResource("38_4cxl1")
 }, {
 "duration": 1.0,
 "texture": ExtResource("36_ct4vb")
