@@ -61,6 +61,7 @@
 [ext_resource type="Texture2D" uid="uid://g5k4sm16dpbh" path="res://Assets/Sprites/Norkl/NorklSmallHead.png" id="38_4cxl1"]
 [ext_resource type="Texture2D" uid="uid://dnv8dskbj7uvs" path="res://Assets/Sprites/Caseoh/CaseohBodySwap.png" id="41_p7eft"]
 [ext_resource type="Texture2D" uid="uid://c4q2131wxiaes" path="res://Assets/Sprites/Norkl/NorklBodySwap.png" id="44_4cxl1"]
+[ext_resource type="Texture2D" uid="uid://brvfisjkbciwq" path="res://Assets/Sprites/Norkl/NorklArtStyleSwap.png" id="44_7eawq"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_57qmd"]
 animations = [{
@@ -228,7 +229,7 @@ animations = [{
 "texture": ExtResource("7_e4mfo")
 }, {
 "duration": 1.0,
-"texture": ExtResource("35_lpm1r")
+"texture": ExtResource("44_7eawq")
 }, {
 "duration": 1.0,
 "texture": ExtResource("8_8q8uq")
@@ -308,7 +309,7 @@ height = 4375.0
 texture_filter = 1
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_57qmd")
-animation = &"HerbBert"
+animation = &"Norkl"
 script = ExtResource("7_cj036")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=621125951]
