@@ -5,7 +5,7 @@
 
 match Globals.wantedPotionType: # this is a placeholder while we set up a global variable for the wanted potions
 	when "Potion of Mogging":
-		Mr Monicle: I want everyone to see how far I outclass them!
+		Mr Monicle: I want everyone to look at my maximum jawline and see how far I outclass them!
 	when "Potion of Beautification":
 		Mr Monicle: Help me enhance my already immaculate beauty.
 	when "Potion of Rapid Shaking":

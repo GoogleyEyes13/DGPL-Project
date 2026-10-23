@@ -153,7 +153,6 @@ size_flags_horizontal = 3
 
 [node name="CharacterLabel" type="RichTextLabel" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1567782692]
 unique_name_in_owner = true
-modulate = Color(0.5333865, 0.77509177, 1, 1)
 layout_mode = 2
 mouse_filter = 1
 theme_override_font_sizes/normal_font_size = 42

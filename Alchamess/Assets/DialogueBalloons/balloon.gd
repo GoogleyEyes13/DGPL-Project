@@ -133,6 +133,20 @@ func apply_dialogue_line() -> void:
 
 	character_label.visible = not dialogue_line.character.is_empty()
 	character_label.text = tr(dialogue_line.character, "dialogue")
+	if character_label.text == "Queso":
+		character_label.modulate = Color(0.533, 0.776, 1.0, 1.0)
+	elif character_label.text == "Herb Bert":
+		character_label.modulate = Color(0.538, 1.0, 0.53, 1.0)
+	elif character_label.text == "Mr Monicle":
+		character_label.modulate = Color(0.601, 0.53, 1.0, 1.0)
+	elif character_label.text == "Norkl":
+		character_label.modulate = Color(1.0, 0.53, 0.53, 1.0)
+	elif character_label.text == "Lady P":
+		character_label.modulate = Color(1.0, 0.953, 0.53, 1.0)
+	elif character_label.text == "Master Frogg":
+		character_label.modulate = Color(0.0, 0.938, 0.59, 1.0)
+	else:
+		character_label.modulate = Color(1.0, 1.0, 1.0, 1.0)
 
 	dialogue_label.hide()
 	dialogue_label.dialogue_line = dialogue_line
