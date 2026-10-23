@@ -136,7 +136,7 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="PanelContainer" type="PanelContainer" parent="Balloon/MarginContainer" unique_id=2145270309]
-self_modulate = Color(1, 1, 1, 0.78431374)
+self_modulate = Color(1, 1, 1, 0.90588236)
 clip_children = 2
 layout_mode = 2
 mouse_filter = 1
