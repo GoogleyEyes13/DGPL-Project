@@ -3,14 +3,26 @@ if Globals.submittedPotionType == Globals.wantedPotionType
 	if Globals.submittedPotionType == "Potion of Creature Feature"
 		t̸̡̛̥̜̻̘̋͂̈̏͋̇h̴̬̘̼̟͉̞͔̠̀͛̉̉a̴̡̡̡̛̱̥̻͔̕͜ḱ̴̙͍̱̗͉͉ ̷̡̡̛̜̦̠̠͉̘͒̌̿̈́͠y̷̿̇͊̄̋̀͜o̶̢̮͐̈̆u̸̢̞̎̀͛̑̀
 	elif Globals.submittedPotionType == "Potion of Rabies"
-		Herb Bert: [Incomprehensible gratitude]
+		Lady P: [Incomprehensible gratitude]
+	elif Globals.submittedPotionType == "Potion of Change Language"
+		% Lady P: Grazie mille! È perfetto!
+		% Lady P: Фала многу! Овој е одличен!
+		% Lady P: Makasi banyak! Mantap beut.
+		% Lady P: Matur nuwun yo!
+		% Lady P: Arigatou! Sugoi desu!
+		% Lady P: Kore chigau yo, boke!
 	else
-		Mr Monicle: Excellent. Your pay is nothing for me, but I'm sure you will savor it.
+		% Lady P: Excellent. Your pay is nothing for me, but I'm sure you will savor it.
 else
 	if Globals.submittedPotionType == "Potion of Baldness"
-		Mr Monicle: WHAT HAVE YOU DONE? I'M GOING TO SUE YOU!
+		% Lady P: WHAT HAVE YOU DONE? I'M GOING TO SUE YOU!
 	elif Globals.submittedPotionType == "Potion of Change Language"
-		Mr Monicle: Te ex vita expellebo in ius vocabo!
+		% Lady P: Questa lingua è sbagliata, stai scemo!
+		% Lady P: Тикво! Шо прајш, бе?!
+		% Lady P: Weh, bahasanya salah, blog!
+		% Lady P: Boso opo ki rek?!
+		% Lady P: Kore chigau yo, boke!
+		% Lady P: Zhī shì shěn me yǔyán a?! bèn dàn!
 	elif Globals.submittedPotionType == "Potion of Explode"
 		There was nothing left but a pile of dust.
 	elif Globals.submittedPotionType == "Potion of Creature Feature"
@@ -18,5 +30,5 @@ else
 	elif Globals.submittedPotionType == "Potion of Rabies"
 		Mr Monicle foams at the mouth.
 	else
-		Mr Monicle: Horrendous, my lawyers will be in touch.
+		% Lady P: Horrendous, my lawyers will be in touch.
 => END
