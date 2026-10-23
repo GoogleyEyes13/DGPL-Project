@@ -144,7 +144,7 @@ func apply_dialogue_line() -> void:
 	elif character_label.text == "Lady P":
 		character_label.modulate = Color(1.0, 0.953, 0.53, 1.0)
 	elif character_label.text == "Master Frogg":
-		character_label.modulate = Color(0.0, 0.938, 0.59, 1.0)
+		character_label.modulate = Color(1.0, 0.632, 0.53, 1.0)
 	else:
 		character_label.modulate = Color(1.0, 1.0, 1.0, 1.0)
 

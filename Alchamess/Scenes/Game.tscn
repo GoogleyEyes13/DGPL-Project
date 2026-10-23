@@ -360,6 +360,7 @@ shape = SubResource("CircleShape2D_g4v7s")
 
 [node name="Croak1Mid" type="AudioStreamPlayer" parent="FrogMaster" unique_id=571583395]
 stream = ExtResource("36_7w24h")
+max_polyphony = 16
 
 [node name="FrogTongue" type="Sprite2D" parent="." unique_id=299112104]
 visible = false
