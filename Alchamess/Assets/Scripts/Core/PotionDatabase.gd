@@ -144,7 +144,7 @@ const RECIPES: Dictionary = {
 	},
 	["ElbowGrease", "EyeOfNewt", "Stardust"]: {
 		"name": "Potion of Love",
-		"frame": 0,
+		"frame": 14,
 		"suffix": "Normal",
 		"bottle_anim": "Potion3",
 		"bottle_frame": 4

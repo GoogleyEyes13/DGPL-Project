@@ -63,6 +63,8 @@
 [ext_resource type="Texture2D" uid="uid://dnv8dskbj7uvs" path="res://Assets/Sprites/Caseoh/CaseohBodySwap.png" id="41_p7eft"]
 [ext_resource type="Texture2D" uid="uid://c4q2131wxiaes" path="res://Assets/Sprites/Norkl/NorklBodySwap.png" id="44_4cxl1"]
 [ext_resource type="Texture2D" uid="uid://brvfisjkbciwq" path="res://Assets/Sprites/Norkl/NorklArtStyleSwap.png" id="44_7eawq"]
+[ext_resource type="Texture2D" uid="uid://6jmb7v7cd7ad" path="res://Assets/Sprites/Norkl/NorklLove.png" id="50_p6re1"]
+[ext_resource type="Texture2D" uid="uid://crinafadtb4a4" path="res://Assets/Sprites/Caseoh/CaseohLove.png" id="64_cscrn"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_57qmd"]
 animations = [{
@@ -249,6 +251,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("37_b172t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_p6re1")
 }],
 "loop": 1,
 "name": &"Norkl",
@@ -296,6 +301,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("13_0vafy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("64_cscrn")
 }],
 "loop": 1,
 "name": &"Queso",
@@ -310,7 +318,7 @@ height = 4375.0
 texture_filter = 1
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_57qmd")
-animation = &"LadyP"
+animation = &"Queso"
 script = ExtResource("7_cj036")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=621125951]
