@@ -31,6 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://cxpqhyk6677ic" path="res://Assets/Sprites/LadyP/LadyPMog.png" id="14_jsqc0"]
 [ext_resource type="Texture2D" uid="uid://drmbaysxfp0ce" path="res://Assets/Sprites/LadyP/LadyPBigHead.png" id="14_p7eft"]
 [ext_resource type="Texture2D" uid="uid://lyh024aixu30" path="res://Assets/Sprites/LadyP/LadyPSmallHead.png" id="15_j7dqm"]
+[ext_resource type="Texture2D" uid="uid://caise6xnjqiyy" path="res://Assets/Sprites/Herb Bert/HerbBertLove.png" id="15_rtavc"]
 [ext_resource type="Texture2D" uid="uid://b7dpjh3v0wk1r" path="res://Assets/Sprites/Herb Bert/HerbBertBeautification.png" id="16_8tccj"]
 [ext_resource type="Texture2D" uid="uid://cqkd8hjokid3h" path="res://Assets/Sprites/LadyP/LadyPGreen.png" id="16_mqhyu"]
 [ext_resource type="Texture2D" uid="uid://ck1xg3bmx3suw" path="res://Assets/Sprites/Mr Monicle/MrMonicleRabies.png" id="17_jh1hx"]
@@ -60,6 +61,7 @@
 [ext_resource type="Texture2D" uid="uid://btjjmu5q30w43" path="res://Assets/Sprites/Norkl/NorklBigHead.png" id="37_4nr73"]
 [ext_resource type="Texture2D" uid="uid://cbacacx4letyb" path="res://Assets/Sprites/Norkl/NorkSmile.png" id="37_b172t"]
 [ext_resource type="Texture2D" uid="uid://g5k4sm16dpbh" path="res://Assets/Sprites/Norkl/NorklSmallHead.png" id="38_4cxl1"]
+[ext_resource type="Texture2D" uid="uid://ty2ab4g4utj7" path="res://Assets/Sprites/Mr Monicle/MrMonicleLove.png" id="39_ymmo6"]
 [ext_resource type="Texture2D" uid="uid://dnv8dskbj7uvs" path="res://Assets/Sprites/Caseoh/CaseohBodySwap.png" id="41_p7eft"]
 [ext_resource type="Texture2D" uid="uid://c4q2131wxiaes" path="res://Assets/Sprites/Norkl/NorklBodySwap.png" id="44_4cxl1"]
 [ext_resource type="Texture2D" uid="uid://brvfisjkbciwq" path="res://Assets/Sprites/Norkl/NorklArtStyleSwap.png" id="44_7eawq"]
@@ -110,6 +112,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("13_lw81b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_rtavc")
 }],
 "loop": 1,
 "name": &"HerbBert",
@@ -204,6 +209,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("35_af46w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_ymmo6")
 }],
 "loop": 1,
 "name": &"MrMonicle",
