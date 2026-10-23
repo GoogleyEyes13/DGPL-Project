@@ -40,6 +40,7 @@
 [ext_resource type="Texture2D" uid="uid://bw3e3s4k53e5h" path="res://Assets/Sprites/Mr Monicle/MrMonicleGreen.png" id="18_ybyuj"]
 [ext_resource type="Texture2D" uid="uid://bbalq7wmlthu5" path="res://Assets/Sprites/Mr Monicle/MrMonicleBigHead.png" id="19_i14jh"]
 [ext_resource type="Texture2D" uid="uid://2ltqw6ajn2b2" path="res://Assets/Sprites/Mr Monicle/MrMonicleSmallHead.png" id="20_rhkq5"]
+[ext_resource type="Texture2D" uid="uid://c2svihmr82bh6" path="res://Assets/Sprites/LadyP/LadyPArtStyleSwap.png" id="22_8qdjl"]
 [ext_resource type="Texture2D" uid="uid://drh5d7bpo5t3v" path="res://Assets/Sprites/LadyP/LadyPBodySwap.png" id="22_igby5"]
 [ext_resource type="Texture2D" uid="uid://c3tdrlemjagd5" path="res://Assets/Sprites/Mr Monicle/MrMonicleBeautification.png" id="23_5wd0f"]
 [ext_resource type="Texture2D" uid="uid://bkigixebdoqsg" path="res://Assets/Sprites/Mr Monicle/MrMonicleMog.png" id="23_mebht"]
@@ -144,7 +145,7 @@ animations = [{
 "texture": ExtResource("7_e4mfo")
 }, {
 "duration": 1.0,
-"texture": ExtResource("12_hoaph")
+"texture": ExtResource("22_8qdjl")
 }, {
 "duration": 1.0,
 "texture": ExtResource("8_8q8uq")
