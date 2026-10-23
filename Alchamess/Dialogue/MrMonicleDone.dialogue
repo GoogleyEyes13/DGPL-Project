@@ -11,6 +11,8 @@ if Globals.submittedPotionType == Globals.wantedPotionType
 		% Mr Monicle: Matur nuwun yo!
 		% Mr Monicle: Arigatou! Sugoi desu!
 		% Mr Monicle: Kore chigau yo, boke!
+	elif Globals.submittedPotionType == "Potion of Love"
+		Mr Monicle: Good heavens, is it just me, or has your company become marginally less insufferable?
 	else
 		Mr Monicle: Excellent. Your pay is nothing for me, but I'm sure you will savor it.
 else
@@ -29,6 +31,8 @@ else
 		...
 	elif Globals.submittedPotionType == "Potion of Rabies"
 		Mr Monicle foams at the mouth.
+	elif Globals.submittedPotionType == "Potion of Love"
+		Mr Monicle: Good heavens, is it just me, or has your company become marginally less insufferable?
 	else
 		Mr Monicle: Horrendous, my lawyers will be in touch.
 => END

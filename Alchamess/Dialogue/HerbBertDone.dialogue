@@ -11,6 +11,8 @@ if Globals.submittedPotionType == Globals.wantedPotionType
 		% Herb Bert: Matur nuwun yo!
 		% Herb Bert: Arigatou! Sugoi desu!
 		% Herb Bert: Kore chigau yo, boke!
+	elif Globals.submittedPotionType == "Potion of Love"
+		Herb Bert: Now I never thought i'd say this, but i'd rather spend the afternoon with you than my begonias, care for a date?
 	else
 		Herb Bert: Now that's more like it. Thanks!
 else
@@ -29,6 +31,8 @@ else
 		...
 	elif Globals.submittedPotionType == "Potion of Rabies"
 		Herb Bert foams at the mouth.
+	elif Globals.submittedPotionType == "Potion of Love"
+		Herb Bert: Now I never thought i'd say this, but i'd rather spend the afternoon with you than my begonias, care for a date?
 	else
 		Herb Bert: Uhhh, that wasn't right...
 => END

@@ -11,6 +11,8 @@ if Globals.submittedPotionType == Globals.wantedPotionType
 		% Norkl: Matur nuwun yo!
 		% Norkl: Arigatou! Sugoi desu!
 		% Norkl: Kore chigau yo, boke!
+	elif Globals.submittedPotionType == "Potion of Love"
+		Norkl: Oi! You're lookin' dead gorgeous today, fancy goin' on a date? I'll even nick ye somethin' shiny...
 	else
 		Norkl: Heheheh, Norkl is happy.
 else
@@ -31,6 +33,8 @@ else
 		...
 	elif Globals.submittedPotionType == "Potion of Rabies"
 		Norkl foams at the mouth.
+	elif Globals.submittedPotionType == "Potion of Love"
+		Norkl: Oi! You're lookin' dead gorgeous today, fancy goin' on a date? I'll even nick ye somethin' shiny...
 	else
 		Norkl: Wrong! Bad magic person!
 => END
