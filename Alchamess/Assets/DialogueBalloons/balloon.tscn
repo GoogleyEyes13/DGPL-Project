@@ -2,7 +2,10 @@
 
 [ext_resource type="Script" uid="uid://bdrbm2nk3ysjd" path="res://Assets/DialogueBalloons/balloon.gd" id="1_36de5"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/nodes/dialogue_label/dialogue_label.tscn" id="2_a8ve6"]
+[ext_resource type="FontFile" uid="uid://c0n7ekavf4ye1" path="res://Assets/UI/JournalUI/fonts/PatrickHand-Regular.ttf" id="2_befm0"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/nodes/responses_menu/dialogue_responses_menu.gd" id="3_72ixx"]
+[ext_resource type="AudioStream" uid="uid://e2l3hym5v1aw" path="res://Assets/Audio/SFX/Ingredients in Pot/eye of newt.wav" id="5_0i4s4"]
+[ext_resource type="AudioStream" uid="uid://djqf328mlj34d" path="res://Assets/Audio/SFX/Frog/croak 1 low.mp3" id="6_j2tic"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_spyqn"]
 content_margin_left = 20.0
@@ -53,15 +56,16 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qkmqt"]
-bg_color = Color(0, 0, 0, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
+bg_color = Color(0.24, 0.24, 0.24, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_size = 6
 
 [sub_resource type="Theme" id="Theme_qq3yp"]
 default_font_size = 20
@@ -136,7 +140,7 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="PanelContainer" type="PanelContainer" parent="Balloon/MarginContainer" unique_id=2145270309]
-self_modulate = Color(1, 1, 1, 0.90588236)
+self_modulate = Color(1, 1, 1, 0.906)
 clip_children = 2
 layout_mode = 2
 mouse_filter = 1
@@ -155,7 +159,9 @@ size_flags_horizontal = 3
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 1
-theme_override_font_sizes/normal_font_size = 42
+theme_override_constants/outline_size = 14
+theme_override_fonts/normal_font = ExtResource("2_befm0")
+theme_override_font_sizes/normal_font_size = 47
 bbcode_enabled = true
 text = "Character"
 fit_content = true
@@ -165,7 +171,9 @@ scroll_active = false
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_font_sizes/normal_font_size = 34
+theme_override_constants/outline_size = 12
+theme_override_fonts/normal_font = ExtResource("2_befm0")
+theme_override_font_sizes/normal_font_size = 39
 text = "Dialogue..."
 
 [node name="Control" type="Control" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=418507161]
@@ -209,6 +217,12 @@ text = "Response example"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1162558754]
 unique_name_in_owner = true
+stream = ExtResource("5_0i4s4")
+
+[node name="talkSound" type="AudioStreamPlayer2D" parent="." unique_id=783275972]
+stream = ExtResource("6_j2tic")
+bus = &"SFX"
 
 [connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]
+[connection signal="spoke" from="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/DialogueLabel" to="." method="_on_dialogue_label_spoke"]
 [connection signal="response_selected" from="Balloon/CenterContainer/ResponsesMenu" to="." method="_on_responses_menu_response_selected"]
