@@ -18,7 +18,7 @@ match Globals.wantedPotionType: # this is a placeholder while we set up a global
 		Herb Bert: Could you possibly make me green? It's for a costume.
 	when "Potion of Curing":
 		Herb Bert: I had to cut back some poison ivy the other day, got any cures?
-	when "Potion Of Baldness":
+	when "Potion of Baldness":
 		Herb Bert: I need some help looking more like a monk.
 	when "Potion of Head Size Increase":
 		Herb Bert: If I had a bigger head, would that make me smarter?

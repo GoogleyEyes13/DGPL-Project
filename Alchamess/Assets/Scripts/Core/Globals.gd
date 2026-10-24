@@ -12,9 +12,9 @@ func randomizeWantedType() -> void:
 		unlocked_ingredients = PotionJournal.get_unlocked_ingredients()
 	else:
 		unlocked_ingredients = ["ElbowGrease", "OilOfVitriol", "Wormwood", "EyeOfNewt"]
-
+	
 	var valid_potions: Array[String] = []
-
+	
 	# Check each recipe in PotionDatabase against currently unlocked ingredients
 	for recipe_ingredients in PotionDatabase.RECIPES.keys():
 		var can_craft: bool = true

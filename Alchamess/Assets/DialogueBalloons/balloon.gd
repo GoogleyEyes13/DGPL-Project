@@ -243,22 +243,24 @@ var froggVoices = ["res://Assets/Audio/SFX/Frog/croak 1 mid.mp3", "res://Assets/
 
 func _on_dialogue_label_spoke(letter: String, letter_index: int, speed: float) -> void:
 	if letter in ["a", "e", "i", "o", "u"]:
-		talk_sound.pitch_scale = randf_range(0.9, 1.1)
+		talk_sound.pitch_scale = randf_range(0.8, 1.2)
 		match character_label.text:
-			#"Queso":
-				#
-			#"Herb Bert":
-				#
-			#"Mr Monicle":
-				#
-			#"Norkl":
-				#
-			#"Lady P":
-				#
+			"Queso":
+				talk_sound.stream = load("res://Assets/Audio/SFX/Vox/quesovox.wav")
+				talk_sound.play()
+			"Herb Bert":
+				talk_sound.stream = load("res://Assets/Audio/SFX/Vox/herbbertvox.wav")
+				talk_sound.play()
+			"Mr Monicle":
+				talk_sound.stream = load("res://Assets/Audio/SFX/Vox/mrmoniclevox.wav")
+				talk_sound.play()
+			"Norkl":
+				talk_sound.stream = load("res://Assets/Audio/SFX/Vox/norklvox.wav")
+				talk_sound.play()
+			"Lady P":
+				talk_sound.stream = load("res://Assets/Audio/SFX/Vox/ladypvox.wav")
+				talk_sound.play()
 			"Master Frogg":
 				var selectedVoice = froggVoices.pick_random()
 				talk_sound.stream = load(selectedVoice)
 				talk_sound.play(0.1)
-			_:
-				talk_sound.stream = load("res://Assets/Audio/SFX/Cauldron Lightup/cauldron lightup.wav")
-				talk_sound.play(0.26)

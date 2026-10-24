@@ -20,7 +20,7 @@ match Globals.wantedPotionType: # this is a placeholder while we set up a global
 		Lady P: I'd like to be green like a grassy hill!
 	when "Potion of Curing":
 		Lady P: I think I caught a fever earlier, do you think you can help?
-	when "Potion Of Baldness":
+	when "Potion of Baldness":
 		Lady P: I think I want to try regrowing my hair, could you get rid of it?
 	when "Potion of Head Size Increase":
 		Lady P: I want to have a little head, just to see what it's like.
