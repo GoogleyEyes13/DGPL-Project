@@ -70,6 +70,7 @@ var mutation_cooldown: Timer = Timer.new()
 ## Indicator to show that player can progress dialogue.
 @onready var progress: Polygon2D = %Progress
 
+@onready var talk_sound: AudioStreamPlayer2D = $talkSound
 
 func _ready() -> void:
 	balloon.hide()
@@ -133,6 +134,28 @@ func apply_dialogue_line() -> void:
 
 	character_label.visible = not dialogue_line.character.is_empty()
 	character_label.text = tr(dialogue_line.character, "dialogue")
+	match character_label.text:
+		"Queso":
+			character_label.modulate = Color(0.533, 0.776, 1.0, 1.0)
+			$Balloon/MarginContainer/PanelContainer.self_modulate = Color(0.53, 0.773, 1.0, 0.906)
+		"Herb Bert":
+			character_label.modulate = Color(0.538, 1.0, 0.53, 1.0)
+			$Balloon/MarginContainer/PanelContainer.self_modulate = Color(0.53, 1.0, 0.608, 0.906)
+		"Mr Monicle":
+			character_label.modulate = Color(0.601, 0.53, 1.0, 1.0)
+			$Balloon/MarginContainer/PanelContainer.self_modulate = Color(0.577, 0.53, 1.0, 0.906)
+		"Norkl":
+			character_label.modulate = Color(1.0, 0.53, 0.53, 1.0)
+			$Balloon/MarginContainer/PanelContainer.self_modulate = Color(1.0, 0.53, 0.53, 0.906)
+		"Lady P":
+			character_label.modulate = Color(1.0, 0.953, 0.53, 1.0)
+			$Balloon/MarginContainer/PanelContainer.self_modulate = Color(0.977, 1.0, 0.53, 0.906)
+		"Master Frogg":
+			character_label.modulate = Color(1.0, 0.632, 0.53, 1.0)
+			$Balloon/MarginContainer/PanelContainer.self_modulate = Color(1.0, 0.702, 0.53, 0.906)
+		_:
+			character_label.modulate = Color(1.0, 1.0, 1.0, 1.0)
+			$Balloon/MarginContainer/PanelContainer.self_modulate = Color(1.0, 1.0, 1.0, 0.906)
 
 	dialogue_label.hide()
 	dialogue_label.dialogue_line = dialogue_line
@@ -214,5 +237,30 @@ func _on_balloon_gui_input(event: InputEvent) -> void:
 func _on_responses_menu_response_selected(response: DialogueResponse) -> void:
 	next(response.next_id)
 
-
 #endregion
+
+var froggVoices = ["res://Assets/Audio/SFX/Frog/croak 1 mid.mp3", "res://Assets/Audio/SFX/Frog/croak 2 mid.mp3", "res://Assets/Audio/SFX/Frog/croak 3 mid.mp3"]
+
+func _on_dialogue_label_spoke(letter: String, letter_index: int, speed: float) -> void:
+	if letter in ["a", "e", "i", "o", "u"]:
+		talk_sound.pitch_scale = randf_range(0.8, 1.2)
+		match character_label.text:
+			"Queso":
+				talk_sound.stream = load("res://Assets/Audio/SFX/Vox/quesovox.wav")
+				talk_sound.play()
+			"Herb Bert":
+				talk_sound.stream = load("res://Assets/Audio/SFX/Vox/herbbertvox.wav")
+				talk_sound.play()
+			"Mr Monicle":
+				talk_sound.stream = load("res://Assets/Audio/SFX/Vox/mrmoniclevox.wav")
+				talk_sound.play()
+			"Norkl":
+				talk_sound.stream = load("res://Assets/Audio/SFX/Vox/norklvox.wav")
+				talk_sound.play()
+			"Lady P":
+				talk_sound.stream = load("res://Assets/Audio/SFX/Vox/ladypvox.wav")
+				talk_sound.play()
+			"Master Frogg":
+				var selectedVoice = froggVoices.pick_random()
+				talk_sound.stream = load(selectedVoice)
+				talk_sound.play(0.1)

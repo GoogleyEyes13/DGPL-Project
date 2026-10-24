@@ -11,13 +11,11 @@ if Globals.submittedPotionType == Globals.wantedPotionType
 		% Lady P: Matur nuwun yo!
 		% Lady P: Arigatou! Sugoi desu!
 		% Lady P: Kore chigau yo, boke!
-	elif Globals.submittedPotionType == "Potion of Love"
-		Lady P: Oh! I do so hope that you aren't already spoken for... I should be absolutely delighted if you would accompany me on a date.
 	else
-		% Lady P: Excellent. Your pay is nothing for me, but I'm sure you will savor it.
+		% Lady P: Yes! Thank you dearie!
 else
 	if Globals.submittedPotionType == "Potion of Baldness"
-		% Lady P: WHAT HAVE YOU DONE? I'M GOING TO SUE YOU!
+		% Lady P: Oh, umm, my hair is gone.
 	elif Globals.submittedPotionType == "Potion of Change Language"
 		% Lady P: Questa lingua è sbagliata, stai scemo!
 		% Lady P: Тикво! Шо прајш, бе?!
@@ -30,9 +28,7 @@ else
 	elif Globals.submittedPotionType == "Potion of Creature Feature"
 		...
 	elif Globals.submittedPotionType == "Potion of Rabies"
-		Mr Monicle foams at the mouth.
-	elif Globals.submittedPotionType == "Potion of Love"
-		Lady P: Oh! I do so hope that you aren't already spoken for... I should be absolutely delighted if you would accompany me on a date.
+		Lady P foams at the mouth.
 	else
-		% Lady P: Horrendous, my lawyers will be in touch.
+		% Lady P: Oh, umm, I think that was the wrong one. Maybe next time?
 => END

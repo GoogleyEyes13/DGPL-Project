@@ -5,9 +5,9 @@
 
 match Globals.wantedPotionType: # this is a placeholder while we set up a global variable for the wanted potions
 	when "Potion of Mogging":
-		Norkl: Norkl want chad!
+		Norkl: Norkl want to skip smashing bone session!
 	when "Potion of Beautification":
-		Norkl: Norkl want charm!
+		Norkl: Norkl want to charm!
 	when "Potion of Rapid Shaking":
 		Norkl: Norkl want zoomies!
 	when "Potion of Eye Colour Swap":
@@ -18,7 +18,7 @@ match Globals.wantedPotionType: # this is a placeholder while we set up a global
 		Norkl: Norkl want more green!
 	when "Potion of Curing":
 		Norkl: Norkl sick! Norkl want not sick!
-	when "Potion Of Baldness":
+	when "Potion of Baldness":
 		Norkl: Norkl hair catch fire easy, no more Norkl hair!
 	when "Potion of Head Size Increase":
 		Norkl: Make Norkl smarter!

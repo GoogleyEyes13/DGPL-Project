@@ -5,7 +5,7 @@
 
 match Globals.wantedPotionType: # this is a placeholder while we set up a global variable for the wanted potions
 	when "Potion of Mogging":
-		Mr Monicle: I want everyone to see how far I outclass them!
+		Mr Monicle: I want everyone to look at my maximum jawline and see how far I outclass them!
 	when "Potion of Beautification":
 		Mr Monicle: Help me enhance my already immaculate beauty.
 	when "Potion of Rapid Shaking":
@@ -18,7 +18,7 @@ match Globals.wantedPotionType: # this is a placeholder while we set up a global
 		Mr Monicle: I desire to become more verdant.
 	when "Potion of Curing":
 		Mr Monicle: I think a pauper gave me some kind of plague, fix it at once!
-	when "Potion Of Baldness":
+	when "Potion of Baldness":
 		Mr Monicle: My mane is bothering me, remove it at once!
 	when "Potion of Head Size Increase":
 		Mr Monicle: I demand a cranium the size of my ego!

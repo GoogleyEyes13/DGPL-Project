@@ -5,7 +5,7 @@
 
 match Globals.wantedPotionType: # this is a placeholder while we set up a global variable for the wanted potions
 	when "Potion of Mogging":
-		Herb Bert: I want to look like I outclass the room around me!
+		Herb Bert: I want to looksmax to show off the room around me!
 	when "Potion of Beautification":
 		Herb Bert: I'm going on a date tonight, can you make me more attractive?
 	when "Potion of Rapid Shaking":
@@ -18,9 +18,8 @@ match Globals.wantedPotionType: # this is a placeholder while we set up a global
 		Herb Bert: Could you possibly make me green? It's for a costume.
 	when "Potion of Curing":
 		Herb Bert: I had to cut back some poison ivy the other day, got any cures?
-	when "Potion Of Baldness":
-		% Herb Bert: I need some help looking more like a monk.
-		% Herb Bert: I'm done with having hair. Get rid of it!
+	when "Potion of Baldness":
+		Herb Bert: I need some help looking more like a monk.
 	when "Potion of Head Size Increase":
 		Herb Bert: If I had a bigger head, would that make me smarter?
 	when "Potion of Head Size Decrease":

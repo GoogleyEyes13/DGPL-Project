@@ -1,51 +1,53 @@
 ~ start
-% Lady P: Good day to you, connoisseur of mystical beverages.
-% Lady P: All these pesants around me, so filthy!
-% Lady P: I demand you make a potion for me. Do so, and I shall pay you... exactly what you are due.
+% Lady P: Hello dearie!
+% Lady P: Ooh, what a lovely place this is to stop by!
+%
+	Lady P: Awww, seems you got a pet froggy! How cute!
+	Master Frogg: Hey! Hands off! I'm not some pet!
 
 match Globals.wantedPotionType: # this is a placeholder while we set up a global variable for the wanted potions
 	when "Potion of Mogging":
-		Lady P: I want everyone to see how far I outclass them!
+		Lady P: I heard the people talk about "Looksmaxxing", I'd like to try!
 	when "Potion of Beautification":
-		Lady P: Help me enhance my already immaculate beauty.
+		Lady P: Help me be the prettiest princess there ever was!
 	when "Potion of Rapid Shaking":
-		Lady P: It's been a while since I've felt the jitters, I desire to re-live that feeling.
+		Lady P: I wanna get the shakies!
 	when "Potion of Eye Colour Swap":
-		Lady P: I desire a hue shift for my retinas.
+		Lady P: I think a change of eye colour could be nice!
 	when "Potion of Permanent Smile":
-		Lady P: The poor are always complaining about my dismissive demeanor. May you aid with that?
+		Lady P: I wanna always have a bright smile on my face!
 	when "Potion of Green Skin":
-		Lady P: I desire to become more verdant.
+		Lady P: I'd like to be green like a grassy hill!
 	when "Potion of Curing":
-		Lady P: I think a pauper gave me some kind of plague, fix it at once!
-	when "Potion Of Baldness":
-		Lady P: My mane is bothering me, remove it at once!
+		Lady P: I think I caught a fever earlier, do you think you can help?
+	when "Potion of Baldness":
+		Lady P: I think I want to try regrowing my hair, could you get rid of it?
 	when "Potion of Head Size Increase":
-		Lady P: I demand a cranium the size of my ego!
+		Lady P: I want to have a little head, just to see what it's like.
 	when "Potion of Head Size Decrease":
-		Lady P: I need to rest from thinking, downsize my cranium!
+		Lady P: I want to make my head bigger to help shout my joys better!
 	when "Potion of Creature Feature":
-		Lady P: Make me into one of your creatures, my friend.
+		Lady P: I'd like to be featured as the best creature in the lands!
 	when "Potion of Rabies":
-		Lady P: I want to demonstrate to the pesants what they will look like if they remain in the slums
+		Lady P: I would like to fill my mouth with bubbles!
 	when "Potion of Change Language":
-		Lady P: To impress some investors, I must speak in their native dialect.
+		Lady P: I'd like to try communicating in a new way, think you can help?
 	when "Potion of Change Art Styles":
-		Lady P: The characature artist turned me down! How bothersome, but I am sure you could do just as well to me.
+		Lady P: I want to see what things are like in a different style!
 	when "Potion of Body Swap":
-		Lady P: I wish to see what it's like to be one with the pesants.
+		Lady P: I wonder what it's like to be someone else?
 	when "Potion of Love":
-		Lady P: I wish to get more money from others. Help me trick another into falling for me.
+		Lady P: I spotted someone looking handsome the other day, got anything for love?
 	when "Potion of Explode":
-		Lady P: I wish to get more money from my potion insurance. Give me something truly devestating to my health.
+		Lady P: I want to fill with so much joy that I'll burst!
 	when "Potion of Skeleton":
-		Lady P: Help me get the best costume at the halloween party to win the grand prize.
+		Lady P: Could you get me a spooky and scary for Halloween?
 	when "Potion of Enlarge Person":
-		Lady P: I wish to be as big as my ego!
+		Lady P: I wish that I was giant so I could hug everyone easier!
 	when "Potion of Shrink Person":
-		Lady P: I need a potion to let me evesdrop on my advesaries.
+		Lady P: I wish that I could be the size of a bunny!
 	else:
-		Lady P: I am feeling quite indecisive today. (placeholder: no requested potion set)
+		Lady P: Surprise me!
 
 - Confirm
 

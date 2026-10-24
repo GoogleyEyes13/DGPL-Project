@@ -18,7 +18,7 @@ match Globals.wantedPotionType: # this is a placeholder while we set up a global
 		Queso: Change my hue!
 	when "Potion of Curing":
 		Queso: I got too excited and ate chicken that was too raw, cure me!
-	when "Potion Of Baldness":
+	when "Potion of Baldness":
 		Queso: I'm done with having hair. Get rid of it!
 	when "Potion of Head Size Increase":
 		Queso: I hate people saying I look like a Laygo brick, my head is too small for my body!
