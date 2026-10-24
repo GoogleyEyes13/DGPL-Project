@@ -45,8 +45,6 @@ match Globals.wantedPotionType: # this is a placeholder while we set up a global
 		Queso: They keep saying I'm obese, show them how big I can be!
 	when "Potion of Shrink Person":
 		Queso: They keep saying I'm obese, make me small!
-	else:
-		Queso: I dont even know what I want! Just give me something to drink! (placeholder: no requested potion set)
 
 - Confirm
 

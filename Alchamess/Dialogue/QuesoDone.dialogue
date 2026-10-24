@@ -11,6 +11,8 @@ if Globals.submittedPotionType == Globals.wantedPotionType
 		% Queso: Matur nuwun yo!
 		% Queso: Arigatou! Sugoi desu!
 		% Queso: Kore chigau yo, boke!
+	elif Globals.submittedPotionType == "Potion of Love"
+		Queso: YO CHAT! IS IT JUST ME OR IS THIS WIZARD LOOKING LIKE AN ABSOLUTE BADDIE RIGHT NOW
 	else
 		Queso: Thanks, see? that wasn't too hard.
 else
@@ -29,6 +31,8 @@ else
 		...
 	elif Globals.submittedPotionType == "Potion of Rabies"
 		Queso foams at the mouth.
+	elif Globals.submittedPotionType == "Potion of Love"
+		Queso: YO CHAT! IS IT JUST ME OR IS THIS WIZARD LOOKING LIKE AN ABSOLUTE BADDIE RIGHT NOW
 	else
 		Queso: THAT WAS THE WRONG ONE!
 => END

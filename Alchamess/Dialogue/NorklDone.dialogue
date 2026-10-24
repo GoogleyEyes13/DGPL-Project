@@ -1,0 +1,40 @@
+~ start
+if Globals.submittedPotionType == Globals.wantedPotionType
+	if Globals.submittedPotionType == "Potion of Creature Feature"
+		t̸̡̛̥̜̻̘̋͂̈̏͋̇h̴̬̘̼̟͉̞͔̠̀͛̉̉a̴̡̡̡̛̱̥̻͔̕͜ḱ̴̙͍̱̗͉͉ ̷̡̡̛̜̦̠̠͉̘͒̌̿̈́͠y̷̿̇͊̄̋̀͜o̶̢̮͐̈̆u̸̢̞̎̀͛̑̀
+	elif Globals.submittedPotionType == "Potion of Rabies"
+		Norkl: [Incomprehensible gratitude]
+	elif Globals.submittedPotionType == "Potion of Change Language"
+		% Norkl: Grazie mille! È perfetto!
+		% Norkl: Фала многу! Овој е одличен!
+		% Norkl: Makasi banyak! Mantap beut.
+		% Norkl: Matur nuwun yo!
+		% Norkl: Arigatou! Sugoi desu!
+		% Norkl: Kore chigau yo, boke!
+	elif Globals.submittedPotionType == "Potion of Love"
+		Norkl: Oi! You're lookin' dead gorgeous today, fancy goin' on a date? I'll even nick ye somethin' shiny...
+	else
+		Norkl: Heheheh, Norkl is happy.
+else
+	if Globals.submittedPotionType == "Potion of Baldness"
+		Norkl: No! Norkl hair is gone!
+	elif Globals.submittedPotionType == "Potion of Change Language"
+		% Norkl: Questa lingua è sbagliata, stai scemo!
+		% Norkl: Тикво! Шо прајш, бе?!
+		% Norkl: Weh, bahasanya salah, blog!
+		% Norkl: Boso opo ki rek?!
+		% Norkl: Kore chigau yo, boke!
+		% Norkl: Zhī shì shěn me yǔyán a?! bèn dàn!
+	elif Globals.submittedPotionType == "Potion of Explode"
+		There was nothing left but a pile of dust.
+	elif Globals.submittedPotionType == "Potion of Mogging"
+		Norkl: Yes! Norkl not need bone mashing every morning.
+	elif Globals.submittedPotionType == "Potion of Creature Feature"
+		...
+	elif Globals.submittedPotionType == "Potion of Rabies"
+		Norkl foams at the mouth.
+	elif Globals.submittedPotionType == "Potion of Love"
+		Norkl: Oi! You're lookin' dead gorgeous today, fancy goin' on a date? I'll even nick ye somethin' shiny...
+	else
+		Norkl: Wrong! Bad magic person!
+=> END

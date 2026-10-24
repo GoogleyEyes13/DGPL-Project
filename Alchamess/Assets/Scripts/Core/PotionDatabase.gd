@@ -110,7 +110,7 @@ const RECIPES: Dictionary = {
 		"name": "Potion of Creature Feature",
 		"frame": 8,
 		"suffix": "TheFeaturedCreature",
-		"scale": Vector2(0.14, 0.14),
+		"scale": Vector2(0.20, 0.20),
 		"bottle_anim": "Potion5",
 		"bottle_frame": 2
 	},
@@ -144,7 +144,7 @@ const RECIPES: Dictionary = {
 	},
 	["ElbowGrease", "EyeOfNewt", "Stardust"]: {
 		"name": "Potion of Love",
-		"frame": 0,
+		"frame": 14,
 		"suffix": "Normal",
 		"bottle_anim": "Potion3",
 		"bottle_frame": 4

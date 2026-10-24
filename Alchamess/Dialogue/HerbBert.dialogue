@@ -44,8 +44,6 @@ match Globals.wantedPotionType: # this is a placeholder while we set up a global
 		Herb Bert: Birds keep stealing my crops, help me catch them!
 	when "Potion of Shrink Person":
 		Herb Bert: Some rats keep getting into my garden, could you shrink me down to help me fight them eye-to-eye?
-	else:
-		Herb Bert: I'm not quite sure what I want... (placeholder: no requested potion set)
 
 - Confirm
 
