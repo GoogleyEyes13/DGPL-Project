@@ -11,6 +11,14 @@ extends Control
 @onready var right_page: Control = $NotebookPanel/MarginContainer/BookSpread/RightPage
 @onready var potion_list_view: Control = right_page.get_node_or_null("PotionListView")
 
+const POTION_BTN_NORMAL_TEX: Texture2D = preload("res://Assets/UI/JournalUI/NotebookAssets/PotionButtonNormal.png")
+const POTION_BTN_HOVER_TEX: Texture2D = preload("res://Assets/UI/JournalUI/NotebookAssets/PotionButtonHover.png")
+const POTION_BTN_CLICK_TEX: Texture2D = preload("res://Assets/UI/JournalUI/NotebookAssets/PotionButtonClick.png")
+
+var style_normal: StyleBoxTexture
+var style_hover: StyleBoxTexture
+var style_pressed: StyleBoxTexture
+
 @onready var potion_list_header: Label = (
 	right_page.get_node_or_null("PotionListView/ListHeader") 
 	if right_page.has_node("PotionListView/ListHeader") 
@@ -51,10 +59,27 @@ extends Control
 @onready var potion_detail_view: Control = right_page.get_node_or_null("PotionDetailView")
 @onready var back_to_potions_button: Button = right_page.get_node_or_null("PotionDetailView/DetailTopBar/BackToPotionsButton")
 @onready var detail_title_label: Label = right_page.get_node_or_null("PotionDetailView/DetailTopBar/DetailTitleLabel")
-@onready var detail_image_1: TextureRect = right_page.get_node_or_null("PotionDetailView/ImageRow/Image1")
-@onready var detail_image_2: TextureRect = right_page.get_node_or_null("PotionDetailView/ImageRow/Image2")
-@onready var detail_ingredients_label: Label = right_page.get_node_or_null("PotionDetailView/DetailIngredientsLabel")
-@onready var detail_notes_field: TextEdit = right_page.get_node_or_null("PotionDetailView/DetailNotesField")
+
+# Resilient Polaroid lookups that support 'After' or 'AfterPolaroid' node naming
+@onready var detail_image_1: TextureRect = (
+	right_page.find_child("Image1", true, false) as TextureRect 
+	if right_page else null
+)
+@onready var detail_image_2: TextureRect = (
+	right_page.find_child("Image2", true, false) as TextureRect 
+	if right_page else null
+)
+
+@onready var detail_ingredients_container: VBoxContainer = (
+	right_page.get_node_or_null("PotionDetailView/DetailIngredientsContainer")
+	if right_page.has_node("PotionDetailView/DetailIngredientsContainer")
+	else right_page.get_node_or_null("PotionDetailView/DetailIngredientsLabel")
+)
+@onready var detail_notes_field: TextEdit = (
+	right_page.get_node_or_null("PotionDetailView/TextEdit")
+	if right_page.has_node("PotionDetailView/TextEdit")
+	else right_page.get_node_or_null("PotionDetailView/DetailNotesField")
+)
 
 # Hover Tween Settings
 @export var hover_scale: Vector2 = Vector2(0.22, 0.22)
@@ -66,18 +91,23 @@ var ingredient_names: Array = []
 var current_ingredient: String = ""
 var current_potion: String = ""
 
-var default_before_texture = preload("res://Assets/Sprites/Herb Bert/HerbBertBigHead.png") if ResourceLoader.exists("res://Assets/Sprites/Herb Bert/HerbBertBigHead.png") else null
-var default_after_texture = preload("res://Assets/Sprites/Herb Bert/HerbBertBald.png") if ResourceLoader.exists("res://Assets/Sprites/Herb Bert/HerbBertBald.png") else null
+var default_before_texture: Texture2D = preload("res://Assets/Sprites/Herb Bert/HerbBertBigHead.png") if ResourceLoader.exists("res://Assets/Sprites/Herb Bert/HerbBertBigHead.png") else null
+var default_after_texture: Texture2D = preload("res://Assets/Sprites/Herb Bert/HerbBertBald.png") if ResourceLoader.exists("res://Assets/Sprites/Herb Bert/HerbBertBald.png") else null
 
 # Audio
 @onready var notebook_sfx: AudioStreamPlayer = get_node_or_null("NotebookSFX")
-var sfx_open = preload("res://Assets/Audio/SFX/Notebook/notebook open.wav")
-var sfx_close = preload("res://Assets/Audio/SFX/Notebook/notebookclose.wav")
-var sfx_forward = preload("res://Assets/Audio/SFX/Notebook/notebookforward.wav")
-var sfx_backward = preload("res://Assets/Audio/SFX/Notebook/notebookbackward.wav")
+var sfx_open: AudioStream = preload("res://Assets/Audio/SFX/Notebook/notebook open.wav")
+var sfx_close: AudioStream = preload("res://Assets/Audio/SFX/Notebook/notebookclose.wav")
+var sfx_forward: AudioStream = preload("res://Assets/Audio/SFX/Notebook/notebookforward.wav")
+var sfx_backward: AudioStream = preload("res://Assets/Audio/SFX/Notebook/notebookbackward.wav")
 #endregion
 
+
 func _ready() -> void:
+	style_normal = _create_potion_stylebox(POTION_BTN_NORMAL_TEX)
+	style_hover = _create_potion_stylebox(POTION_BTN_HOVER_TEX)
+	style_pressed = _create_potion_stylebox(POTION_BTN_CLICK_TEX)
+	
 	visible = true
 	panel.visible = false
 	book_button.visible = true
@@ -99,14 +129,28 @@ func _ready() -> void:
 		detail_notes_field.text_changed.connect(_on_notes_changed)
 	
 	ingredient_names = PotionDatabase.get_all_ingredient_names()
-	
 	_setup_ingredient_buttons()
+	
 	if potion_list_container:
-		potion_list_container.add_theme_constant_override("separation", 8)
+		potion_list_container.add_theme_constant_override("h_separation", 10)
+		potion_list_container.add_theme_constant_override("v_separation", 8)
 		
-	# Connect to journal unlock signals to update button visibility in real time
 	if PotionJournal:
 		PotionJournal.NewIngredientUnlocked.connect(_on_ingredient_unlocked)
+
+
+func _create_potion_stylebox(tex: Texture2D) -> StyleBoxTexture:
+	var sb := StyleBoxTexture.new()
+	sb.texture = tex
+	sb.texture_margin_left = 12.0
+	sb.texture_margin_right = 12.0
+	sb.texture_margin_top = 6.0
+	sb.texture_margin_bottom = 6.0
+	sb.content_margin_left = 10.0
+	sb.content_margin_right = 10.0
+	sb.content_margin_top = 4.0
+	sb.content_margin_bottom = 4.0
+	return sb
 
 
 func _on_ingredient_unlocked(_ingredient_name: String) -> void:
@@ -156,6 +200,7 @@ func close_journal() -> void:
 	book_button.visible = true
 	_play_sfx(sfx_close)
 #endregion
+
 
 func _play_sfx(stream: AudioStream) -> void:
 	if notebook_sfx and stream:
@@ -233,12 +278,13 @@ func _show_potion_list(ingredient: String) -> void:
 	
 	if potion_list_container:
 		for child in potion_list_container.get_children():
+			potion_list_container.remove_child(child)
 			child.queue_free()
 	
 	var unlocked_potions: Array = PotionJournal.get_potions_for_ingredient(ingredient)
 	var total_potions_for_ingredient: int = PotionJournal.get_total_count_for_ingredient(ingredient)
 
-	if total_potions_for_ingredient == 0:
+	if total_potions_for_ingredient <= 0:
 		total_potions_for_ingredient = 10
 
 	if notebook_dial:
@@ -252,20 +298,37 @@ func _show_potion_list(ingredient: String) -> void:
 		var label := Label.new()
 		label.text = "No potions discovered yet with this ingredient."
 		label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		#label.autowrap_mode = TextServer.AUTOWRAP_WORD  #removed to fix a bug for the placeholder text.
 		label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		if potion_list_container:
 			potion_list_container.add_child(label)
 		return
 	
 	for potion_name in unlocked_potions:
-		var button := Button.new()
-		button.text = potion_name
-		button.custom_minimum_size = Vector2(0, 44)
-		button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		var button := _create_styled_potion_button(potion_name)
 		button.pressed.connect(_on_potion_selected.bind(potion_name))
 		if potion_list_container:
 			potion_list_container.add_child(button)
+
+
+func _create_styled_potion_button(potion_name: String) -> Button:
+	var btn := Button.new()
+	btn.text = potion_name
+	btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	btn.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	btn.custom_minimum_size = Vector2(0, 48)
+	btn.focus_mode = Control.FOCUS_NONE
+	
+	btn.add_theme_stylebox_override("normal", style_normal)
+	btn.add_theme_stylebox_override("hover", style_hover)
+	btn.add_theme_stylebox_override("pressed", style_pressed)
+	btn.add_theme_stylebox_override("focus", style_hover)
+	
+	btn.add_theme_font_size_override("font_size", 25)
+	btn.add_theme_color_override("font_color", Color("3a2b1c"))
+	btn.add_theme_color_override("font_hover_color", Color("1a120b"))
+	btn.add_theme_color_override("font_pressed_color", Color("000000"))
+	
+	return btn
 
 
 func _on_back_to_potions_pressed() -> void:
@@ -288,15 +351,38 @@ func _on_potion_selected(potion_name: String) -> void:
 	if detail_title_label:
 		detail_title_label.text = potion_name
 	
-	var ingredients: Array = PotionJournal.get_ingredients_for_potion(potion_name)
-	var formatted_ingredients: Array = []
-	for ing in ingredients:
-		var ing_display = PotionDatabase.get_ingredient_display_name(ing)
-		formatted_ingredients.append("• " + ing_display)
-		
-	if detail_ingredients_label:
-		detail_ingredients_label.text = "\n".join(formatted_ingredients)
-	
+	# Populate Ingredients with clean vertical left alignment, 56x56 icons, and 34px font
+	if detail_ingredients_container:
+		for child in detail_ingredients_container.get_children():
+			detail_ingredients_container.remove_child(child)
+			child.queue_free()
+			
+		var ingredients: Array = PotionJournal.get_ingredients_for_potion(potion_name)
+		for ing in ingredients:
+			var row := HBoxContainer.new()
+			row.alignment = BoxContainer.ALIGNMENT_BEGIN
+			row.add_theme_constant_override("separation", 18)
+			
+			var ing_data: Dictionary = PotionDatabase.get_ingredient_info(str(ing))
+			var icon_path: String = ing_data.get("icon", "")
+			
+			if ResourceLoader.exists(icon_path):
+				var icon_rect := TextureRect.new()
+				icon_rect.texture = load(icon_path)
+				icon_rect.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+				icon_rect.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+				icon_rect.custom_minimum_size = Vector2(56, 56)
+				row.add_child(icon_rect)
+			
+			var name_label := Label.new()
+			name_label.text = PotionDatabase.get_ingredient_display_name(str(ing))
+			name_label.add_theme_font_size_override("font_size", 34)
+			name_label.add_theme_color_override("font_color", Color("3a2b1c"))
+			name_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+			row.add_child(name_label)
+			
+			detail_ingredients_container.add_child(row)
+
 	var customer_name: String = PotionJournal.get_potion_customer(potion_name)
 	var portraits: Dictionary = _get_customer_portraits(customer_name, potion_name)
 	
@@ -312,6 +398,7 @@ func _on_potion_selected(potion_name: String) -> void:
 func _get_customer_portraits(customer_name: String, potion_name: String) -> Dictionary:
 	var raw_name: String = customer_name.strip_edges()
 	
+	# Fallback if no customer was recorded yet
 	if raw_name.is_empty():
 		if DebugManager.current_customer and "CustomerName" in DebugManager.current_customer:
 			raw_name = DebugManager.current_customer.CustomerName
@@ -324,15 +411,20 @@ func _get_customer_portraits(customer_name: String, potion_name: String) -> Dict
 	var before_path: String = CharacterData.get_sprite_path(raw_name, "Normal")
 	var after_path: String = CharacterData.get_sprite_path(raw_name, suffix)
 
-	var before_tex: Texture2D = load(before_path) if ResourceLoader.exists(before_path) else default_before_texture
-	
+	var before_tex: Texture2D = null
+	if ResourceLoader.exists(before_path):
+		before_tex = load(before_path)
+	elif default_before_texture:
+		before_tex = default_before_texture
+
 	var after_tex: Texture2D = null
 	if ResourceLoader.exists(after_path):
 		after_tex = load(after_path)
-	elif before_tex:
-		after_tex = before_tex
-	else:
+	elif default_after_texture:
 		after_tex = default_after_texture
+	else:
+		# Ultimate fallback: reuse before portrait so the polaroid is never empty
+		after_tex = before_tex
 
 	return {
 		"before": before_tex,

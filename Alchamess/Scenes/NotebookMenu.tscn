@@ -6,27 +6,30 @@
 [ext_resource type="Texture2D" uid="uid://cs003mqc567gw" path="res://Assets/UI/JournalUI/NotebookAssets/NotebookBackground.png" id="4_pqtwh"]
 [ext_resource type="PackedScene" uid="uid://dnch51pphowlp" path="res://Scenes/RadialDial.tscn" id="5_3cw0p"]
 [ext_resource type="Texture2D" uid="uid://hqkvvk1b367c" path="res://Assets/UI/JournalUI/NotebookAssets/TopMargin.tres" id="5_8ycv8"]
+[ext_resource type="Texture2D" uid="uid://tt134d8ek6h8" path="res://Assets/UI/JournalUI/NotebookAssets/CloseButtonNormal.png" id="5_v5nkl"]
 [ext_resource type="Texture2D" uid="uid://oyh8bvu8ugec" path="res://Assets/UI/JournalUI/NotebookAssets/IconNormal.png" id="6_1xjk5"]
 [ext_resource type="Texture2D" uid="uid://bunejp4hqilgp" path="res://Assets/UI/JournalUI/NotebookAssets/LBackground.tres" id="6_8ycv8"]
+[ext_resource type="Texture2D" uid="uid://bowuc5tqp11nb" path="res://Assets/UI/JournalUI/NotebookAssets/CloseButtonClick.png" id="6_t8gf5"]
+[ext_resource type="Texture2D" uid="uid://bqxy4rkvqg4hj" path="res://Assets/UI/JournalUI/NotebookAssets/CloseButtonHover.png" id="7_1kvgx"]
 [ext_resource type="Texture2D" uid="uid://cn7cc0w4mwr54" path="res://Assets/UI/JournalUI/NotebookAssets/IconClick.png" id="7_8ycv8"]
 [ext_resource type="Texture2D" uid="uid://d3rgwvjwj7e6b" path="res://Assets/UI/JournalUI/NotebookAssets/IconHover.png" id="8_4lqga"]
 [ext_resource type="Theme" uid="uid://clxl8pps2dife" path="res://Assets/UI/JournalUI/bento_sketch.tres" id="8_lstkl"]
+[ext_resource type="Texture2D" uid="uid://5eid2l7jnk4u" path="res://Assets/UI/JournalUI/NotebookAssets/PotionListJournal.png" id="11_4lqga"]
+[ext_resource type="Texture2D" uid="uid://d16wbnyj7qpot" path="res://Assets/UI/JournalUI/NotebookAssets/BackButtonNormal.png" id="16_uhnh4"]
+[ext_resource type="Texture2D" uid="uid://3vmohob17aub" path="res://Assets/UI/JournalUI/NotebookAssets/BackButtonClick.png" id="17_iwhw0"]
+[ext_resource type="Texture2D" uid="uid://bwklkyymphsrg" path="res://Assets/UI/JournalUI/NotebookAssets/BackButtonHover.png" id="18_6x3xt"]
+[ext_resource type="Texture2D" uid="uid://bmqx136fpoba0" path="res://Assets/UI/JournalUI/NotebookAssets/Before.png" id="19_6x3xt"]
+[ext_resource type="Texture2D" uid="uid://ddxt3s1udljgy" path="res://Assets/UI/JournalUI/NotebookAssets/After.png" id="20_2laeh"]
+[ext_resource type="Texture2D" uid="uid://bqmq0ijcjxp7p" path="res://Assets/UI/JournalUI/NotebookAssets/Notes.png" id="21_2laeh"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fei2f"]
-content_margin_left = 18.0
-content_margin_top = 10.0
-content_margin_right = 18.0
-content_margin_bottom = 11.0
-bg_color = Color(0.6428518, 0.32609093, 0.1664589, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0.15686275, 0.15294118, 0.13333334, 1)
-corner_radius_top_left = 17
-corner_radius_top_right = 15
-corner_radius_bottom_right = 18
-corner_radius_bottom_left = 14
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5c8o6"]
+texture = ExtResource("5_v5nkl")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1kvgx"]
+texture = ExtResource("6_t8gf5")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t8gf5"]
+texture = ExtResource("7_1kvgx")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d0u6y"]
 texture = ExtResource("6_1xjk5")
@@ -36,6 +39,30 @@ texture = ExtResource("7_8ycv8")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3gngh"]
 texture = ExtResource("8_4lqga")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ybdv5"]
+texture = ExtResource("11_4lqga")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_usdge"]
+texture = ExtResource("16_uhnh4")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iwhw0"]
+texture = ExtResource("17_iwhw0")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6x3xt"]
+texture = ExtResource("18_6x3xt")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2laeh"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+texture = ExtResource("21_2laeh")
+modulate_color = Color(0.8214496, 0.8214496, 0.8214496, 1)
 
 [node name="NotebookMenu" type="Control" unique_id=856325922]
 z_index = 999
@@ -84,13 +111,16 @@ texture = ExtResource("4_pqtwh")
 [node name="CloseButton" type="Button" parent="NotebookPanel" unique_id=1734330865]
 top_level = true
 layout_mode = 0
-offset_left = 1815.0
-offset_top = 3.0000014
-offset_right = 1878.0
-offset_bottom = 70.0
-scale = Vector2(1.2168119, 0.98051727)
-theme_override_styles/normal = SubResource("StyleBoxFlat_fei2f")
-text = "X"
+offset_left = 1840.0
+offset_top = 20.0
+offset_right = 1903.0
+offset_bottom = 87.0
+scale = Vector2(0.96482235, 0.90163434)
+theme_override_styles/normal = SubResource("StyleBoxTexture_5c8o6")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_1kvgx")
+theme_override_styles/hover = SubResource("StyleBoxTexture_t8gf5")
+text = "
+"
 
 [node name="MarginContainer" type="MarginContainer" parent="NotebookPanel" unique_id=1179088137]
 layout_mode = 1
@@ -111,6 +141,7 @@ layout_mode = 2
 theme_override_constants/separation = 24
 
 [node name="LeftPage" type="VBoxContainer" parent="NotebookPanel/MarginContainer/BookSpread" unique_id=395054855]
+custom_minimum_size = Vector2(909, 1016)
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -348,10 +379,12 @@ custom_minimum_size = Vector2(16, 0)
 layout_mode = 2
 
 [node name="RightPage" type="MarginContainer" parent="NotebookPanel/MarginContainer/BookSpread" unique_id=2091284671]
+custom_minimum_size = Vector2(909, 1016)
 layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="PotionListView" type="VBoxContainer" parent="NotebookPanel/MarginContainer/BookSpread/RightPage" unique_id=1573321593]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -397,11 +430,14 @@ texture = ExtResource("5_8ycv8")
 clip_contents = false
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_ybdv5")
 
 [node name="PotionListContainer" type="GridContainer" parent="NotebookPanel/MarginContainer/BookSpread/RightPage/PotionListView/ScrollContainer" unique_id=1555688994]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 12
 columns = 2
 
 [node name="BottomMargin" type="MarginContainer" parent="NotebookPanel/MarginContainer/BookSpread/RightPage/PotionListView" unique_id=1314518044]
@@ -431,15 +467,19 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="PotionDetailView" type="VBoxContainer" parent="NotebookPanel/MarginContainer/BookSpread/RightPage" unique_id=107428576]
-visible = false
 layout_mode = 2
 
 [node name="DetailTopBar" type="HBoxContainer" parent="NotebookPanel/MarginContainer/BookSpread/RightPage/PotionDetailView" unique_id=1956714473]
 layout_mode = 2
+theme_override_constants/separation = -89
 
 [node name="BackToPotionsButton" type="Button" parent="NotebookPanel/MarginContainer/BookSpread/RightPage/PotionDetailView/DetailTopBar" unique_id=1482957234]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-text = "← Back"
+theme_override_styles/normal = SubResource("StyleBoxTexture_usdge")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_iwhw0")
+theme_override_styles/hover = SubResource("StyleBoxTexture_6x3xt")
+alignment = 0
 
 [node name="DetailTitleLabel" type="Label" parent="NotebookPanel/MarginContainer/BookSpread/RightPage/PotionDetailView/DetailTopBar" unique_id=615543036]
 layout_mode = 2
@@ -448,16 +488,46 @@ theme_override_font_sizes/font_size = 32
 text = "Potion Name"
 horizontal_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="NotebookPanel/MarginContainer/BookSpread/RightPage/PotionDetailView" unique_id=1737623573]
+[node name="TopMargin" type="MarginContainer" parent="NotebookPanel/MarginContainer/BookSpread/RightPage/PotionDetailView" unique_id=1703775861]
 layout_mode = 2
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 7
+
+[node name="HSeparator" type="TextureRect" parent="NotebookPanel/MarginContainer/BookSpread/RightPage/PotionDetailView/TopMargin" unique_id=1969526056]
+layout_mode = 2
+texture = ExtResource("5_8ycv8")
 
 [node name="ImageRow" type="HBoxContainer" parent="NotebookPanel/MarginContainer/BookSpread/RightPage/PotionDetailView" unique_id=321755456]
 layout_mode = 2
-theme_override_constants/separation = 16
+theme_override_constants/separation = 20
 alignment = 1
 
-[node name="Image1" type="TextureRect" parent="NotebookPanel/MarginContainer/BookSpread/RightPage/PotionDetailView/ImageRow" unique_id=1943255377]
-custom_minimum_size = Vector2(300, 400)
+[node name="BeforePolaroid" type="TextureRect" parent="NotebookPanel/MarginContainer/BookSpread/RightPage/PotionDetailView/ImageRow" unique_id=2045868112]
+custom_minimum_size = Vector2(400, 500)
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
+texture = ExtResource("19_6x3xt")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="NotebookPanel/MarginContainer/BookSpread/RightPage/PotionDetailView/ImageRow/BeforePolaroid" unique_id=57236342]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 35
+theme_override_constants/margin_top = 78
+theme_override_constants/margin_right = 35
+theme_override_constants/margin_bottom = 144
+
+[node name="Image1" type="TextureRect" parent="NotebookPanel/MarginContainer/BookSpread/RightPage/PotionDetailView/ImageRow/BeforePolaroid/MarginContainer" unique_id=1943255377]
+custom_minimum_size = Vector2(300, 350)
+custom_maximum_size = Vector2(301, 351)
 layout_mode = 2
 expand_mode = 1
 stretch_mode = 5
@@ -466,25 +536,59 @@ stretch_mode = 5
 layout_mode = 2
 theme_override_font_sizes/font_size = 65
 text = "➔"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Image2" type="TextureRect" parent="NotebookPanel/MarginContainer/BookSpread/RightPage/PotionDetailView/ImageRow" unique_id=2056041427]
-custom_minimum_size = Vector2(300, 400)
+[node name="AfterPolaroid" type="TextureRect" parent="NotebookPanel/MarginContainer/BookSpread/RightPage/PotionDetailView/ImageRow" unique_id=1762542508]
+custom_minimum_size = Vector2(400, 500)
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
+texture = ExtResource("20_2laeh")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MarginContainer2" type="MarginContainer" parent="NotebookPanel/MarginContainer/BookSpread/RightPage/PotionDetailView/ImageRow/AfterPolaroid" unique_id=1084278724]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 35
+theme_override_constants/margin_top = 78
+theme_override_constants/margin_right = 35
+theme_override_constants/margin_bottom = 144
+
+[node name="Image2" type="TextureRect" parent="NotebookPanel/MarginContainer/BookSpread/RightPage/PotionDetailView/ImageRow/AfterPolaroid/MarginContainer2" unique_id=2056041427]
+custom_minimum_size = Vector2(300, 350)
+custom_maximum_size = Vector2(301, 351)
+clip_contents = true
 layout_mode = 2
 expand_mode = 1
 stretch_mode = 5
 
-[node name="HSeparator2" type="HSeparator" parent="NotebookPanel/MarginContainer/BookSpread/RightPage/PotionDetailView" unique_id=1178427370]
+[node name="CentreMargin" type="MarginContainer" parent="NotebookPanel/MarginContainer/BookSpread/RightPage/PotionDetailView" unique_id=347088258]
 layout_mode = 2
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 7
 
-[node name="DetailIngredientsLabel" type="Label" parent="NotebookPanel/MarginContainer/BookSpread/RightPage/PotionDetailView" unique_id=473669795]
+[node name="HSeparator" type="TextureRect" parent="NotebookPanel/MarginContainer/BookSpread/RightPage/PotionDetailView/CentreMargin" unique_id=393508031]
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
-horizontal_alignment = 1
+texture = ExtResource("5_8ycv8")
+
+[node name="DetailIngredientsContainer" type="VBoxContainer" parent="NotebookPanel/MarginContainer/BookSpread/RightPage/PotionDetailView" unique_id=962205224]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 14
 
 [node name="TextEdit" type="TextEdit" parent="NotebookPanel/MarginContainer/BookSpread/RightPage/PotionDetailView" unique_id=1344857746]
-custom_minimum_size = Vector2(0, 100)
+custom_minimum_size = Vector2(180, 180)
 layout_mode = 2
-size_flags_vertical = 3
+theme_override_styles/normal = SubResource("StyleBoxTexture_2laeh")
 placeholder_text = "What's been observed..."
 
 [node name="NotebookSFX" type="AudioStreamPlayer" parent="." unique_id=644226143]
