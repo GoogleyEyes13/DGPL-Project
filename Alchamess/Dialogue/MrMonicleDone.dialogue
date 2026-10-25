@@ -1,5 +1,6 @@
 ~ start
 if Globals.submittedPotionType == Globals.wantedPotionType
+	do Globals.customerSatisfaction += 1
 	if Globals.submittedPotionType == "Potion of Creature Feature"
 		t̸̡̛̥̜̻̘̋͂̈̏͋̇h̴̬̘̼̟͉̞͔̠̀͛̉̉a̴̡̡̡̛̱̥̻͔̕͜ḱ̴̙͍̱̗͉͉ ̷̡̡̛̜̦̠̠͉̘͒̌̿̈́͠y̷̿̇͊̄̋̀͜o̶̢̮͐̈̆u̸̢̞̎̀͛̑̀
 	elif Globals.submittedPotionType == "Potion of Rabies"
@@ -16,6 +17,7 @@ if Globals.submittedPotionType == Globals.wantedPotionType
 	else
 		Mr Monicle: Excellent. Your pay is nothing for me, but I'm sure you will savor it.
 else
+	do Globals.customerSatisfaction -= 1
 	if Globals.submittedPotionType == "Potion of Baldness"
 		Mr Monicle: WHAT HAVE YOU DONE? I'M GOING TO SUE YOU!
 	elif Globals.submittedPotionType == "Potion of Change Language"
