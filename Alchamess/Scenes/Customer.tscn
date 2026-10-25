@@ -32,17 +32,10 @@
 [ext_resource type="Texture2D" uid="uid://drmbaysxfp0ce" path="res://Assets/Sprites/LadyP/LadyPBigHead.png" id="14_p7eft"]
 [ext_resource type="Texture2D" uid="uid://lyh024aixu30" path="res://Assets/Sprites/LadyP/LadyPSmallHead.png" id="15_j7dqm"]
 [ext_resource type="Texture2D" uid="uid://caise6xnjqiyy" path="res://Assets/Sprites/Herb Bert/HerbBertLove.png" id="15_rtavc"]
-<<<<<<< Updated upstream
 [ext_resource type="Texture2D" uid="uid://ni3v6u1inad3" path="res://Assets/Sprites/Herb Bert/HerbBertBeautification.png" id="16_8tccj"]
 [ext_resource type="Texture2D" uid="uid://c7vea4ind4llx" path="res://Assets/Sprites/LadyP/LadyPGreen.png" id="16_mqhyu"]
 [ext_resource type="Texture2D" uid="uid://ck1xg3bmx3suw" path="res://Assets/Sprites/Mr Monicle/MrMonicleRabies.png" id="17_jh1hx"]
 [ext_resource type="Texture2D" uid="uid://mhum55p8wdeg" path="res://Assets/Sprites/Mr Monicle/MrMonicleEyes.png" id="18_a8pu0"]
-=======
-[ext_resource type="Texture2D" uid="uid://b7dpjh3v0wk1r" path="res://Assets/Sprites/Herb Bert/HerbBertBeautification.png" id="16_8tccj"]
-[ext_resource type="Texture2D" uid="uid://cqkd8hjokid3h" path="res://Assets/Sprites/LadyP/LadyPGreen.png" id="16_mqhyu"]
-[ext_resource type="Texture2D" uid="uid://nss261vbdk1g" path="res://Assets/Sprites/Mr Monicle/MrMonicleRabies.png" id="17_jh1hx"]
-[ext_resource type="Texture2D" uid="uid://c14dxmk7rebbm" path="res://Assets/Sprites/Mr Monicle/MrMonicleEyes.png" id="18_a8pu0"]
->>>>>>> Stashed changes
 [ext_resource type="Texture2D" uid="uid://fhwky58falh3" path="res://Assets/Sprites/Mr Monicle/MrMonicleBald.png" id="18_bx880"]
 [ext_resource type="Texture2D" uid="uid://dvudc0ypdgti6" path="res://Assets/Sprites/Mr Monicle/MrMonicleGreen.png" id="18_ybyuj"]
 [ext_resource type="Texture2D" uid="uid://bbalq7wmlthu5" path="res://Assets/Sprites/Mr Monicle/MrMonicleBigHead.png" id="19_i14jh"]
