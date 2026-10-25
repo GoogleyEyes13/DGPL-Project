@@ -47,6 +47,7 @@
 [ext_resource type="Texture2D" uid="uid://dc8qgcpaolg0g" path="res://Assets/Sprites/FrogMentor/TongueEnd.png" id="35_t2joc"]
 [ext_resource type="AudioStream" uid="uid://c4hvn021da6pf" path="res://Assets/Audio/SFX/Frog/croak 1 mid.mp3" id="36_7w24h"]
 [ext_resource type="Texture2D" uid="uid://bwua268nobr3d" path="res://Assets/Potions/PotionStack.png" id="44_mi7vx"]
+[ext_resource type="Texture2D" uid="uid://dgsg2iuyo13gq" path="res://Assets/Cross.png" id="50_oo65k"]
 [ext_resource type="AudioStream" uid="uid://bo3e5nhmsm6wc" path="res://Assets/Audio/SFX/Music/Medieval Vol. 2 5 (Loop).mp3" id="59_n24vg"]
 [ext_resource type="Script" uid="uid://cm7mnkc84mlru" path="res://Assets/Scripts/Brewing/PotionStack.gd" id="67_w61tf"]
 
@@ -423,6 +424,11 @@ volume_db = -5.0
 autoplay = true
 bus = &"Music"
 parameters/looping = true
+
+[node name="Cross" type="Sprite2D" parent="." unique_id=2137665297]
+position = Vector2(1788, 778)
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("50_oo65k")
 
 [connection signal="area_entered" from="WitchCauldron/Area2D" to="WitchCauldron" method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="WitchCauldron/Area2D" to="WitchCauldron" method="_on_area_2d_body_entered"]
