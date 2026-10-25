@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://es5fvll1jwn1" path="res://Assets/MenuForeground.png" id="6_8um5k"]
 [ext_resource type="Texture2D" uid="uid://b3543n0wcom5w" path="res://Assets/Sprites/FrogMentor/FrogMasterNormal.png" id="7_xim88"]
 [ext_resource type="Texture2D" uid="uid://bri2o3pkhwwqs" path="res://Assets/Menu/PlayButtonNormal.png" id="8_if7li"]
-[ext_resource type="Texture2D" uid="uid://ch7qg5srwcqmq" path="res://Assets/Menu/PlayButtonDisabled.png" id="9_2x1g0"]
+[ext_resource type="Texture2D" uid="uid://bqkv45w0on3s1" path="res://Assets/Menu/PlayButtonDisabled.png" id="9_2x1g0"]
 [ext_resource type="Texture2D" uid="uid://cybj1yynau27x" path="res://Assets/Menu/PlayButtonPressed.png" id="9_rrcx7"]
 [ext_resource type="Texture2D" uid="uid://bav0gb7wmtc2p" path="res://Assets/Menu/QuitButtonNormal.png" id="10_2x1g0"]
 [ext_resource type="Texture2D" uid="uid://dg83skyhv4ejc" path="res://Assets/Menu/SettingsButtonNormal.png" id="10_8e205"]
