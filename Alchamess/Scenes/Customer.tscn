@@ -31,7 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://cxpqhyk6677ic" path="res://Assets/Sprites/LadyP/LadyPMog.png" id="14_jsqc0"]
 [ext_resource type="Texture2D" uid="uid://drmbaysxfp0ce" path="res://Assets/Sprites/LadyP/LadyPBigHead.png" id="14_p7eft"]
 [ext_resource type="Texture2D" uid="uid://lyh024aixu30" path="res://Assets/Sprites/LadyP/LadyPSmallHead.png" id="15_j7dqm"]
-[ext_resource type="Texture2D" uid="uid://caise6xnjqiyy" path="res://Assets/Sprites/Herb Bert/HerbBertLove.png" id="15_rtavc"]
+[ext_resource type="Texture2D" uid="uid://2fowuvfphde3" path="res://Assets/Sprites/Herb Bert/HerbBertLove.png" id="15_rtavc"]
 [ext_resource type="Texture2D" uid="uid://b7dpjh3v0wk1r" path="res://Assets/Sprites/Herb Bert/HerbBertBeautification.png" id="16_8tccj"]
 [ext_resource type="Texture2D" uid="uid://cqkd8hjokid3h" path="res://Assets/Sprites/LadyP/LadyPGreen.png" id="16_mqhyu"]
 [ext_resource type="Texture2D" uid="uid://ck1xg3bmx3suw" path="res://Assets/Sprites/Mr Monicle/MrMonicleRabies.png" id="17_jh1hx"]
@@ -40,15 +40,15 @@
 [ext_resource type="Texture2D" uid="uid://bw3e3s4k53e5h" path="res://Assets/Sprites/Mr Monicle/MrMonicleGreen.png" id="18_ybyuj"]
 [ext_resource type="Texture2D" uid="uid://bbalq7wmlthu5" path="res://Assets/Sprites/Mr Monicle/MrMonicleBigHead.png" id="19_i14jh"]
 [ext_resource type="Texture2D" uid="uid://2ltqw6ajn2b2" path="res://Assets/Sprites/Mr Monicle/MrMonicleSmallHead.png" id="20_rhkq5"]
-[ext_resource type="Texture2D" uid="uid://c2svihmr82bh6" path="res://Assets/Sprites/LadyP/LadyPArtStyleSwap.png" id="22_8qdjl"]
+[ext_resource type="Texture2D" uid="uid://h18rmxydhbm1" path="res://Assets/Sprites/LadyP/LadyPArtStyleSwap.png" id="22_8qdjl"]
 [ext_resource type="Texture2D" uid="uid://drh5d7bpo5t3v" path="res://Assets/Sprites/LadyP/LadyPBodySwap.png" id="22_igby5"]
 [ext_resource type="Texture2D" uid="uid://c3tdrlemjagd5" path="res://Assets/Sprites/Mr Monicle/MrMonicleBeautification.png" id="23_5wd0f"]
 [ext_resource type="Texture2D" uid="uid://bkigixebdoqsg" path="res://Assets/Sprites/Mr Monicle/MrMonicleMog.png" id="23_mebht"]
 [ext_resource type="Texture2D" uid="uid://dtixhieqpe15x" path="res://Assets/Sprites/Caseoh/CaseohRabies.png" id="24_v2fx3"]
 [ext_resource type="Texture2D" uid="uid://d11unljt1xx3l" path="res://Assets/Sprites/Caseoh/CaseohBeautification.png" id="25_c1vay"]
 [ext_resource type="Texture2D" uid="uid://b67wktbp2oah8" path="res://Assets/Sprites/Caseoh/CaseohArtStyleSwap.png" id="25_hl3cd"]
-[ext_resource type="Texture2D" uid="uid://c0hxkicqfxybu" path="res://Assets/Sprites/LadyP/LadyPSmile.png" id="25_i1xe6"]
-[ext_resource type="Texture2D" uid="uid://1ltxrdmicyku" path="res://Assets/Sprites/LadyP/LadyPLove.png" id="27_3xdgg"]
+[ext_resource type="Texture2D" uid="uid://bvt60cgc77hh7" path="res://Assets/Sprites/LadyP/LadyPSmile.png" id="25_i1xe6"]
+[ext_resource type="Texture2D" uid="uid://dr2frcp0dgi26" path="res://Assets/Sprites/LadyP/LadyPLove.png" id="27_3xdgg"]
 [ext_resource type="Texture2D" uid="uid://cv7qspssu5oh1" path="res://Assets/Sprites/Caseoh/CaseohMog.png" id="27_7yobe"]
 [ext_resource type="Texture2D" uid="uid://ch6wcs0b70h7" path="res://Assets/Sprites/Mr Monicle/MrMonicleArtStyleSwap.png" id="29_gq25i"]
 [ext_resource type="Texture2D" uid="uid://civg7vg1hrgfx" path="res://Assets/Sprites/Mr Monicle/MrMonicleBodySwap.png" id="31_mqhyu"]
@@ -63,12 +63,12 @@
 [ext_resource type="Texture2D" uid="uid://btjjmu5q30w43" path="res://Assets/Sprites/Norkl/NorklBigHead.png" id="37_4nr73"]
 [ext_resource type="Texture2D" uid="uid://cbacacx4letyb" path="res://Assets/Sprites/Norkl/NorkSmile.png" id="37_b172t"]
 [ext_resource type="Texture2D" uid="uid://g5k4sm16dpbh" path="res://Assets/Sprites/Norkl/NorklSmallHead.png" id="38_4cxl1"]
-[ext_resource type="Texture2D" uid="uid://ty2ab4g4utj7" path="res://Assets/Sprites/Mr Monicle/MrMonicleLove.png" id="39_ymmo6"]
+[ext_resource type="Texture2D" uid="uid://dhjprfsewpvlm" path="res://Assets/Sprites/Mr Monicle/MrMonicleLove.png" id="39_ymmo6"]
 [ext_resource type="Texture2D" uid="uid://dnv8dskbj7uvs" path="res://Assets/Sprites/Caseoh/CaseohBodySwap.png" id="41_p7eft"]
 [ext_resource type="Texture2D" uid="uid://c4q2131wxiaes" path="res://Assets/Sprites/Norkl/NorklBodySwap.png" id="44_4cxl1"]
-[ext_resource type="Texture2D" uid="uid://brvfisjkbciwq" path="res://Assets/Sprites/Norkl/NorklArtStyleSwap.png" id="44_7eawq"]
-[ext_resource type="Texture2D" uid="uid://6jmb7v7cd7ad" path="res://Assets/Sprites/Norkl/NorklLove.png" id="50_p6re1"]
-[ext_resource type="Texture2D" uid="uid://crinafadtb4a4" path="res://Assets/Sprites/Caseoh/CaseohLove.png" id="64_cscrn"]
+[ext_resource type="Texture2D" uid="uid://cmnleirb7pqxh" path="res://Assets/Sprites/Norkl/NorklArtStyleSwap.png" id="44_7eawq"]
+[ext_resource type="Texture2D" uid="uid://du7mjb8meqkmn" path="res://Assets/Sprites/Norkl/NorklLove.png" id="50_p6re1"]
+[ext_resource type="Texture2D" uid="uid://th3id4e1m57w" path="res://Assets/Sprites/Caseoh/CaseohLove.png" id="64_cscrn"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_57qmd"]
 animations = [{
@@ -331,7 +331,7 @@ height = 4375.0
 texture_filter = 1
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_57qmd")
-animation = &"LadyP"
+animation = &"HerbBert"
 script = ExtResource("7_cj036")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=621125951]
