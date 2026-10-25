@@ -36,6 +36,7 @@ var default_walk_sound: AudioStream = preload("res://Assets/Audio/SFX/Walking/re
 @onready var smoke_sfx: AudioStreamPlayer = $SmokeSFX
 
 var first_arrival: bool = true
+var ending_active: bool = false
 #endregion
 
 
@@ -56,6 +57,15 @@ func _ready() -> void:
 	
 	hide()
 	bob_in()
+	
+	if is_instance_valid(Globals) and not Globals.ending_triggered.is_connected(_on_ending_triggered):
+		Globals.ending_triggered.connect(_on_ending_triggered)
+
+func _on_ending_triggered(ending_type: String) -> void:
+	if ending_active:
+		return
+	ending_active = true
+	trigger_game_ending(ending_type)
 
 
 func trigger_opening_dialogue() -> void:
@@ -205,6 +215,10 @@ func receive_potion(potion_type: String) -> void:
 	
 	await DialogueManager.dialogue_ended
 	
+	if ending_active:
+		return
+		
+		
 	var delay = create_tween()
 	delay.tween_interval(delay_time)
 	delay.tween_callback(bob_out)
@@ -289,18 +303,14 @@ func _on_exploded() -> void:
 		modulate.a = 1.0
 		scale = original_scale
 		hide()
-		trigger_all_exploded_ending()
+		trigger_game_ending("explode")
 		return
 
 	var pause_tween = create_tween()
 	pause_tween.tween_interval(0.75)
 	pause_tween.tween_callback(new_customer)
-
-
-func _on_smoke_animation_finished() -> void:
-	SmokeTransition.visible = false
 	
-func trigger_all_exploded_ending() -> void:
+func trigger_game_ending(ending_type: String) -> void:
 	var cauldron = get_node_or_null("/root/Game/WitchCauldron")
 	if cauldron:
 		cauldron.set_process_input(false)
@@ -315,10 +325,21 @@ func trigger_all_exploded_ending() -> void:
 	
 	await get_tree().create_timer(1.2).timeout
 	
-	var ending_dialogue = load("res://Dialogue/Explode Ending.dialogue")
-	DialogueManager.show_dialogue_balloon(ending_dialogue, "start")
+	# Match dialogue file to ending type
+	var dialogue_file_path: String = ""
+	if ending_type == "cure":
+		dialogue_file_path = "res://Dialogue/Cure Ending.dialogue"
+	if ending_type == "lack_of_satisfaction":
+		dialogue_file_path = "res://Dialogue/Lack of Satisfaction Ending.dialogue"
+	if ending_type == "explode":
+		dialogue_file_path = "res://Dialogue/Explode Ending.dialogue"
 	
-	await DialogueManager.dialogue_ended
+	await get_tree().create_timer(1.0).timeout
+	
+	if ResourceLoader.exists(dialogue_file_path):
+		var dialogue_resource = load(dialogue_file_path)
+		DialogueManager.show_dialogue_balloon(dialogue_resource, "start" )
+		await DialogueManager.dialogue_ended
 	
 	var fade_overlay := ColorRect.new()
 	fade_overlay.color = Color(0, 0, 0, 0)
@@ -337,3 +358,7 @@ func trigger_all_exploded_ending() -> void:
 	await get_tree().create_timer(2.0).timeout
 	get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
 	
+	
+	
+func _on_smoke_animation_finished() -> void:
+	SmokeTransition.visible = false
