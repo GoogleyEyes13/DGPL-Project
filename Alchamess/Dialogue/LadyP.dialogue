@@ -23,9 +23,9 @@ match Globals.wantedPotionType: # this is a placeholder while we set up a global
 	when "Potion of Baldness":
 		Lady P: I think I want to try regrowing my hair, could you get rid of it?
 	when "Potion of Head Size Increase":
-		Lady P: I want to have a little head, just to see what it's like.
-	when "Potion of Head Size Decrease":
 		Lady P: I want to make my head bigger to help shout my joys better!
+	when "Potion of Head Size Decrease":
+		Lady P: I want to have a little head, just to see what it's like.
 	when "Potion of Creature Feature":
 		Lady P: I'd like to be featured as the best creature in the lands!
 	when "Potion of Rabies":
