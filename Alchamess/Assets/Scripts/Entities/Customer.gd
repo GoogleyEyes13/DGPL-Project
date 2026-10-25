@@ -289,6 +289,7 @@ func _on_exploded() -> void:
 		modulate.a = 1.0
 		scale = original_scale
 		hide()
+		trigger_all_exploded_ending()
 		return
 
 	var pause_tween = create_tween()
@@ -298,3 +299,41 @@ func _on_exploded() -> void:
 
 func _on_smoke_animation_finished() -> void:
 	SmokeTransition.visible = false
+	
+func trigger_all_exploded_ending() -> void:
+	var cauldron = get_node_or_null("/root/Game/WitchCauldron")
+	if cauldron:
+		cauldron.set_process_input(false)
+		cauldron.set_process_unhandled_input(false)
+	
+	var journal = get_tree().get_first_node_in_group("NotebookMenu")
+	if journal:
+		journal.visible = false
+		
+	if walk_sfx:
+		walk_sfx.stop()
+	
+	await get_tree().create_timer(1.2).timeout
+	
+	var ending_dialogue = load("res://Dialogue/Explode Ending.dialogue")
+	DialogueManager.show_dialogue_balloon(ending_dialogue, "start")
+	
+	await DialogueManager.dialogue_ended
+	
+	var fade_overlay := ColorRect.new()
+	fade_overlay.color = Color(0, 0, 0, 0)
+	fade_overlay.set_anchors_preset(Control.PRESET_FULL_RECT)
+	fade_overlay.mouse_filter = Control.MOUSE_FILTER_STOP
+	
+	var canvas_layer := CanvasLayer.new()
+	canvas_layer.layer = 999
+	canvas_layer.add_child(fade_overlay)
+	get_tree().root.add_child(canvas_layer)
+	
+	var fade_tween = create_tween()
+	fade_tween.tween_property(fade_overlay, "color:a", 1.0, 3.0)
+	await fade_tween.finished
+	
+	await get_tree().create_timer(2.0).timeout
+	get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
+	
