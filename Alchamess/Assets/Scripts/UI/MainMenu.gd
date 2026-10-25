@@ -30,6 +30,7 @@ func _ready() -> void:
 	
 	# Disable Play button until loading finishes
 	play_button.disabled = true
+	play_button.text = "Loading..."
 	
 	if background and garage_door:
 		background.z_index = 0
@@ -47,6 +48,7 @@ func _process(_delta: float) -> void:
 		var status = ResourceLoader.load_threaded_get_status(game_scene_path)
 		if status == ResourceLoader.THREAD_LOAD_LOADED:
 			play_button.disabled = false
+			play_button.text = "Play"
 			set_process(false)
 
 
