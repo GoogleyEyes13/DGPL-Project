@@ -1,5 +1,6 @@
 ~ start
 if Globals.submittedPotionType == Globals.wantedPotionType
+	do Globals.customerSatisfaction += 1
 	if Globals.submittedPotionType == "Potion of Creature Feature"
 		t̸̡̛̥̜̻̘̋͂̈̏͋̇h̴̬̘̼̟͉̞͔̠̀͛̉̉a̴̡̡̡̛̱̥̻͔̕͜ḱ̴̙͍̱̗͉͉ ̷̡̡̛̜̦̠̠͉̘͒̌̿̈́͠y̷̿̇͊̄̋̀͜o̶̢̮͐̈̆u̸̢̞̎̀͛̑̀
 	elif Globals.submittedPotionType == "Potion of Rabies"
@@ -16,6 +17,7 @@ if Globals.submittedPotionType == Globals.wantedPotionType
 	else
 		Queso: Thanks, see? that wasn't too hard.
 else
+	do Globals.customerSatisfaction -= 1
 	if Globals.submittedPotionType == "Potion of Baldness"
 		Queso: WHAT DID YOU DO TO MY HAIR?!
 	elif Globals.submittedPotionType == "Potion of Change Language"
@@ -32,7 +34,7 @@ else
 	elif Globals.submittedPotionType == "Potion of Rabies"
 		Queso foams at the mouth.
 	elif Globals.submittedPotionType == "Potion of Love"
-		Queso: YO CHAT! IS IT JUST ME OR IS THIS WIZARD LOOKING LIKE AN ABSOLUTE BADDIE RIGHT NOW
+		Queso: YO CHAT! THIS GUYS TRYNA MAKE ME LOVE HIM! BUT MY ONE TRUE LOVE IS FOOD!
 	else
 		Queso: THAT WAS THE WRONG ONE!
 => END
