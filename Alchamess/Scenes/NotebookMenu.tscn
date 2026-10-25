@@ -527,7 +527,6 @@ theme_override_constants/margin_bottom = 144
 
 [node name="Image1" type="TextureRect" parent="NotebookPanel/MarginContainer/BookSpread/RightPage/PotionDetailView/ImageRow/BeforePolaroid/MarginContainer" unique_id=1943255377]
 custom_minimum_size = Vector2(300, 350)
-custom_maximum_size = Vector2(301, 351)
 layout_mode = 2
 expand_mode = 1
 stretch_mode = 5
@@ -564,7 +563,6 @@ theme_override_constants/margin_bottom = 144
 
 [node name="Image2" type="TextureRect" parent="NotebookPanel/MarginContainer/BookSpread/RightPage/PotionDetailView/ImageRow/AfterPolaroid/MarginContainer2" unique_id=2056041427]
 custom_minimum_size = Vector2(300, 350)
-custom_maximum_size = Vector2(301, 351)
 clip_contents = true
 layout_mode = 2
 expand_mode = 1
