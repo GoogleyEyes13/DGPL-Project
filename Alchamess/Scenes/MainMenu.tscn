@@ -108,6 +108,11 @@ theme = ExtResource("2_8saeu")
 theme_override_font_sizes/font_size = 50
 text = "Play"
 
+[node name="Play" type="TextureButton" parent="ScreenCenter/AspectRatioContainer/Canvas" unique_id=863344722]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="QuitButton" type="Button" parent="ScreenCenter/AspectRatioContainer/Canvas" unique_id=199838649]
 z_index = 2
 layout_mode = 1
