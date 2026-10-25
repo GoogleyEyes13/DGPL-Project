@@ -1,13 +1,20 @@
 [gd_scene format=3 uid="uid://c5ahwustmer4r"]
 
 [ext_resource type="Script" uid="uid://b6vmmxpkfgl5i" path="res://Assets/Scripts/UI/MainMenu.gd" id="1_tt5f1"]
-[ext_resource type="Theme" uid="uid://clxl8pps2dife" path="res://Assets/UI/JournalUI/bento_sketch.tres" id="2_8saeu"]
-[ext_resource type="Texture2D" uid="uid://dmrugnh5nj1ii" path="res://Assets/Placeholders/AlchamessLogo[Orange].png" id="2_853f1"]
 [ext_resource type="PackedScene" uid="uid://dmft8eqa80pop" path="res://Scenes/Settings.tscn" id="3_8saeu"]
 [ext_resource type="Texture2D" uid="uid://bfs6s45u5ksek" path="res://Assets/Menu/shutter.png" id="3_df05h"]
 [ext_resource type="Texture2D" uid="uid://cg1eujfhysm4a" path="res://Assets/background.png" id="4_koqhg"]
 [ext_resource type="Texture2D" uid="uid://es5fvll1jwn1" path="res://Assets/MenuForeground.png" id="6_8um5k"]
 [ext_resource type="Texture2D" uid="uid://b3543n0wcom5w" path="res://Assets/Sprites/FrogMentor/FrogMasterNormal.png" id="7_xim88"]
+[ext_resource type="Texture2D" uid="uid://bri2o3pkhwwqs" path="res://Assets/Menu/PlayButtonNormal.png" id="8_if7li"]
+[ext_resource type="Texture2D" uid="uid://cybj1yynau27x" path="res://Assets/Menu/PlayButtonPressed.png" id="9_rrcx7"]
+[ext_resource type="Texture2D" uid="uid://bav0gb7wmtc2p" path="res://Assets/Menu/QuitButtonNormal.png" id="10_2x1g0"]
+[ext_resource type="Texture2D" uid="uid://dg83skyhv4ejc" path="res://Assets/Menu/SettingsButtonNormal.png" id="10_8e205"]
+[ext_resource type="Texture2D" uid="uid://bj62hp2f52c4l" path="res://Assets/Menu/PlayButtonHover.png" id="10_fh7cp"]
+[ext_resource type="Texture2D" uid="uid://co1gkh6p637mb" path="res://Assets/Menu/SettingsButtonPressed.png" id="11_7467j"]
+[ext_resource type="Texture2D" uid="uid://yqmfygq8p7ye" path="res://Assets/Menu/QuitButtonPressed.png" id="11_riqfo"]
+[ext_resource type="Texture2D" uid="uid://iy0tpv5pod64" path="res://Assets/Menu/SettingsButtonHover.png" id="12_2x1g0"]
+[ext_resource type="Texture2D" uid="uid://bjn2yb1t4g4aj" path="res://Assets/Menu/QuitButtonHover.png" id="12_yxkem"]
 
 [node name="MainMenu" type="Control" unique_id=927422500]
 z_index = -100
@@ -69,12 +76,6 @@ texture = ExtResource("4_koqhg")
 expand_mode = 1
 stretch_mode = 6
 
-[node name="AlchamessLogo[orange]" type="Sprite2D" parent="ScreenCenter/AspectRatioContainer/Canvas" unique_id=879874972]
-z_index = 5
-position = Vector2(208.00005, 248)
-scale = Vector2(0.174, 0.179)
-texture = ExtResource("2_853f1")
-
 [node name="MenuForeground" type="Sprite2D" parent="ScreenCenter/AspectRatioContainer/Canvas" unique_id=1234653490]
 z_index = 100
 texture_filter = 1
@@ -89,65 +90,41 @@ position = Vector2(1656.0001, 680)
 scale = Vector2(0.099, 0.099)
 texture = ExtResource("7_xim88")
 
-[node name="PlayButton" type="Button" parent="ScreenCenter/AspectRatioContainer/Canvas" unique_id=1531628275]
-z_index = 2
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -23.999939
-offset_top = -196.0
-offset_right = 637.0
-offset_bottom = -106.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1, 1.0051382)
-theme = ExtResource("2_8saeu")
-theme_override_font_sizes/font_size = 50
-text = "Play"
-
-[node name="Play" type="TextureButton" parent="ScreenCenter/AspectRatioContainer/Canvas" unique_id=863344722]
+[node name="PlayButton" type="TextureButton" parent="ScreenCenter/AspectRatioContainer/Canvas" unique_id=863344722]
+z_index = 10
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 1045.0001
+offset_top = 181.0
+offset_right = 3093.0
+offset_bottom = 1717.0
+scale = Vector2(0.2, 0.2)
+texture_normal = ExtResource("8_if7li")
+texture_pressed = ExtResource("9_rrcx7")
+texture_hover = ExtResource("10_fh7cp")
 
-[node name="QuitButton" type="Button" parent="ScreenCenter/AspectRatioContainer/Canvas" unique_id=199838649]
-z_index = 2
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 130.0
-offset_top = 64.0
-offset_right = 482.0
-offset_bottom = 140.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("2_8saeu")
-theme_override_font_sizes/font_size = 40
-text = "Quit"
+[node name="SettingsButton" type="TextureButton" parent="ScreenCenter/AspectRatioContainer/Canvas" unique_id=1038846689]
+z_index = 10
+layout_mode = 0
+offset_left = 1048.0001
+offset_top = 377.0
+offset_right = 3096.0
+offset_bottom = 1913.0
+scale = Vector2(0.2, 0.2)
+texture_normal = ExtResource("10_8e205")
+texture_pressed = ExtResource("11_7467j")
+texture_hover = ExtResource("12_2x1g0")
 
-[node name="SettingsButton" type="Button" parent="ScreenCenter/AspectRatioContainer/Canvas" unique_id=881915766]
-z_index = 2
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 130.0
-offset_top = -60.0
-offset_right = 482.0
-offset_bottom = 16.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("2_8saeu")
-theme_override_font_sizes/font_size = 40
-text = "Settings"
+[node name="QuitButton" type="TextureButton" parent="ScreenCenter/AspectRatioContainer/Canvas" unique_id=2048427551]
+z_index = 10
+layout_mode = 0
+offset_left = 1105.0
+offset_top = 611.0
+offset_right = 3153.0
+offset_bottom = 2147.0
+scale = Vector2(0.15, 0.15)
+texture_normal = ExtResource("10_2x1g0")
+texture_pressed = ExtResource("11_riqfo")
+texture_hover = ExtResource("12_yxkem")
 
 [node name="SettingsMenu" parent="ScreenCenter/AspectRatioContainer/Canvas" unique_id=1802880493 instance=ExtResource("3_8saeu")]
 visible = false
@@ -164,5 +141,5 @@ bus = &"SFX"
 bus = &"SFX"
 
 [connection signal="pressed" from="ScreenCenter/AspectRatioContainer/Canvas/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="ScreenCenter/AspectRatioContainer/Canvas/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="ScreenCenter/AspectRatioContainer/Canvas/QuitButton" to="." method="_on_quit_button_pressed"]
-[connection signal="pressed" from="ScreenCenter/AspectRatioContainer/Canvas/SettingsButton" to="." method="_on_option_button_pressed"]

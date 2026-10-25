@@ -6,9 +6,9 @@ extends Control
 @onready var garage_door: TextureRect = $ScreenCenter/AspectRatioContainer/Canvas/GarageDoor
 @onready var menu_foreground: Node = $ScreenCenter/AspectRatioContainer/Canvas/MenuForeground
 
-@onready var play_button: Button = $ScreenCenter/AspectRatioContainer/Canvas/PlayButton
-@onready var settings_button: Button = $ScreenCenter/AspectRatioContainer/Canvas/SettingsButton
-@onready var quit_button: Button = $ScreenCenter/AspectRatioContainer/Canvas/QuitButton
+@onready var play_button: TextureButton = $ScreenCenter/AspectRatioContainer/Canvas/PlayButton
+@onready var settings_button: TextureButton = $ScreenCenter/AspectRatioContainer/Canvas/SettingsButton
+@onready var quit_button: TextureButton = $ScreenCenter/AspectRatioContainer/Canvas/QuitButton
 @onready var settings_menu: Control = $ScreenCenter/AspectRatioContainer/Canvas/SettingsMenu
 
 @onready var click_sfx: AudioStreamPlayer = $ClickSFX
@@ -30,7 +30,6 @@ func _ready() -> void:
 	
 	# Disable Play button until loading finishes
 	play_button.disabled = true
-	play_button.text = "Loading..."
 	
 	if background and garage_door:
 		background.z_index = 0
@@ -48,7 +47,6 @@ func _process(_delta: float) -> void:
 		var status = ResourceLoader.load_threaded_get_status(game_scene_path)
 		if status == ResourceLoader.THREAD_LOAD_LOADED:
 			play_button.disabled = false
-			play_button.text = "Play"
 			set_process(false)
 
 
@@ -105,3 +103,7 @@ func _on_settings_pressed() -> void:
 func _on_quit_button_pressed() -> void:
 	_play_click()
 	get_tree().quit()
+
+
+func _on_settings_button_pressed() -> void:
+	pass # Replace with function body.
