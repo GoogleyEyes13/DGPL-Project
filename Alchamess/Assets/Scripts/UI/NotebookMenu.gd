@@ -60,7 +60,7 @@ var style_pressed: StyleBoxTexture
 @onready var back_to_potions_button: Button = right_page.get_node_or_null("PotionDetailView/DetailTopBar/BackToPotionsButton")
 @onready var detail_title_label: Label = right_page.get_node_or_null("PotionDetailView/DetailTopBar/DetailTitleLabel")
 
-# Resilient Polaroid lookups that support 'After' or 'AfterPolaroid' node naming
+# Resilient Polaroid lookups supporting both naming conventions
 @onready var detail_image_1: TextureRect = (
 	right_page.find_child("Image1", true, false) as TextureRect 
 	if right_page else null
@@ -351,7 +351,6 @@ func _on_potion_selected(potion_name: String) -> void:
 	if detail_title_label:
 		detail_title_label.text = potion_name
 	
-	# Populate Ingredients with clean vertical left alignment, 56x56 icons, and 34px font
 	if detail_ingredients_container:
 		for child in detail_ingredients_container.get_children():
 			detail_ingredients_container.remove_child(child)
@@ -361,7 +360,7 @@ func _on_potion_selected(potion_name: String) -> void:
 		for ing in ingredients:
 			var row := HBoxContainer.new()
 			row.alignment = BoxContainer.ALIGNMENT_BEGIN
-			row.add_theme_constant_override("separation", 18)
+			row.add_theme_constant_override("separation", 14)
 			
 			var ing_data: Dictionary = PotionDatabase.get_ingredient_info(str(ing))
 			var icon_path: String = ing_data.get("icon", "")
@@ -371,12 +370,12 @@ func _on_potion_selected(potion_name: String) -> void:
 				icon_rect.texture = load(icon_path)
 				icon_rect.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 				icon_rect.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-				icon_rect.custom_minimum_size = Vector2(56, 56)
+				icon_rect.custom_minimum_size = Vector2(64, 64)
 				row.add_child(icon_rect)
 			
 			var name_label := Label.new()
 			name_label.text = PotionDatabase.get_ingredient_display_name(str(ing))
-			name_label.add_theme_font_size_override("font_size", 34)
+			name_label.add_theme_font_size_override("font_size", 36)
 			name_label.add_theme_color_override("font_color", Color("3a2b1c"))
 			name_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 			row.add_child(name_label)
@@ -398,7 +397,6 @@ func _on_potion_selected(potion_name: String) -> void:
 func _get_customer_portraits(customer_name: String, potion_name: String) -> Dictionary:
 	var raw_name: String = customer_name.strip_edges()
 	
-	# Fallback if no customer was recorded yet
 	if raw_name.is_empty():
 		if DebugManager.current_customer and "CustomerName" in DebugManager.current_customer:
 			raw_name = DebugManager.current_customer.CustomerName
@@ -423,7 +421,6 @@ func _get_customer_portraits(customer_name: String, potion_name: String) -> Dict
 	elif default_after_texture:
 		after_tex = default_after_texture
 	else:
-		# Ultimate fallback: reuse before portrait so the polaroid is never empty
 		after_tex = before_tex
 
 	return {

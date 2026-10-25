@@ -63,7 +63,7 @@ func refresh_dial(animate: bool = true) -> void:
 	var total: int = PotionJournal.get_total_count_for_ingredient(clean_name)
 	var discovered: int = PotionJournal.get_discovered_count_for_ingredient(clean_name)
 	
-	dial.max_count = total if total > 0 else 5
+	dial.set_max_count(total if total > 0 else 5)
 	dial.update_count(discovered, animate)
 
 
@@ -111,7 +111,6 @@ func drop() -> void:
 	# Check if dropped onto the Cauldron before snapping back
 	var cauldron = get_node_or_null("/root/Game/WitchCauldron")
 	if cauldron:
-		# If Cauldron has a drop method (e.g., add_ingredient, drop_ingredient, or on_ingredient_dropped)
 		if cauldron.has_method("add_ingredient"):
 			cauldron.add_ingredient(ingredientType)
 		elif cauldron.has_method("receive_ingredient"):

@@ -456,8 +456,6 @@ alignment = 1
 
 [node name="NotebookRadialDial" parent="NotebookPanel/MarginContainer/BookSpread/RightPage/PotionListView/DialContainer" unique_id=1125379738 instance=ExtResource("5_3cw0p")]
 layout_mode = 2
-max_count = 10
-ring_thickness = 10.0
 
 [node name="ProgressLabel" type="Label" parent="NotebookPanel/MarginContainer/BookSpread/RightPage/PotionListView/DialContainer" unique_id=1057661506]
 layout_mode = 2

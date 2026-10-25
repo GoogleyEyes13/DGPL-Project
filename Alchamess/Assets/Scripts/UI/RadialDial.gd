@@ -1,88 +1,50 @@
-@tool
-extends Control
+extends TextureProgressBar
 class_name RadialDial
-
-@export var max_count: int = 5:
-	set(new_max):
-		max_count = max(new_max, 1)
-		queue_redraw()
-
-@export var value: int = 0:
-	set(new_val):
-		value = clamp(new_val, 0, max_count)
-		_displayed_value = float(value)
-		_update_label()
-		queue_redraw()
-
-@export var background_color: Color = Color(0.25, 0.2, 0.15, 0.25)
-@export var fill_color: Color = Color(0.85, 0.65, 0.2, 1.0)
-@export var border_color: Color = Color(0.18, 0.12, 0.08, 1.0)
-@export var ring_thickness: float = 6.0
-@export var show_center_text: bool = false
-
-var _displayed_value: float = 0.0
-var _anim_tween: Tween
 
 @onready var center_label: Label = get_node_or_null("CenterLabel")
 
-func _ready() -> void:
-	_displayed_value = float(value)
-	_update_label()
-	queue_redraw()
+var tween: Tween
 
-func update_count(target_count: int, animate: bool = true) -> void:
-	var clamped_target := float(clamp(target_count, 0, max_count))
-	var is_increase := target_count > value
-	value = target_count
+# Property aliases so existing code (like dial.max_count = ...) works seamlessly
+var max_count: int:
+	get:
+		return int(max_value)
+	set(val):
+		set_max_count(val)
 
-	if not animate or not is_inside_tree() or Engine.is_editor_hint():
-		_displayed_value = clamped_target
-		_update_label()
-		queue_redraw()
-		return
+var count: int:
+	get:
+		return int(value)
+	set(val):
+		update_count(val, false)
 
-	if _anim_tween and _anim_tween.is_running():
-		_anim_tween.kill()
 
-	_anim_tween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
-	_anim_tween.tween_method(
-		func(val: float):
-			_displayed_value = val
-			_update_label()
-			queue_redraw(),
-		_displayed_value,
-		clamped_target,
-		0.4
-	)
+func set_max_count(max_val: int) -> void:
+	max_value = float(max_val if max_val > 0 else 1)
+	_update_center_label()
 
-	if is_increase:
-		pivot_offset = size / 2.0
-		_anim_tween.parallel().tween_property(self, "scale", Vector2(1.15, 1.15), 0.12)
-		_anim_tween.chain().tween_property(self, "scale", Vector2.ONE, 0.12)
 
-func _update_label() -> void:
+func update_count(current_val: int, animate: bool = true) -> void:
+	if tween and tween.is_running():
+		tween.kill()
+
+	var target: float = clampf(float(current_val), min_value, max_value)
+
+	if animate and is_inside_tree():
+		tween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		tween.tween_property(self, "value", target, 0.35)
+		if center_label:
+			tween.parallel().tween_method(_animate_label_number, int(value), int(target), 0.35)
+	else:
+		value = target
+		_update_center_label()
+
+
+func _animate_label_number(val: int) -> void:
 	if center_label:
-		center_label.visible = show_center_text
-		center_label.text = "%d" % int(round(_displayed_value))
+		center_label.text = str(val)
 
-func _draw() -> void:
-	var center: Vector2 = size / 2.0
-	var outer_radius: float = minf(size.x, size.y) / 2.0 - 2.0
-	var inner_radius: float = outer_radius - ring_thickness
-	if inner_radius <= 0:
-		return
 
-	draw_arc(center, (outer_radius + inner_radius) / 2.0, 0, TAU, 48, background_color, ring_thickness, true)
-	draw_arc(center, outer_radius, 0, TAU, 48, border_color, 1.5, true)
-	draw_arc(center, inner_radius, 0, TAU, 48, border_color, 1.5, true)
-
-	var progress_ratio: float = _displayed_value / float(max_count)
-	if progress_ratio > 0.001:
-		var start_angle: float = -PI / 2.0
-		var sweep_angle: float = start_angle + (TAU * progress_ratio)
-		draw_arc(center, (outer_radius + inner_radius) / 2.0, start_angle, sweep_angle, 48, fill_color, ring_thickness, true)
-		
-func set_max_count(new_max: int) -> void:
-	max_count = max(new_max, 1)
-	_update_label()
-	queue_redraw()
+func _update_center_label() -> void:
+	if center_label:
+		center_label.text = str(int(value))
