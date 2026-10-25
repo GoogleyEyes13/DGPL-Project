@@ -3,7 +3,16 @@ extends Node
 var wantedPotionType: String = "null"
 var submittedPotionType: String = "null"
 
-var customerSatisfaction = 0
+signal ending_triggered(ending_type: String)
+
+var customerSatisfaction = 0:
+	set (val):
+		customerSatisfaction = val
+		DebugManager.debug_log("Customer Satisfaction updated to " + str(customerSatisfaction))
+		if customerSatisfaction >= 20:
+			ending_triggered.emit("cure")
+		elif customerSatisfaction <= -10:
+			ending_triggered.emit("lack_of_satisfaction")
 
 var customer_effects: Array[String] = ["none", "none", "none", "none", "none", "none"]
 
