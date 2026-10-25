@@ -32,7 +32,7 @@ else
 	elif Globals.submittedPotionType == "Potion of Rabies"
 		Queso foams at the mouth.
 	elif Globals.submittedPotionType == "Potion of Love"
-		Queso: YO CHAT! IS IT JUST ME OR IS THIS WIZARD LOOKING LIKE AN ABSOLUTE BADDIE RIGHT NOW
+		Queso: YO CHAT! THIS GUYS TRYNA MAKE ME LOVE HIM! BUT MY ONE TRUE LOVE IS FOOD!
 	else
 		Queso: THAT WAS THE WRONG ONE!
 => END

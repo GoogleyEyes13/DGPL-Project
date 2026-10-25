@@ -3,6 +3,8 @@ extends Node
 var wantedPotionType: String = "null"
 var submittedPotionType: String = "null"
 
+var customerSatisfaction = 0
+
 var customer_effects: Array[String] = ["none", "none", "none", "none", "none", "none"]
 
 
