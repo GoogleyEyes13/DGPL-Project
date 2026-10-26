@@ -38,7 +38,7 @@ func _ready() -> void:
 	base_scale = scale
 	resting_position = position # Preserves your exact (1059, 733) placement
 	_calculate_liquid_center()
-	WitchCauldronLiquid.self_modulate = Color.SKY_BLUE
+	WitchCauldronLiquid.modulate = Color.SKY_BLUE
 
 
 func _calculate_liquid_center() -> void:
@@ -51,7 +51,7 @@ func _calculate_liquid_center() -> void:
 func _process(delta: float) -> void:
 	if not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		is_grabbed = false
-
+	
 	if is_grabbed:
 		var mouse_pos = get_global_mouse_position()
 		var offset = mouse_pos - liquid_global_center
@@ -94,7 +94,7 @@ func _process(delta: float) -> void:
 					potion_mixed.emit()
 					allow_mixing = false
 					DebugManager.debug_log("Potion fully stirred!")
-
+		
 		previous_angle = current_angle
 	else:
 		# Return smoothly to resting spot (1059, 733) when released
@@ -144,10 +144,10 @@ func change_liquid_colour() -> void:
 		"Potion of Change Language", "Potion of Love":
 			target_colour = Color("#c38840")
 	
-	WitchCauldronLiquid.self_modulate = Color.SKY_BLUE.lerp(target_colour, progress)
+	WitchCauldronLiquid.modulate = Color.SKY_BLUE.lerp(target_colour, progress)
 
 
 func reset_liquid_colour() -> void:
-	WitchCauldronLiquid.self_modulate = Color.SKY_BLUE
+	WitchCauldronLiquid.modulate = Color.SKY_BLUE
 	total_angular_stir = 0.0
 	mix_count = 0

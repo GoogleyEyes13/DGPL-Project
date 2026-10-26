@@ -22,6 +22,7 @@ var Ingredient3 = Vector2(410, 370)
 @onready var MixingStick = $"../MixingStick"
 @onready var in_pot_sfx: AudioStreamPlayer = $InPotSFX
 @onready var area_2d: Area2D = $Area2D
+@onready var bubblePos = $WitchCauldronLiquid/BubbleParticles.position
 
 var CauldronFull: bool = false
 var LastPotionCreated: String = "None"
@@ -42,6 +43,7 @@ var in_pot_sounds: Dictionary = {
 
 
 func _ready() -> void:
+	toggle_bubbles(false)
 	DebugManager.register_cauldron(self)
 	if MixingStick:
 		MixingStick.potion_mixed.connect(_on_potion_mixed)
@@ -133,6 +135,7 @@ func _on_collision_entered(incoming_node: Node2D) -> void:
 					MixingStick.reset_liquid_colour()
 				PotionMixed = false
 				CauldronFull = false
+				toggle_bubbles(false)
 				CauldronIngredients = {}
 				has_logged_mix_finished = false
 				
@@ -144,6 +147,7 @@ func _on_collision_entered(incoming_node: Node2D) -> void:
 
 func _on_potion_mixed() -> void:
 	PotionMixed = true
+	toggle_bubbles(true)
 	if not has_logged_mix_finished:
 		DebugManager.debug_log("Cauldron has finished mixing!")
 		has_logged_mix_finished = true
@@ -154,16 +158,22 @@ func _show_ingredient_in_pot(ingredient_name: String) -> void:
 	if ingredient_sprite == null:
 		DebugManager.debug_log("Ingredient sprite not found: " + ingredient_name)
 		return
-
+	
 	var spawn_points: Array[Vector2] = [Ingredient1, Ingredient2, Ingredient3]
 	var occupied_positions: Array[Vector2] = []
-
+	
 	for child in IngredientsInCauldron.get_children():
 		if child.visible:
 			occupied_positions.append(child.position)
-
+	
 	for spawn_point in spawn_points:
 		if not occupied_positions.has(spawn_point):
 			ingredient_sprite.position = spawn_point
 			ingredient_sprite.visible = true
 			return
+
+func toggle_bubbles(toggle : bool):
+	if toggle == true:
+		$WitchCauldronLiquid/BubbleParticles.position = bubblePos
+	else:
+		$WitchCauldronLiquid/BubbleParticles.position = Vector2(0, bubblePos.y + 10000) #only easy way to disable particles without immediately clearing them

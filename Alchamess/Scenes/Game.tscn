@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://clyi4gvjf38r2" path="res://Assets/Scripts/Brewing/Cauldron.gd" id="2_b2bpf"]
 [ext_resource type="Script" uid="uid://c13ys1t4joar2" path="res://Assets/Scripts/Brewing/MixingStick.gd" id="2_fgofq"]
 [ext_resource type="Texture2D" uid="uid://cg1eujfhysm4a" path="res://Assets/background.png" id="4_6okg5"]
-[ext_resource type="Texture2D" uid="uid://dldv72qq8jife" path="res://Assets/Foreground.png" id="4_dctr5"]
+[ext_resource type="Texture2D" uid="uid://d3h0lci64i1c" path="res://Assets/Foreground.png" id="4_dctr5"]
 [ext_resource type="PackedScene" uid="uid://b7257jafof3g3" path="res://Scenes/PotionPopup.tscn" id="4_e2w45"]
 [ext_resource type="PackedScene" uid="uid://nk2mr8ongv5d" path="res://Objects/Ingredient.tscn" id="5_b2bpf"]
 [ext_resource type="Texture2D" uid="uid://dhpj4m8jgund1" path="res://Assets/Sprites/Cauldron/ladle.png" id="6_7w24h"]
@@ -53,6 +53,39 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7lihs"]
 size = Vector2(32.88879, 123.438416)
+
+[sub_resource type="Gradient" id="Gradient_oo65k"]
+offsets = PackedFloat32Array(0, 0.5335366, 0.63109756)
+colors = PackedColorArray(1, 1, 1, 0.8745098, 0.83231705, 0.83231705, 0.83231705, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_njsjv"]
+gradient = SubResource("Gradient_oo65k")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+metadata/_snap_count = 2
+
+[sub_resource type="Curve" id="Curve_smnwb"]
+_data = [Vector2(0, 0), 0.0, 2.6050417, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -6.198201, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_nh84e"]
+curve = SubResource("Curve_smnwb")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6xr82"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(450, 1, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+inherit_velocity_ratio = 1.0
+direction = Vector3(0, -1, 0)
+spread = 0.0
+initial_velocity_min = 1000.0
+initial_velocity_max = 1000.0
+gravity = Vector3(0, -200, 0)
+radial_accel_min = -100.0
+radial_accel_max = 99.99999
+scale_curve = SubResource("CurveTexture_nh84e")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gl6un"]
 size = Vector2(135.84586, 39.624634)
@@ -143,9 +176,9 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 52.0
-offset_top = -274.0
+offset_top = -429.0
 offset_right = 52.0
-offset_bottom = -274.0
+offset_bottom = -429.0
 grow_vertical = 0
 scale = Vector2(1, 1)
 
@@ -210,6 +243,14 @@ z_index = 3
 texture_filter = 1
 position = Vector2(-3.0517578e-05, -2)
 texture = ExtResource("7_n2ugt")
+
+[node name="BubbleParticles" type="GPUParticles2D" parent="WitchCauldron/WitchCauldronLiquid" unique_id=1056557371]
+position = Vector2(-0.00020345052, 615.33325)
+amount = 20
+texture = SubResource("GradientTexture2D_njsjv")
+explosiveness = 0.08
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_6xr82")
 
 [node name="WitchCauldronInside" type="Sprite2D" parent="WitchCauldron" unique_id=1859849239]
 z_index = 5
