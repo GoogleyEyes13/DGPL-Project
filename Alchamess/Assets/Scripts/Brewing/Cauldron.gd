@@ -176,4 +176,4 @@ func toggle_bubbles(toggle : bool):
 	if toggle == true:
 		$WitchCauldronLiquid/BubbleParticles.position = bubblePos
 	else:
-		$WitchCauldronLiquid/BubbleParticles.position = Vector2(0, bubblePos.y + 10000) #only easy way to disable particles without immediately clearing them
+		$WitchCauldronLiquid/BubbleParticles.position = Vector2(0, bubblePos.y + 10000) #only easy way to disable particles while immediately clearing them once bottled

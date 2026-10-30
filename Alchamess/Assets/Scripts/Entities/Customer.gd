@@ -20,9 +20,9 @@ var is_shrunk: bool = false
 @export var jitter_step_time: float = 0.05
 @export var walk_out_duration: float = 3.5
 
-@export var explode_shake_intensity: float = 12.0
-@export var explode_shake_duration: float = 0.5
-@export var explode_fade_duration: float = 0.8
+@export var explode_shake_intensity: float = 20.0
+@export var explode_shake_duration: float = 0.8
+@export var explode_fade_duration: float = 0.2
 
 @onready var SmokeTransition = $"../Smoke"
 
@@ -179,7 +179,6 @@ func receive_potion(potion_type: String) -> void:
 	# Visual effects & smoke transition
 	SmokeTransition.visible = true
 	SmokeTransition.play()
-	smoke_sfx.stream = preload("res://Assets/Audio/SFX/Smoke Puff/smoke puff.mp3")
 	smoke_sfx.play()
 	
 	await get_tree().create_timer(0.3).timeout
@@ -288,8 +287,8 @@ func explode_effect() -> void:
 		explode_tween.tween_property(self, "offset", shake_offset, 0.03)
 	
 	explode_tween.set_parallel(true)
-	explode_tween.tween_property(self, "scale", Vector2.ZERO, explode_fade_duration)\
-		.set_trans(Tween.TRANS_BACK)\
+	explode_tween.tween_property(self, "scale", Vector2(1.5, 1.5), explode_fade_duration)\
+		.set_trans(Tween.TRANS_ELASTIC)\
 		.set_ease(Tween.EASE_IN)
 	explode_tween.tween_property(self, "modulate:a", 0.0, explode_fade_duration)
 	explode_tween.set_parallel(false)
