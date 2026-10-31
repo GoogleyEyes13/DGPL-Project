@@ -50,7 +50,7 @@
 [ext_resource type="Texture2D" uid="uid://dgsg2iuyo13gq" path="res://Assets/Cross.png" id="50_oo65k"]
 [ext_resource type="Texture2D" uid="uid://bckxmyiuib48e" path="res://Assets/Endings/HighSatisfactionEnding.png" id="51_lkuj1"]
 [ext_resource type="Texture2D" uid="uid://ba00psf2f824k" path="res://Assets/Endings/LowSatisfactionEnding.png" id="52_lklsk"]
-[ext_resource type="AudioStream" uid="uid://bo3e5nhmsm6wc" path="res://Assets/Audio/SFX/Music/Medieval Vol. 2 5 (Loop).mp3" id="59_n24vg"]
+[ext_resource type="AudioStream" uid="uid://bo3e5nhmsm6wc" path="res://Assets/Audio/Music/Medieval Vol. 2 5 (Loop).mp3" id="59_n24vg"]
 [ext_resource type="Script" uid="uid://cm7mnkc84mlru" path="res://Assets/Scripts/Brewing/PotionStack.gd" id="67_w61tf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7lihs"]
@@ -475,14 +475,14 @@ texture = ExtResource("50_oo65k")
 
 [node name="HighSatisfactionEnding" type="Sprite2D" parent="." unique_id=1690221756]
 visible = false
-z_index = 20
+z_index = 100
 texture_filter = 1
 position = Vector2(960, 540)
 texture = ExtResource("51_lkuj1")
 
 [node name="LowSatisfactionEnding" type="Sprite2D" parent="." unique_id=304610614]
 visible = false
-z_index = 20
+z_index = 100
 texture_filter = 1
 position = Vector2(960, 540)
 texture = ExtResource("52_lklsk")
