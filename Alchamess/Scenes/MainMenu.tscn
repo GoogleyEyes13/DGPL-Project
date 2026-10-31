@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://dmft8eqa80pop" path="res://Scenes/Settings.tscn" id="3_8saeu"]
 [ext_resource type="Texture2D" uid="uid://bfs6s45u5ksek" path="res://Assets/Menu/shutter.png" id="3_df05h"]
 [ext_resource type="Texture2D" uid="uid://cg1eujfhysm4a" path="res://Assets/background.png" id="4_koqhg"]
+[ext_resource type="Texture2D" uid="uid://bi534ijcrnfxs" path="res://Assets/Sprites/FrogMentor/FrogMentorNormal.png" id="5_2x1g0"]
 [ext_resource type="Texture2D" uid="uid://es5fvll1jwn1" path="res://Assets/MenuForeground.png" id="6_8um5k"]
-[ext_resource type="Texture2D" uid="uid://b3543n0wcom5w" path="res://Assets/Sprites/FrogMentor/FrogMasterNormal.png" id="7_xim88"]
 [ext_resource type="Texture2D" uid="uid://bri2o3pkhwwqs" path="res://Assets/Menu/PlayButtonNormal.png" id="8_if7li"]
 [ext_resource type="Texture2D" uid="uid://bqkv45w0on3s1" path="res://Assets/Menu/PlayButtonDisabled.png" id="9_2x1g0"]
 [ext_resource type="Texture2D" uid="uid://cybj1yynau27x" path="res://Assets/Menu/PlayButtonPressed.png" id="9_rrcx7"]
@@ -87,9 +87,9 @@ centered = false
 
 [node name="FrogMaster" type="Sprite2D" parent="ScreenCenter/AspectRatioContainer/Canvas" unique_id=1291636036]
 z_index = 100
-position = Vector2(1656.0001, 680)
+position = Vector2(1656, 717)
 scale = Vector2(0.099, 0.099)
-texture = ExtResource("7_xim88")
+texture = ExtResource("5_2x1g0")
 
 [node name="PlayButton" type="TextureButton" parent="ScreenCenter/AspectRatioContainer/Canvas" unique_id=863344722]
 z_index = 10

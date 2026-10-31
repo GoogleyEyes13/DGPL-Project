@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://clyi4gvjf38r2" path="res://Assets/Scripts/Brewing/Cauldron.gd" id="2_b2bpf"]
 [ext_resource type="Script" uid="uid://c13ys1t4joar2" path="res://Assets/Scripts/Brewing/MixingStick.gd" id="2_fgofq"]
 [ext_resource type="Texture2D" uid="uid://cg1eujfhysm4a" path="res://Assets/background.png" id="4_6okg5"]
-[ext_resource type="Texture2D" uid="uid://d3h0lci64i1c" path="res://Assets/Foreground.png" id="4_dctr5"]
+[ext_resource type="Texture2D" uid="uid://dldv72qq8jife" path="res://Assets/Foreground.png" id="4_dctr5"]
 [ext_resource type="PackedScene" uid="uid://b7257jafof3g3" path="res://Scenes/PotionPopup.tscn" id="4_e2w45"]
 [ext_resource type="PackedScene" uid="uid://nk2mr8ongv5d" path="res://Objects/Ingredient.tscn" id="5_b2bpf"]
 [ext_resource type="Texture2D" uid="uid://dhpj4m8jgund1" path="res://Assets/Sprites/Cauldron/ladle.png" id="6_7w24h"]
@@ -42,10 +42,10 @@
 [ext_resource type="AudioStream" uid="uid://mg0ki8rdcbmw" path="res://Assets/Audio/SFX/Ingredient pickup/oil of vitriol.wav" id="27_8eewk"]
 [ext_resource type="AudioStream" uid="uid://bxlw06i77b37x" path="res://Assets/Audio/SFX/Ingredient pickup/stardust.wav" id="29_ahn08"]
 [ext_resource type="Script" uid="uid://cw52nnx0mstao" path="res://Assets/Scripts/Entities/FrogMentor.gd" id="33_audqb"]
-[ext_resource type="Texture2D" uid="uid://b3543n0wcom5w" path="res://Assets/Sprites/FrogMentor/FrogMasterNormal.png" id="33_dctr5"]
 [ext_resource type="Texture2D" uid="uid://d2v65mkbgyj05" path="res://Assets/Sprites/FrogMentor/FrogMentorOpenMouth.png" id="34_mi7vx"]
 [ext_resource type="Texture2D" uid="uid://dc8qgcpaolg0g" path="res://Assets/Sprites/FrogMentor/TongueEnd.png" id="35_t2joc"]
 [ext_resource type="AudioStream" uid="uid://c4hvn021da6pf" path="res://Assets/Audio/SFX/Frog/croak 1 mid.mp3" id="36_7w24h"]
+[ext_resource type="Texture2D" uid="uid://bi534ijcrnfxs" path="res://Assets/Sprites/FrogMentor/FrogMentorNormal.png" id="36_oo65k"]
 [ext_resource type="Texture2D" uid="uid://bwua268nobr3d" path="res://Assets/Potions/PotionStack.png" id="44_mi7vx"]
 [ext_resource type="Texture2D" uid="uid://dgsg2iuyo13gq" path="res://Assets/Cross.png" id="50_oo65k"]
 [ext_resource type="AudioStream" uid="uid://bo3e5nhmsm6wc" path="res://Assets/Audio/SFX/Music/Medieval Vol. 2 5 (Loop).mp3" id="59_n24vg"]
@@ -97,7 +97,7 @@ size = Vector2(521.90576, 18.869469)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("33_dctr5")
+"texture": ExtResource("36_oo65k")
 }, {
 "duration": 1.0,
 "texture": ExtResource("34_mi7vx")
