@@ -11,6 +11,8 @@ extends Control
 @onready var quit_button: TextureButton = $ScreenCenter/AspectRatioContainer/Canvas/QuitButton
 @onready var settings_menu: Control = $ScreenCenter/AspectRatioContainer/Canvas/SettingsMenu
 
+@onready var MainMenuMusic = $GroovyMusicMainMenu
+
 @onready var click_sfx: AudioStreamPlayer = $ClickSFX
 var sfx_click = preload("res://Assets/Audio/SFX/Menu/buttonclick.wav")
 
@@ -37,7 +39,9 @@ func _ready() -> void:
 		# If you have MenuForeground or buttons, keep them above the garage door:
 		if menu_foreground and menu_foreground is CanvasItem:
 			menu_foreground.z_index = 2
-			
+	
+	MainMenuMusic.play()
+	
 	# Start background load
 	ResourceLoader.load_threaded_request(game_scene_path)
 

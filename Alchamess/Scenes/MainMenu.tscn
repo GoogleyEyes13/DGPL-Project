@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://yqmfygq8p7ye" path="res://Assets/Menu/QuitButtonPressed.png" id="11_riqfo"]
 [ext_resource type="Texture2D" uid="uid://iy0tpv5pod64" path="res://Assets/Menu/SettingsButtonHover.png" id="12_2x1g0"]
 [ext_resource type="Texture2D" uid="uid://bjn2yb1t4g4aj" path="res://Assets/Menu/QuitButtonHover.png" id="12_yxkem"]
+[ext_resource type="AudioStream" uid="uid://bs3w87epfx8qy" path="res://Assets/Audio/Music/Groovy Music Main Menu.wav" id="17_riqfo"]
 
 [node name="MainMenu" type="Control" unique_id=927422500]
 z_index = -100
@@ -141,6 +142,10 @@ bus = &"SFX"
 
 [node name="ClickSFX" type="AudioStreamPlayer" parent="." unique_id=1094349586]
 bus = &"SFX"
+
+[node name="GroovyMusicMainMenu" type="AudioStreamPlayer" parent="." unique_id=1810973419]
+stream = ExtResource("17_riqfo")
+volume_db = -8.0
 
 [connection signal="pressed" from="ScreenCenter/AspectRatioContainer/Canvas/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="ScreenCenter/AspectRatioContainer/Canvas/SettingsButton" to="." method="_on_settings_button_pressed"]
