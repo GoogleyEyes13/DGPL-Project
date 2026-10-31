@@ -355,9 +355,9 @@ func trigger_game_ending(ending_type: String) -> void:
 	await fade_tween.finished
 	
 	await get_tree().create_timer(2.0).timeout
+	canvas_layer.queue_free()
 	get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
-	
-	
-	
+
+
 func _on_smoke_animation_finished() -> void:
 	SmokeTransition.visible = false
