@@ -331,16 +331,13 @@ func trigger_game_ending(ending_type: String) -> void:
 		$"../HighSatisfactionEnding".visible = true
 		$"../UI/NotebookMenu".visible = false
 		$"../UI/PotionPopup".visible = false
-		Globals.customerSatisfaction = 0
 	if ending_type == "lack_of_satisfaction":
 		dialogue_file_path = "res://Dialogue/Lack of Satisfaction Ending.dialogue"
 		$"../LowSatisfactionEnding".visible = true
 		$"../UI/NotebookMenu".visible = false
 		$"../UI/PotionPopup".visible = false
-		Globals.customerSatisfaction = 0
 	if ending_type == "explode":
 		dialogue_file_path = "res://Dialogue/Explode Ending.dialogue"
-		Globals.customerSatisfaction = 0
 	
 	await get_tree().create_timer(1.0).timeout
 	
@@ -364,6 +361,7 @@ func trigger_game_ending(ending_type: String) -> void:
 	await fade_tween.finished
 	
 	await get_tree().create_timer(2.0).timeout
+	Globals.customerSatisfaction = 0
 	canvas_layer.queue_free()
 	get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
 
