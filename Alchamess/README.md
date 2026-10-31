@@ -19,3 +19,7 @@ There are currently three endings, so good luck and have fun!
 
 ## Debugging Controls
 To activate the debug menu, press "t". This will allow you to instantly create specific potions or automatically skip dialogue (Among some other information).
+
+
+## Notice!!
+We have been alerted that our game may not work on some low-end computers but it DOES work on Swinburne computers.

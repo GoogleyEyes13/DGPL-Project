@@ -48,6 +48,8 @@
 [ext_resource type="Texture2D" uid="uid://bi534ijcrnfxs" path="res://Assets/Sprites/FrogMentor/FrogMentorNormal.png" id="36_oo65k"]
 [ext_resource type="Texture2D" uid="uid://bwua268nobr3d" path="res://Assets/Potions/PotionStack.png" id="44_mi7vx"]
 [ext_resource type="Texture2D" uid="uid://dgsg2iuyo13gq" path="res://Assets/Cross.png" id="50_oo65k"]
+[ext_resource type="Texture2D" uid="uid://bckxmyiuib48e" path="res://Assets/Endings/HighSatisfactionEnding.png" id="51_lkuj1"]
+[ext_resource type="Texture2D" uid="uid://ba00psf2f824k" path="res://Assets/Endings/LowSatisfactionEnding.png" id="52_lklsk"]
 [ext_resource type="AudioStream" uid="uid://bo3e5nhmsm6wc" path="res://Assets/Audio/SFX/Music/Medieval Vol. 2 5 (Loop).mp3" id="59_n24vg"]
 [ext_resource type="Script" uid="uid://cm7mnkc84mlru" path="res://Assets/Scripts/Brewing/PotionStack.gd" id="67_w61tf"]
 
@@ -470,6 +472,18 @@ parameters/looping = true
 position = Vector2(1788, 778)
 scale = Vector2(0.04, 0.04)
 texture = ExtResource("50_oo65k")
+
+[node name="HighSatisfactionEnding" type="Sprite2D" parent="." unique_id=1690221756]
+visible = false
+texture_filter = 1
+position = Vector2(960, 540)
+texture = ExtResource("51_lkuj1")
+
+[node name="LowSatisfactionEnding" type="Sprite2D" parent="." unique_id=304610614]
+visible = false
+texture_filter = 1
+position = Vector2(960, 540)
+texture = ExtResource("52_lklsk")
 
 [connection signal="area_entered" from="WitchCauldron/Area2D" to="WitchCauldron" method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="WitchCauldron/Area2D" to="WitchCauldron" method="_on_area_2d_body_entered"]
