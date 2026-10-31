@@ -475,12 +475,14 @@ texture = ExtResource("50_oo65k")
 
 [node name="HighSatisfactionEnding" type="Sprite2D" parent="." unique_id=1690221756]
 visible = false
+z_index = 20
 texture_filter = 1
 position = Vector2(960, 540)
 texture = ExtResource("51_lkuj1")
 
 [node name="LowSatisfactionEnding" type="Sprite2D" parent="." unique_id=304610614]
 visible = false
+z_index = 20
 texture_filter = 1
 position = Vector2(960, 540)
 texture = ExtResource("52_lklsk")

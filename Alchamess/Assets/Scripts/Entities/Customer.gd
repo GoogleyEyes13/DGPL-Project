@@ -328,8 +328,10 @@ func trigger_game_ending(ending_type: String) -> void:
 	var dialogue_file_path: String = ""
 	if ending_type == "cure":
 		dialogue_file_path = "res://Dialogue/Cure Ending.dialogue"
+		$"../HighSatisfactionEnding".visible = true
 	if ending_type == "lack_of_satisfaction":
 		dialogue_file_path = "res://Dialogue/Lack of Satisfaction Ending.dialogue"
+		$"../LowSatisfactionEnding".visible = true
 	if ending_type == "explode":
 		dialogue_file_path = "res://Dialogue/Explode Ending.dialogue"
 	
