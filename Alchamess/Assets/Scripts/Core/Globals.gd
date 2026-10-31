@@ -11,7 +11,7 @@ var customerSatisfaction = 0:
 		DebugManager.debug_log("Customer Satisfaction updated to " + str(customerSatisfaction))
 		if customerSatisfaction >= 20:
 			ending_triggered.emit("cure")
-		elif customerSatisfaction <= -10:
+		elif customerSatisfaction <= -20:
 			ending_triggered.emit("lack_of_satisfaction")
 
 var customer_effects: Array[String] = ["none", "none", "none", "none", "none", "none"]
