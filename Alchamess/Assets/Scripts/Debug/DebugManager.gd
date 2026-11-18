@@ -21,10 +21,6 @@ func register_cauldron(cauldron_node: Node) -> void:
 	current_cauldron = cauldron_node
 	debug_log("Cauldron registered: " + cauldron_node.name)
 
-func toggle_debug() -> void:
-	debug_enabled = not debug_enabled
-	debug_log("Debug logging: " + str(debug_enabled))
-
 func toggle_skip_dialogue(enabled: bool) -> void:
 	skip_dialogue = enabled
 	debug_log("Skip Dialogue: " + str(skip_dialogue))

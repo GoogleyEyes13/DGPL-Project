@@ -9,11 +9,10 @@ const SETTINGS_PATH = "user://settings.cfg"
 
 @onready var keybind_container: VBoxContainer = $Panel/MarginContainer/VBoxContainer/KeybindContainer
 
-var rebindable_actions: Array[String] = ["toggle_journal", "give_potion", "toggle_debug_menu"]
+var rebindable_actions: Array[String] = ["toggle_journal", "give_potion"]
 var action_labels: Dictionary = {
 	"toggle_journal": "Open/Close Journal",
 	"give_potion": "Give Potion",
-	"toggle_debug_menu": "Open/Close Debug Menu"
 }
 
 var listening_for_action: String = ""
